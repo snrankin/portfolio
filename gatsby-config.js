@@ -4,6 +4,10 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
+ // gatsby-config.js
+require('dotenv-vault-core').config()
+console.log(process.env) // for debugging purposes. remove when ready.
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */

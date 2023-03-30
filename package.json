@@ -26,6 +26,7 @@
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" "
     },
     "dependencies": {
+        "dotenv-vault-core": "^0.7.0",
         "gatsby": "^5.8.1",
         "gatsby-plugin-image": "^3.8.0",
         "gatsby-plugin-manifest": "^5.8.0",

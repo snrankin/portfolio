@@ -6081,6 +6081,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-vault-core@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "dotenv-vault-core@npm:0.7.0"
+  dependencies:
+    dotenv: ^16.0.3
+  checksum: 66084a7a836a364204131a4eb29b33fac0ed240d053ca12c20d0d6883d0f39390777f5332b34ae6906a18c102de0720b8bdfad3d7119cf4d50d38e9ab70373f5
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^7.0.0":
   version: 7.0.0
   resolution: "dotenv@npm:7.0.0"
@@ -7907,6 +7923,7 @@ __metadata:
   resolution: "gatsby-starter-default@workspace:."
   dependencies:
     dotenv-flow: ^3.2.0
+    dotenv-vault-core: ^0.7.0
     eslint: ^8.37.0
     eslint-config-prettier: ^8.8.0
     eslint-formatter-pretty: ^5.0.0

@@ -605,3 +605,8 @@ wp-config.php
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/git,node,sass,test,text,yarn,macos,react,backup,nextjs,vercel,windows,archives,wordpress,visualstudiocode,compressedarchive,gatsby
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
