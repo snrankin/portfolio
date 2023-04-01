@@ -1,9 +1,0 @@
-.*
-.*/
-node_modules/
-
-**/*.min.*
-**/*.map
-
-src/client/schema.generated.js
-src/client/schema.generated.d.ts

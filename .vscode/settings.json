@@ -1,0 +1,52 @@
+{
+	"search.exclude": {
+		"**/.yarn": true,
+		"**/.pnp.*": true
+	},
+	"psi-header.templates": [
+		{
+			"language": "javascript",
+			"template": [
+				"<<filenamebase>>",
+				"",
+				"@file    ",
+				"@author  <<author>> <<<authoremail>>>",
+				"@version <<projectversion>>"
+			]
+		},
+		{
+			"language": "typescript",
+			"template": [
+				"<<filenamebase>>",
+				"",
+				"@file    ",
+				"@author  <<author>> <<<authoremail>>>",
+				"@version <<projectversion>>"
+			]
+		},
+		{
+			"language": "javascriptreact",
+			"template": [
+				"<<filenamebase>>",
+				"",
+				"@file    ",
+				"@author  <<author>> <<<authoremail>>>",
+				"@version <<projectversion>>"
+			]
+		}
+	],
+	"blueprint.templatesPath": [
+		"/Users/Shared/www/sites/portfolio/blueprint-templates"
+	],
+	"psi-header.config": {
+		"author": "Sam Rankin",
+		"authorEmail": "samrankin.dev@gmail.com",
+		"blankLinesAfter": 1,
+		"company": "",
+		"copyrightHolder": "",
+		"creationDateZero": "asIs",
+		"forceToTop": true,
+		"initials": "SR",
+		"license": "MIT"
+	},
+}

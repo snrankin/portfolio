@@ -26,16 +26,23 @@
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" "
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.7",
+        "@svgr/webpack": "^7.0.0",
+        "bootstrap": "^5.2.3",
+        "bootstrap-icons": "^1.10.3",
         "dotenv-vault-core": "^0.7.0",
         "gatsby": "^5.8.1",
         "gatsby-plugin-image": "^3.8.0",
         "gatsby-plugin-manifest": "^5.8.0",
         "gatsby-plugin-postcss": "^6.8.0",
+        "gatsby-plugin-realfavicongenerator": "^0.1.2",
         "gatsby-plugin-sass": "^6.8.0",
         "gatsby-plugin-sharp": "^5.8.1",
+        "gatsby-plugin-svgr": "^3.0.0-beta.0",
         "gatsby-plugin-terminal-notifier": "^1.0.0",
         "gatsby-plugin-typescript": "^5.8.0",
         "gatsby-source-filesystem": "^5.8.0",
+        "gatsby-source-github-api": "^1.0.0",
         "gatsby-source-notion-api": "^0.12.0",
         "gatsby-transformer-json": "^5.8.0",
         "gatsby-transformer-sharp": "^5.8.0",
@@ -43,6 +50,10 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
+        "@eslint/create-config": "^0.4.2",
+        "@types/bootstrap": "^5",
+        "@typescript-eslint/parser": "^5.57.0",
+        "@yarnpkg/pnpify": "^4.0.0-rc.42",
         "dotenv-flow": "^3.2.0",
         "eslint": "^8.37.0",
         "eslint-config-prettier": "^8.8.0",
@@ -63,5 +74,19 @@
         "typescript": "^5.0.3",
         "vcf": "^2.1.1"
     },
-    "packageManager": "yarn@3.5.0"
+    "packageManager": "yarn@3.5.0",
+    "dependenciesMeta": {
+        "stylelint@15.3.0": {
+            "unplugged": true
+        },
+        "stylelint-config-prettier-scss@0.0.1": {
+            "unplugged": true
+        },
+        "stylelint-config-standard-scss@7.0.1": {
+            "unplugged": true
+        },
+        "stylelint-formatter-pretty@3.1.1": {
+            "unplugged": true
+        }
+    }
 }

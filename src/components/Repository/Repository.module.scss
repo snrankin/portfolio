@@ -1,0 +1,54 @@
+////
+/// ======================================================================== ///
+/// Repository
+///
+/// @author    Sam Rankin <samrankin.dev@gmail.com>
+/// @since     0.1.0
+/// ======================================================================== ///
+////
+
+.repo {
+	padding: var(--spacer);
+	border-radius: var(--border-radius);
+	background: var(--box-background-color);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	box-shadow: var(--box-shadow);
+	> * {
+		width: 100%;
+	}
+	p {
+		font-size: var(--font-size-small);
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+
+.repoTitle {
+	font-size: var(--font-size-h5);
+	margin-bottom: calc(var(--spacer) / 2);
+}
+
+.meta {
+	font-size: var(--font-size-small);
+	align-self: flex-end;
+	display: flex;
+	justify-content: space-between;
+	a {
+		display: inline-block;
+		color: var(--text-color-light);
+		font-variant-numeric: lining-nums;
+		&:hover,
+		&:focus {
+			color: var(--brand-cyan);
+		}
+	}
+	svg {
+		width: var(--font-size-small);
+		height: var(--font-size-small);
+		margin-right: calc(var(--spacer) / 12);
+		margin-bottom: -0.1rem;
+	}
+}
