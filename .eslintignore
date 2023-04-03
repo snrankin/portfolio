@@ -1,0 +1,4 @@
+blueprint-templates/
+node_modules/
+test/
+.*/
