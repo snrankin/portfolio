@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 /**
  * Description placeholder
@@ -44,6 +44,6 @@ export const useGitHubData = () => {
 				}
 			}
 		}
-	`)
-	return githubData.data
-}
+	`);
+	return githubData.data;
+};

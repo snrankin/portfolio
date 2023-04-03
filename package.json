@@ -19,7 +19,7 @@
         "build": "gatsby build",
         "clean": "gatsby clean",
         "develop": "gatsby develop",
-        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\"",
         "prepare": "husky install",
         "serve": "gatsby serve",
         "start": "gatsby develop",
@@ -28,11 +28,11 @@
         "setup": "node ./scripts/setup.js",
         "export-content": "contentful space export --space-id=$SPACE_ID --management-token=$MANAGEMENT_TOKEN --export-dir=scripts --content-file=data.json",
         "lint": "yarn lint:scripts && yarn lint:styles",
-        "lint:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --color -f pretty",
-        "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
+        "lint:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --cache --color -f pretty",
+        "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
         "fix": "yarn fix:scripts && yarn fix:styles",
-        "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix --color -f pretty",
-        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss"
+        "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix  --cache --color -f pretty && prettier --cache --write \"**/*.{js,jsx,ts,tsx}\" --ignore-unknown",
+        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix  --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss && prettier --cache --write \"**/*.{css,scss}\" --ignore-unknown"
     },
     "dependencies": {
         "@contentful/rich-text-html-renderer": "^16.0.3",
@@ -121,6 +121,12 @@
         ],
         "*.scss": [
             "stylelint --fix --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
+            "prettier --write"
+        ],
+        "*.json": [
+            "prettier --write"
+        ],
+        "*.md": [
             "prettier --write"
         ]
     }
