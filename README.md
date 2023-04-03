@@ -1,99 +1,323 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+<a href="https://www.gatsbyjs.com">
+  <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+</a>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+# Gatsby Starter Contentful Homepage
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+Create a homepage using Gatsby and Contentful. This starter demonstrates how to use Contentful to build a homepage and can be customized to match your own visual branding.
 
-## 🚀 Quick start
+[View the Demo](https://gatsbycontentfulhomepage.gatsbyjs.io/)
 
-1.  **Create a Gatsby site.**
+**Note:**
+This version of the Contentful homepage starter is written in JavaScript. If you want to use Contentful but TypeScript is more your style, there is also a TypeScript version maintained on [GitHub](https://github.com/gatsbyjs/gatsby-starter-contentful-homepage-ts).
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+## Quick start
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+You will need a new or existing [Contentful space][] to use this starter and will be asked for your [Space ID][], [Content Management API Key][] (also referred to as a Personal Access Token) and [Content Delivery API Key][] during installation.
 
-1.  **Start developing.**
+**Note:**
+Since this project was first released, Contentful has adjusted the amount of content types allowed in a free space. As a result, the default data set used for this starter has the About page content types and content omitted.
 
-    Navigate into your new site’s directory and start it up.
+If you already have a paid Contentful space, you can utilize the data set that includes the About page content by renaming `scripts/data-with-about-page.json` to `/scripts/data.json` before running the `yarn gatsby-provision` command.
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+[contentful space]: https://www.contentful.com/help/contentful-101/#step-2-create-a-space
+[space id]: https://www.contentful.com/help/find-space-id/
+[content delivery api key]: https://www.contentful.com/developers/docs/references/authentication/#api-keys-in-the-contentful-web-app
+[content management api key]: https://www.contentful.com/developers/docs/references/authentication/#the-content-management-api
 
-1.  **Open the source code and start editing!**
+1. **Create a Gatsby site**
 
-    Your site is now running at `http://localhost:8000`!
+   Use the Gatsby CLI to get started locally:
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+   ```sh repo
+   npx gatsby new my-homepage https://github.com/gatsbyjs/gatsby-starter-contentful-homepage
+   ```
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+1. **Run the Contentful setup script**
 
-## 🚀 Quick start (Netlify)
+   From your site's root directory, run:
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+   ```sh
+   cd my-homepage
+   yarn setup
+   ```
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+   This will run a script to populate your Contentful space's content model and add demo content.
 
-## 🧐 What's inside?
+1. **Start developing**
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+   In your site directory, start the development server:
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+   ```sh
+   yarn start
+   ```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+   Your site should now be running at <http://localhost:8000>
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+1. **Open the source code and start editing**
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## Deploy your site
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+Once your content is available in Contentful, deploy your site to [Gatsby Cloud](https://gatsbyjs.com/products/cloud):
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+1. Push your local site to a new repo in either GitHub, GitLab, or Bitbucket
+1. Log into your [Gatsby Cloud Dashboard][] and click on **Add a site**
+1. Use the **Import from a Git repository** option to find your site
+1. Add the environment variables from your `.env.production` file to Gatsby Cloud during setup
+1. Click **Build site** and your site should start building
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+For a more detailed walkthrough, see the tutorial on how to [build your site with Gatsby Cloud][tutorial].
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+[gatsby cloud dashboard]: https://gatsbyjs.com/dashboard
+[tutorial]: https://www.gatsbyjs.com/docs/tutorial/part-1/#build-your-site-with-gatsby-cloud
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+### Deploy without using the CLI
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+Alternatively, you can deploy this starter directly to Gatsby Cloud.
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+This repository uses the `gatsby-provision` convention to allow for automatic CMS content provisioning during the Deploy Now flow in Gatsby Cloud. After you Quick Connect Contentful to your site, you will be given the option to run the `gatsby-provision` script to populate the selected Contentful space with the site's associated content model and content.
+
+Otherwise, you can always set up your content in Contentful manually before deploying to Gatsby Cloud.
+
+[![Deploy to Gatsby](https://www.gatsbyjs.com/deploynow.svg "Deploy to Gatsby")](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-contentful-homepage)
+
+## Setting up Gatsby Cloud Preview
+
+To use Gatsby Cloud Preview with this site, see the documentation for
+[Installing Content Sync for Contentful][].
+
+[installing content sync for contentful]: https://support.gatsbyjs.com/hc/en-us/articles/4410371995539-Installing-Content-Sync-for-Contentful
+[add the gatsby cloud app to contentful]: https://support.gatsbyjs.com/hc/en-us/articles/360056047134-Add-the-Gatsby-Cloud-App-to-Contentful
+[connecting to contentful manually]: https://support.gatsbyjs.com/hc/en-us/articles/360052076554-Connecting-to-Contentful-Manually
+
+## What's included?
+
+```sh
+├── README.md
+├── gatsby-config.js
+├── gatsby-node.js
+├── src
+│   ├── components
+│   ├── pages
+│   ├── colors.css.ts
+│   ├── styles.css.ts
+│   └── theme.css.ts
+└── .env.EXAMPLE
+```
+
+1. **`gatsby-config.js`**: [Gatsby config][] file that includes plugins required for this starter.
+1. **`gatsby-node.js`**: [Gatsby Node][] config file that creates an abstract data model for the homepage content.
+1. **`src/`**: The source directory for the starter, including pages, components, and [Vanilla Extract][] files for styling.
+
+[gatsby config]: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
+[gatsby node]: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
+[vanilla extract]: https://vanilla-extract.style/
+
+## How to
+
+### Update the color theme
+
+To update the colors used in this starter, edit the `src/colors.css.ts` file.
+
+```.ts
+// src/colors.css.ts
+export const colors = {
+  background: "#ffd500",
+  text: "#005bbb",
+  primary: "#005bbb",
+  muted: "#f5cc00",
+  active: "#004287",
+  black: "#000",
+}
+
+```
+
+If you'd like to add additional colors, add additional keys to this object.
+This file is imported into `src/theme.css.ts` and creates CSS custom properties, that can be imported and used in other `.css.ts` files.
+
+The UI components file `src/components/ui.js` imports styles from `src/components/ui.css.ts`. You can see how the theme and color values are being used in this file.
+
+### Add your logo
+
+![Logo](./docs/images/logo.png)
+
+Replace the `src/components/brand-logo.js` component with your own brand logo.
+If you have an SVG version, it can be rendered inline as a React component, following the example in this file. Note that SVG attributes will need to be camel cased for JSX.
+
+Using an inline SVG for the logo allows it to pick up the colors used in CSS, which is how the logo colors are inverted for the mobile menu.
+
+If you prefer to use an image, use the [`StaticImage`](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/#staticimage) component from `gatsby-plugin-image` in place of the SVG in this file.
+
+### Customize headings, buttons, and other styles
+
+![Headings & Buttons](./docs/images/headings-buttons.png)
+
+To further customize the look and feel of the homepage, edit the UI components in `src/components/ui.js` and styles in `src/components/ui.css.ts`.
+
+### Customize section components
+
+To customize any of the sections of the homepage, edit the relevant component in `src/components`.
+Most of the styles for these components are handled with shared UI components in `src/components/ui.js`.
+
+### Create custom section components
+
+To create a new type of section in your homepage, you'll want to create a new section component, using the existing components as an example.
+For this example, we'll create a new "Banner" component.
+
+1. First, update your content model in Contentful
+
+   1. In your Contentful space, create a new content type and call it "Homepage Banner."
+
+      <img src="./docs/images/step-1.png" alt="Step 1" width="300" />
+
+   1. For this example, add two fields to your new content type: `heading` and `text` – these can be _Short text_ types.
+
+      <img src="./docs/images/step-2.png" alt="Step 2" width="300" />
+      <img src="./docs/images/step-3.png" alt="Step 3" width="300" />
+      <img src="./docs/images/step-4.png" alt="Step 4" width="300" />
+
+   1. Find the content type for _Homepage_ in Contentful and edit the settings for the _Content_ field. Under _Validation_, ensure that the new _Homepage Banner_ type is checked to make it available as a content type on the Homepage.
+
+      <img src="./docs/images/step-5.png" alt="Step 5" width="500" />
+      <img src="./docs/images/step-6.png" alt="Step 6" width="500" />
+      <img src="./docs/images/step-7.png" alt="Step 7" width="500" />
+
+   1. Navigate to the _Content_ tab to edit the _Homepage_ and add a section with this new _Homepage Banner_ content type.
+
+      <img src="./docs/images/step-8.png" alt="Step 8" width="500" />
+      <img src="./docs/images/step-9.png" alt="Step 9" width="500" />
+
+1. Update `gatsby-node.js`
+
+   Edit your site's `gatsby-node.js` file, adding an interface for `HomepageBanner` that matches your content model in Contentful.
+   This allows the homepage to query the abstract `HomepageBanner` type.
+
+   ```js
+   // in gatsby-node.js
+   exports.createSchemaCustomization = async ({ actions }) => {
+     // ...
+     actions.createTypes(`
+       interface HomepageBanner implements Node & HomepageBlock {
+         id: ID!
+         blocktype: String
+         heading: String
+         text: String
+       }
+     `)
+     // ...
+     actions.createTypes(`
+       type ContentfulHomepageBanner implements Node & HomepageBanner & HomepageBlock @dontInfer {
+         id: ID!
+         blocktype: String @blocktype
+         heading: String
+         text: String
+       }
+     `)
+     // ...
+   }
+   ```
+
+1. Next, create the Banner component:
+
+   ```jsx fileExt
+   // src/components/banner.js
+   import * as React from "react"
+   import { graphql } from "gatsby"
+   import { Section, Container, Heading, Text } from "./ui"
+
+   export default function Banner(props) {
+     return (
+       <Section>
+         <Container>
+           <Heading>{props.heading}</Heading>
+           <Text>{props.text}</Text>
+         </Container>
+       </Section>
+     )
+   }
+
+   export const query = graphql`
+     fragment HomepageBannerContent on HomepageBanner {
+       id
+       heading
+       text
+     }
+   `
+   ```
+
+1. Export the component from `src/components/sections.js`
+
+   ```js fileExt
+   // src/components/sections.js
+   export { default as HomepageHero } from "./hero"
+   export { default as HomepageFeature } from "./feature"
+   export { default as HomepageFeatureList } from "./feature-list"
+   export { default as HomepageLogoList } from "./logo-list"
+   export { default as HomepageBenefitList } from "./benefit-list"
+   export { default as HomepageTestimonialList } from "./testimonial-list"
+   export { default as HomepageStatList } from "./stat-list"
+   export { default as HomepageCta } from "./cta"
+   export { default as HomepageProductList } from "./product-list"
+
+   // add export for new component
+   export { default as HomepageBanner } from "./banner"
+   ```
+
+1. Add the GraphQL query fragment to the query in `src/pages/index.js`
+
+   ```js fileExt
+   // in src/pages/index.js
+   export const query = graphql`
+     {
+       homepage {
+         id
+         title
+         description
+         image {
+           id
+           url
+         }
+         blocks: content {
+           id
+           blocktype
+           ...HomepageHeroContent
+           ...HomepageFeatureContent
+           ...HomepageFeatureListContent
+           ...HomepageCtaContent
+           ...HomepageLogoListContent
+           ...HomepageTestimonialListContent
+           ...HomepageBenefitListContent
+           ...HomepageStatListContent
+           ...HomepageProductListContent
+           # New component fragment
+           ...HomepageBannerContent
+         }
+       }
+     }
+   `
+   ```
+
+## Troubleshooting
+
+### Errors after making changes to the schema
+
+If you've made changes to the `gatsby-node.js` file or changes to the Contentful data model, clear the Gatsby cache before running the develop server:
+
+```sh
+yarn clean && yarn start
+```
+
+---
 
 ## 🎓 Learning Gatsby
 
 Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
 
 - **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).**
 
 ## 💫 Deploy
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
