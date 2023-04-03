@@ -1,136 +1,133 @@
-import * as React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Twitter, Twitch, Instagram, Facebook, Youtube, GitHub } from 'react-feather';
-import { Container, Flex, FlexList, Box, Space, NavLink, Text, IconLink, VisuallyHidden } from './ui';
-import BrandLogo from './brand-logo';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Icon } from '@components/icons';
+import { socialMedia } from '@config';
+import { Link } from 'gatsby';
+const StyledFooter = styled.footer`
+	${({ theme }) => theme.mixins.flexCenter};
+	flex-direction: column;
+	height: auto;
+	min-height: 70px;
+	padding: 15px;
+	text-align: center;
+`;
 
-const socialMedia = {
-	TWITTER: {
-		url: 'https://twitter.com',
-		name: 'Twitter',
-		icon: <Twitter />,
-	},
-	INSTAGRAM: {
-		url: 'https://instagram.com',
-		name: 'Instagram',
-		icon: <Instagram />,
-	},
-	FACEBOOK: {
-		url: 'https://facebook.com',
-		name: 'Facebook',
-		icon: <Facebook />,
-	},
-	YOUTUBE: {
-		url: 'https://youtube.com',
-		name: 'YouTube',
-		icon: <Youtube />,
-	},
-	GITHUB: {
-		url: 'https://github.com',
-		name: 'GitHub',
-		icon: <GitHub />,
-	},
-	TWITCH: {
-		url: 'https://twitch.tv',
-		name: 'Twitch',
-		icon: <Twitch />,
-	},
-};
+const StyledSocialLinks = styled.div`
+	display: none;
 
-const getSocialURL = ({ service, username }) => {
-	const domain = socialMedia[service]?.url;
-	if (!domain) return false;
-	return `${domain}/${username}`;
-};
+	@media (max-width: 768px) {
+		display: block;
+		width: 100%;
+		max-width: 270px;
+		margin: 0 auto 10px;
+		color: var(--light-slate);
+	}
 
-const getSocialIcon = ({ service }) => {
-	return socialMedia[service]?.icon;
-};
+	ul {
+		${({ theme }) => theme.mixins.flexBetween};
+		padding: 0;
+		margin: 0;
+		list-style: none;
 
-const getSocialName = ({ service }) => {
-	return socialMedia[service]?.name;
-};
-
-export default function Footer() {
-	const data = useStaticQuery(graphql`
-		query {
-			layout {
-				footer {
-					id
-					links {
-						id
-						href
-						text
-					}
-					meta {
-						id
-						href
-						text
-					}
-					copyright
-					socialLinks {
-						id
-						service
-						username
-					}
-				}
+		a {
+			padding: 10px;
+			svg {
+				width: 20px;
+				height: 20px;
 			}
 		}
-	`);
+	}
+`;
 
-	const { links, meta, socialLinks, copyright } = data.layout.footer;
+const StyledCredit = styled.div`
+	color: var(--light-slate);
+	font-family: var(--font-mono);
+	font-size: var(--fz-xxs);
+	line-height: 1;
+
+	a {
+		padding: 10px;
+	}
+
+	.github-stats {
+		margin-top: 10px;
+
+		& > span {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 7px;
+		}
+		svg {
+			display: inline-block;
+			margin-right: 5px;
+			width: 14px;
+			height: 14px;
+		}
+	}
+`;
+
+const Footer = () => {
+	const [githubInfo, setGitHubInfo] = useState({
+		stars: null,
+		forks: null,
+	});
+
+	useEffect(() => {
+		if (process.env.NODE_ENV !== 'production') {
+			return;
+		}
+		fetch('https://api.github.com/repos/bchiang7/v4')
+			.then((response) => response.json())
+			.then((json) => {
+				const { stargazers_count, forks_count } = json;
+				setGitHubInfo({
+					stars: stargazers_count,
+					forks: forks_count,
+				});
+			})
+			.catch((e) => console.error(e));
+	}, []);
 
 	return (
-		<Box as="footer" paddingY={4}>
-			<Container>
-				<Flex variant="start" responsive>
-					<NavLink to="/">
-						<VisuallyHidden>Home</VisuallyHidden>
-						<BrandLogo />
-					</NavLink>
-					<Space />
-					<FlexList>
-						{socialLinks &&
-							socialLinks.map((link) => {
-								const url = getSocialURL(link);
-								return (
-									url && (
-										<li key={link.id}>
-											<IconLink to={url}>
-												<VisuallyHidden>{getSocialName(link)}</VisuallyHidden>
-												{getSocialIcon(link)}
-											</IconLink>
-										</li>
-									)
-								);
-							})}
-					</FlexList>
-				</Flex>
-				<Space size={5} />
-				<Flex variant="start" responsive>
-					<FlexList variant="start" responsive>
-						{links &&
-							links.map((link) => (
-								<li key={link.id}>
-									<NavLink to={link.href}>{link.text}</NavLink>
-								</li>
-							))}
-					</FlexList>
-					<Space />
-					<FlexList>
-						{meta &&
-							meta.map((link) => (
-								<li key={link.id}>
-									<NavLink to={link.href}>
-										<Text variant="small">{link.text}</Text>
-									</NavLink>
-								</li>
-							))}
-					</FlexList>
-					<Text variant="small">{copyright}</Text>
-				</Flex>
-			</Container>
-			<Space size={3} />
-		</Box>
+		<StyledFooter>
+			<StyledSocialLinks>
+				<ul>
+					{socialMedia &&
+						socialMedia.map(({ name, url }, i) => (
+							<li key={i}>
+								<Link href={url} aria-label={name}>
+									<Icon name={name} />
+								</Link>
+							</li>
+						))}
+				</ul>
+			</StyledSocialLinks>
+
+			<StyledCredit tabindex="-1">
+				<Link href="https://github.com/bchiang7/v4">
+					<div>Designed &amp; Built by Brittany Chiang</div>
+
+					{githubInfo.stars && githubInfo.forks && (
+						<div className="github-stats">
+							<span>
+								<Icon name="Star" />
+								<span>{githubInfo.stars.toLocaleString()}</span>
+							</span>
+							<span>
+								<Icon name="Fork" />
+								<span>{githubInfo.forks.toLocaleString()}</span>
+							</span>
+						</div>
+					)}
+				</Link>
+			</StyledCredit>
+		</StyledFooter>
 	);
-}
+};
+
+Footer.propTypes = {
+	githubInfo: PropTypes.object,
+};
+
+export default Footer;

@@ -54,6 +54,22 @@
 		"conventionalCommits.scopes": [
 			"README.md",
 			".env.vault"
-		]
+		],
+		"frontMatter.content.pageFolders": [
+			{
+				"title": "content",
+				"path": "[[workspace]]/content"
+			}
+		],
+		"frontMatter.taxonomy.tags": [
+			"Accessibility",
+			"CSS",
+			"Dark Mode",
+			"Docker",
+			"Testing",
+			"Theming",
+			"WordPress"
+		],
+		"frontMatter.taxonomy.categories": []
 	}
 }

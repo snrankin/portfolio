@@ -1,90 +1,118 @@
 {
-    "name": "gatsby-starter-default",
-    "version": "0.1.0",
+    "name": "sam-rankin-portfolio",
+    "version": "1.0.0",
     "private": true,
     "description": "A simple starter to get up and developing quickly with Gatsby",
     "keywords": [
         "gatsby"
     ],
     "bugs": {
-        "url": "https://github.com/gatsbyjs/gatsby/issues"
+        "url": "https://github.com/snrankin/portfolio/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+        "url": "https://github.com/snrankin/portfolio"
     },
-    "license": "0BSD",
+    "license": "MIT",
     "author": "Kyle Mathews <mathews.kyle@gmail.com>",
     "scripts": {
         "build": "gatsby build",
         "clean": "gatsby clean",
         "develop": "gatsby develop",
+        "fix": "yarn fix:scripts && yarn fix:styles",
+        "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix  --cache --color -f pretty && prettier --cache --write \"**/*.{js,jsx,ts,tsx}\" --ignore-unknown",
+        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix  --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss && prettier --cache --write \"**/*.{css,scss}\" --ignore-unknown",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\"",
+        "lint": "yarn lint:scripts && yarn lint:styles",
+        "lint:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --cache --color -f pretty",
+        "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
         "prepare": "husky install",
         "serve": "gatsby serve",
         "start": "gatsby develop",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
-        "gatsby-provision": "gatsby-provision-contentful --contentful-data-path='./scripts/data.json' --space-id=$CONTENTFUL_SPACE_ID --management-token=$CONTENTFUL_MANAGEMENT_TOKEN",
-        "setup": "node ./scripts/setup.js",
-        "export-content": "contentful space export --space-id=$SPACE_ID --management-token=$MANAGEMENT_TOKEN --export-dir=scripts --content-file=data.json",
-        "lint": "yarn lint:scripts && yarn lint:styles",
-        "lint:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --cache --color -f pretty",
-        "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
-        "fix": "yarn fix:scripts && yarn fix:styles",
-        "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix  --cache --color -f pretty && prettier --cache --write \"**/*.{js,jsx,ts,tsx}\" --ignore-unknown",
-        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix  --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss && prettier --cache --write \"**/*.{css,scss}\" --ignore-unknown",
-        "vault:push": "yarn exec dotenv-vault push development && yarn exec dotenv-vault push production && yarn exec dotenv-vault push",
-        "vault:pull": "yarn exec dotenv-vault pull development && yarn exec dotenv-vault pull production && yarn exec dotenv-vault pull",
         "vault:build": "yarn exec dotenv-vault build",
-        "vault:open": "yarn exec dotenv-vault open"
+        "vault:open": "yarn exec dotenv-vault open",
+        "vault:pull": "yarn exec dotenv-vault pull development && yarn exec dotenv-vault pull production && yarn exec dotenv-vault pull",
+        "vault:push": "yarn exec dotenv-vault push development && yarn exec dotenv-vault push production && yarn exec dotenv-vault push"
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.jsx": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.scss": [
+            "stylelint --fix --custom-syntax postcss-scss",
+            "prettier --write"
+        ],
+        "*.json": [
+            "prettier --write"
+        ],
+        "*.md": [
+            "prettier --write"
+        ]
     },
     "dependencies": {
-        "@contentful/rich-text-html-renderer": "^16.0.3",
         "@popperjs/core": "^2.11.7",
         "@svgr/webpack": "^7.0.0",
         "@vanilla-extract/babel-plugin": "^1.2.0",
         "@vanilla-extract/css": "^1.11.0",
         "@vanilla-extract/css-utils": "^0.1.3",
         "@vanilla-extract/webpack-plugin": "^2.2.0",
+        "animejs": "^3.2.1",
+        "babel-plugin-styled-components": "^2.0.7",
         "bootstrap": "^5.2.3",
-        "bootstrap-icons": "^1.10.3",
+        "bootstrap-icons": "^1.10.4",
         "dotenv": "^16.0.3",
         "dotenv-vault-core": "^0.7.0",
         "gatsby": "^5.8.1",
+        "gatsby-plugin-google-analytics": "^5.8.0",
         "gatsby-plugin-image": "^3.8.0",
         "gatsby-plugin-manifest": "^5.8.0",
+        "gatsby-plugin-netlify": "^5.1.0",
+        "gatsby-plugin-offline": "^6.8.0",
         "gatsby-plugin-postcss": "^6.8.0",
-        "gatsby-plugin-realfavicongenerator": "^0.1.2",
+        "gatsby-plugin-react-helmet": "^6.8.0",
+        "gatsby-plugin-robots-txt": "^1.8.0",
         "gatsby-plugin-sass": "^6.8.0",
         "gatsby-plugin-sharp": "^5.8.1",
+        "gatsby-plugin-sitemap": "^6.8.0",
+        "gatsby-plugin-styled-components": "^6.8.0",
         "gatsby-plugin-svgr": "^3.0.0-beta.0",
         "gatsby-plugin-terminal-notifier": "^1.0.0",
         "gatsby-plugin-typescript": "^5.8.0",
         "gatsby-plugin-vanilla-extract": "^4.0.1",
-        "gatsby-source-contentful": "^8.8.0",
+        "gatsby-remark-external-links": "0.0.4",
+        "gatsby-remark-images": "^7.8.0",
+        "gatsby-remark-prismjs": "^7.8.0",
         "gatsby-source-filesystem": "^5.8.0",
-        "gatsby-source-github-api": "^1.0.0",
-        "gatsby-source-notion-api": "^0.12.0",
         "gatsby-transformer-json": "^5.8.0",
+        "gatsby-transformer-remark": "^6.8.0",
         "gatsby-transformer-sharp": "^5.8.0",
+        "lodash": "^4.17.21",
+        "prismjs": "^1.29.0",
+        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-feather": "^2.0.10"
+        "react-feather": "^2.0.10",
+        "react-helmet": "^6.1.0",
+        "react-transition-group": "^4.4.5",
+        "scrollreveal": "^4.0.9",
+        "styled-components": "^5.3.9"
     },
     "devDependencies": {
+        "@babel/core": "^7.21.4",
         "@babel/eslint-parser": "^7.21.3",
         "@babel/preset-react": "^7.18.6",
-        "@eslint/create-config": "^0.4.2",
         "@types/bootstrap": "^5.2.6",
-        "@types/inquirer": "^8",
-        "@typescript-eslint/parser": "^5.57.0",
+        "@typescript-eslint/parser": "^5.57.1",
         "@yarnpkg/pnpify": "^4.0.0-rc.42",
         "babel-eslint": "^10.1.0",
         "babel-preset-gatsby": "^3.8.0",
         "chalk": "4",
-        "contentful-cli": "^2.2.22",
-        "contentful-import": "^8.5.43",
-        "dotenv-flow": "^3.2.0",
         "eslint": "^8.37.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-config-react-app": "^7.0.1",
@@ -92,14 +120,14 @@
         "eslint-plugin-gatsby": "^1.0.2",
         "eslint-plugin-graphql": "^4.0.0",
         "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-testing-library": "^5.10.2",
         "eslint-webpack-plugin": "^4.0.0",
         "gatsby-plugin-eslint": "^4.0.4",
-        "gatsby-provision-contentful": "^0.0.5",
-        "husky": "^8.0.0",
-        "inquirer": "^8.0.0",
+        "gatsby-remark-code-titles": "^1.1.0",
+        "husky": "^8.0.3",
         "is-absolute-url": "^4.0.1",
         "lint-staged": "^13.2.0",
         "postcss-scss": "^4.0.6",
@@ -109,30 +137,10 @@
         "stylelint": "^15.4.0",
         "stylelint-config-prettier-scss": "^0.0.1",
         "stylelint-config-standard-scss": "^7.0.1",
-        "stylelint-formatter-pretty": "^3.1.1",
+        "stylelint-formatter-pretty": "^3.2.0",
         "typed-scss-modules": "^7.1.0",
         "typescript": "^5.0.3",
         "vcf": "^2.1.1"
     },
-    "packageManager": "yarn@3.5.0",
-    "lint-staged": {
-        "*.js": [
-            "eslint --fix --color -f pretty",
-            "prettier --write"
-        ],
-        "*.jsx": [
-            "eslint --fix --color -f pretty",
-            "prettier --write"
-        ],
-        "*.scss": [
-            "stylelint --fix --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
-            "prettier --write"
-        ],
-        "*.json": [
-            "prettier --write"
-        ],
-        "*.md": [
-            "prettier --write"
-        ]
-    }
+    "packageManager": "yarn@3.5.0"
 }
