@@ -5,7 +5,9 @@
  */
 
 // gatsby-config.js
-require('dotenv-vault-core').config();
+require('dotenv-vault-core').config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
 const path = require('path');
 // Get paths of Gatsby's required rules, which as of writing is located at:
 // https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
@@ -39,7 +41,7 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'images',
-				path: '${__dirname}/src/images',
+				path: `${__dirname}/src/images`,
 			},
 		},
 		'gatsby-transformer-sharp',
@@ -53,6 +55,7 @@ module.exports = {
 				downloadLocal: true,
 				spaceId: process.env.CONTENTFUL_SPACE_ID,
 				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+				host: process.env.CONTENTFUL_HOST,
 			},
 		},
 		{
