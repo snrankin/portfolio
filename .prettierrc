@@ -1,4 +1,30 @@
 {
-  "arrowParens": "avoid",
-  "semi": false
+	"tabWidth": 4,
+	"tabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"editorconfig": true,
+	"proseWrap": "never",
+	"quoteProps": "as-needed",
+	"bracketSpacing": true,
+	"printWidth": 120,
+	"overrides": [
+		{
+			"files": ["*.yml", "*.neon"],
+			"options": {
+				"tabWidth": 2,
+				"tabs": false,
+				"parser": "yaml"
+			}
+		},
+		{
+			"files": [".*rc"],
+			"options": {
+				"tabWidth": 4,
+				"tabs": true,
+				"parser": "json"
+			}
+		}
+	]
 }
