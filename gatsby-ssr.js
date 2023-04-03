@@ -4,11 +4,9 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
  */
 
-
-
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
 export const onRenderBody = ({ setHtmlAttributes }) => {
-	setHtmlAttributes({ lang: `en` })
-}
+	setHtmlAttributes({ lang: 'en' });
+};
