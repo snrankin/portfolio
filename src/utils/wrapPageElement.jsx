@@ -8,7 +8,7 @@ const wrapPageElement = ({ element, props }) => (
 
 wrapPageElement.propTypes = {
   element: PropTypes.any,
-  props: PropTypes.any
+  props: PropTypes.any,
 }
 
 export default wrapPageElement
