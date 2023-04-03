@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/git,node,sass,test,text,yarn,macos,react,backup,nextjs,vercel,windows,archives,wordpress,visualstudiocode,compressedarchive,gatsby
-# Edit at https://www.toptal.com/developers/gitignore?templates=git,node,sass,test,text,yarn,macos,react,backup,nextjs,vercel,windows,archives,wordpress,visualstudiocode,compressedarchive,gatsby
+# Created by https://www.toptal.com/developers/gitignore/api/git,node,sass,test,text,yarn,macos,react,backup,nextjs,vercel,windows,archives,visualstudiocode,compressedarchive,gatsby
+# Edit at https://www.toptal.com/developers/gitignore?templates=git,node,sass,test,text,yarn,macos,react,backup,nextjs,vercel,windows,archives,visualstudiocode,compressedarchive,gatsby
 
 ### Archives ###
 # It's better to unpack these files and commit the raw source because
@@ -542,50 +542,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-### WordPress ###
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
-
-# Configuration
-wp-config.php
-
-# Example themes
-/wp-content/themes/twenty*/
-
-# Example plugin
-/wp-content/plugins/hello.php
-
-# Uploads
-/wp-content/uploads/
-
-# Log files
-
-# htaccess
-/.htaccess
-
-# All plugins
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
-
-# All themes
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
 
 ### yarn ###
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
