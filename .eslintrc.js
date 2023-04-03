@@ -36,7 +36,7 @@ module.exports = {
 				functions: 'ignore',
 			},
 		],
-		'react/prop-types': 1,
+		'react/prop-types': 0,
 	},
 	settings: {
 		react: {
