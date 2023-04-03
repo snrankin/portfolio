@@ -9,6 +9,6 @@
 
 import styles from "./{{pascalCase name}}.module.scss";
 
-export default function {{pascalCase name}}({
+export default function {{pascalCase name}}(){
 
-});
+};
