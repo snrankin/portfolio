@@ -23,11 +23,25 @@
         "prepare": "husky install",
         "serve": "gatsby serve",
         "start": "gatsby develop",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" "
+        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
+        "gatsby-provision": "gatsby-provision-contentful --contentful-data-path='./scripts/data.json' --space-id=$CONTENTFUL_SPACE_ID --management-token=$CONTENTFUL_MANAGEMENT_TOKEN",
+        "setup": "node ./scripts/setup.js",
+        "export-content": "contentful space export --space-id=$SPACE_ID --management-token=$MANAGEMENT_TOKEN --export-dir=scripts --content-file=data.json",
+        "lint": "yarn lint:scripts && yarn lint:styles",
+        "lint:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --color -f pretty",
+        "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
+        "fix": "yarn fix:scripts && yarn fix:styles",
+        "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix --color -f pretty",
+        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss"
     },
     "dependencies": {
+        "@contentful/rich-text-html-renderer": "^16.0.3",
         "@popperjs/core": "^2.11.7",
         "@svgr/webpack": "^7.0.0",
+        "@vanilla-extract/babel-plugin": "^1.2.0",
+        "@vanilla-extract/css": "^1.11.0",
+        "@vanilla-extract/css-utils": "^0.1.3",
+        "@vanilla-extract/webpack-plugin": "^2.2.0",
         "bootstrap": "^5.2.3",
         "bootstrap-icons": "^1.10.3",
         "dotenv-vault-core": "^0.7.0",
@@ -41,6 +55,8 @@
         "gatsby-plugin-svgr": "^3.0.0-beta.0",
         "gatsby-plugin-terminal-notifier": "^1.0.0",
         "gatsby-plugin-typescript": "^5.8.0",
+        "gatsby-plugin-vanilla-extract": "^4.0.1",
+        "gatsby-source-contentful": "^8.8.0",
         "gatsby-source-filesystem": "^5.8.0",
         "gatsby-source-github-api": "^1.0.0",
         "gatsby-source-notion-api": "^0.12.0",
@@ -50,43 +66,47 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.21.3",
+        "@babel/preset-react": "^7.18.6",
         "@eslint/create-config": "^0.4.2",
-        "@types/bootstrap": "^5",
+        "@types/bootstrap": "^5.2.6",
         "@typescript-eslint/parser": "^5.57.0",
         "@yarnpkg/pnpify": "^4.0.0-rc.42",
+        "babel-eslint": "^10.1.0",
+        "babel-preset-gatsby": "^3.8.0",
+        "chalk": "4",
+        "contentful-cli": "^2.2.22",
+        "contentful-import": "^8.5.43",
+        "dotenv": "^16.0.3",
         "dotenv-flow": "^3.2.0",
         "eslint": "^8.37.0",
         "eslint-config-prettier": "^8.8.0",
+        "eslint-config-react-app": "^7.0.1",
         "eslint-formatter-pretty": "^5.0.0",
+        "eslint-plugin-gatsby": "^1.0.2",
         "eslint-plugin-graphql": "^4.0.0",
         "eslint-plugin-import": "^2.27.5",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-testing-library": "^5.10.2",
-        "husky": "^8.0.3",
+        "eslint-webpack-plugin": "^4.0.0",
+        "gatsby-plugin-eslint": "^4.0.4",
+        "gatsby-provision-contentful": "^0.0.5",
+        "husky": "^8.0.0",
+        "inquirer": "^9.1.5",
+        "is-absolute-url": "^4.0.1",
+        "lint-staged": "^13.2.0",
+        "postcss-scss": "^4.0.6",
         "prettier": "^2.8.7",
         "sass": "^1.60.0",
         "slugify": "^1.6.6",
-        "stylelint": "^15.3.0",
+        "stylelint": "^15.4.0",
         "stylelint-config-prettier-scss": "^0.0.1",
         "stylelint-config-standard-scss": "^7.0.1",
         "stylelint-formatter-pretty": "^3.1.1",
+        "typed-scss-modules": "^7.1.0",
         "typescript": "^5.0.3",
         "vcf": "^2.1.1"
     },
-    "packageManager": "yarn@3.5.0",
-    "dependenciesMeta": {
-        "stylelint@15.3.0": {
-            "unplugged": true
-        },
-        "stylelint-config-prettier-scss@0.0.1": {
-            "unplugged": true
-        },
-        "stylelint-config-standard-scss@7.0.1": {
-            "unplugged": true
-        },
-        "stylelint-formatter-pretty@3.1.1": {
-            "unplugged": true
-        }
-    }
+    "packageManager": "yarn@3.5.0"
 }
