@@ -46,6 +46,15 @@ module.exports = {
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-sass',
 		'gatsby-plugin-svgr',
+		'gatsby-plugin-vanilla-extract',
+		{
+			resolve: 'gatsby-source-contentful',
+			options: {
+				downloadLocal: true,
+				spaceId: process.env.CONTENTFUL_SPACE_ID,
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+			},
+		},
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {
