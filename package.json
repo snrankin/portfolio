@@ -32,7 +32,11 @@
         "lint:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss",
         "fix": "yarn fix:scripts && yarn fix:styles",
         "fix:scripts": "eslint './src/**/*.{js,jsx,ts,tsx}' --fix  --cache --color -f pretty && prettier --cache --write \"**/*.{js,jsx,ts,tsx}\" --ignore-unknown",
-        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix  --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss && prettier --cache --write \"**/*.{css,scss}\" --ignore-unknown"
+        "fix:styles": "stylelint './src/**/*.{sass,scss,sss,less}' --fix  --cache --color --custom-formatter=node_modules/stylelint-formatter-pretty --custom-syntax postcss-scss && prettier --cache --write \"**/*.{css,scss}\" --ignore-unknown",
+        "vault:push": "yarn exec dotenv-vault push development && yarn exec dotenv-vault push production && yarn exec dotenv-vault push",
+        "vault:pull": "yarn exec dotenv-vault pull development && yarn exec dotenv-vault pull production && yarn exec dotenv-vault pull",
+        "vault:build": "yarn exec dotenv-vault build",
+        "vault:open": "yarn exec dotenv-vault open"
     },
     "dependencies": {
         "@contentful/rich-text-html-renderer": "^16.0.3",
@@ -64,7 +68,8 @@
         "gatsby-transformer-json": "^5.8.0",
         "gatsby-transformer-sharp": "^5.8.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-feather": "^2.0.10"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.3",
