@@ -45,13 +45,6 @@ module.exports = {
 			},
 		},
 		'gatsby-plugin-image',
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				name: 'images',
-				path: `${__dirname}/src/images`,
-			},
-		},
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-sass',
@@ -82,6 +75,13 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
+				name: 'node',
+				path: `${__dirname}/node_modules`,
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
 				name: 'images',
 				path: `${__dirname}/src/images`,
 			},
@@ -105,6 +105,13 @@ module.exports = {
 			options: {
 				name: 'projects',
 				path: `${__dirname}/content/projects`,
+			},
+		},
+		'gatsby-transformer-json',
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/data/`,
 			},
 		},
 		{

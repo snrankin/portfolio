@@ -3,7 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
+import { usePrefersReducedMotion, useResume } from '@hooks';
 import { Link } from 'gatsby';
 
 const StyledAboutSection = styled.section`
@@ -117,6 +117,11 @@ const StyledPic = styled.div`
 const About = () => {
 	const revealContainer = useRef(null);
 	const prefersReducedMotion = usePrefersReducedMotion();
+	const { basics, skills } = useResume();
+
+	const summary = basics.summary.split('\n\n');
+
+	const featuredSkills = skills.filter((skill) => skill.featured);
 
 	useEffect(() => {
 		if (prefersReducedMotion) {
@@ -126,8 +131,6 @@ const About = () => {
 		sr.reveal(revealContainer.current, srConfig());
 	}, []);
 
-	const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
-
 	return (
 		<StyledAboutSection id="about" ref={revealContainer}>
 			<h2 className="numbered-heading">About Me</h2>
@@ -135,36 +138,14 @@ const About = () => {
 			<div className="inner">
 				<StyledText>
 					<div>
-						<p>
-							Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-							interest in web development started back in 2012 when I decided to try editing custom Tumblr
-							themes — turns out hacking together a custom reblog button taught me a lot about HTML &amp;
-							CSS!
-						</p>
-
-						<p>
-							Fast-forward to today, and I’ve had the privilege of working at{' '}
-							<Link href="https://us.mullenlowe.com/">an advertising agency</Link>,{' '}
-							<Link href="https://starry.com/">a start-up</Link>,{' '}
-							<Link href="https://www.apple.com/">a huge corporation</Link>, and{' '}
-							<Link href="https://scout.camd.northeastern.edu/">a student-led design studio</Link>. My
-							main focus these days is building accessible, inclusive products and digital experiences at{' '}
-							<Link href="https://upstatement.com/">Upstatement</Link> for a variety of clients.
-						</p>
-
-						<p>
-							I also recently{' '}
-							<Link href="https://www.newline.co/courses/build-a-spotify-connected-app">
-								launched a course
-							</Link>{' '}
-							that covers everything you need to build a web app with the Spotify API using Node &amp;
-							React.
-						</p>
-
-						<p>Here are a few technologies I’ve been working with recently:</p>
+						{summary.map((item, i) => (
+							<p key={i}>{item}</p>
+						))}
 					</div>
 
-					<ul className="skills-list">{skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}</ul>
+					<ul className="skills-list">
+						{featuredSkills && featuredSkills.map((skill, i) => <li key={i}>{skill.name}</li>)}
+					</ul>
 				</StyledText>
 
 				<StyledPic>
