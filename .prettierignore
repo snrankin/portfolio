@@ -1,0 +1,6 @@
+**/*.min.*
+**/*.map
+
+composer.json
+
+**/*.cshtml
