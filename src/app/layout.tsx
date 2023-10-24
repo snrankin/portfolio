@@ -7,6 +7,11 @@ const poppins = Poppins({ weight: ['400', '600', '800'], style: ['italic', 'norm
 const inconsolata = Inconsolata({ weight: ['400', '700'], subsets: ['latin'], display: 'swap', variable: '--font-inconsolata' });
 
 export const metadata: Metadata = {
+	robots: {
+		index: false,
+		follow: false,
+		nocache: true,
+	},
 	title: {
 		default: 'Portfolio',
 		template: '%s | Sam Rankin',
@@ -37,6 +42,11 @@ export const metadata: Metadata = {
 	appleWebApp: {
 		title: 'Sam Rankin',
 		statusBarStyle: 'black-translucent',
+	},
+	viewport: {
+		width: 'device-width',
+		initialScale: 1,
+		viewportFit: 'cover',
 	},
 };
 
