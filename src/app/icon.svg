@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="24" height="24">
+	<svg id="SvgjsSvg1000" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<g>
+			<path d="m9.04,23.12H3.01c-.78,0-1.42-.64-1.42-1.42v-8.99l-.71-.71.71-.71V2.3c0-.78.64-1.42,1.42-1.42h6.04" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" class="dark-path"></path>
+			<path d="m14.96.88h6.04c.78,0,1.42.64,1.42,1.42v8.99l.71.71-.71.71v8.99c0,.78-.64,1.42-1.42,1.42h-6.04" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" class="dark-path"></path>
+		</g>
+		<polyline points="14.96 20.17 23.12 12 14.96 3.83 9.04 20.17 .88 12 9.04 3.83" fill="none" stroke="#14b8a6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></polyline>
+	</svg>
+	<style>
+		@media (prefers-color-scheme: light) {
+			.dark-path {
+				stroke: #27272a;
+			}
+		}
+
+		@media (prefers-color-scheme: dark) {
+			.dark-path {
+				stroke: #52525B;
+			}
+		}
+	</style>
+</svg>
