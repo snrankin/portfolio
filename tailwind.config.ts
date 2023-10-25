@@ -18,16 +18,19 @@ const config: Config = {
 					},
 				],
 			},
+			maxWidth: {
+				screen: '100vw',
+			},
 		},
 
 		container: {
 			center: true,
 			padding: {
-				DEFAULT: '1rem',
-				sm: '1.2rem',
-				lg: '1.5rem',
-				xl: '1.5rem',
-				'2xl': '1.5rem',
+				DEFAULT: '0',
+				sm: '0',
+				lg: '0',
+				xl: '0',
+				'2xl': '0',
 			},
 			// default breakpoints but with 40px removed
 			screens: {

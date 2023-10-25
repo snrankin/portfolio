@@ -27,9 +27,11 @@
 			}
 		},
 		{
-			"files": ["*.hbs", "*.html"],
+			"files": ["*.hbs", "*.html", "*.svg"],
 			"options": {
-				"singleQuote": false
+				"singleQuote": false,
+				"tabWidth": 4,
+				"tabs": true
 			}
 		}
 	]
