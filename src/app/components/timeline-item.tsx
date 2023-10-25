@@ -71,17 +71,17 @@ export default function TimelineItem(props: any) {
 	let { street, city, locality, localityCode, postalCode, countryCode } = location;
 
 	return (
-		<div className="flex-start items-start flex">
-			<div className="w-8 -ml-4">
-				<span className=" items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-primary">
+		<div className="grid grid-cols-[max-content_1fr] w-full max-w-full gap-0">
+			<div className="flex items-start">
+				<p className="uppercase text-neutral font-bold block whitespace-nowrap">{displayDate(startDate, endDate)}</p>
+				<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-primary">
 					<span className="icon">
 						<Calendar className="block stroke-2" />
 					</span>
 				</span>
 			</div>
-			<div className="mb-10 ml-6 card card-compact bg-base-100 shadow-xl w-full lg:w-fill">
+			<div className="card card-compact bg-base-100 shadow-xl w-full max-w-full shrink grow">
 				<div className="card-body">
-					<p className="badge badge-secondary text-xs text-right uppercase text-neutral font-bold block whitespace-nowrap">{displayDate(startDate, endDate)}</p>
 					<h3 className="card-title font-semibold block">
 						{position}{' '}
 						<span className="block">
