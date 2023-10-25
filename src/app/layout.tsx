@@ -17,16 +17,15 @@ export const metadata: Metadata = {
 		template: '%s | Sam Rankin',
 	},
 	description: 'Portfolio for Phoenix, AZ Based Web Developer',
-	manifest: '/site.webmanifest',
 	icons: {
-		// icon: [
-		// 	{ url: '/favicon.svg', type: 'image/svg+xml' },
-		// 	{ url: '/favicon.png', type: 'image/png' },
-		// 	{ url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-		// 	{ url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-		// ],
-		// shortcut: ['/favicon.ico'],
-		// apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+		icon: [
+			{ url: '/favicon.svg', type: 'image/svg+xml' },
+			{ url: '/favicon.png', type: 'image/png' },
+			{ url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+			{ url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+		],
+		shortcut: ['/favicon.ico'],
+		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
 		other: [
 			{
 				rel: 'mask-icon',
@@ -53,7 +52,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" data-theme="light" className={`${poppins.variable} ${inconsolata.variable}`} suppressHydrationWarning={true}>
-			<body suppressHydrationWarning={true}>{children}</body>
+			<body className="max-w-screen overscroll-x-none" suppressHydrationWarning={true}>
+				{children}
+			</body>
 		</html>
 	);
 }
