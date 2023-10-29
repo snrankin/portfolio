@@ -2,18 +2,29 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import Calendar from '@/icons/calendar.svg';
+import Calendar from '@/img/calendar.svg';
 
 import dayjs from 'dayjs';
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
 export function displayDate(start: Date | string, end: Date | string | null = null, format: string = 'MMM YYYY') {
-	let startDate, endDate;
+	let startDate,
+		endDate,
+		startFormat = format;
 
 	if (dayjs(start).isValid()) {
+		let startYear = dayjs(start).year();
+
+		if (dayjs(end).isValid()) {
+			let endYear = dayjs(end).year();
+			const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
+			if (startYear == endYear) {
+				startFormat = format.replace(regex, '');
+			}
+		}
 		startDate = (
 			<time className="start-date" dateTime={dayjs(start).toISOString()}>
-				{dayjs(start).format(format)}
+				{dayjs(start).format(startFormat)}
 			</time>
 		);
 	}
@@ -61,7 +72,7 @@ function companyLink(name: string, url: string) {
 
 	return (
 		<a href={url} className="btn btn-link leading-none min-h-0 mt-4 h-max flex-nowrap flex-start justify-start items-start align-text-top pl-0 pr-0 text-left normal-case no-underline font-normal" target="_blank">
-			<Image src={favicon} width={16} height={16} alt={`${name} website favicon`} style={{ width: '1em', height: '1em' }} />
+			<Image src={favicon} width={32} height={32} alt={`${name} website favicon`} style={{ width: '1em', height: '1em' }} />
 			{name}
 		</a>
 	);
@@ -71,29 +82,34 @@ export default function TimelineItem(props: any) {
 	let { street, city, locality, localityCode, postalCode, countryCode } = location;
 
 	return (
-		<div className="grid grid-cols-[max-content_1fr] w-full max-w-full gap-0">
-			<div className="flex items-start">
-				<p className="uppercase text-neutral font-bold block whitespace-nowrap">{displayDate(startDate, endDate)}</p>
-				<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-primary">
+		<div className="grid grid-cols-[max-content_2rem_1fr] w-full max-w-full gap-x-2	">
+			<div className="flex items-start md:flex-row-reverse">
+				<p className="uppercase text-neutral font-black block whitespace-nowrap">{displayDate(startDate, endDate)}</p>
+			</div>
+			<div className="flex flex-col items-center">
+				<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info">
 					<span className="icon">
 						<Calendar className="block stroke-2" />
 					</span>
 				</span>
+				<span className="w-0.5 bg-info-100 grow"></span>
 			</div>
-			<div className="card card-compact bg-base-100 shadow-xl w-full max-w-full shrink grow">
-				<div className="card-body">
-					<h3 className="card-title font-semibold block">
-						{position}{' '}
-						<span className="block">
-							<span className="sr-only">at </span>
-							{companyLink(company, url)}
-						</span>
-					</h3>
-					{summary != undefined && summary != '' ? <p>{summary}</p> : null}
+			<div className="pb-11">
+				<div className="card card-compact bg-base-100 shadow-xl w-full max-w-full shrink grow">
+					<div className="card-body">
+						<h3 className="card-title font-semibold block">
+							{position}{' '}
+							<span className="block">
+								<span className="sr-only">at </span>
+								{companyLink(company, url)}
+							</span>
+						</h3>
+						{summary != undefined && summary != '' ? <p>{summary}</p> : null}
 
-					<div tabIndex={0} className="collapse p-0  rounded-none">
-						<div className="collapse-title pt-0 pb-0 pl-0 rounded-none">View More</div>
-						<div className="collapse-content rounded-none">{arrayToList(highlights)}</div>
+						<div tabIndex={0} className="collapse p-0  rounded-none">
+							<div className="collapse-title pt-0 pb-0 pl-0 rounded-none">View More</div>
+							<div className="collapse-content rounded-none">{arrayToList(highlights)}</div>
+						</div>
 					</div>
 				</div>
 			</div>
