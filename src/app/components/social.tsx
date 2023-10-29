@@ -1,7 +1,7 @@
-import LinkedIn from '@/icons/linkedin.svg';
-import GitHub from '@/icons/github.svg';
-import Phone from '@/icons/phone.svg';
-import Mail from '@/icons/mail.svg';
+import LinkedIn from '@/img/linkedin.svg';
+import GitHub from '@/img/github.svg';
+import Phone from '@/img/phone.svg';
+import Mail from '@/img/mail.svg';
 
 export default function profiles() {
 	return (
