@@ -1,13 +1,32 @@
 import type { Config } from 'tailwindcss';
+import { default as colors } from 'tailwindcss/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
 const config: Config = {
-	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './node_modules/tw-elements-react/dist/js/**/*.js'],
+	content: [
+		'./src/**/*.{js,ts,jsx,tsx,mdx}',
+		'./node_modules/tw-elements-react/dist/js/**/*.js',
+	],
 
 	theme: {
 		extend: {
+			colors: {
+				transparent: 'transparent',
+				current: 'currentColor',
+				black: colors.black,
+				white: colors.white,
+				primary: colors.teal,
+				secondary: colors.pink,
+				accent: colors.purple,
+				neutral: colors.gray,
+				info: colors.cyan,
+				success: colors.lime,
+				warning: colors.amber,
+				error: colors.red,
+				gray: colors.gray,
+			},
 			fontFamily: {
 				sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-
+				system: [...defaultTheme.fontFamily.sans],
 				mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
 			},
 			fontSize: {
@@ -20,6 +39,33 @@ const config: Config = {
 			},
 			maxWidth: {
 				screen: '100vw',
+			},
+			aspectRatio: {
+				tablet: '768 / 1024',
+				phone: '900 / 1950',
+				auto: 'auto',
+				square: '1 / 1',
+				video: '16 / 9',
+				1: '1',
+				2: '2',
+				3: '3',
+				4: '4',
+				5: '5',
+				6: '6',
+				7: '7',
+				8: '8',
+				9: '9',
+				10: '10',
+				11: '11',
+				12: '12',
+				13: '13',
+				14: '14',
+				15: '15',
+				16: '16',
+				'tp-w': '768',
+				'tp-h': '1024',
+				'mp-w': '900',
+				'mp-h': '1950',
 			},
 		},
 
@@ -46,8 +92,16 @@ const config: Config = {
 			width: '100%',
 		},
 	},
-	darkMode: 'class',
-	plugins: [require('tw-elements/dist/plugin.cjs'), require('@tailwindcss/typography'), require('daisyui')],
+	darkMode: ['class', '[data-theme="dark"]'],
+	plugins: [
+		require('tw-elements/dist/plugin.cjs'),
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/aspect-ratio'),
+		require('daisyui'),
+	],
+	corePlugins: {
+		aspectRatio: false,
+	},
 	daisyui: {
 		styled: true,
 		base: true,
@@ -56,37 +110,40 @@ const config: Config = {
 		rtl: false,
 		prefix: '',
 		darkTheme: 'dark',
-		// themes: [
-
-		// 	{
-		// 		light: {
-		// 			...require('daisyui/src/theming/themes')['[data-theme=light]'],
-		// 			primary: '#0D9488',
-		// 			secondary: '#DB2777',
-		// 			accent: '#7C3AED',
-		// 			neutral: '#18181B',
-		// 			'base-100': '#FAFAFA',
-		// 			info: '#0891B2',
-		// 			success: '#65A30D',
-		// 			warning: '#F59E0B',
-		// 			error: '#E11D48',
-		// 		},
-		// 	},
-		// 	{
-		// 		dark: {
-		// 			...require('daisyui/src/theming/themes')['[data-theme=dark]'],
-		// 			primary: '#2DD4BF',
-		// 			secondary: '#F472B6',
-		// 			accent: '#A855F7',
-		// 			neutral: '#FAFAFA',
-		// 			'base-100': '#18181B',
-		// 			info: '#67E8F9',
-		// 			success: '#BEF264',
-		// 			warning: '#FCD34D',
-		// 			error: '#FDA4AF',
-		// 		},
-		// 	},
-		// ],
+		themes: [
+			{
+				light: {
+					...require('daisyui/src/theming/themes')[
+						'[data-theme=light]'
+					],
+					primary: colors.teal[500],
+					secondary: colors.pink[500],
+					accent: colors.purple[500],
+					neutral: colors.gray[900],
+					'base-100': colors.gray[50],
+					info: colors.cyan[500],
+					success: colors.lime[500],
+					warning: colors.amber[500],
+					error: colors.red[500],
+				},
+			},
+			{
+				dark: {
+					...require('daisyui/src/theming/themes')[
+						'[data-theme=dark]'
+					],
+					primary: colors.teal[500],
+					secondary: colors.pink[500],
+					accent: colors.purple[500],
+					neutral: colors.gray[100],
+					'base-100': colors.gray[800],
+					info: colors.cyan[500],
+					success: colors.lime[500],
+					warning: colors.amber[500],
+					error: colors.red[500],
+				},
+			},
+		],
 	},
 };
 export default config;
