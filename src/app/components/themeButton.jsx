@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import Light from '@/icons/light.svg';
-import Dark from '@/icons/dark.svg';
+import Light from '@/img/light.svg';
+import Dark from '@/img/dark.svg';
 export default function ThemeButton() {
 	let [theme, setTheme] = useState('light');
 
@@ -26,19 +26,18 @@ export default function ThemeButton() {
 		return newTheme;
 	};
 	return (
-		<label className="swap swap-rotate btn">
-			{/* this hidden checkbox controls the state */}
-			<input type="checkbox" value={theme} onChange={toggleTheme} />
-
-			{/* sun icon */}
-			<span className="icon swap-on">
-				<Light className="block stroke-2" />
-			</span>
-
-			{/* moon icon */}
-			<span className="icon swap-off">
-				<Dark className="block stroke-2" />
-			</span>
-		</label>
+		<div className="form-control">
+			<label className="label cursor-pointer">
+				<span className="label-text">
+					<span className="icon">
+						<Light className="block stroke-2" />
+					</span>
+				</span>
+				<input type="checkbox" className="toggle" value={theme} onChange={toggleTheme} />
+				<span className="icon">
+					<Dark className="block stroke-2" />
+				</span>
+			</label>
+		</div>
 	);
 }
