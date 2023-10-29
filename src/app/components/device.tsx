@@ -14,9 +14,32 @@ import IosPuzzle from '@/img/ios-puzzle.svg';
 import IosRefresh from '@/img/ios-refresh.svg';
 import IosPlus from '@/img/ios-plus.svg';
 import IosTabs from '@/img/ios-tabs.svg';
+
 export interface DeviceProps {
 	type: 'desktop' | 'tablet' | 'mobile';
-	img: string | StaticImport;
+	subtype:
+		| 'iphone-14-pro'
+		| 'iphone-14'
+		| 'iphone-x'
+		| 'iphone-8'
+		| 'iphone'
+		| 'google-pixel-6-pro'
+		| 'google-pixel-2-xl'
+		| 'google-pixel'
+		| 'samsung-galaxy-s8'
+		| 'macbook-pro'
+		| 'imac'
+		| 'macbook-pro-2018'
+		| 'macbook'
+		| 'surface-book'
+		| 'surface-studio'
+		| 'ipad-pro'
+		| 'ipad-pro-2017'
+		| 'surface-pro'
+		| 'apple-watch-ultra'
+		| 'apple-watch-series-8'
+		| 'homepod'
+		| 'pro-display-xdr';
 	url: string;
 	title: string;
 	children?: React.ReactNode;
@@ -43,14 +66,31 @@ const MobileButtons = () => (
 );
 
 const BrowserToolbar = (props: DeviceProps) => {
+	const toolBarClasses = classNames(
+		'mockup-browser-toolbar',
+		'!m-0',
+		'bg-stone-200',
+		'dark:bg-stone-700',
+		'grid',
+		'grid-cols-[1fr_3fr_1fr]',
+		'text-blue-500',
+		'dark:text-blue-400',
+		'text-sm',
+		{
+			'!px-[4%]': props.type == 'mobile',
+			'pt-[60px]': props.type == 'mobile',
+			'pb-[12px]': props.type == 'mobile',
+		}
+	);
+
 	return (
-		<div className="mockup-browser-toolbar grid grid-cols-[1fr_3fr_1fr] text-blue-500 dark:text-blue-400 text-sm !px-[4%]">
+		<div className={toolBarClasses}>
 			{props.type != 'mobile' ? (
-				<div className="icons-left flex justify-around items-center">
+				<div className="icons-left !flex justify-around items-center">
 					<span className="icon">
 						<IosSidebarLeft />
 					</span>
-					<div className="flex justify-around items-center">
+					<div className="!flex justify-around items-center">
 						<span className="icon">
 							<IosChevronLeft style={{ height: '0.8em' }} />
 						</span>
@@ -76,7 +116,7 @@ const BrowserToolbar = (props: DeviceProps) => {
 				</span>
 			</div>
 			{props.type != 'mobile' ? (
-				<div className="icons-right flex justify-around items-center">
+				<div className="icons-right !flex justify-around items-center">
 					<span className="icon">
 						<IosShare />
 					</span>
@@ -135,26 +175,22 @@ export default function Device(props: DeviceProps): JSX.Element {
 	);
 	let children: React.ReactNode = props.children;
 	return (
-		<div className={spacerClasses}>
-			<div className={deviceClasses}>
-				{props.type == 'tablet' ? <TabletButtons /> : null}
-				{props.type == 'mobile' ? <MobileButtons /> : null}
-				<div className={screenClasses}>
+		<div className={`device device-${props.subtype} ${props.type}`}>
+			<div className="device-frame">
+				<div className="device-screen relative overflow-hidden grow shrink">
 					<div
-						className={`absolute w-full h-full mockup-browser ${props.type} bg-stone-200 dark:bg-stone-700`}
+						className={`mockup-browser !rounded-none absolute top-0 left-0 h-full w-full ${props.type}`}
 					>
-						{props.type == 'mobile' ? (
-							<div className="camera-wrapper ">
-								<div className="island">
-									<div className="camera "></div>
-								</div>
-							</div>
-						) : null}
 						<BrowserToolbar {...props} />
 						{children}
 					</div>
 				</div>
 			</div>
+			<div className="device-stripe"></div>
+			<div className="device-header"></div>
+			<div className="device-sensors"></div>
+			<div className="device-btns"></div>
+			<div className="device-power"></div>
 		</div>
 	);
 }
