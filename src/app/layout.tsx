@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inconsolata, Poppins } from 'next/font/google';
-import classNames from 'classnames';
+import Script from 'next/script';
 
-import './globals.css';
+import '@/css/style.css';
 const poppins = Poppins({ weight: ['400', '600', '800'], style: ['italic', 'normal'], subsets: ['latin'], display: 'swap', variable: '--font-poppins' });
 const inconsolata = Inconsolata({ weight: ['400', '700'], subsets: ['latin'], display: 'swap', variable: '--font-inconsolata' });
 
@@ -54,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en" data-theme="light" className={`${poppins.variable} ${inconsolata.variable}`} suppressHydrationWarning={true}>
 			<body className="max-w-screen overscroll-x-none" suppressHydrationWarning={true}>
 				{children}
+				<Script src="@/js/global.js" />
 			</body>
 		</html>
 	);
