@@ -8,7 +8,7 @@ import Section from './section';
 export default function Timeline(): JSX.Element {
 	return (
 		<Section id="work-history" title="Work" displayTitle="work" flag="history">
-			<ol className="border-l-2 border-info-100 grid grid-cols-1 gap-10">
+			<ol className=" grid grid-cols-1 gap-0">
 				{resume.work.map((job, i) => {
 					return (
 						<li key={i}>
