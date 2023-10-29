@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import Logo from '@/icons/logo.svg';
-import Close from '@/icons/close.svg';
-import Menu from '@/icons/menu.svg';
+import Logo from '@/img/logo.svg';
+import Close from '@/img/close.svg';
+import Menu from '@/img/menu.svg';
 import classNames from 'classnames';
 import { Waypoint } from 'react-waypoint';
 const ThemeButton = dynamic(() => import('./themeButton'), {
@@ -32,13 +32,24 @@ export default function Header(): JSX.Element {
 		'drop-shadow-none': !isScrolled,
 	});
 
+	const atTop = () => {
+		console.log('🚀 ~ file: header.tsx:38 ~ atTop ~ window.scrollY:', window.scrollY);
+		if (window.scrollY == 0) {
+			setScrolled(true);
+		} else {
+			setScrolled(false);
+		}
+	};
+
 	const handleExit = (e: any) => {
+		console.log('🚀 ~ file: header.tsx:45 ~ handleExit ~ e:', e);
 		if (e.currentPosition == 'above') {
 			setScrolled(true);
 		}
 	};
 
 	const handleEnter = (e: any) => {
+		console.log('🚀 ~ file: header.tsx:52 ~ handleEnter ~ e:', e);
 		if (e.currentPosition == 'inside') {
 			setScrolled(false);
 		}
