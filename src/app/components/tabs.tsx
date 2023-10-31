@@ -31,8 +31,12 @@ export default function DeviceTabs() {
 	let url = 'lazoo.org';
 	let title = 'LA Zoo website';
 	return (
-		<Tabs>
-			<TabList className="tabs tabs-boxed w-auto justify-center">
+		<Tabs
+			selectedTabClassName="tab-active"
+			forceRenderTabPanel={true}
+			className="flex flex-col-reverse justify-center items-center"
+		>
+			<TabList className="tabs tabs-boxed !inline-flex !w-max justify-center">
 				<Tab className="tab">
 					<span className="icon">
 						<Desktop className="block" />
@@ -53,14 +57,9 @@ export default function DeviceTabs() {
 				</Tab>
 			</TabList>
 
-			<TabPanel>
+			<TabPanel className="py-11 max-w-full w-full min-w-full">
 				<div className="flex justify-center items-center">
-					<Device
-						subtype="imac"
-						url={url}
-						type="desktop"
-						title={title}
-					>
+					<Device url={url} type="desktop" title={title}>
 						<Image
 							src={DesktopPreview}
 							alt="Desktop view of LA Zoo Website"
@@ -75,14 +74,9 @@ export default function DeviceTabs() {
 					</Device>
 				</div>
 			</TabPanel>
-			<TabPanel>
+			<TabPanel className="py-11 max-w-full w-full min-w-full">
 				<div className="flex justify-center items-center">
-					<Device
-						subtype="ipad-pro"
-						url={url}
-						type="tablet"
-						title={title}
-					>
+					<Device url={url} type="tablet" title={title}>
 						<Image
 							src={TabletPreview}
 							alt="Tablet view of LA Zoo Website"
@@ -186,14 +180,9 @@ export default function DeviceTabs() {
 					</div> */}
 				</div>
 			</TabPanel>
-			<TabPanel>
+			<TabPanel className="py-11 max-w-full w-full min-w-full">
 				<div className="flex justify-center items-center">
-					<Device
-						subtype="iphone-14-pro"
-						url={url}
-						type="mobile"
-						title={title}
-					>
+					<Device url={url} type="mobile" title={title}>
 						<Image
 							src={MobilePreview}
 							alt="Mobile view of LA Zoo Website"
