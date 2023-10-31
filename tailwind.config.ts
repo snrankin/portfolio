@@ -13,6 +13,22 @@ const config: Config = {
 			system: [...defaultTheme.fontFamily.sans],
 			mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
 		},
+		screens: {
+			sm: '576px',
+			// => @media (min-width: 640px) { ... }
+
+			md: '768px',
+			// => @media (min-width: 768px) { ... }
+
+			lg: '1024px',
+			// => @media (min-width: 1024px) { ... }
+
+			xl: '1376px',
+			// => @media (min-width: 1388px) { ... }
+
+			'2xl': '1536px',
+			// => @media (min-width: 1536px) { ... }
+		},
 		extend: {
 			colors: {
 				transparent: 'transparent',

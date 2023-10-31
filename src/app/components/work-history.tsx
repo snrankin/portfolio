@@ -14,15 +14,11 @@ export default function Timeline(): JSX.Element {
 			argument="work"
 			flags="history"
 		>
-			<ol className=" grid grid-cols-[max-content] gap-0 justify-center items-center">
+			<div className="w-full grid grid-cols-1 lg:grid-cols-[max-content] gap-0 justify-center items-center">
 				{resume.work.map((job, i) => {
-					return (
-						<li key={i}>
-							<TimelineItem {...job} />
-						</li>
-					);
+					return <TimelineItem key={i} {...job} />;
 				})}
-			</ol>
+			</div>
 		</Section>
 	);
 }

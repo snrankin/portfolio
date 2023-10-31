@@ -62,3 +62,18 @@
 	object-fit: cover;
 	font-family: 'object-fit: cover;';
 }
+
+.timeline-content {
+	max-width: calc(90vw - 2.75rem);
+}
+
+@media screen(lg) {
+	.timeline-content {
+		max-width: calc(85vw - 3.25rem - 175px);
+	}
+}
+@media screen(xl) {
+	.timeline-content {
+		max-width: calc(1170px - 3.25rem - 175px);
+	}
+}

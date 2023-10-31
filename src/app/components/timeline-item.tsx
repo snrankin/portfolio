@@ -96,19 +96,22 @@ export default function TimelineItem(props: any) {
 		location;
 
 	return (
-		<div className="grid grid-cols-[2rem_1fr] gap-x-5 lg:grid-cols-[max-content_2rem_1fr] w-full max-w-full ">
-			<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info  lg:col-start-2">
+		<div className="grid grid-cols-[2rem_1fr] gap-x-3 md:gap-x-5 lg:grid-cols-[175px_2rem_1fr] w-full max-w-full">
+			<span className="items-center justify-center p-1.5 w-4 h-4 btn btn-icon btn-circle btn-info  lg:col-start-2">
 				<span className="icon">
-					<Calendar className="block stroke-2" />
+					<Calendar
+						className="block stroke-2"
+						style={{ width: '1em', height: 'auto' }}
+					/>
 				</span>
 			</span>
-			<p className="uppercase text-neutral font-black block whitespace-nowrap col-start-2 row-start-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-w-[170px] lg:text-right">
+			<p className="uppercase leading-[2rem] text-neutral font-black block whitespace-nowrap col-start-2 row-start-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-w-[170px] lg:text-right">
 				{displayDate(startDate, endDate)}
 			</p>
 			<div className="flex flex-col items-center row-span-2 col-span-1 col-start-1 lg:col-start-2">
 				<span className="w-0.5 bg-gray-200 grow"></span>
 			</div>
-			<div className="pb-11 col-start-2 row-start-2 lg:col-start-3 lg:row-span-2  lg:row-start-1">
+			<div className="timeline-content pb-11 col-span-1 col-start-2 row-start-2 lg:col-start-3 lg:row-span-2 lg:row-start-1">
 				<div className="prose">
 					<h3 className="card-title font-semibold block">
 						{position}{' '}
@@ -122,7 +125,7 @@ export default function TimelineItem(props: any) {
 					) : null} */}
 
 					{highlights != undefined && highlights.length > 0 ? (
-						<ul className="list-disc">
+						<ul className="list-disc ps-3">
 							{highlights.map((el: string, i: number) => {
 								if (typeof el === 'string') {
 									return (
