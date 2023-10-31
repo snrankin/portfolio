@@ -4,71 +4,60 @@ import Image from 'next/image';
 
 import Calendar from '@/img/calendar.svg';
 
-import dayjs from 'dayjs';
-var customParseFormat = require('dayjs/plugin/customParseFormat');
-dayjs.extend(customParseFormat);
-export function displayDate(
-	start: Date | string,
-	end: Date | string | null = null,
-	format: string = 'MMM YYYY'
-) {
-	let startDate,
-		endDate,
-		startFormat = format;
+import { displayDate, getIconString } from '../lib/utils';
+import { uniq } from 'lodash';
 
-	if (dayjs(start).isValid()) {
-		let startYear = dayjs(start).year();
+type HighlightItemProps = {
+	content: string;
+};
+function HighlightItem(props: HighlightItemProps): JSX.Element {
+	const regex = new RegExp('(?<=<(?:b|strong)>)([^<]+)', 'gm');
 
-		if (dayjs(end).isValid()) {
-			let endYear = dayjs(end).year();
-			const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
-			if (startYear == endYear) {
-				startFormat = format.replace(regex, '');
-			}
+	let { content } = props;
+
+	let m,
+		matches: string[] = [];
+
+	while ((m = regex.exec(content)) !== null) {
+		// This is necessary to avoid infinite loops with zero-width matches
+		if (m.index === regex.lastIndex) {
+			regex.lastIndex++;
 		}
-		startDate = (
-			<time className="start-date" dateTime={dayjs(start).toISOString()}>
-				{dayjs(start).format(startFormat)}
-			</time>
-		);
+
+		// The result can be accessed through the `m`-variable.
+		m.forEach((match, groupIndex) => {
+			matches.push(match);
+		});
 	}
 
-	if (dayjs(end).isValid()) {
-		endDate = (
-			<time className="end-date" dateTime={dayjs(end).toISOString()}>
-				{dayjs(end).format(format)}
-			</time>
-		);
-	} else if (typeof end === 'string') {
-		endDate = <span className="end-date">{end}</span>;
+	if (matches != null && matches.length > 0) {
+		matches = uniq(matches);
+
+		matches.map((match) => {
+			let matchVal = match;
+
+			let iconVal = `${getIconString(matchVal)} ${matchVal}`;
+			content = content.replaceAll(matchVal, iconVal);
+		});
 	}
 
-	var nDash = String.fromCharCode(8211);
-
-	return (
-		<>
-			{startDate}
-			{nDash}
-			{endDate}
-		</>
-	);
+	return <li dangerouslySetInnerHTML={{ __html: content }}></li>;
 }
 
-export function arrayToList(arr?: any[]) {
-	if (arr == undefined) {
-		return;
-	}
-	if (arr.length == 0) {
-		return;
-	}
+type HighlightListProps = {
+	items: string[];
+};
 
-	let items = arr.map((el, i) => {
-		if (typeof el === 'string') {
-			return <li key={i}>{el}</li>;
-		}
-	});
-
-	return <ul className="list-disc">{items}</ul>;
+export function HighlightList(props: HighlightListProps) {
+	return (
+		<ul className="list-disc">
+			{props.items.map((el, i) => {
+				if (typeof el === 'string') {
+					return <HighlightItem content={el} key={i} />;
+				}
+			})}
+		</ul>
+	);
 }
 
 function companyLink(name: string, url: string) {
@@ -86,6 +75,7 @@ function companyLink(name: string, url: string) {
 				height={32}
 				alt={`${name} website favicon`}
 				style={{ width: '1em', height: '1em' }}
+				className="m-0"
 			/>
 			{name}
 		</a>
@@ -107,18 +97,18 @@ export default function TimelineItem(props: any) {
 
 	return (
 		<div className="grid grid-cols-[2rem_1fr] gap-x-5 lg:grid-cols-[max-content_2rem_1fr] w-full max-w-full ">
-			<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info">
+			<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info  lg:col-start-2">
 				<span className="icon">
 					<Calendar className="block stroke-2" />
 				</span>
 			</span>
-			<p className="uppercase text-neutral font-black block whitespace-nowrap col-start-2 row-start-1">
+			<p className="uppercase text-neutral font-black block whitespace-nowrap col-start-2 row-start-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-w-[170px] lg:text-right">
 				{displayDate(startDate, endDate)}
 			</p>
-			<div className="flex flex-col items-center row-span-2 col-span-1 col-start-1">
+			<div className="flex flex-col items-center row-span-2 col-span-1 col-start-1 lg:col-start-2">
 				<span className="w-0.5 bg-gray-200 grow"></span>
 			</div>
-			<div className="pb-11 col-start-2 row-start-2">
+			<div className="pb-11 col-start-2 row-start-2 lg:col-start-3 lg:row-span-2  lg:row-start-1">
 				<div className="prose">
 					<h3 className="card-title font-semibold block">
 						{position}{' '}
@@ -127,11 +117,21 @@ export default function TimelineItem(props: any) {
 							{companyLink(company, url)}
 						</span>
 					</h3>
-					{summary != undefined && summary != '' ? (
+					{/* {summary != undefined && summary != '' ? (
 						<p>{summary}</p>
-					) : null}
+					) : null} */}
 
-					{arrayToList(highlights)}
+					{highlights != undefined && highlights.length > 0 ? (
+						<ul className="list-disc">
+							{highlights.map((el: string, i: number) => {
+								if (typeof el === 'string') {
+									return (
+										<HighlightItem content={el} key={i} />
+									);
+								}
+							})}
+						</ul>
+					) : null}
 				</div>
 			</div>
 		</div>
