@@ -17,20 +17,19 @@ export default function Heading(props: HeadingProps): JSX.Element {
 		}
 		flags = flags.map((flag) => {
 			flag = padStart(flag, flag.length + 2, '-');
-			console.log(flag);
 			return flag;
 		});
 		flags = flags.join(' ');
 	}
 
 	return (
-		<h2 className="flex justify-center">
+		<h2 className="flex justify-center mb-10">
 			<span className="min-w-[300px] mockup-code lg:w-max mx-auto dark:bg-gray-800">
 				{props.title != undefined ? (
 					<span className="sr-only">{props.title} </span>
 				) : null}
 
-				<pre data-prefix="$" aria-hidden="true" className="font-mono">
+				<pre data-prefix=">" aria-hidden="true" className="font-mono">
 					{props.command != undefined ? (
 						<code className="text-lime-500">{props.command} </code>
 					) : null}
