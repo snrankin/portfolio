@@ -10,17 +10,28 @@ export default function Nav(props: any): JSX.Element {
 		'dropdown-content': props.mobile,
 		'z-[50]': true,
 		'site-nav': true,
+		'p-2': props.mobile,
+		shadow: props.mobile,
+		'bg-base-100': props.mobile,
+		'rounded-box': props.mobile,
+		'w-min': props.mobile,
 	});
 	return (
 		<ul className={menuClasses}>
 			<li data-section="about">
-				<Link href="#about">About</Link>
+				<Link className="whitespace-nowrap" href="#about">
+					About
+				</Link>
 			</li>
 			<li data-section="projects">
-				<Link href="#projects">Projects</Link>
+				<Link className="whitespace-nowrap" href="#projects">
+					Projects
+				</Link>
 			</li>
 			<li data-section="work-history">
-				<Link href="#work-history">Work History</Link>
+				<Link className="whitespace-nowrap" href="#work-history">
+					Work History
+				</Link>
 			</li>
 		</ul>
 	);
