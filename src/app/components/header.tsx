@@ -33,7 +33,10 @@ export default function Header(): JSX.Element {
 	});
 
 	const atTop = () => {
-		console.log('🚀 ~ file: header.tsx:38 ~ atTop ~ window.scrollY:', window.scrollY);
+		console.log(
+			'🚀 ~ file: header.tsx:38 ~ atTop ~ window.scrollY:',
+			window.scrollY
+		);
 		if (window.scrollY == 0) {
 			setScrolled(true);
 		} else {
@@ -70,15 +73,17 @@ export default function Header(): JSX.Element {
 					<div className="navbar-end">
 						<ThemeButton />
 						<div className="dropdown">
-							<label className="btn  btn-circle aspect-square w-11 btn-primary swap swap-rotate lg:hidden">
-								<input type="checkbox" />
-								<span className="icon swap-on">
-									<Menu className="block stroke-2" />
-								</span>
-								<span className="icon swap-on">
-									<Close className="block stroke-2" />
-								</span>
-							</label>
+							<div className="btn btn-circle !h-auto justify-center items-center  aspect-square bg-gray-200 shadow-sm aspect-w-1 aspect-h-1 w-11">
+								<label className="swap swap-rotate lg:hidden">
+									<input type="checkbox" />
+									<span className="icon swap-off">
+										<Menu className="block stroke-2" />
+									</span>
+									<span className="icon swap-on">
+										<Close className="block stroke-2" />
+									</span>
+								</label>
+							</div>
 							<Nav mobile={true} />
 						</div>
 					</div>
