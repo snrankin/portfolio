@@ -8,6 +8,11 @@ const config: Config = {
 	],
 
 	theme: {
+		fontFamily: {
+			sans: ['__Poppins_7afa0e', ...defaultTheme.fontFamily.sans],
+			system: [...defaultTheme.fontFamily.sans],
+			mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
+		},
 		extend: {
 			colors: {
 				transparent: 'transparent',
@@ -25,9 +30,12 @@ const config: Config = {
 				gray: colors.gray,
 			},
 			fontFamily: {
-				sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+				sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
 				system: [...defaultTheme.fontFamily.sans],
-				mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
+				mono: [
+					'var(--font-inconsolata)',
+					...defaultTheme.fontFamily.mono,
+				],
 			},
 			fontSize: {
 				icon: [
