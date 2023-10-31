@@ -7,7 +7,13 @@ import Heading from './heading';
 import Section from './section';
 export default function Timeline(): JSX.Element {
 	return (
-		<Section id="work-history" title="Work" displayTitle="work" flag="history">
+		<Section
+			id="work-history"
+			title="Work"
+			command="ls"
+			argument="work"
+			flags="history"
+		>
 			<ol className=" grid grid-cols-1 gap-0">
 				{resume.work.map((job, i) => {
 					return (
