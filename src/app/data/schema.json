@@ -4828,6 +4828,10 @@
 				"endDate": {
 					"type": "string"
 				},
+				"keywords": {
+					"items": {},
+					"type": "array"
+				},
 				"highlights": {
 					"items": {},
 					"type": "array"
@@ -4879,11 +4883,14 @@
 				},
 				"url": {
 					"type": "string"
+				},
+				"keywords": {
+					"items": {},
+					"type": "array"
 				}
 			},
 			"required": [
-				"name",
-				"url"
+				"name"
 			],
 			"type": "object"
 		},
