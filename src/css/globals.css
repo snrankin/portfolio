@@ -1,4 +1,3 @@
-
 @layer base {
 	*,
 	*::before,
@@ -48,4 +47,18 @@
 
 .btn-icon .icon {
 	display: flex;
+}
+
+.color.devicon {
+	&-bootstrap-plain {
+		color: #7129f1;
+	}
+	&-bitbucket-original {
+		color: #2e87fc;
+	}
+}
+
+[data-nimg='fill'] {
+	object-fit: cover;
+	font-family: 'object-fit: cover;';
 }
