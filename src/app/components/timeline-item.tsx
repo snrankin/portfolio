@@ -7,7 +7,11 @@ import Calendar from '@/img/calendar.svg';
 import dayjs from 'dayjs';
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
-export function displayDate(start: Date | string, end: Date | string | null = null, format: string = 'MMM YYYY') {
+export function displayDate(
+	start: Date | string,
+	end: Date | string | null = null,
+	format: string = 'MMM YYYY'
+) {
 	let startDate,
 		endDate,
 		startFormat = format;
@@ -71,46 +75,63 @@ function companyLink(name: string, url: string) {
 	let favicon = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=32`;
 
 	return (
-		<a href={url} className="btn btn-link leading-none min-h-0 mt-4 h-max flex-nowrap flex-start justify-start items-start align-text-top pl-0 pr-0 text-left normal-case no-underline font-normal" target="_blank">
-			<Image src={favicon} width={32} height={32} alt={`${name} website favicon`} style={{ width: '1em', height: '1em' }} />
+		<a
+			href={url}
+			className="btn btn-link leading-none min-h-0 mt-4 h-max flex-nowrap flex-start justify-start items-start align-text-top pl-0 pr-0 text-left normal-case no-underline font-normal"
+			target="_blank"
+		>
+			<Image
+				src={favicon}
+				width={32}
+				height={32}
+				alt={`${name} website favicon`}
+				style={{ width: '1em', height: '1em' }}
+			/>
 			{name}
 		</a>
 	);
 }
 export default function TimelineItem(props: any) {
-	let { company, position, startDate, endDate, highlights, summary, url, location } = props;
-	let { street, city, locality, localityCode, postalCode, countryCode } = location;
+	let {
+		company,
+		position,
+		startDate,
+		endDate,
+		highlights,
+		summary,
+		url,
+		location,
+	} = props;
+	let { street, city, locality, localityCode, postalCode, countryCode } =
+		location;
 
 	return (
-		<div className="grid grid-cols-[max-content_2rem_1fr] w-full max-w-full gap-x-2	">
-			<div className="flex items-start md:flex-row-reverse">
-				<p className="uppercase text-neutral font-black block whitespace-nowrap">{displayDate(startDate, endDate)}</p>
-			</div>
-			<div className="flex flex-col items-center">
-				<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info">
-					<span className="icon">
-						<Calendar className="block stroke-2" />
-					</span>
+		<div className="grid grid-cols-[2rem_1fr] gap-x-5 lg:grid-cols-[max-content_2rem_1fr] w-full max-w-full ">
+			<span className="items-center justify-center p-1.5 w-8 h-8 btn btn-icon btn-circle btn-info">
+				<span className="icon">
+					<Calendar className="block stroke-2" />
 				</span>
-				<span className="w-0.5 bg-info-100 grow"></span>
+			</span>
+			<p className="uppercase text-neutral font-black block whitespace-nowrap col-start-2 row-start-1">
+				{displayDate(startDate, endDate)}
+			</p>
+			<div className="flex flex-col items-center row-span-2 col-span-1 col-start-1">
+				<span className="w-0.5 bg-gray-200 grow"></span>
 			</div>
-			<div className="pb-11">
-				<div className="card card-compact bg-base-100 shadow-xl w-full max-w-full shrink grow">
-					<div className="card-body">
-						<h3 className="card-title font-semibold block">
-							{position}{' '}
-							<span className="block">
-								<span className="sr-only">at </span>
-								{companyLink(company, url)}
-							</span>
-						</h3>
-						{summary != undefined && summary != '' ? <p>{summary}</p> : null}
+			<div className="pb-11 col-start-2 row-start-2">
+				<div className="prose">
+					<h3 className="card-title font-semibold block">
+						{position}{' '}
+						<span className="block">
+							<span className="sr-only">at </span>
+							{companyLink(company, url)}
+						</span>
+					</h3>
+					{summary != undefined && summary != '' ? (
+						<p>{summary}</p>
+					) : null}
 
-						<div tabIndex={0} className="collapse p-0  rounded-none">
-							<div className="collapse-title pt-0 pb-0 pl-0 rounded-none">View More</div>
-							<div className="collapse-content rounded-none">{arrayToList(highlights)}</div>
-						</div>
-					</div>
+					{arrayToList(highlights)}
 				</div>
 			</div>
 		</div>
