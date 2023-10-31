@@ -1,16 +1,14 @@
 import dynamic from 'next/dynamic';
+import Header from './components/header';
+import Footer from './components/footer';
 
-const Header = dynamic(() => import('./components/header'), {
-	ssr: false,
-});
-const Footer = dynamic(() => import('./components/footer'), {
-	ssr: false,
-});
 export default function Template({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<Header />
-			<main className="flex min-h-screen flex-col w-full overflow-y-none">{children}</main>
+			<main className="flex min-h-screen flex-col w-full overflow-y-none">
+				{children}
+			</main>
 			<Footer />
 		</>
 	);
