@@ -8,7 +8,10 @@ export default function ThemeButton() {
 	const toggleTheme = (e) => {
 		let currentTheme = e.target.value;
 
-		console.log('🚀 ~ file: themeButton.jsx:11 ~ toggleTheme ~ currentTheme:', currentTheme);
+		console.log(
+			'🚀 ~ file: themeButton.jsx:11 ~ toggleTheme ~ currentTheme:',
+			currentTheme
+		);
 
 		let newTheme;
 		if (currentTheme === 'dark') {
@@ -16,7 +19,10 @@ export default function ThemeButton() {
 		} else {
 			newTheme = 'dark';
 		}
-		console.log('🚀 ~ file: themeButton.jsx:19 ~ toggleTheme ~ newTheme:', newTheme);
+		console.log(
+			'🚀 ~ file: themeButton.jsx:19 ~ toggleTheme ~ newTheme:',
+			newTheme
+		);
 
 		document.documentElement.setAttribute('data-theme', newTheme);
 		e.target.value = newTheme;
@@ -27,13 +33,18 @@ export default function ThemeButton() {
 	};
 	return (
 		<div className="form-control">
-			<label className="label cursor-pointer">
+			<label className="label cursor-pointer grid grid-cols-[1em_max-content_1em] gap-2">
 				<span className="label-text">
 					<span className="icon">
 						<Light className="block stroke-2" />
 					</span>
 				</span>
-				<input type="checkbox" className="toggle" value={theme} onChange={toggleTheme} />
+				<input
+					type="checkbox"
+					className="toggle"
+					value={theme}
+					onChange={toggleTheme}
+				/>
 				<span className="icon">
 					<Dark className="block stroke-2" />
 				</span>
