@@ -16,37 +16,78 @@ import IosPlus from '@/img/ios-plus.svg';
 import IosTabs from '@/img/ios-tabs.svg';
 export interface DeviceProps {
 	type: 'desktop' | 'tablet' | 'mobile';
-	img: string | StaticImport;
 	url: string;
-	title: string;
+	title?: string;
 	children?: React.ReactNode;
 }
 
 const TabletButtons = () => (
 	<>
 		<div className="h-[2px] w-[8%] bg-stone-900 dark:bg-stone-900 absolute right-[7%] -top-[4px] rounded-t-lg"></div>
-		<div className="h-[6%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[5px] top-[15%] rounded-r-lg"></div>
-		<div className="h-[6%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[5px] top-[23%] rounded-r-lg"></div>
+		<div className="h-[6%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[2px] top-[15%] rounded-r-lg"></div>
+		<div className="h-[6%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[2px] top-[23%] rounded-r-lg"></div>
 	</>
 );
 
 const MobileButtons = () => (
 	<>
-		<div className="grid grid-cols-1 w-[2px] h-[23%] grid-rows-[1fr_2fr_2fr] gap-3 absolute -left-[5px] top-[20%]">
+		<div className="grid grid-cols-1 w-[2px] h-[23%] grid-rows-[1fr_2fr_2fr] gap-3 absolute -left-[2px] top-[20%]">
 			<div className=" bg-stone-900 dark:bg-stone-900 rounded-l-lg"></div>
 			<div className=" bg-stone-900 dark:bg-stone-900 rounded-l-lg"></div>
 			<div className=" bg-stone-900 dark:bg-stone-900 rounded-l-lg"></div>
 		</div>
 
-		<div className="h-[12%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[4px] top-[30%] rounded-r-lg"></div>
+		<div className="h-[12%] w-[2px] bg-stone-900 dark:bg-stone-900 absolute -right-[2px] top-[30%] rounded-r-lg"></div>
 	</>
 );
 
 const BrowserToolbar = (props: DeviceProps) => {
+	let rightIconClasses = classNames(
+		'icons-right',
+		'flex',
+		'items-center',
+		'gap-2',
+		{
+			'justify-around': props.type != 'desktop',
+			'justify-end': props.type == 'desktop',
+		}
+	);
+
+	let leftIconClasses = classNames(
+		'icons-left',
+		'flex',
+		'items-center',
+		'gap-2',
+		{
+			'justify-around': props.type != 'desktop',
+			'justify-start': props.type == 'desktop',
+		}
+	);
+
+	let wrapperClasses = classNames(
+		'mockup-browser-toolbar',
+		'text-blue-500',
+		'dark:text-blue-400',
+		'text-sm',
+		'w-full',
+		'!px-[3%]',
+		{
+			'!grid': props.type != 'mobile',
+			'grid-cols-[1fr_3fr_1fr]': props.type != 'mobile',
+		}
+	);
+
 	return (
-		<div className="mockup-browser-toolbar grid grid-cols-[1fr_3fr_1fr] text-blue-500 dark:text-blue-400 text-sm !px-[4%]">
+		<div className={wrapperClasses}>
 			{props.type != 'mobile' ? (
-				<div className="icons-left flex justify-around items-center">
+				<div className={leftIconClasses}>
+					{props.type == 'desktop' ? (
+						<div className="window-icons inline-flex gap-1 justify-around items-center">
+							<span className="w-[0.8em] h-[0.8em] bg-danger-500 rounded-full"></span>
+							<span className="w-[0.8em] h-[0.8em] bg-amber-500 rounded-full"></span>
+							<span className="w-[0.8em] h-[0.8em] bg-success-500 rounded-full"></span>
+						</div>
+					) : null}
 					<span className="icon">
 						<IosSidebarLeft />
 					</span>
@@ -76,7 +117,7 @@ const BrowserToolbar = (props: DeviceProps) => {
 				</span>
 			</div>
 			{props.type != 'mobile' ? (
-				<div className="icons-right flex justify-around items-center">
+				<div className={rightIconClasses}>
 					<span className="icon">
 						<IosShare />
 					</span>
@@ -92,67 +133,92 @@ const BrowserToolbar = (props: DeviceProps) => {
 	);
 };
 export default function Device(props: DeviceProps): JSX.Element {
-	var wrapperClasses = classNames('flex', 'justify-center');
-	var deviceClasses = classNames(
-		'device',
-		`device-${props.type}`,
+	var wrapperClasses = classNames(
+		'device-wrapper',
 		'absolute',
 		'inset-0',
 		'w-full',
 		'h-full',
-		'border-gray-400',
-		'dark:border-gray-400',
-		'bg-stone-900',
-		'dark:bg-stone-900',
-		'border-2',
-		{
-			'p-[3.5%]': props.type == 'tablet',
-			'rounded-[2.5rem]': props.type == 'tablet',
-			'p-[2%]': props.type == 'mobile',
-			'rounded-[2rem]': props.type == 'mobile',
-		}
+		{}
 	);
+	var deviceClasses = classNames('device', `device-${props.type}`, {
+		'bg-stone-800': props.type == 'desktop',
+		'dark:bg-gray-200': props.type == 'desktop',
+		'rounded-t-xl': props.type == 'desktop',
+		'p-[3%]': props.type == 'desktop',
+		'bg-stone-900': props.type != 'desktop',
+		'dark:bg-stone-900': props.type != 'desktop',
+		'border-2': props.type != 'desktop',
+		'border-gray-400': props.type != 'desktop',
+		'dark:border-gray-400': props.type != 'desktop',
+		'p-[3.5%]': props.type == 'tablet',
+		'rounded-[2.5rem]': props.type == 'tablet',
+		'p-[2%]': props.type == 'mobile',
+		'rounded-[2rem]': props.type == 'mobile',
+		'w-full': props.type != 'desktop',
+		'h-full': props.type != 'desktop',
+	});
 	var spacerClasses = classNames(
-		`aspect-${props.type}`,
 		'relative',
 		'display',
 		'w-auto',
 		// 'min-w-full',
-		// 'md:min-w-[75%]',
-		'h-[75vh]'
+		'md:h-[75vh]',
+		'mx-auto',
+		{
+			'aspect-desktop': props.type == 'desktop',
+			'aspect-tablet': props.type == 'tablet',
+			'aspect-mobile': props.type == 'mobile',
+		}
 	);
 	var screenClasses = classNames(
 		'screen',
 		'relative',
 		'overflow-hidden',
 		'display',
-		'w-full',
-		'h-full',
+
 		{
+			'w-full': props.type != 'desktop',
+			'h-full': props.type != 'desktop',
+			'aspect-video': props.type == 'desktop',
 			'rounded-[1.5rem]': props.type == 'tablet',
 			'rounded-[1.75rem]': props.type == 'mobile',
+			'rounded-0': props.type == 'desktop',
 		}
 	);
 	let children: React.ReactNode = props.children;
 	return (
-		<div className={spacerClasses}>
-			<div className={deviceClasses}>
-				{props.type == 'tablet' ? <TabletButtons /> : null}
-				{props.type == 'mobile' ? <MobileButtons /> : null}
-				<div className={screenClasses}>
-					<div
-						className={`absolute w-full h-full mockup-browser ${props.type} bg-stone-200 dark:bg-stone-700`}
-					>
-						{props.type == 'mobile' ? (
-							<div className="camera-wrapper ">
-								<div className="island">
-									<div className="camera "></div>
-								</div>
+		<div className="device-mockup max-w-full w-full min-w-full">
+			<div className={spacerClasses}>
+				<div className={wrapperClasses}>
+					<div className={deviceClasses}>
+						{props.type == 'tablet' ? <TabletButtons /> : null}
+						{props.type == 'mobile' ? <MobileButtons /> : null}
+						<div className={screenClasses}>
+							<div
+								className={`absolute w-full h-full mockup-browser ${props.type} bg-stone-200 dark:bg-stone-700 top-0 left-0`}
+							>
+								{props.type == 'mobile' ? (
+									<div className="camera-wrapper ">
+										<div className="island"></div>
+									</div>
+								) : null}
+								<BrowserToolbar {...props} />
+								{children}
 							</div>
-						) : null}
-						<BrowserToolbar {...props} />
-						{children}
+						</div>
 					</div>
+					{props.type == 'desktop' ? (
+						<>
+							<div className="desktop-bottom bg-stone-900 dark:bg-gray-300 rounded-b-xl w-full">
+								<div className="spacer"></div>
+							</div>
+							<div className="relative mx-auto bg-stone-800 dark:bg-gray-200 rounded-b-xl overflow-hidden max-w-[27%]">
+								<div className="w-full aspect-w-5 aspect-h-3"></div>
+								<div className="h-[10px] w-full bg-stone-900 dark:bg-gray-300"></div>
+							</div>
+						</>
+					) : null}
 				</div>
 			</div>
 		</div>
