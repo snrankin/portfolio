@@ -72,8 +72,8 @@ export default function Header(): JSX.Element {
 					</div>
 					<div className="navbar-end">
 						<ThemeButton />
-						<div className="dropdown">
-							<div className="btn btn-circle !h-auto justify-center items-center  aspect-square bg-gray-200 shadow-sm aspect-w-1 aspect-h-1 w-11">
+						<div className="dropdown dropdown-end drop-shadow-sm">
+							<button className="btn btn-circle !h-auto justify-center items-center  aspect-square bg-gray-200 shadow-sm aspect-w-1 aspect-h-1 w-11 md:hidden">
 								<label className="swap swap-rotate lg:hidden">
 									<input type="checkbox" />
 									<span className="icon swap-off">
@@ -83,7 +83,7 @@ export default function Header(): JSX.Element {
 										<Close className="block stroke-2" />
 									</span>
 								</label>
-							</div>
+							</button>
 							<Nav mobile={true} />
 						</div>
 					</div>
