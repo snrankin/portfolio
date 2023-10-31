@@ -3,8 +3,20 @@ import { Inconsolata, Poppins } from 'next/font/google';
 import Script from 'next/script';
 
 import '@/css/style.css';
-const poppins = Poppins({ weight: ['400', '600', '800'], style: ['italic', 'normal'], subsets: ['latin'], display: 'swap', variable: '--font-poppins' });
-const inconsolata = Inconsolata({ weight: ['400', '700'], subsets: ['latin'], display: 'swap', variable: '--font-inconsolata' });
+const poppins = Poppins({
+	weight: ['400', '600', '700', '900'],
+	style: ['italic', 'normal'],
+	subsets: ['latin-ext'],
+	display: 'swap',
+	variable: '--font-poppins',
+});
+
+const inconsolata = Inconsolata({
+	weight: ['400', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-inconsolata',
+});
 
 export const metadata: Metadata = {
 	robots: {
@@ -25,7 +37,13 @@ export const metadata: Metadata = {
 			{ url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
 		],
 		shortcut: ['/favicon.ico'],
-		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+		apple: [
+			{
+				url: '/apple-touch-icon.png',
+				sizes: '180x180',
+				type: 'image/png',
+			},
+		],
 		other: [
 			{
 				rel: 'mask-icon',
@@ -49,10 +67,22 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
-		<html lang="en" data-theme="light" className={`${poppins.variable} ${inconsolata.variable}`} suppressHydrationWarning={true}>
-			<body className="max-w-screen overscroll-x-none" suppressHydrationWarning={true}>
+		<html
+			lang="en"
+			data-theme="light"
+			className={`${poppins.variable} ${inconsolata.variable} font-sans`}
+			suppressHydrationWarning={true}
+		>
+			<body
+				className="max-w-screen overscroll-x-none"
+				suppressHydrationWarning={true}
+			>
 				{children}
 				<Script src="@/js/global.js" />
 			</body>
