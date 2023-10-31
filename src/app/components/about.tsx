@@ -6,7 +6,12 @@ import MeColor from '@/img/me-color.jpeg';
 import MeBW from '@/img/me-bw.png';
 export default function About(): JSX.Element {
 	return (
-		<Section id="about" title="About Me" displayTitle="about" flag="verbose">
+		<Section
+			id="about"
+			title="About Me"
+			command="$(whoami)"
+			flags="verbose"
+		>
 			<div className="flex items-center prose">
 				<div className="xl:w-4/12 relative">
 					<Image
@@ -22,10 +27,28 @@ export default function About(): JSX.Element {
 				</div>
 				<div>
 					<p>
-						Technology has always been a passion of mine. I love the constant change because I love learning new things and pushing the limits of what`&apos;`s possible. And with how much technology has become integral to our
-						society, I feel like I`&apos;`m part of something bigger when I create a website or a tool that helps a client, a coworker, or even myself in the future.
+						{
+							"I'm a full-stack developer navigating the ever-changing landscape of the web since 2010. My journey has had me mostly focused on WordPress, but I'm confident in my ability to pick up any platform or language."
+						}
 					</p>
-					<p>As a web developer, I see it as my responsibility to make my work as beautiful, intuitive, and accessible as I possible can, no matter the screen size.</p>
+
+					<p>
+						{
+							"I'm all about making websites feel like home—responsive, accessible, and super intuitive for every visitor. But it's not just about code; it's about creating a digital space that speaks volumes while being flawlessly functional."
+						}
+					</p>
+
+					<p>
+						{
+							"When I'm not diving into code, you’ll find me nose-deep in a book, spreading smiles as a therapy dog team with my corgi, Zoey, catching the excitement at Arizona Diamondbacks games, or getting my hands messy in art classes."
+						}
+					</p>
+
+					<p>
+						{
+							"I'm not just about pixels and code. I'm about crafting digital spaces that feel right and bring a bit of joy. Let's team up and create some seriously awesome stuff together."
+						}
+					</p>
 				</div>
 			</div>
 		</Section>
