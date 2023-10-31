@@ -1,5 +1,4 @@
 {
-	"$schema": "./schema.json",
 	"basics": {
 		"firstName": "Sam",
 		"lastName": "Rankin",
@@ -51,10 +50,10 @@
 			"highlights": [
 				"Orchestrated interdepartmental collaborations to produce visually stunning, responsive websites, blending expertise from various sectors to achieve seamless design execution.",
 				"Pioneered the drive towards more accessible design, championing the creation of user-friendly websites that catered to a diverse audience.",
-				"Facilitated seamless collaboration with both in-house and offshore developers, utilizing Git and Bitbucket for efficient version control and collaborative software development.",
-				"Innovated by crafting a custom WordPress plugin to streamline the integration of frameworks like Bootstrap, ensuring enhanced functionality and design capabilities for web projects.",
+				"Facilitated seamless collaboration with both in-house and offshore developers, utilizing <b>Git</b> and <b>Bitbucket</b> for efficient version control and collaborative software development.",
+				"Innovated by crafting a custom <b>WordPress</b> plugin to streamline the integration of frameworks like <b>Bootstrap</b>, ensuring enhanced functionality and design capabilities for web projects.",
 				"Provided comprehensive documentation and training sessions for both internal team members and clients, enabling a better understanding and utilization of the developed platforms and systems.",
-				"Spearheaded the development of websites of various scales and complexities across diverse sectors including health, finance, and non-profit industries. Proficient in multiple platforms such as WordPress, Kentico, Umbraco, and Shopify, showcasing versatility and adaptability in meeting client needs."
+				"Spearheaded the development of websites of various scales and complexities across diverse sectors including health, finance, and non-profit industries. Proficient in multiple platforms such as <b>WordPress</b>, <b>Kentico</b>, <b>Umbraco</b>, and <b>Shopify</b>, showcasing versatility and adaptability in meeting client needs."
 			],
 			"summary": "Primarily works with PHP, JavaScript, HTML, CSS, and Wordpress to develop full-featured websites and applications",
 			"url": "https://www.riester.com",
@@ -79,7 +78,7 @@
 				"Collaborated on managing an extensive workload, addressing an overflow of website edits effectively and efficiently.",
 				"Executed responsive web design principles to guarantee optimal display and functionality across diverse devices, ensuring a seamless user experience.",
 				"Upheld and enhanced website performance, consistently implementing improvements to elevate functionality and user engagement.",
-				"Enhanced WordPress websites utilizing a personalized visual composer builder, ensuring up-to-date and visually captivating online platforms.",
+				"Enhanced <b>WordPress</b> websites utilizing a personalized visual composer builder, ensuring up-to-date and visually captivating online platforms.",
 				"Engaged in collaborative efforts to strategize and execute effective marketing strategies, contributing valuable insights for comprehensive online presence and outreach."
 			],
 			"summary": "",
@@ -105,7 +104,7 @@
 			"highlights": [
 				"Orchestrated a comprehensive restructuring of the IT infrastructure by implementing GSuite and 1Password, and conducted extensive training sessions for all employees, ensuring a seamless transition and optimal utilization of the new systems.",
 				"Spearheaded a full-scale rebranding initiative for Dana & Associates, overseeing a complete overhaul of both print and digital materials, thereby modernizing and unifying the brand's image.",
-				"Drastically boosted conversions by 200% on danalegalhelp.com through the creation of a more intuitive, responsive WordPress website based on the robust Bootstrap 4 framework, enhancing user experience and engagement.",
+				"Drastically boosted conversions by 200% on danalegalhelp.com through the creation of a more intuitive, responsive <b>WordPress</b> website based on the robust <b>Bootstrap</b> 4 framework, enhancing user experience and engagement.",
 				"Maintained brand coherence across various mediums by designing a multitude of print materials, such as business cards, brochures, mailing labels, and various documents, harmonizing them with the new brand identity and website design"
 			],
 			"summary": "",
@@ -129,8 +128,8 @@
 			],
 			"highlights": [
 				"Expertly managed and supported the handling of excess website edits, ensuring a smooth and efficient workflow during high-demand periods.",
-				"Crafted responsive HTML emails utilizing Litmus, ensuring compatibility across various email clients and delivering visually appealing, effective communication.",
-				"Seamlessly incorporated requested features into Shopify websites, enhancing their functionality and meeting client specifications with precision."
+				"Crafted responsive <b>HTML</b> emails utilizing Litmus, ensuring compatibility across various email clients and delivering visually appealing, effective communication.",
+				"Seamlessly incorporated requested features into <b>Shopify</b> websites, enhancing their functionality and meeting client specifications with precision."
 			],
 			"summary": "",
 			"url": "https://blufish.com/",
@@ -152,10 +151,10 @@
 				"WordPress"
 			],
 			"highlights": [
-				"Collaborated effectively within a team of developers, utilizing Git and Bitbucket for concurrent management and editing of existing sites, ensuring a streamlined and organized workflow.",
-				"Teamed up with another developer to produce custom ADA-compliant HTML5 landing pages for Monster.com, meeting accessibility standards and optimizing user experience.",
-				"Orchestrated the development of a comprehensive WordPress-based eCommerce site using WooCommerce, aligning it precisely with Sketch files. This included the integration of a custom search function and the utilization of Bootstrap 3 for framework support.",
-				"Engineered a tailor-made Shopify theme to match precise Photoshop designs, ensuring a seamless translation of visual concepts into a functional and aesthetically pleasing online platform."
+				"Collaborated effectively within a team of developers, utilizing <b>Git</b> and <b>Bitbucket</b> for concurrent management and editing of existing sites, ensuring a streamlined and organized workflow.",
+				"Teamed up with another developer to produce custom ADA-compliant <b>HTML</b>  landing pages for Monster.com, meeting accessibility standards and optimizing user experience.",
+				"Orchestrated the development of a comprehensive <b>WordPress</b>-based eCommerce site using <b>WooCommerce</b>, aligning it precisely with Sketch files. This included the integration of a custom search function and the utilization of Bootstrap 3 for framework support.",
+				"Engineered a tailor-made <b>Shopify</b> theme to match precise Photoshop designs, ensuring a seamless translation of visual concepts into a functional and aesthetically pleasing online platform."
 			],
 			"summary": "",
 			"url": "https://skyhookinteractive.com/",
@@ -174,7 +173,7 @@
 			"highlights": [
 				"Independently spearheaded the development of intricate websites for major clients over a three-year period, showcasing consistent high-quality output.",
 				"Established departmental standards and methodologies, providing guidance and training to junior developers in creating custom themes and templates, ensuring a cohesive approach to web development.",
-				"Implemented a WordPress site manager, optimizing the management of 150+ clients across various departments, resulting in significant time and cost savings for the company.",
+				"Implemented a <b>WordPress</b> site manager, optimizing the management of 150+ clients across various departments, resulting in significant time and cost savings for the company.",
 				"Engineered a custom page builder using Advanced Custom Fields to maintain uniform site quality across multiple developers, ensuring consistency in the final output regardless of the creator.",
 				"Collaborated with department heads to streamline integration between design, account management, and web development, fostering a more efficient and collaborative workflow across various facets of the company."
 			],
@@ -194,8 +193,8 @@
 			"endDate": "2014-06-30",
 			"highlights": [
 				"Modernized numerous micro-sites to align with current website standards, ensuring consistency and relevance across the online platform.",
-				"Implemented responsiveness in websites, integrating HTML5 and CSS3 to enhance user experience and meet contemporary web development standards.",
-				"Engineered a responsive WordPress blog specifically tailored for the student leadership group, emphasizing usability and engaging design.",
+				"Implemented responsiveness in websites, integrating <b>HTML</b> and <b>CSS</b> to enhance user experience and meet contemporary web development standards.",
+				"Engineered a responsive <b>WordPress</b> blog specifically tailored for the student leadership group, emphasizing usability and engaging design.",
 				"Collaborated with back-end developers to enhance user interface (UI) for their applications, contributing to a more intuitive and visually appealing end product.",
 				"Crafted responsive HTML emails using Green Rope, combining design and coding expertise to create visually engaging and functional email communications."
 			],
@@ -214,7 +213,7 @@
 			"startDate": "2012-12-31",
 			"endDate": "2013-06-30",
 			"highlights": [
-				"Engineered a bespoke WordPress theme incorporating custom post types and taxonomies, utilizing SASS and Compass for streamlined and efficient development.",
+				"Engineered a bespoke <b>WordPress</b> theme incorporating custom post types and taxonomies, utilizing <b>SASS</b> and Compass for streamlined and efficient development.",
 				"Established Google Analytics for the site, enabling comprehensive data tracking and analysis to optimize performance and user engagement.",
 				"Instituted a team wiki to foster improved collaboration and knowledge sharing among team members, enhancing overall productivity and workflow efficiency.",
 				"Collaborated with a professor from ASU to design and produce a concise, impactful single-page handout for two external projects, demonstrating effective collaboration and visual communication skills."
@@ -236,7 +235,7 @@
 			"highlights": [
 				"Produced multiple promotional videos utilizing Final Cut Pro for diverse departments, enhancing visual storytelling and promotional content.",
 				"Crafted visually compelling internal emails using Photoshop and Illustrator, ensuring an engaging and professional communication format.",
-				"Developed HTML emails for both internal and external distribution, ensuring consistent and effective communication across platforms.",
+				"Developed <b>HTML</b> emails for both internal and external distribution, ensuring consistent and effective communication across platforms.",
 				"Successfully executed diverse tasks across multiple websites managed by the Foundation, showcasing versatility and adaptability in handling varied web development responsibilities.",
 				"Engineered three distinct microsites for different departments, demonstrating proficiency in delivering tailored online solutions for specific organizational needs."
 			],
