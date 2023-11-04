@@ -1,25 +1,21 @@
 import dayjs from 'dayjs';
-import { get, isEmpty, startsWith } from 'lodash';
-import LinkedIn from '@/img/linkedin.svg';
-import GitHub from '@/img/github.svg';
-import Phone from '@/img/phone.svg';
-import Mail from '@/img/mail.svg';
-const Shopify = require('@/img/shopify.svg?raw') as string;
+import { isString, replace, isEmpty, trimEnd } from 'lodash';
+
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
 export function displayDate(
-	start: Date | string,
-	end: Date | string | null = null,
+	start?: Date | string,
+	end?: Date | string,
 	format: string = 'MMM YYYY'
 ) {
-	let startDate,
-		endDate,
+	let startDate = null,
+		endDate = null,
 		startFormat = format;
 
-	if (dayjs(start).isValid()) {
+	if (start != undefined && dayjs(start).isValid()) {
 		let startYear = dayjs(start).year();
 
-		if (dayjs(end).isValid()) {
+		if (end != undefined && dayjs(end).isValid()) {
 			let endYear = dayjs(end).year();
 			const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
 			if (startYear == endYear) {
@@ -33,7 +29,7 @@ export function displayDate(
 		);
 	}
 
-	if (dayjs(end).isValid()) {
+	if (end != undefined && dayjs(end).isValid()) {
 		endDate = (
 			<time className="end-date" dateTime={dayjs(end).toISOString()}>
 				{dayjs(end).format(format)}
@@ -48,66 +44,36 @@ export function displayDate(
 	return (
 		<>
 			{startDate}
-			{nDash}
-			{endDate}
+			{end != undefined && dayjs(end).isValid() ? (
+				<>
+					{nDash}
+					{endDate}
+				</>
+			) : null}
 		</>
 	);
+}
+
+export function simplifyUrl(url?: string) {
+	let displayUrl = '';
+	if (isString(url) && !isEmpty(url)) {
+		let link = new URL(url);
+
+		if (!isEmpty(link.hostname)) {
+			displayUrl += link.hostname;
+		}
+		if (!isEmpty(link.pathname)) {
+			displayUrl += link.pathname;
+		}
+
+		displayUrl = replace(displayUrl, /^(https?:\/\/)?(www.)?/, '');
+		displayUrl = trimEnd(displayUrl, '/');
+	}
+	return displayUrl;
 }
 export type Dictionary = {
 	[key: string]: any;
 };
-
-export const Icons: Dictionary = {
-	WordPress: 'devicon-wordpress-plain colored',
-	Laravel: 'devicon-laravel-plain colored',
-	JavaScript: 'devicon-javascript-plain colored',
-	React: 'devicon-react-original colored',
-	PHP: 'devicon-php-plain colored',
-	Webpack: 'devicon-webpack-plain colored',
-	Git: 'devicon-git-plain colored',
-	Bootstrap: 'devicon-bootstrap-plain color',
-	Bitbucket: 'devicon-bitbucket-original color',
-	HTML: 'devicon-html5-plain colored',
-	CSS: 'devicon-css3-plain colored',
-	Tailwind: 'devicon-tailwindcss-plain colored',
-	Illustraor: 'devicon-illustrator-plain colored',
-	NPM: 'devicon-npm-original-wordmark colored',
-	Photoshop: 'devicon-photoshop-plain color',
-	SASS: 'devicon-sass-original colored',
-	WooCommerce: 'devicon-woocommerce-plain colored',
-	Yarn: 'devicon-yarn-plain colored',
-	XD: 'devicon-xd-plain color',
-
-	GitHub: GitHub,
-	Shopify: Shopify,
-	NodeJS: 'devicon-nodejs-plain colored',
-	TypeScript: 'devicon-typescript-plain colored',
+export type StringDictionary = {
+	[key: string]: string;
 };
-
-export function getIcon(icon: any): JSX.Element {
-	icon = get(Icons, icon, '');
-	if (!isEmpty(icon)) {
-		if (typeof icon == 'string' && !startsWith(icon, '<svg ')) {
-			icon = <span className={icon}></span>;
-		}
-		return (
-			<span aria-hidden="true" role="presentation" className="icon">
-				{icon}
-			</span>
-		);
-	}
-	return <></>;
-}
-
-export function getIconString(icon: any): String {
-	icon = get(Icons, icon, '');
-	if (!isEmpty(icon)) {
-		if (!startsWith(icon, '<svg ')) {
-			icon = `<span class="${icon}"></span>`;
-		}
-		return `<span aria-hidden="true" role="presentation" class="icon">
-				${icon}
-			</span>`;
-	}
-	return '';
-}

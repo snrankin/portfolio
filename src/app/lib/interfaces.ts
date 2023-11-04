@@ -1,21 +1,32 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+
 export type Sizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ColorSchemes = 'neutral' | 'primary' | 'secondary' | 'accent';
 
 export type ColorState = 'info' | 'success' | 'warning' | 'error';
-export interface Basics {
+
+export interface Dictionary extends Object {
+	[key: string]: any;
+}
+export interface StringDictionary {
+	[key: string]: string;
+}
+export interface IBasics extends Object {
 	firstName: string;
 	lastName: string;
 	label: string;
-	image?: string;
+	image?: string | StaticImport;
 	email?: string;
 	phone?: string;
 	summary?: string;
-	location?: Location;
-	profiles?: SocialProfile[];
+	about?: string[];
+	location?: ILocation;
+	profiles?: ISocialProfiles;
+	skills?: ISkillsGroups;
 }
 
-export interface Location {
+export interface ILocation extends Object {
 	street?: string;
 	city?: string;
 	locality?: string;
@@ -24,17 +35,18 @@ export interface Location {
 	countryCode?: string;
 }
 
-import { IconName } from '@fortawesome/fontawesome-common-types';
-
-export interface SocialProfile {
-	network: string;
+export interface ISocialProfiles {
+	[key: string]: ISocialProfile;
+}
+export interface ISocialProfile extends Object {
+	network?: string;
 	username?: string;
-	label?: string;
-	icon: IconName;
-	url: string;
+	title?: string;
+	icon: string;
+	href: string;
 }
 
-export interface Position {
+export interface IPosition extends Object {
 	company: string;
 	position: string;
 	startDate: Date | string;
@@ -42,10 +54,10 @@ export interface Position {
 	highlights?: any[];
 	summary?: string;
 	url: string;
-	location?: Location;
+	location?: ILocation;
 }
 
-export interface Education {
+export interface IEducation extends Object {
 	institution?: string;
 	area?: string;
 	studyType?: string;
@@ -55,38 +67,38 @@ export interface Education {
 	courses?: string[];
 }
 
-export interface Skill {
-	name: string;
-	icon?: string;
-	level?: string;
-	categories?: string[];
+export interface ISkillsGroups {
+	languages?: string[];
+	frameworks?: string[];
+	cms?: string[];
+	tools?: string[];
+	software?: string[];
 }
-
-export interface Language {
-	language: string;
-	fluency?: string;
-}
-
-export interface Project {
-	name: string;
-	startDate?: Date | string;
-	endDate?: Date | string;
+export interface IProject extends Object {
+	title?: string;
+	shortTitle?: string;
+	slug?: string;
+	startDate?: string | Date;
+	endDate?: string | Date;
 	summary?: string;
-	url: string;
+	url?: string;
 	repo?: string;
+	image?: StaticImport;
+	highlights?: string[];
+	desktop?: StaticImport;
+	tablet?: StaticImport;
+	mobile?: StaticImport;
 }
 
 export type Resume = {
-	basics: Basics;
-	work: Position[];
-	volunteer?: Position[];
-	education?: Education[];
+	basics: IBasics;
+	work: IPosition[];
+	volunteer?: IPosition[];
+	education?: IEducation[];
 	awards?: any[];
 	certificates?: any[];
 	publications?: any[];
-	skills?: Skill[];
-	languages?: Language[];
 	interests?: any[];
 	references?: any[];
-	projects?: Project[];
+	projects?: IProject[];
 };

@@ -275,139 +275,132 @@
 	"publications": [],
 	"skills": [
 		{
-			"name": "Git",
-			"level": "",
-			"categories": []
+			"name": "MacOS",
+			"group": "OS"
 		},
 		{
-			"name": "Cross-functional Team Leadership",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Back-End Web Development",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Shopify",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Webpack",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "PHP",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Web Content Accessibility Guidelines (WCAG)",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Front-end Coding",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Email Marketing",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Content Management",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "WordPress",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "CSS3",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "On-Page Optimization",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Microsoft Office",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "HTML Emails",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "Employee Training",
-			"level": "",
-			"categories": []
-		},
-		{
-			"name": "JavaScript",
-			"level": "",
-			"categories": []
+			"name": "Windows",
+			"group": "OS"
 		},
 		{
 			"name": "HTML5",
-			"level": "",
-			"categories": []
+			"group": "languages"
 		},
 		{
-			"name": "Creative Problem Solving",
-			"level": "",
-			"categories": []
+			"name": "CSS3",
+			"group": "languages"
 		},
 		{
-			"name": "Branding & Identity",
-			"level": "",
-			"categories": []
+			"name": "JavaScript",
+			"group": "languages"
 		},
 		{
-			"name": "User Interface Design",
-			"level": "",
-			"categories": []
+			"name": "PHP",
+			"group": "languages"
 		},
 		{
-			"name": "Digital Marketing",
-			"level": "",
-			"categories": []
+			"name": "C#",
+			"group": "languages"
+		},
+		{
+			"name": "Tailwind",
+			"group": "frameworks"
+		},
+		{
+			"name": "Bootstrap",
+			"group": "frameworks"
+		},
+		{
+			"name": "React",
+			"group": "frameworks"
+		},
+		{
+			"name": "NextJS",
+			"group": "frameworks"
+		},
+		{
+			"name": "Laravel",
+			"group": "frameworks"
+		},
+		{
+			"name": "WordPress",
+			"group": "cms"
+		},
+		{
+			"name": "Shopify",
+			"group": "cms"
+		},
+		{
+			"name": "Umbraco",
+			"group": "cms"
+		},
+		{
+			"name": "Kentico",
+			"group": "cms"
+		},
+		{
+			"name": "Git",
+			"group": "tools"
 		},
 		{
 			"name": "Node.js",
-			"level": "",
-			"categories": []
+			"group": "tools"
 		},
 		{
-			"name": "Adobe Creative Suite",
-			"level": "",
-			"categories": []
+			"name": "SASS",
+			"group": "tools"
 		},
 		{
-			"name": "User Experience",
-			"level": "",
-			"categories": []
+			"name": "Composer",
+			"group": "tools"
 		},
 		{
-			"name": "Search Engine Optimization (SEO)",
-			"level": "",
-			"categories": []
+			"name": "Webpack",
+			"group": "tools"
 		},
 		{
-			"name": "Responsive Web Design",
-			"level": "",
-			"categories": []
+			"name": "Babel",
+			"group": "tools"
+		},
+		{
+			"name": "PostCSS",
+			"group": "tools"
+		},
+		{
+			"name": "SASS",
+			"group": "tools"
+		},
+		{
+			"name": "Photoshop",
+			"group": "software"
+		},
+		{
+			"name": "Illustrator",
+			"group": "software"
+		},
+		{
+			"name": "XD",
+			"group": "software"
+		},
+		{
+			"name": "VSCode",
+			"group": "software"
+		},
+		{
+			"name": "Figma",
+			"group": "software"
+		},
+		{
+			"name": "GitHub",
+			"group": "software"
+		},
+		{
+			"name": "Bitbucket",
+			"group": "software"
+		},
+		{
+			"name": "Jira",
+			"group": "software"
 		}
 	],
 	"languages": [
