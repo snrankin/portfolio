@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inconsolata, Poppins } from 'next/font/google';
+import { Inconsolata, Poppins, DM_Sans, Anonymous_Pro } from 'next/font/google';
 import Script from 'next/script';
 
 import '@/css/style.css';
@@ -11,11 +11,26 @@ const poppins = Poppins({
 	variable: '--font-poppins',
 });
 
+const dmsans = DM_Sans({
+	weight: ['400', '700'],
+	style: ['italic', 'normal'],
+	subsets: ['latin-ext'],
+	display: 'swap',
+	variable: '--font-dm-sans',
+});
+
 const inconsolata = Inconsolata({
 	weight: ['400', '700'],
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-inconsolata',
+});
+
+const anonymous = Anonymous_Pro({
+	weight: ['400', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-anonymous',
 });
 
 export const metadata: Metadata = {
@@ -30,20 +45,6 @@ export const metadata: Metadata = {
 	},
 	description: 'Portfolio for Phoenix, AZ Based Web Developer',
 	icons: {
-		icon: [
-			{ url: '/favicon.svg', type: 'image/svg+xml' },
-			{ url: '/favicon.png', type: 'image/png' },
-			{ url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-			{ url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-		],
-		shortcut: ['/favicon.ico'],
-		apple: [
-			{
-				url: '/apple-touch-icon.png',
-				sizes: '180x180',
-				type: 'image/png',
-			},
-		],
 		other: [
 			{
 				rel: 'mask-icon',
@@ -52,21 +53,21 @@ export const metadata: Metadata = {
 			},
 		],
 	},
-	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: 'cyan' },
-		{ media: '(prefers-color-scheme: dark)', color: 'black' },
-	],
 	appleWebApp: {
 		title: 'Sam Rankin',
 		statusBarStyle: 'black-translucent',
 	},
-	viewport: {
-		width: 'device-width',
-		initialScale: 1,
-		viewportFit: 'cover',
-	},
 };
 
+export const viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	viewportFit: 'cover',
+	themeColor: [
+		{ media: '(prefers-color-scheme: light)', color: 'cyan' },
+		{ media: '(prefers-color-scheme: dark)', color: 'black' },
+	],
+};
 export default function RootLayout({
 	children,
 }: {
@@ -76,7 +77,7 @@ export default function RootLayout({
 		<html
 			lang="en"
 			data-theme="light"
-			className={`${poppins.variable} ${inconsolata.variable} font-sans`}
+			className={`${poppins.variable} ${inconsolata.variable} ${dmsans.variable} ${anonymous.variable} font-sans`}
 			suppressHydrationWarning={true}
 		>
 			<body
