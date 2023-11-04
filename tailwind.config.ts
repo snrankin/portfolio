@@ -1,6 +1,12 @@
 import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
+
+const round = (num: number) =>
+	num
+		.toFixed(7)
+		.replace(/(\.[0-9]+?)0+$/, '$1')
+		.replace(/\.0$/, '');
 const config: Config = {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -46,7 +52,11 @@ const config: Config = {
 				gray: colors.gray,
 			},
 			fontFamily: {
-				sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
+				sans: ['var(--font-dm-sans)', ...defaultTheme.fontFamily.sans],
+				display: [
+					'var(--font-poppins)',
+					...defaultTheme.fontFamily.sans,
+				],
 				system: [...defaultTheme.fontFamily.sans],
 				mono: [
 					'var(--font-inconsolata)',
@@ -91,6 +101,33 @@ const config: Config = {
 				'tp-h': '1024',
 				'mp-w': '900',
 				'mp-h': '1950',
+			},
+			typography: {
+				print: {
+					css: {
+						color: '#000',
+						fontSize: '12pt',
+						lineHeight: 1.5,
+						a: {
+							color: colors.teal[600],
+							'&:hover': {
+								color: colors.pink[600],
+							},
+						},
+						h1: {
+							fontSize: '30pt',
+							marginTop: '0',
+							marginBottom: '0',
+							lineHeight: 1,
+						},
+						h2: {
+							fontSize: '22pt',
+							marginTop: '0',
+							marginBottom: '0.75em',
+							lineHeight: 1,
+						},
+					},
+				},
 			},
 		},
 
