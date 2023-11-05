@@ -16,7 +16,7 @@ export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
 	let classes = classNames('projects', 'list', props.className);
 
 	set(atts, 'className', classes);
-	let projects = ProjectsList.slice(0, 7);
+	let projects = ProjectsList.slice(0, 6);
 	return (
 		<div {...atts}>
 			{projects.map((project: IProject) => {

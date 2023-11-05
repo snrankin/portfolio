@@ -5,15 +5,51 @@ import { isEmpty, omit, set } from 'lodash';
 import React, { HTMLProps } from 'react';
 import Icon from '../icons/icon';
 import Card, { CardProps } from '../card/card';
-import { displayDate } from '@/app/lib/utils';
+import { displayDate, simplifyUrl } from '@/app/lib/utils';
 import Link from 'next/link';
-
-import { IProject } from '@/app/lib/interfaces';
+import IconLink from '../icons/link';
+import { IProject, IProjectLinks } from '@/app/lib/interfaces';
 import { paramCase } from 'change-case-all';
 export interface ProjectCardProps extends CardProps, IProject {}
-
+export function ProjectLinks(links: IProjectLinks) {
+	let { github, bitbucket, npm, website } = links;
+	return (
+		<>
+			{github != undefined && (
+				<IconLink
+					href={github}
+					group="dev"
+					icon="github"
+					title={simplifyUrl(github).replace('github.com/', '')}
+					titleDisplay="inline"
+					target="_blank"
+				/>
+			)}
+			{bitbucket != undefined && (
+				<IconLink
+					href={bitbucket}
+					group="dev"
+					icon="bitbucket"
+					title={simplifyUrl(bitbucket).replace('bitbucket.com/', '')}
+					titleDisplay="inline"
+					target="_blank"
+				/>
+			)}
+			{npm != undefined && (
+				<IconLink
+					href={npm}
+					group="dev"
+					icon="npm"
+					title={simplifyUrl(npm).replace('npmjs.com/package/', '')}
+					titleDisplay="inline"
+					target="_blank"
+				/>
+			)}
+		</>
+	);
+}
 export default function Project(props: ProjectCardProps) {
-	let { startDate, endDate, summary, url, repo, highlights } = props;
+	let { startDate, endDate, summary, url, repo, highlights, links } = props;
 
 	let attr: CardProps = omit(props, [
 		'slug',
@@ -28,6 +64,7 @@ export default function Project(props: ProjectCardProps) {
 		'desktop',
 		'tablet',
 		'mobile',
+		'links',
 	]);
 
 	let subtitle = displayDate(startDate, endDate);
@@ -64,16 +101,7 @@ export default function Project(props: ProjectCardProps) {
 				<Link href={`/projects/${slug}`} className="btn btn-link">
 					View More
 				</Link>
-				{repo != undefined ? (
-					<a href={repo} target="_blank" className="btn btn-link">
-						View Repo
-					</a>
-				) : null}
-				{url != undefined ? (
-					<a href={url} target="_blank" className="btn btn-link">
-						View Website
-					</a>
-				) : null}
+				{links != undefined && ProjectLinks(links)}
 			</div>
 		</Card>
 	);

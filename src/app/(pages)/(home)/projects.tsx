@@ -18,6 +18,7 @@ export default function Projects(): JSX.Element {
 			argument="projects"
 			flags="featured"
 			className="bg-base-200"
+			intro="Welcome to the fun part! This is where I roll up my sleeves and dive into the projects that got me here. Get ready to see the real magic – where lines of code come to life and ideas turn into web reality. Let's take a journey through some cool stuff I've built!"
 		>
 			<ProjectsGroup
 				className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
