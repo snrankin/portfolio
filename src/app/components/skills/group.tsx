@@ -6,10 +6,8 @@ import { get, groupBy, isEmpty, set, omit } from 'lodash';
 import Card, { CardProps } from '../card/card';
 import Skill, { SkillProps } from './item';
 import { titleCase } from 'change-case-all';
-
-import { default as resume } from '@/app/data/resume.json';
 export interface SkillsGroupProps extends CardProps {
-	group: 'languages' | 'frameworks' | 'cms' | 'tools' | 'software';
+	group: string;
 	showGroupTitle?: boolean;
 
 	groupClasses?: string;
@@ -19,7 +17,11 @@ export interface SkillsGroupProps extends CardProps {
 export default function SkillsGroup(props: SkillsGroupProps) {
 	let group = get(Me.skills, props.group);
 
-	let classes = classNames(`skill-group-${props.group}`, props.className);
+	let classes = classNames(
+		'skill-group',
+		`skill-group-${props.group}`,
+		props.className
+	);
 
 	let groupProps = omit(props, ['skillProps']);
 

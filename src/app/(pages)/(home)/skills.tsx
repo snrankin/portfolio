@@ -10,15 +10,12 @@ export default function Skills(): JSX.Element {
 			title="My Skillset"
 			command="ls"
 			argument="skills"
-			flags="--featured"
+			flags="featured"
+			className="bg-base-200"
+			intro="Alright, let's get into the good stuff. Here's what I bring to the table. These are the tools I wield, the languages I speak, and the skills I've polished over time."
 		>
 			<div className="text-center">
-				<div className="prose mx-auto">
-					<h3>{`I've got a few tricks up my sleeve.`} </h3>
-					<p>Here are some of my favorites</p>
-				</div>
-
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-7">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-11 pt-11">
 					<SkillsGroup
 						className="shadow lg:col-span-4"
 						border={true}
