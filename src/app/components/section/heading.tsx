@@ -31,11 +31,13 @@ export default function Heading(props: HeadingProps): JSX.Element {
 
 				<pre data-prefix=">" aria-hidden="true" className="font-mono">
 					{props.command != undefined ? (
-						<code className="text-lime-500">{props.command} </code>
+						<code className="text-success-500">
+							{props.command}{' '}
+						</code>
 					) : null}
 					{props.argument != undefined ? props.argument : null}
 					{flags != undefined ? (
-						<code className="text-secondary"> {flags}</code>
+						<code className="text-secondary-500"> {flags}</code>
 					) : null}
 				</pre>
 			</span>

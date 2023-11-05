@@ -1,15 +1,12 @@
 'use client';
 import React, { useState, FunctionComponent, HTMLProps } from 'react';
 import { Waypoint } from 'react-waypoint';
-import Heading from './heading';
+import Heading, { HeadingProps } from './heading';
 import classNames from 'classnames';
 import { pick, isEmpty, omit, set } from 'lodash';
 
-export interface SectionProps extends HTMLProps<HTMLElement> {
-	title?: string;
-	command?: string;
-	argument?: string;
-	flags?: string | string[];
+export interface SectionProps extends HeadingProps, HTMLProps<HTMLElement> {
+	intro?: string;
 }
 export default function Section(props: SectionProps) {
 	let args = props;
@@ -24,7 +21,13 @@ export default function Section(props: SectionProps) {
 	);
 
 	let headingArgs = pick(props, ['title', 'command', 'argument', 'flags']);
-	let sectionProps = omit(props, ['title', 'command', 'argument', 'flags']);
+	let sectionProps = omit(props, [
+		'title',
+		'command',
+		'argument',
+		'flags',
+		'intro',
+	]);
 
 	set(sectionProps, 'className', classes);
 
@@ -32,10 +35,19 @@ export default function Section(props: SectionProps) {
 		<Waypoint>
 			<section className={classes} {...sectionProps}>
 				<div className="container mx-auto">
-					{!isEmpty(props.title) || !isEmpty(props.command) ? (
+					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
 						<Heading {...headingArgs} />
-					) : null}
-
+					)}
+					{props.intro != undefined && !isEmpty(props.intro) && (
+						<div className="prose mx-auto text-center py-11">
+							<p
+								className="lead"
+								dangerouslySetInnerHTML={{
+									__html: props.intro,
+								}}
+							></p>
+						</div>
+					)}
 					{children}
 				</div>
 			</section>
