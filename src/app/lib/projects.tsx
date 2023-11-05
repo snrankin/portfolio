@@ -1,5 +1,21 @@
 import { IProject } from './interfaces';
 
+export const portfolio: IProject = {
+	title: "Sam Rankin's Developer Portfolio",
+	shortTitle: 'My Portfolio',
+	slug: 'porfolio',
+	startDate: '2023-10-28',
+	endDate: '2023-11-02',
+	summary:
+		'Complete redesign of the LA Zoo website. Built using Sage 9 Laravel Wordpress theme, Advanced Custom Fields and custom Gutenberg blocks',
+	url: 'https://samrankin.dev',
+	image: LAZooDesktop,
+	highlights: ['Next.JS', 'React', 'Tailwind'],
+	desktop: LAZooDesktop,
+	tablet: LAZooTablet,
+	mobile: LAZooMobile,
+};
+
 // ========================================================================== //
 // ================================= LA Zoo ================================= //
 // ========================================================================== //
@@ -21,6 +37,9 @@ export const lazoo: IProject = {
 	desktop: LAZooDesktop,
 	tablet: LAZooTablet,
 	mobile: LAZooMobile,
+	links: {
+		website: 'https://www.lazoo.org',
+	},
 };
 
 // ========================================================================== //
@@ -36,6 +55,10 @@ export const wpReadMe: IProject = {
 	repo: 'https://github.com/snrankin/generate-wp-readme',
 	url: 'https://www.npmjs.com/package/@snrankin/generate-wp-readme',
 	highlights: ['TypeScript', 'NodeJS', 'JavaScript'],
+	links: {
+		github: 'https://github.com/snrankin/generate-wp-readme',
+		npm: 'https://www.npmjs.com/package/@snrankin/generate-wp-readme',
+	},
 };
 
 export const spectrum: IProject = {
@@ -44,6 +67,9 @@ export const spectrum: IProject = {
 	slug: 'spectrum',
 	url: 'https://spectrummedicalcareaz.com',
 	highlights: ['TypeScript', 'NodeJS', 'WordPress', 'JavaScript'],
+	links: {
+		website: 'https://spectrummedicalcareaz.com',
+	},
 };
 
 import MidfirstDesktop from '@/img/midfirst-desktop.png';
@@ -58,6 +84,9 @@ export const midfirst: IProject = {
 	desktop: MidfirstDesktop,
 	tablet: MidfirstTablet,
 	mobile: MidfirstMobile,
+	links: {
+		website: 'https://midfirst.com',
+	},
 };
 
 export const skipro: IProject = {
@@ -66,6 +95,9 @@ export const skipro: IProject = {
 	slug: 'skipro',
 	url: 'https://skipro.com',
 	highlights: ['Shopify', 'Liquid', 'JavaScript'],
+	links: {
+		website: 'https://skipro.com',
+	},
 };
 
 export const riester: IProject = {
@@ -74,13 +106,17 @@ export const riester: IProject = {
 	slug: 'riester',
 	url: 'https://riester.com',
 	highlights: ['WordPress', 'PHP', 'JavaScript'],
+	links: {
+		website: 'https://riester.com',
+	},
 };
 
 export const ProjectsList: IProject[] = [
+	portfolio,
 	lazoo,
 	wpReadMe,
 	midfirst,
 	skipro,
-	spectrum,
 	riester,
+	spectrum,
 ];

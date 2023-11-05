@@ -1,5 +1,5 @@
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-
+import { HTMLProps } from 'react';
 export type Sizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ColorSchemes = 'neutral' | 'primary' | 'secondary' | 'accent';
@@ -12,6 +12,7 @@ export interface Dictionary extends Object {
 export interface StringDictionary {
 	[key: string]: string;
 }
+
 export interface IBasics extends Object {
 	firstName: string;
 	lastName: string;
@@ -74,6 +75,13 @@ export interface ISkillsGroups {
 	tools?: string[];
 	software?: string[];
 }
+
+export interface IProjectLinks extends Object {
+	github?: string;
+	npm?: string;
+	bitbucket?: string;
+	website?: string;
+}
 export interface IProject extends Object {
 	title?: string;
 	shortTitle?: string;
@@ -88,6 +96,7 @@ export interface IProject extends Object {
 	desktop?: StaticImport;
 	tablet?: StaticImport;
 	mobile?: StaticImport;
+	links?: IProjectLinks;
 }
 
 export type Resume = {
