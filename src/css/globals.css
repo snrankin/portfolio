@@ -18,6 +18,10 @@
 	}
 }
 
+[data-theme='light'] {
+	--pc: 174 75% 11% !important;
+}
+
 .icon {
 	font-size: 1em;
 	width: 1em;
