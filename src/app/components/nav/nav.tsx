@@ -96,7 +96,8 @@ export default function Nav(props: NavProps): JSX.Element {
 							groupOn={menuOpenedIconGroup}
 						/>
 					) : null}
-					{menuClosedIcon != undefined ? (
+					{menuClosedIcon != undefined &&
+					menuOpenedIcon == undefined ? (
 						<button aria-haspopup="true" className={buttonClasses}>
 							<Icon
 								icon={menuClosedIcon}
