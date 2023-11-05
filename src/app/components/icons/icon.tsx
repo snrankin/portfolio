@@ -32,8 +32,7 @@ export const IconContextConfig: IIconContext = {
 export const IconContext = createContext(IconContextConfig);
 
 export default function Icon(props: IconProps): JSX.Element {
-	let { group, titleDisplay, titleClasses, iconClasses } =
-		useContext(IconContext);
+	let { group, titleDisplay, titleClasses, iconClasses } = props;
 	let iconName = props.icon != undefined ? props.icon : '';
 	const HAS_ICON = hasIcon(iconName, group);
 
@@ -71,6 +70,8 @@ export default function Icon(props: IconProps): JSX.Element {
 	let attr = omit(props, [
 		'titleDisplay',
 		'titleClasses',
+		'iconClasses',
+		'icon',
 		'title',
 		'group',
 		'name',

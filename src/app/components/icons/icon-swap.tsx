@@ -57,12 +57,14 @@ export default function IconSwap(props: IconSwapProps): JSX.Element {
 					<Icon
 						group={groupOff}
 						icon={props.iconOff}
-						className="swap-off"
+						className="swap-off "
+						iconClasses="stroke-2"
 					/>
 					<Icon
 						group={groupOn}
 						icon={props.iconOn}
 						className="swap-on"
+						iconClasses="stroke-2"
 					/>
 				</button>
 			) : null}

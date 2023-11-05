@@ -67,6 +67,7 @@ export default function Icon(props: IconLinkProps): JSX.Element {
 	let attr = omit(props, [
 		'titleDisplay',
 		'titleClasses',
+		'displayUrl',
 		'title',
 		'group',
 		'icon',
