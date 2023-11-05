@@ -4,9 +4,10 @@ import Image from 'next/image';
 
 import { displayDate } from '@/app/lib/utils';
 import { getIconString } from '@/app/lib/icons';
-import { uniq } from 'lodash';
+import { uniq, trim } from 'lodash';
 import Icon from '../icons/icon';
 import { IPosition } from '@/app/lib/interfaces';
+import { paramCase } from 'change-case-all';
 type HighlightItemProps = {
 	content: string;
 };
@@ -46,11 +47,6 @@ export function HighlightItem(props: HighlightItemProps): JSX.Element {
 
 	return <li dangerouslySetInnerHTML={{ __html: content }}></li>;
 }
-
-type HighlightListProps = {
-	items: string[];
-};
-
 export function HighlightList(props: { highlights?: any[] }) {
 	return (
 		<>
@@ -66,21 +62,20 @@ export function HighlightList(props: { highlights?: any[] }) {
 		</>
 	);
 }
-
 export function companyLink(name: string, url: string) {
 	let favicon = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=32`;
 
 	return (
 		<a
 			href={url}
-			className="btn btn-link leading-none min-h-0 mt-4 h-max flex-nowrap flex-start justify-start items-start align-text-top pl-0 pr-0 text-left normal-case no-underline font-normal"
+			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-primary text-lg mt-4"
 			target="_blank"
 		>
 			<Image
 				src={favicon}
 				width={32}
 				height={32}
-				alt={`${name} website favicon`}
+				alt={`${trim(name)} website favicon`}
 				style={{ width: '1em', height: '1em' }}
 				className="m-0"
 			/>
@@ -88,8 +83,12 @@ export function companyLink(name: string, url: string) {
 		</a>
 	);
 }
-export default function TimelineItem(props: IPosition) {
-	let {
+
+export interface TimelineItemProps extends IPosition {
+	index: number;
+}
+export default function TimelineItem(props: TimelineItemProps) {
+	const {
 		company,
 		position,
 		startDate,
@@ -98,39 +97,43 @@ export default function TimelineItem(props: IPosition) {
 		summary,
 		url,
 		location,
+		index,
 	} = props;
 
 	return (
-		// <div className="grid grid-cols-[2rem_1fr] gap-x-3 md:gap-x-5 lg:grid-cols-[175px_2rem_1fr] w-full max-w-full print:grid-cols-[2rem_1fr] timeline-item">
-		<div className="grid grid-cols-[2rem_1fr] gap-x-3 md:gap-x-5 lg:grid-cols-[175px_2rem_1fr] w-full max-w-full timeline-item">
-			{/* <span className="items-center justify-center p-1.5 w-4 h-4 btn btn-icon btn-circle btn-info lg:col-start-2 print:col-start-1"> */}
-			<span className="items-center justify-center p-1.5 w-4 h-4 btn btn-icon btn-circle btn-info lg:col-start-2">
-				<Icon icon="calendar" className="stroke-2" />
-			</span>
-			{/* <p className="font-display uppercase leading-[2rem] text-neutral font-black block whitespace-nowrap col-start-2 row-start-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-w-[170px] lg:text-right print:col-start-2 print:row-start-1 print:row-span-1 print:text-left"> */}
-			<p className="font-display uppercase leading-[2rem] text-neutral font-black block whitespace-nowrap col-start-2 row-start-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-w-[170px] lg:text-right">
-				{displayDate(startDate, endDate)}
-			</p>
-			{/* <div className="flex flex-col items-center row-span-2 col-span-1 col-start-1 lg:col-start-2 print:col-start-1"> */}
-			<div className="flex flex-col items-center row-span-2 col-span-1 col-start-1 lg:col-start-2">
-				<span className="w-0 border-[1px] border-gray-200 grow"></span>
+		<>
+			<div className="grid relative grid-cols-[1.5em_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center lg:items-stretch">
+				{/* Icon */}
+				<div
+					className={`items-center justify-center  relative lg:col-start-2`}
+				>
+					<span className="w-0 border-[1px] border-gray-200 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block"></span>
+					<Icon
+						icon="calendar"
+						className="w-full flex items-center justify-center  relative z-10 text-2xl leading-none bg-secondary-500 rounded-full py-1"
+						iconClasses="stroke-2"
+					/>
+				</div>
+				{/* Date */}
+				<div
+					className={`lg:col-start-1 row-start-1 lg:leading-8 font-display uppercase leading-none text-neutral font-black block whitespace-nowrap lg:text-right`}
+				>
+					{displayDate(startDate, endDate)}
+				</div>
 			</div>
-			{/* <div className="timeline-content pb-11 col-span-1 col-start-2 row-start-2 lg:col-start-3 lg:row-span-2 lg:row-start-1 print:col-span-1 print:col-start-2 print:row-start-2"> */}
-			<div className="timeline-content pb-11 print:pb-0 col-span-1 col-start-2 row-start-2 lg:col-start-3 lg:row-span-2 lg:row-start-1">
-				<div className="prose max-w-full w-auto">
-					<h3 className="card-title font-semibold block">
+			{/* Content */}
+			<div className={`timeline-content pb-4 lg:pb-11 `}>
+				<div className="prose">
+					<h3 className="font-semibold block">
 						{position}{' '}
 						<span className="block">
 							<span className="sr-only">at </span>
 							{companyLink(company, url)}
 						</span>
 					</h3>
-					{/* {summary != undefined && summary != '' ? (
-						<p>{summary}</p>
-					) : null} */}
 					<HighlightList highlights={highlights} />
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
