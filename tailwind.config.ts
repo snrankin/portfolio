@@ -35,6 +35,23 @@ const config: Config = {
 			'2xl': '1536px',
 			// => @media (min-width: 1536px) { ... }
 		},
+		colors: {
+			transparent: 'transparent',
+			current: 'currentColor',
+			black: colors.black,
+			white: colors.white,
+			primary: colors.teal,
+			'primary-content': '#132522',
+			secondary: colors.pink,
+			'secondary-content': '#301822',
+			accent: colors.purple,
+			neutral: colors.gray,
+			info: colors.cyan,
+			success: colors.lime,
+			warning: colors.amber,
+			error: colors.red,
+			gray: colors.gray,
+		},
 		extend: {
 			colors: {
 				transparent: 'transparent',
@@ -121,7 +138,7 @@ const config: Config = {
 							lineHeight: 1,
 						},
 						h2: {
-							fontSize: '22pt',
+							fontSize: '18pt',
 							marginTop: '0',
 							marginBottom: '0.75em',
 							lineHeight: 1,
