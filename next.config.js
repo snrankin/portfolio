@@ -9,6 +9,10 @@ const nextConfig = {
 				port: '',
 				pathname: '/faviconV2',
 			},
+			{
+				protocol: 'https',
+				hostname: 'placehold.co',
+			},
 		],
 	},
 	webpack: (config) => {
