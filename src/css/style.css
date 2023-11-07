@@ -5,5 +5,4 @@
 @import 'tailwindcss/utilities';
 
 @import './globals';
-@import './devices';
 @import './tabs';

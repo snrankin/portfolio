@@ -1,3 +1,14 @@
+:root {
+	--container-width: 90vw;
+	--page-gutter: calc((100vw - var(--container-width)) * 0.5);
+	@media screen(lg) {
+		--container-width: 85vw;
+	}
+	@media screen(xl) {
+		--container-width: 1170px;
+	}
+}
+
 @layer base {
 	*,
 	*::before,
@@ -16,10 +27,22 @@
 	h4 {
 		@apply font-display;
 	}
+
+	.container {
+		max-width: var(--container-width);
+	}
 }
 
 [data-theme='light'] {
 	--pc: 174 75% 11% !important;
+}
+
+@layer components {
+	.btn {
+		min-height: auto;
+		height: auto;
+		@apply p-3;
+	}
 }
 
 .icon {
