@@ -15,10 +15,10 @@ export default function Skills(): JSX.Element {
 			intro="Alright, let's get into the good stuff. Here's what I bring to the table. These are the tools I wield, the languages I speak, and the skills I've polished over time."
 		>
 			<div className="text-center">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-11 pt-11">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 xl:gap-11">
 					<SkillsGroup
 						className="shadow lg:col-span-4"
-						border={true}
+						compact={true}
 						showGroupTitle={true}
 						bodyClasses="items-center text-center"
 						groupClasses="text-4xl flex justify-center flex-wrap items-center gap-3"
@@ -27,7 +27,7 @@ export default function Skills(): JSX.Element {
 					/>
 					<SkillsGroup
 						className="shadow lg:col-span-4"
-						border={true}
+						compact={true}
 						showGroupTitle={true}
 						bodyClasses="items-center text-center"
 						groupClasses="text-4xl flex justify-center flex-wrap items-center gap-3"
@@ -36,8 +36,8 @@ export default function Skills(): JSX.Element {
 					/>
 					<SkillsGroup
 						className="shadow lg:col-span-4"
-						border={true}
 						showGroupTitle={true}
+						compact={true}
 						bodyClasses="items-center text-center"
 						groupClasses="text-4xl flex justify-center flex-wrap items-center gap-3"
 						group="frameworks"
@@ -45,17 +45,17 @@ export default function Skills(): JSX.Element {
 					/>
 					<SkillsGroup
 						className="shadow lg:col-span-6"
-						border={true}
 						showGroupTitle={true}
+						compact={true}
 						bodyClasses="items-center text-center"
 						groupClasses="text-4xl flex justify-center flex-wrap items-center gap-3"
 						group="tools"
 						skillProps={{ titleDisplay: 'popover' }}
 					/>
 					<SkillsGroup
-						className="shadow lg:col-span-6"
-						border={true}
+						className="shadow md:col-span-2 lg:col-span-6"
 						showGroupTitle={true}
+						compact={true}
 						bodyClasses="items-center text-center"
 						groupClasses="text-4xl flex justify-center flex-wrap items-center gap-3"
 						group="software"
