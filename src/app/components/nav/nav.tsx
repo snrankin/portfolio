@@ -64,6 +64,7 @@ export default function Nav(props: NavProps): JSX.Element {
 		'menuOpenedIconGroup',
 		'menuClosedIconGroup',
 		'inNavbar',
+		'menuClasses',
 	]);
 
 	set(navAttr, 'className', navClasses);

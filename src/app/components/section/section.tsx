@@ -13,10 +13,9 @@ export default function Section(props: SectionProps) {
 	let children: React.ReactNode = props.children;
 
 	let classes = classNames(
-		'py-32',
+		'py-12',
+		'xl:py-32',
 		'min-h-screen',
-		'!print:h-auto',
-		'print:py-0',
 		props.className
 	);
 
@@ -34,12 +33,12 @@ export default function Section(props: SectionProps) {
 	return (
 		<Waypoint>
 			<section className={classes} {...sectionProps}>
-				<div className="container mx-auto">
+				<div className="container flex flex-col gap-6">
 					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
 						<Heading {...headingArgs} />
 					)}
 					{props.intro != undefined && !isEmpty(props.intro) && (
-						<div className="prose mx-auto text-center py-11">
+						<div className="prose mx-auto text-center my-0">
 							<p
 								className="lead"
 								dangerouslySetInnerHTML={{

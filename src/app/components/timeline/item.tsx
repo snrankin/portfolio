@@ -102,27 +102,29 @@ export default function TimelineItem(props: TimelineItemProps) {
 
 	return (
 		<>
-			<div className="grid relative grid-cols-[1.5em_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center lg:items-stretch">
+			<div className="grid relative grid-cols-[1.5em_1fr] md:grid-cols-[2em_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center md:items-stretch">
 				{/* Icon */}
 				<div
-					className={`items-center justify-center  relative lg:col-start-2`}
+					className={`items-center justify-center  relative lg:col-start-2  lg:row-start-1`}
 				>
 					<span className="w-0 border-[1px] border-gray-200 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block"></span>
 					<Icon
 						icon="calendar"
-						className="w-full flex items-center justify-center  relative z-10 text-2xl leading-none bg-secondary-500 rounded-full py-1"
+						className="w-full flex items-center justify-center  relative z-10 text-2xl leading-none bg-secondary-500 rounded-full py-1 text-gray-900"
 						iconClasses="stroke-2"
 					/>
 				</div>
 				{/* Date */}
 				<div
-					className={`lg:col-start-1 row-start-1 lg:leading-8 font-display uppercase leading-none text-neutral font-black block whitespace-nowrap lg:text-right`}
+					className={`md:leading-8 font-display uppercase leading-none text-neutral font-black block whitespace-nowrap lg:text-right lg:row-start-1`}
 				>
 					{displayDate(startDate, endDate)}
 				</div>
 			</div>
 			{/* Content */}
-			<div className={`timeline-content pb-4 lg:pb-11 `}>
+			<div
+				className={`timeline-content md:pt-[2em] pb-4 lg:pb-11 lg:mt-0 lg:pt-0`}
+			>
 				<div className="prose">
 					<h3 className="font-semibold block">
 						{position}{' '}

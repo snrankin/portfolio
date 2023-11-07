@@ -23,8 +23,8 @@ export default function Heading(props: HeadingProps): JSX.Element {
 	}
 
 	return (
-		<h2 className="flex justify-center mb-10">
-			<span className="min-w-[300px] mockup-code lg:w-max mx-auto dark:bg-gray-800">
+		<h2 className="flex justify-center my-0">
+			<span className="min-w-full md:min-w-0 mockup-code lg:w-max mx-auto dark:bg-gray-900">
 				{props.title != undefined ? (
 					<span className="sr-only">{props.title} </span>
 				) : null}
