@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780">
+  <rect width="360" height="780" fill="#fafafa" stroke-width="0" />
+  <rect width="360" height="360" fill="#d4d4d4" stroke-width="0" />
+  <rect x="18" y="18.83" width="120" height="40" class="bg-base-100" stroke-width="0" />
+  <g>
+    <rect x="18.57" y="109.8" width="323.43" height="60" class="bg-base-100" stroke-width="0" />
+    <rect x="18.57" y="190.2" width="323.43" height="60" class="bg-base-100" stroke-width="0" />
+  </g>
+  <rect x="80" y="288.79" width="200" height="40" fill="#fafafa" stroke-width="0" />
+  <g>
+    <g>
+      <path d="m18.57,420.83h323.43v215.62H18.57v-215.62Z" fill="#d4d4d4" stroke-width="0" />
+      <path d="m209.14,503.6l-61.9,61.9-28.86-28.86-99.81,99.81h323.43l-132.86-132.85Z" class="bg-base-100" isolation="isolate" opacity=".68" stroke-width="0" />
+      <circle cx="66.83" cy="472.83" r="22.92" class="bg-base-100" isolation="isolate" opacity=".68" stroke-width="0" />
+    </g>
+    <g>
+      <rect x="18.57" y="661.8" width="323.43" height="39.73" fill="#d4d4d4" stroke-width="0" />
+      <rect x="31.7" y="720.58" width="297.17" height="39.73" fill="#d4d4d4" stroke-width="0" />
+    </g>
+  </g>
+  <g>
+    <rect x="301.56" y="24.06" width="40" height="4" fill="#fafafa" stroke-width="0" />
+    <rect x="301.56" y="36.83" width="40" height="4" fill="#fafafa" stroke-width="0" />
+    <rect x="301.56" y="49.6" width="40" height="4" fill="#fafafa" stroke-width="0" />
+  </g>
+</svg>

@@ -1,38 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-	<defs>
-		<style>
-			.b {
-				stroke: #14b8a6;
-			}
-
-			.b,
-			.c {
-				fill: none;
-				stroke-linecap: round;
-				stroke-linejoin: round;
-				stroke-width: 1.75px;
-			}
-
-			.c {
-				stroke: #27272a;
-			}
-
-			@media (prefers-color-scheme: light) {
-				.c {
-					stroke: #27272a;
-				}
-			}
-
-			@media (prefers-color-scheme: dark) {
-				.c {
-					stroke: #52525B;
-				}
-			}
-		</style>
-	</defs>
-	<g>
-		<path class="c" d="m9.04,23.12H3.01c-.78,0-1.42-.64-1.42-1.42v-8.99l-.71-.71.71-.71V2.3c0-.78.64-1.42,1.42-1.42h6.04" />
-		<path class="c" d="m14.96.88h6.04c.78,0,1.42.64,1.42,1.42v8.99l.71.71-.71.71v8.99c0,.78-.64,1.42-1.42,1.42h-6.04" />
-	</g>
-	<polyline class="b" points="14.96 20.17 23.12 12 14.96 3.83 9.04 20.17 .88 12 9.04 3.83" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="m6,23.25h-3.15c-.74,0-1.35-.6-1.35-1.35v-9.15l-.75-.75.75-.75V2.1c0-.74.6-1.35,1.35-1.35h3.15" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path d="m18,.75h3.15c.74,0,1.35.6,1.35,1.35v9.15l.75.75-.75.75v9.15c0,.74-.6,1.35-1.35,1.35h-3.15" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <polyline points="8.75 4 .75 12 8.75 20 15.25 4 23.25 12 15.25 20" fill="none" stroke="#14b8a6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
 </svg>
