@@ -8,7 +8,7 @@ import ProjectsGroup from '@/app/components/projects/list';
 import { ProjectCardProps } from '@/app/components/projects/card';
 import SkillsList from '@/app/components/skills/skills';
 import Timeline from '@/app/components/timeline/print-group';
-import Icon from '@/app/components/icons/icon';
+import Icon from '@/app/components/icons/icon-item';
 
 export default function Content() {
 	var projectCardProps: ProjectCardProps = {

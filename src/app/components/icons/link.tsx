@@ -7,7 +7,7 @@ import { get, isEmpty, startsWith, omit, set } from 'lodash';
 import classNames from 'classnames';
 import { simplifyUrl } from '@/app/lib/utils';
 
-import { IconConfig, IIconContext } from './icon';
+import { IconConfig, IIconContext } from './icon-item';
 export interface IconLinkProps
 	extends IconConfig,
 		Omit<HTMLProps<HTMLAnchorElement>, 'title'> {

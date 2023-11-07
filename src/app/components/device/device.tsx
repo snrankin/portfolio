@@ -1,7 +1,7 @@
 'use client';
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 import './devices.css';
 import BrowserToolbar from './toolbar';
 import DesktopFrame from '@/img/desktop.svg';

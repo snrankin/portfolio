@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { displayDate } from '@/app/lib/utils';
 import { getIconString } from '@/app/lib/icons';
 import { uniq, trim } from 'lodash';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 import { IPosition } from '@/app/lib/interfaces';
 import { paramCase } from 'change-case-all';
 type HighlightItemProps = {

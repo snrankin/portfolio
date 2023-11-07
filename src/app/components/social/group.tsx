@@ -10,8 +10,6 @@ interface SocialLinkProps extends HTMLProps<HTMLDivElement> {
 }
 
 export default function SocialLinks(props: SocialLinkProps) {
-	console.log('🚀 ~ file: group.tsx:14 ~ SocialLinks ~ props:', props);
-
 	let attr: HTMLProps<HTMLDivElement> = omit(props, ['iconProps']);
 
 	return (

@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import { isEmpty, omit, set } from 'lodash';
 import React, { HTMLProps } from 'react';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 import Card, { CardProps } from '../card/card';
 import { displayDate, simplifyUrl } from '@/app/lib/utils';
 import Link from 'next/link';

@@ -1,6 +1,6 @@
 'use client';
 
-import Icon from './icon';
+import Icon from './icon-item';
 import React, { useState } from 'react';
 import { isEmpty, omit, set } from 'lodash';
 import classNames from 'classnames';

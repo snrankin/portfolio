@@ -1,3 +1,4 @@
+'use client';
 import { get, has, isEmpty, startsWith } from 'lodash';
 import classNames from 'classnames';
 import { camelCase, lowerCase } from 'change-case-all';

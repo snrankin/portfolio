@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 import Image from 'next/image';
 
 import Device from '../device/device';

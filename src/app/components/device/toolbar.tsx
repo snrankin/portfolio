@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import classNames from 'classnames';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 import { DeviceProps } from './device';
 
 export const WindowButtons = () => (

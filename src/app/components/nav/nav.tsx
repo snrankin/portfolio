@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { omit, set } from 'lodash';
 import IconSwap from '../icons/icon-swap';
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 
 interface NavProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
 	size?: 'xs' | 'sm' | 'md' | 'lg';

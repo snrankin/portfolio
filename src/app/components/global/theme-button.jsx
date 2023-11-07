@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 
-import Icon from '../icons/icon';
+import Icon from '../icons/icon-item';
 export default function ThemeButton() {
 	let [theme, setTheme] = useState('light');
 
