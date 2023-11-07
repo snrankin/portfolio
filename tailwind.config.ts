@@ -19,6 +19,16 @@ const config: Config = {
 			system: [...defaultTheme.fontFamily.sans],
 			mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
 		},
+		fontSize: {
+			sm: ['0.8rem', '1.5'],
+			base: ['1rem', '1.5'],
+			xl: ['clamp(1.125rem, 1.0871rem + 0.1894vw, 1.25rem)', '1.3'],
+			'2xl': ['clamp(1.266rem, 1.176rem + 0.45vw, 1.563rem)', '1.3'],
+			'3xl': ['clamp(1.424rem, 1.2637rem + 0.8015vw, 1.953rem)', '1.3'],
+			'4xl': ['clamp(1.602rem, 1.3478rem + 1.2712vw, 2.441rem)', '1.2'],
+			'5xl': ['clamp(1.802rem, 1.4232rem + 1.8939vw, 3.052rem)', '1.1'],
+			'6xl': ['clamp(2.027rem, 1.4852rem + 2.7091vw, 3.815rem)', '1.1'],
+		},
 		screens: {
 			sm: '576px',
 			// => @media (min-width: 640px) { ... }
@@ -32,26 +42,10 @@ const config: Config = {
 			xl: '1376px',
 			// => @media (min-width: 1388px) { ... }
 
-			'2xl': '1536px',
+			'2xl': '1920px',
 			// => @media (min-width: 1536px) { ... }
 		},
-		colors: {
-			transparent: 'transparent',
-			current: 'currentColor',
-			black: colors.black,
-			white: colors.white,
-			primary: colors.teal,
-			'primary-content': '#132522',
-			secondary: colors.pink,
-			'secondary-content': '#301822',
-			accent: colors.purple,
-			neutral: colors.gray,
-			info: colors.cyan,
-			success: colors.lime,
-			warning: colors.amber,
-			error: colors.red,
-			gray: colors.gray,
-		},
+
 		extend: {
 			colors: {
 				transparent: 'transparent',
@@ -66,7 +60,6 @@ const config: Config = {
 				success: colors.lime,
 				warning: colors.amber,
 				error: colors.red,
-				gray: colors.gray,
 			},
 			fontFamily: {
 				sans: ['var(--font-dm-sans)', ...defaultTheme.fontFamily.sans],
@@ -90,6 +83,15 @@ const config: Config = {
 			},
 			maxWidth: {
 				screen: '100vw',
+			},
+			width: {
+				'full-pg': 'calc(100% + var(--page-gutter))',
+			},
+			strokeWidth: {
+				'10': '10px',
+				'15': '15px',
+				'20': '20px',
+				'30': '30px',
 			},
 			aspectRatio: {
 				tablet: '768 / 1024',
@@ -146,6 +148,12 @@ const config: Config = {
 					},
 				},
 			},
+			margin: {
+				pg: 'var(--page-gutter)',
+			},
+			padding: {
+				pg: 'var(--page-gutter)',
+			},
 		},
 
 		container: {
@@ -159,11 +167,11 @@ const config: Config = {
 			},
 			// default breakpoints but with 40px removed
 			screens: {
-				sm: '90vw',
-				md: '90vw',
-				lg: '85vw',
-				xl: '1170px',
-				'2xl': '1170px',
+				sm: 'var(--container-width)',
+				md: 'var(--container-width)',
+				lg: 'var(--container-width)',
+				xl: 'var(--container-width)',
+				'2xl': 'var(--container-width)',
 			},
 		},
 		row: {
@@ -196,10 +204,14 @@ const config: Config = {
 						'[data-theme=light]'
 					],
 					primary: colors.teal[500],
+					'primary-content': '#132522',
 					secondary: colors.pink[500],
+					'secondary-content': '#301822',
 					accent: colors.purple[500],
-					neutral: colors.gray[900],
-					'base-100': colors.gray[50],
+					neutral: colors.gray[800],
+					'base-100': colors.gray[100],
+					'base-200': colors.gray[200],
+					'base-300': colors.gray[300],
 					info: colors.cyan[500],
 					success: colors.lime[500],
 					warning: colors.amber[500],
@@ -215,7 +227,9 @@ const config: Config = {
 					secondary: colors.pink[500],
 					accent: colors.purple[500],
 					neutral: colors.gray[100],
-					'base-100': colors.gray[800],
+					'base-100': colors.gray[700],
+					'base-200': colors.gray[800],
+					'base-300': colors.gray[900],
 					info: colors.cyan[500],
 					success: colors.lime[500],
 					warning: colors.amber[500],
