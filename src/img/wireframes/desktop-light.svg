@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="desktop-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <polyline points="1920 0 1920 1080 0 1080 0 0 1920 0" fill="#fff" stroke-width="0"/>
+  <rect y="52" width="1920" height="600" fill="#d1d5db" stroke-width="0"/>
+  <rect x="244.32" y="72" width="300" height="100" fill="#f3f4f6" stroke-width="0"/>
+  <g>
+    <rect x="1600" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1500" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1400" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1300" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1200" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1100" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+  </g>
+  <g>
+    <rect x="472.5" y="252" width="975" height="70" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="527.5" y="352" width="865" height="70" fill="#f3f4f6" stroke-width="0"/>
+  </g>
+  <rect x="810" y="482" width="300" height="60" fill="#f3f4f6" stroke-width="0"/>
+  <path d="m610.56,760.21h330v220h-330v-220Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m805,844.66l-63.16,63.16-29.45-29.45-101.84,101.84h330l-135.56-135.55Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="659.8" cy="813.27" r="23.38" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="610.56" y="1006.07" width="330" height="40.54" fill="#d1d5db" stroke-width="0"/>
+  <rect x="623.95" y="1066.05" width="303.21" height="13.95" fill="#d1d5db" stroke-width="0"/>
+  <path d="m979.44,760.21h330v220h-330v-220Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m1173.88,844.66l-63.16,63.16-29.45-29.45-101.84,101.84h330l-135.56-135.55Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="1028.69" cy="813.27" r="23.38" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="979.44" y="1006.07" width="330" height="40.54" fill="#d1d5db" stroke-width="0"/>
+  <rect x="992.84" y="1066.05" width="303.21" height="13.95" fill="#d1d5db" stroke-width="0"/>
+  <path d="m1348.33,760.21h330v220h-330v-220Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m1542.77,844.66l-63.16,63.16-29.45-29.45-101.84,101.84h330l-135.56-135.55Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="1397.57" cy="813.27" r="23.38" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="1348.33" y="1006.07" width="330" height="40.54" fill="#d1d5db" stroke-width="0"/>
+  <rect x="1361.72" y="1066.05" width="303.21" height="14.3" fill="#d1d5db" stroke-width="0"/>
+  <path d="m241.67,760.21h330v220H241.67v-220Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m436.11,844.66l-63.16,63.16-29.45-29.45-101.84,101.84h330l-135.56-135.55Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="290.92" cy="813.27" r="23.38" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="241.67" y="1006.07" width="330" height="40.54" fill="#d1d5db" stroke-width="0"/>
+  <rect x="255.07" y="1066.05" width="303.21" height="13.95" fill="#d1d5db" stroke-width="0"/>
+  <g>
+    <rect width="1920" height="52" fill="#e5e7eb" stroke-width="0"/>
+    <rect x="669" y="13.5" width="582" height="27" rx="5.78" ry="5.78" fill="#fff" stroke-width="0"/>
+    <g>
+      <circle cx="26" cy="26" r="6" fill="#f77171" stroke-width="0"/>
+      <circle cx="45.5" cy="26" r="6" fill="#fabe24" stroke-width="0"/>
+      <circle cx="65" cy="26" r="6" fill="#a2e535" stroke-width="0"/>
+    </g>
+    <text transform="translate(914.99 30.81)" fill="#27272a" font-family="SFCompact-Regular, &apos;SF Compact&apos;" font-size="12" font-variation-settings="&apos;opsz&apos; 19, &apos;wght&apos; 457"><tspan x="0" y="0" letter-spacing="0em">y</tspan><tspan x="6.34" y="0">ou</tspan><tspan x="20.24" y="0" letter-spacing=".01em">r</tspan><tspan x="25.06" y="0" letter-spacing="0em">w</tspan><tspan x="33.87" y="0">ebs</tspan><tspan x="53.62" y="0" letter-spacing="0em">i</tspan><tspan x="57.05" y="0">te.o</tspan><tspan x="78.46" y="0" letter-spacing="0em">r</tspan><tspan x="83.14" y="0">g</tspan></text>
+  </g>
+</svg>

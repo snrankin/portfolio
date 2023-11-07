@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="mobile-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780">
+  <rect y="90" width="360" height="690" fill="#374151" stroke-width="0"/>
+  <rect y="90" width="360" height="360" fill="#4b5563" stroke-width="0"/>
+  <rect x="18.28" y="108.66" width="120" height="40" fill="#9ca3af" stroke-width="0"/>
+  <g>
+    <rect x="18.71" y="199.63" width="323.43" height="60" fill="#9ca3af" stroke-width="0"/>
+    <rect x="18.71" y="280.03" width="323.43" height="60" fill="#9ca3af" stroke-width="0"/>
+  </g>
+  <rect x="80.43" y="378.62" width="200" height="40" fill="#9ca3af" stroke-width="0"/>
+  <path d="m18.28,510.66h323.43v215.62H18.28v-215.62Z" fill="#4b5563" stroke-width="0"/>
+  <path d="m208.86,593.43l-61.9,61.9-28.86-28.86-99.81,99.81h323.43l-132.86-132.85Z" fill="#9ca3af" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="66.55" cy="562.66" r="22.92" fill="#9ca3af" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <g>
+    <rect x="301.84" y="113.89" width="40" height="4" fill="#9ca3af" stroke-width="0"/>
+    <rect x="301.84" y="126.66" width="40" height="4" fill="#9ca3af" stroke-width="0"/>
+    <rect x="301.84" y="139.43" width="40" height="4" fill="#9ca3af" stroke-width="0"/>
+  </g>
+  <rect width="360" height="90" fill="#6b7280" stroke-width="0"/>
+  <rect x="17.86" y="54.36" width="324.28" height="27" rx="4.43" ry="4.43" fill="#9ca3af" stroke-width="0"/>
+  <text transform="translate(134.99 71.68)" fill="#f9f9f9" font-family="SFCompact-Regular, &apos;SF Compact&apos;" font-size="12" font-variation-settings="&apos;opsz&apos; 19, &apos;wght&apos; 457"><tspan x="0" y="0" letter-spacing="0em">y</tspan><tspan x="6.34" y="0">ou</tspan><tspan x="20.24" y="0" letter-spacing=".01em">r</tspan><tspan x="25.06" y="0" letter-spacing="0em">w</tspan><tspan x="33.87" y="0">ebs</tspan><tspan x="53.62" y="0" letter-spacing="0em">i</tspan><tspan x="57.05" y="0">te.o</tspan><tspan x="78.46" y="0" letter-spacing="0em">r</tspan><tspan x="83.14" y="0">g</tspan></text>
+  <rect x="17.2" y="740" width="325.6" height="40" fill="#9ca3af" isolation="isolate" stroke-width="0"/>
+</svg>

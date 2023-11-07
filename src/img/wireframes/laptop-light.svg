@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="laptop-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960">
+  <rect y="52" width="1440" height="908" fill="#fff" stroke-width="0"/>
+  <rect y="52" width="1440" height="450" fill="#d1d5db" stroke-width="0"/>
+  <rect x="108" y="82" width="240" height="80" fill="#f3f4f6" stroke-width="0"/>
+  <g>
+    <rect x="1252" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1152" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="1052" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="952" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="852" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="752" y="112" width="80" height="20" fill="#f3f4f6" stroke-width="0"/>
+  </g>
+  <g>
+    <rect x="302.14" y="212" width="835.71" height="60" fill="#f3f4f6" stroke-width="0"/>
+    <rect x="349.29" y="292" width="741.43" height="60" fill="#f3f4f6" stroke-width="0"/>
+  </g>
+  <rect x="620" y="407.72" width="200" height="40" fill="#f3f4f6" stroke-width="0"/>
+  <rect y="52" width="1440" height="810" fill="none" stroke-width="0"/>
+  <path d="m109.33,606.75h380v253.33H109.33v-253.33Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m333.23,704l-72.73,72.73-33.91-33.91-117.27,117.27h380l-156.1-156.09Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="166.04" cy="667.85" r="26.92" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="109.33" y="889.86" width="380" height="46.68" fill="#d1d5db" stroke-width="0"/>
+  <path d="m530,606.75h380v253.33h-380v-253.33Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m753.9,704l-72.73,72.73-33.91-33.91-117.27,117.27h380l-156.1-156.09Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="586.71" cy="667.85" r="26.92" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="530" y="889.86" width="380" height="46.68" fill="#d1d5db" stroke-width="0"/>
+  <path d="m952,606.75h380v253.33h-380v-253.33Z" fill="#d1d5db" stroke-width="0"/>
+  <path d="m1175.9,704l-72.73,72.73-33.91-33.91-117.27,117.27h380l-156.1-156.09Z" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <circle cx="1008.71" cy="667.85" r="26.92" fill="#f3f4f6" isolation="isolate" opacity=".68" stroke-width="0"/>
+  <rect x="952" y="889.86" width="380" height="46.68" fill="#d1d5db" stroke-width="0"/>
+  <rect width="1440" height="52" fill="#e5e7eb" stroke-width="0"/>
+  <rect x="429" y="13.5" width="582" height="27" rx="5.78" ry="5.78" fill="#fff" stroke-width="0"/>
+  <g>
+    <circle cx="26" cy="26" r="6" fill="#f77171" stroke-width="0"/>
+    <circle cx="45.5" cy="26" r="6" fill="#fabe24" stroke-width="0"/>
+    <circle cx="65" cy="26" r="6" fill="#a2e535" stroke-width="0"/>
+  </g>
+  <text transform="translate(674.99 30.81)" fill="#27272a" font-family="SFCompact-Regular, &apos;SF Compact&apos;" font-size="12" font-variation-settings="&apos;opsz&apos; 19, &apos;wght&apos; 457"><tspan x="0" y="0" letter-spacing="0em">y</tspan><tspan x="6.34" y="0">ou</tspan><tspan x="20.24" y="0" letter-spacing=".01em">r</tspan><tspan x="25.06" y="0" letter-spacing="0em">w</tspan><tspan x="33.87" y="0">ebs</tspan><tspan x="53.62" y="0" letter-spacing="0em">i</tspan><tspan x="57.05" y="0">te.o</tspan><tspan x="78.46" y="0" letter-spacing="0em">r</tspan><tspan x="83.14" y="0">g</tspan></text>
+</svg>
