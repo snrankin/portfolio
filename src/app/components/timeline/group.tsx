@@ -14,7 +14,6 @@ export default function Timeline(
 	let args: HTMLProps<HTMLDivElement> = props;
 
 	set(args, 'className', classes);
-	console.log('🚀 ~ file: group.tsx:22 ~ args:', args);
 
 	return (
 		<div className="flex justify-center">
