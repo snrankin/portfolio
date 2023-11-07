@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Icon from '../icons/icon';
 import Image from 'next/image';
 
-import Device from './device';
+import Device from '../device/device';
 import { IProject } from '@/app/lib/interfaces';
 
 export default function DeviceTabs(props: IProject) {
