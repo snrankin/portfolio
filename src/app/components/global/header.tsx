@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import Logo from '@/img/logo.svg';
+import Logo from '@/img/logo-fill.svg';
 import Close from '@/img/close.svg';
 import Menu from '@/img/menu.svg';
 import SiteLinks from './site-links';
@@ -54,16 +54,24 @@ export default function Header(): JSX.Element {
 	return (
 		<>
 			<header id="site-header" className={headerClasses}>
-				<nav className="navbar">
+				<div className="navbar px-pg">
 					<div className="navbar-start">
-						<Link href="/" className="w-[40px] lg:w-[60px] block">
-							<Logo className="fill-base-content w-full" />
+						<Link
+							href="/"
+							className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] block"
+						>
+							<svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] dark:hidden">
+								<use href={`/logos-sprite.svg#logo-dark `} />
+							</svg>
+							<svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] hidden dark:block">
+								<use href={`/logos-sprite.svg#logo-light `} />
+							</svg>
 						</Link>
 					</div>
 					<Nav
 						inNavbar={true}
 						direction="horizontal"
-						className="navbar-center hidden lg:flex"
+						className="navbar-center hidden md:flex"
 					>
 						<SiteLinks />
 					</Nav>
@@ -73,14 +81,15 @@ export default function Header(): JSX.Element {
 							inNavbar={true}
 							direction="vertical"
 							dropdown="end"
-							btnClasses="btn-circle !h-auto justify-center items-center  aspect-square bg-gray-200 shadow-sm aspect-w-1 aspect-h-1 w-11 md:hidden"
+							btnClasses="btn-circle justify-center items-center bg-base-100 shadow-sm md:hidden w-[40px] h-[40px]"
 							menuClosedIcon="menu"
 							menuOpenedIcon="close"
+							menuClasses="bg-base-100 rounded"
 						>
 							<SiteLinks />
 						</Nav>
 					</div>
-				</nav>
+				</div>
 			</header>
 			<Waypoint onEnter={handleEnter} onLeave={handleExit}>
 				<div className="spacer min-h-[80px] -mb-[80px] z-50 static"></div>
