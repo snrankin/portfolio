@@ -31,16 +31,6 @@
 }
 
 .aspect {
-	&-laptop {
-		aspect-ratio: 1195 / 630;
-		&::before {
-			content: '';
-			display: block;
-			width: 100%;
-			aspect-ratio: 1195 / 630;
-			padding-bottom: calc(630 / 1195 * 100%);
-		}
-	}
 	&-video {
 		aspect-ratio: 16 / 9;
 		&::before {
@@ -52,33 +42,144 @@
 		}
 	}
 	&-desktop {
-		aspect-ratio: 512 / 431;
+		aspect-ratio: 500 / 422;
 		&::before {
 			content: '';
 			display: block;
 			width: 100%;
-			aspect-ratio: 512 / 431;
-			padding-bottom: calc(431 / 512 * 100%);
+			aspect-ratio: 500 / 422;
+			padding-bottom: calc(422 / 500 * 100%);
+		}
+	}
+	&-laptop {
+		aspect-ratio: 360 / 230;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 360 / 230;
+			padding-bottom: calc(230 / 360 * 100%);
 		}
 	}
 	&-tablet {
-		aspect-ratio: 3 / 4;
+		aspect-ratio: 162.5 / 225.5;
 		&::before {
 			content: '';
 			display: block;
 			width: 100%;
-			aspect-ratio: 3 / 4;
-			padding-bottom: calc(4 / 3 * 100%);
+			aspect-ratio: 162.5 / 225.5;
+			padding-bottom: calc(225.5 / 162.5 * 100%);
 		}
 	}
 	&-mobile {
-		aspect-ratio: 900 / 1950;
+		aspect-ratio: 63 / 131;
 		&::before {
 			content: '';
 			display: block;
 			width: 100%;
-			aspect-ratio: 900 / 1950;
-			padding-bottom: calc(1950 / 900 * 100%);
+			aspect-ratio: 63 / 131;
+			padding-bottom: calc(131 / 63 * 100%);
+		}
+	}
+}
+
+.device {
+	&-desktop {
+		aspect-ratio: 500 / 422;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 500 / 422;
+			padding-bottom: calc(422 / 500 * 100%);
+		}
+	}
+	&-laptop {
+		aspect-ratio: 360 / 230;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 360 / 230;
+			padding-bottom: calc(230 / 360 * 100%);
+		}
+	}
+	&-tablet {
+		aspect-ratio: 162.5 / 225.5;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 162.5 / 225.5;
+			padding-bottom: calc(225.5 / 162.5 * 100%);
+		}
+	}
+	&-mobile {
+		aspect-ratio: 63 / 131;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 63 / 131;
+			padding-bottom: calc(131 / 63 * 100%);
+		}
+
+		.screen {
+			mask-image: url(./mask-mobile.svg);
+			mask-repeat: no-repeat;
+		}
+	}
+}
+
+.screen {
+	&-video {
+		aspect-ratio: 16 / 9;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			padding-bottom: calc(9 / 16 * 100%);
+		}
+	}
+	&-desktop {
+		aspect-ratio: 500 / 422;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 500 / 422;
+			padding-bottom: calc(422 / 500 * 100%);
+		}
+	}
+	&-laptop {
+		aspect-ratio: 360 / 230;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 360 / 230;
+			padding-bottom: calc(230 / 360 * 100%);
+		}
+	}
+	&-tablet {
+		aspect-ratio: 162.5 / 225.5;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 162.5 / 225.5;
+			padding-bottom: calc(225.5 / 162.5 * 100%);
+		}
+	}
+	&-mobile {
+		aspect-ratio: 63 / 131;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			aspect-ratio: 63 / 131;
+			padding-bottom: calc(131 / 63 * 100%);
 		}
 	}
 }

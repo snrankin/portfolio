@@ -18,21 +18,36 @@ export interface DeviceProps extends HTMLProps<HTMLDivElement> {
 }
 
 export default function Device(props: DeviceProps): JSX.Element {
-	var wrapperClasses = classNames(props.className);
+	var wrapperClasses = classNames(
+		'device',
+		`device-${props.type}`,
+		`aspect-${props.type}`,
+		'relative',
+		'z-10',
+		'block',
+		props.className
+	);
 
 	let atts = omit(props, ['type', 'url', 'title', 'children']);
 
 	set(atts, 'className', wrapperClasses);
 
 	var deviceClasses = classNames(
-		'device',
-		`device-${props.type}`,
+		'w-full',
+		'absolute',
+		'inset-0',
+		'z-10',
+		'block',
+		'min-w-full',
+		'h-auto'
+	);
+	var innerClasses = classNames(
+		`aspect-${props.type}`,
 		'w-full',
 		'relative',
 		'z-10',
 		'block',
-		'min-w-full',
-		'h-full'
+		'min-w-full'
 	);
 
 	var screenClasses = classNames(
@@ -42,17 +57,9 @@ export default function Device(props: DeviceProps): JSX.Element {
 		'display',
 		'rounded-0',
 		'w-full',
+		'h-full',
 		'bg-white',
-		{
-			'aspect-w-16': props.type == 'desktop',
-			'aspect-h-9': props.type == 'desktop',
-			'aspect-w-3': props.type == 'laptop',
-			'aspect-h-2': props.type == 'laptop',
-			'aspect-w-[768]': props.type == 'tablet',
-			'aspect-h-[1024]': props.type == 'tablet',
-			'aspect-w-[59]': props.type == 'mobile',
-			'aspect-h-[126]': props.type == 'mobile',
-		}
+		`aspect-${props.type}`
 	);
 
 	var displayClasses = classNames(
@@ -62,11 +69,13 @@ export default function Device(props: DeviceProps): JSX.Element {
 		'rounded-0',
 		'left-0',
 		'top-0',
-		'w-full',
+		'display',
 		{
+			'h-[58.8%]': props.type == 'desktop',
+			'pt-[2.8%]': props.type == 'laptop',
 			'px-[7.361%]': props.type == 'laptop',
 			'p-[5.247%]': props.type == 'tablet',
-			'p-[4.677%]': props.type == 'mobile',
+			// 'p-[4.677%]': props.type == 'mobile',
 			'p-[2.6%]': props.type == 'desktop',
 		}
 	);
@@ -88,34 +97,32 @@ export default function Device(props: DeviceProps): JSX.Element {
 	let children: React.ReactNode = props.children;
 	return (
 		<div {...atts}>
-			<div className="relative w-full h-full">
-				<div className={displayClasses}>
-					<div className={screenClasses}>
-						<div
-							className={`absolute top-0 left-0 w-full h-full  mockup-browser ${props.type} !rounded-none`}
-						>
-							{props.url != undefined && (
-								<BrowserToolbar {...props} />
-							)}
+			<div className={displayClasses}>
+				<div className={screenClasses}>
+					<div
+						className={`absolute top-0 left-0 w-full h-full  mockup-browser ${props.type} !rounded-none`}
+					>
+						{props.url != undefined && (
+							<BrowserToolbar {...props} />
+						)}
 
-							{children}
-						</div>
+						{children}
 					</div>
 				</div>
-
-				{props.type == 'mobile' && (
-					<MobileFrame className={deviceClasses} />
-				)}
-				{props.type == 'tablet' && (
-					<TabletFrame className={deviceClasses} />
-				)}
-				{props.type == 'laptop' && (
-					<LaptopFrame className={deviceClasses} />
-				)}
-				{props.type == 'desktop' && (
-					<DesktopFrame className={deviceClasses} />
-				)}
 			</div>
+
+			{props.type == 'mobile' && (
+				<MobileFrame className={deviceClasses} />
+			)}
+			{props.type == 'tablet' && (
+				<TabletFrame className={deviceClasses} />
+			)}
+			{props.type == 'laptop' && (
+				<LaptopFrame className={deviceClasses} />
+			)}
+			{props.type == 'desktop' && (
+				<DesktopFrame className={deviceClasses} />
+			)}
 		</div>
 	);
 }
