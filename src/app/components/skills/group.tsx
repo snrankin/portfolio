@@ -23,7 +23,12 @@ export default function SkillsGroup(props: SkillsGroupProps) {
 		props.className
 	);
 
-	let groupProps = omit(props, ['skillProps']);
+	let groupProps = omit(props, [
+		'skillProps',
+		'groupClasses',
+		'showGroupTitle',
+		'group',
+	]);
 
 	let groupClasses = classNames(props.groupClasses);
 
