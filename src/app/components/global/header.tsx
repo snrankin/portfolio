@@ -3,18 +3,17 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import Logo from '@/img/logo-fill.svg';
-import Close from '@/img/close.svg';
-import Menu from '@/img/menu.svg';
 import SiteLinks from './site-links';
 import Nav from '../nav/nav';
 import classNames from 'classnames';
 import { Waypoint } from 'react-waypoint';
-const ThemeButton = dynamic(() => import('./theme-button'), {
-	ssr: false,
-});
+import ThemeButton from './theme-button';
 
-export default function Header(): JSX.Element {
+interface HeaderProps {
+	setTheme: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function Header(props: HeaderProps) {
 	let [isScrolled, setScrolled] = useState(false);
 	let headerClasses = classNames({
 		fixed: true,
@@ -76,7 +75,7 @@ export default function Header(): JSX.Element {
 						<SiteLinks />
 					</Nav>
 					<div className="navbar-end">
-						<ThemeButton />
+						<ThemeButton setTheme={props.setTheme} />
 						<Nav
 							inNavbar={true}
 							direction="vertical"
