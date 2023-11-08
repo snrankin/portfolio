@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, createContext } from 'react';
 
 import type { Metadata } from 'next';
 import { Inconsolata, Poppins, DM_Sans, Anonymous_Pro } from 'next/font/google';
@@ -75,34 +75,6 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	// useEffect(() => {
-	// 	window.addEventListener('keydown', (event) => {
-	// 		var customViewportCorrectionVariable = 'vh';
-
-	// 		function setViewportProperty(doc: HTMLElement) {
-	// 			var prevClientHeight: number | undefined;
-	// 			var customVar =
-	// 				'--' + (customViewportCorrectionVariable || 'vh');
-	// 			function handleResize() {
-	// 				var clientHeight = doc.clientHeight;
-	// 				if (clientHeight === prevClientHeight) return;
-	// 				requestAnimationFrame(function updateViewportHeight() {
-	// 					doc.style.setProperty(
-	// 						customVar,
-	// 						clientHeight * 0.01 + 'px'
-	// 					);
-	// 					prevClientHeight = clientHeight;
-	// 				});
-	// 			}
-	// 			handleResize();
-	// 			return handleResize;
-	// 		}
-	// 		window.addEventListener(
-	// 			'resize',
-	// 			setViewportProperty(document.documentElement)
-	// 		);
-	// 	});
-	// }, []);
 	return (
 		<html
 			lang="en"
@@ -115,7 +87,7 @@ export default function RootLayout({
 				suppressHydrationWarning={true}
 			>
 				{children}
-				{/* <Script src="@/js/global.js" /> */}
+				<Script src="@/js/global.js" />
 			</body>
 		</html>
 	);
