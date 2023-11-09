@@ -1,7 +1,7 @@
 'use client';
 import { IProject } from '@/app/lib/interfaces';
 import Section from '@/app/components/section/section';
-import DeviceTabs from '@/app/components/device-tabs/device-tabs';
+import DeviceTabs from '@/app/components/device/tabs';
 import { paramCase } from 'change-case-all';
 import Icon from '@/app/components/icons/icon-item';
 import classNames from 'classnames';
