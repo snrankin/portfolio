@@ -2,15 +2,14 @@
 
 import classNames from 'classnames';
 import { isEmpty, omit, pick, pull, set } from 'lodash';
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import Icon from '../icons/icon-item';
 import Card, { CardProps } from '../card/card';
 import { displayDate, simplifyUrl } from '@/app/lib/utils';
 import Link from 'next/link';
 import IconLink from '../icons/link';
-import { IProject, IProjectLinks } from '@/app/lib/interfaces';
+import { IProject } from '@/app/lib/interfaces';
 import { paramCase } from 'change-case-all';
-import { project } from '../../(pages)/projects/lazoo/page';
 export interface ProjectCardProps extends CardProps, IProject {}
 export function ProjectLinks({ project }: { project: IProject }) {
 	let links = project.links;
