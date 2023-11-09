@@ -79,7 +79,7 @@ export default function Content() {
 					<h2 className="font-bold">Projects</h2>
 					<ProjectsGroup
 						className="grid grid-cols-1  gap-4 justify-between"
-						projectProps={projectCardProps}
+						projects="portfolio,lazoo,midfirst,riester,skipro"
 					/>
 				</div>
 			</div>
