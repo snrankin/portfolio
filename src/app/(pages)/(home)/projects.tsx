@@ -23,6 +23,7 @@ export default function Projects(): JSX.Element {
 			<ProjectsGroup
 				className="grid gap-6 lg:gap-11 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
 				projectProps={projectCardProps}
+				projects="midfirst,wp-readme,lazoo,skipro,riester,spectrum"
 			/>
 		</Section>
 	);
