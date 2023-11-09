@@ -7,14 +7,18 @@ import SiteLinks from './site-links';
 import Nav from '../nav/nav';
 import classNames from 'classnames';
 import { Waypoint } from 'react-waypoint';
-import ThemeButton from './theme-button';
+import ThemeButton from '@/app/components/theme-swap/theme-button';
 
 interface HeaderProps {
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
+import Logo from './logo';
 export default function Header(props: HeaderProps) {
 	let [isScrolled, setScrolled] = useState(false);
+
+	console.log('🚀 ~ file: header.tsx:20 ~ Header ~ isScrolled:', isScrolled);
+
 	let headerClasses = classNames({
 		fixed: true,
 		'print:hidden': true,
@@ -26,17 +30,19 @@ export default function Header(props: HeaderProps) {
 		'bg-transparent': !isScrolled,
 		'bg-base-100': isScrolled,
 		'z-50': true,
-		'drop-shadow-md': isScrolled,
-		'drop-shadow-none': !isScrolled,
+		'shadow-sm': isScrolled,
+		'shadow-none': !isScrolled,
 	});
 
-	const atTop = () => {
-		if (window.scrollY == 0) {
-			setScrolled(true);
-		} else {
-			setScrolled(false);
+	useEffect(() => {
+		if (window != undefined) {
+			if (window.scrollY == 0) {
+				setScrolled(false);
+			} else {
+				setScrolled(true);
+			}
 		}
-	};
+	}, []);
 
 	const handleExit = (e: any) => {
 		if (e.currentPosition == 'above') {
@@ -59,12 +65,7 @@ export default function Header(props: HeaderProps) {
 							href="/"
 							className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] block"
 						>
-							<svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] dark:hidden">
-								<use href={`/logos-sprite.svg#logo-dark `} />
-							</svg>
-							<svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] hidden dark:block">
-								<use href={`/logos-sprite.svg#logo-light `} />
-							</svg>
+							<Logo className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px]" />
 						</Link>
 					</div>
 					<Nav
@@ -91,7 +92,7 @@ export default function Header(props: HeaderProps) {
 				</div>
 			</header>
 			<Waypoint onEnter={handleEnter} onLeave={handleExit}>
-				<div className="spacer min-h-[80px] -mb-[80px] z-50 static"></div>
+				<div className="spacer min-h-[80px] -mb-[80px] z-50 static print:hidden"></div>
 			</Waypoint>
 		</>
 	);
