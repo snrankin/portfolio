@@ -93,7 +93,7 @@ export default function Hero(): JSX.Element {
 						</button>
 					</div>
 				</div>
-				<div className="md:w-2/4">
+				<div className="w-full md:w-2/4">
 					<div className="md:w-full-pg drop-shadow-lg md:-mr-pg">
 						<Grid>
 							<Grid.Desktop>
