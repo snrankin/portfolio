@@ -94,6 +94,7 @@ export interface IProject extends Object {
 	image?: StaticImport;
 	highlights?: string[];
 	desktop?: StaticImport;
+	laptop?: StaticImport;
 	tablet?: StaticImport;
 	mobile?: StaticImport;
 	links?: IProjectLinks;

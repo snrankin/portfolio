@@ -3,7 +3,7 @@ import { IProject } from './interfaces';
 export const portfolio: IProject = {
 	title: "Sam Rankin's Developer Portfolio",
 	shortTitle: 'My Portfolio',
-	slug: 'porfolio',
+	slug: 'portfolio',
 	startDate: '2023-10-28',
 	endDate: '2023-11-02',
 	summary:
@@ -54,7 +54,7 @@ export const wpReadMe: IProject = {
 	slug: 'wp-readme',
 	repo: 'https://github.com/snrankin/generate-wp-readme',
 	url: 'https://www.npmjs.com/package/@snrankin/generate-wp-readme',
-	highlights: ['TypeScript', 'NodeJS', 'JavaScript'],
+	highlights: ['TypeScript', 'Node.JS', 'JavaScript', 'NPM'],
 	links: {
 		github: 'https://github.com/snrankin/generate-wp-readme',
 		npm: 'https://www.npmjs.com/package/@snrankin/generate-wp-readme',

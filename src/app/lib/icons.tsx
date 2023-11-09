@@ -4,6 +4,12 @@ import classNames from 'classnames';
 import { camelCase, lowerCase } from 'change-case-all';
 import { StringDictionary } from './utils';
 
+import figma from '@/img/icons/dev/figma.svg';
+import kentico from '@/img/icons/dev/kentico.svg';
+import postcss from '@/img/icons/dev/postcss.svg';
+import shopify from '@/img/icons/dev/shopify.svg';
+import umbraco from '@/img/icons/dev/umbraco.svg';
+
 export const WebIcons: StringDictionary = {
 	calendar: 'calendar',
 	close: 'close',
@@ -17,27 +23,29 @@ export const WebIcons: StringDictionary = {
 	phone: 'phone',
 	print: 'print',
 	sun: 'sun',
+	web: 'web',
+	code: 'code',
 };
 
 export const DevIcons: StringDictionary = {
-	babel: 'devicon-babel-plain colored',
+	babel: 'devicon-babel-plain text-[#E0BE34] dark:text-[#f9dc3e]',
 	bitbucket: 'devicon-bitbucket-original color',
-	bootstrap: 'devicon-bootstrap-plain color',
-	composer: 'devicon-composer-line colored',
-	'c#': 'devicon-csharp-plain colored',
+	bootstrap: 'devicon-bootstrap-plain color dark:text-[#AB68F7]',
+	composer: 'devicon-composer-line colored dark:text-current',
+	'c#': 'devicon-csharp-plain colored dark:text-[#9550A3]',
 	css: 'devicon-css3-plain colored',
 	css3: 'devicon-css3-plain colored',
 	figma: 'figma',
 	git: 'devicon-git-plain colored',
-	github: 'devicon-github-original colored',
+	github: 'devicon-github-original colored dark:text-current',
 	html: 'devicon-html5-plain colored',
 	html5: 'devicon-html5-plain colored',
 	illustrator: 'devicon-illustrator-plain color',
-	javascript: 'devicon-javascript-plain colored',
+	javascript: 'devicon-javascript-plain text-[#D9BD41] dark:text-[#f0db4f] ',
 	jira: 'devicon-jira-plain colored',
 	kentico: 'kentico',
 	laravel: 'devicon-laravel-plain colored',
-	nextJs: 'devicon-nextjs-original colored',
+	nextJs: 'devicon-nextjs-original colored dark:text-current',
 	nodeJs: 'devicon-nodejs-plain colored',
 	npm: 'devicon-npm-original-wordmark colored',
 	photoshop: 'devicon-photoshop-plain color',
@@ -52,7 +60,7 @@ export const DevIcons: StringDictionary = {
 	vscode: 'devicon-vscode-plain colored',
 	webpack: 'devicon-webpack-plain colored',
 	woocommerce: 'devicon-woocommerce-plain colored',
-	wordpress: 'devicon-wordpress-plain colored',
+	wordpress: 'devicon-wordpress-plain colored dark:text-current',
 	xd: 'devicon-xd-plain color',
 	yarn: 'devicon-yarn-plain colored',
 };
@@ -111,11 +119,19 @@ export function getIcon(
 			if (startsWith(iconName, 'dev')) {
 				icon = <span className={iconName}></span>;
 			} else {
-				icon = (
-					<svg style={{ width: '1em', height: '1em' }}>
-						<use href={`/dev-sprite.svg#dev-${iconName} `} />
-					</svg>
-				);
+				if (iconName == 'figma') {
+					icon = (
+						<span className="dev-figma">
+							<span className="path1"></span>
+							<span className="path2"></span>
+							<span className="path3"></span>
+							<span className="path4"></span>
+							<span className="path5"></span>
+						</span>
+					);
+				} else {
+					icon = <span className={`dev-${iconName}`}></span>;
+				}
 			}
 		} else if (group == 'ios') {
 			icon = (
@@ -149,9 +165,19 @@ export function getIconString(
 				if (startsWith(iconName, 'dev')) {
 					icon = `<span class="${iconName}"></span>`;
 				} else {
-					icon = `<svg style="width: 1em; height: 1em">
-						<use href="dev-sprite.svg#dev-${iconName}" />
-					</svg>`;
+					if (iconName == 'figma') {
+						icon = `
+							<span class="dev-${iconName}">
+								<span class="path1"></span>
+								<span class="path2"></span>
+								<span class="path3"></span>
+								<span class="path4"></span>
+								<span class="path5"></span>
+							</span>`;
+					} else {
+						icon = `
+							<span class="dev-${iconName}"></span>`;
+					}
 				}
 			} else if (groupName == 'ios') {
 				icon = `<svg style="width: 1em; height: 1em">
