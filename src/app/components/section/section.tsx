@@ -28,7 +28,7 @@ export default function Section(props: SectionProps) {
 	return (
 		<Waypoint>
 			<section className={classes} {...sectionProps}>
-				<div className="container flex flex-col gap-6">
+				<div className="container flex flex-col gap-row">
 					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
 						<Heading {...headingArgs} />
 					)}
