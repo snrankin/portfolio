@@ -3,7 +3,7 @@ import About from './about';
 import Skills from './skills';
 import Projects from './projects';
 import WorkHistory from './work-history';
-
+import Footer from '@/app/components/global/footer';
 export default function Page() {
 	return (
 		<>
@@ -12,6 +12,7 @@ export default function Page() {
 			<Skills />
 			<Projects />
 			<WorkHistory />
+			<Footer />
 		</>
 	);
 }

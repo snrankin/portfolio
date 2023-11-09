@@ -235,7 +235,6 @@ const config: Config = {
 	},
 	darkMode: ['class', '[data-theme="dark"]'],
 	plugins: [
-		require('tw-elements/dist/plugin.cjs'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/aspect-ratio'),
 		require('daisyui'),
