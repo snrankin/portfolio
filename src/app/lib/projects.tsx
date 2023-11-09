@@ -1,5 +1,5 @@
 import { IProject } from './interfaces';
-import { project as lazoo } from '@/app/(pages)/projects/lazoo/page';
+// import { project as lazoo } from '@/app/(pages)/projects/lazoo/page';
 export const portfolio: IProject = {
 	title: "Sam Rankin's Developer Portfolio",
 	shortTitle: 'My Portfolio',
@@ -78,7 +78,7 @@ export const riester: IProject = {
 
 export const ProjectsList: IProject[] = [
 	portfolio,
-	lazoo,
+
 	wpReadMe,
 	midfirst,
 	skipro,
