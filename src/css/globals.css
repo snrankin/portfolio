@@ -1,6 +1,8 @@
 :root {
 	--container-width: 90vw;
 	--page-gutter: calc((100vw - var(--container-width)) * 0.5);
+	--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
+	--shadow-color: 220deg 5% 52%;
 	@media screen(lg) {
 		--container-width: 85vw;
 	}
@@ -37,72 +39,19 @@
 	--pc: 174 75% 11% !important;
 }
 
+[data-theme='dark'] {
+	--shadow-color: 217deg 25% 14%;
+
+	.bg-base-200 {
+		--shadow-color: 215deg 42% 6%;
+	}
+}
+
 @layer components {
 	.btn {
 		min-height: auto;
 		height: auto;
 		@apply p-3;
-	}
-}
-
-.icon {
-	font-size: 1em;
-	width: 1em;
-	height: 1em;
-	min-width: 1em;
-	min-height: 1em;
-	line-height: 2ex;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.icon svg {
-	display: block;
-	width: 100%;
-	max-width: 100%;
-	min-width: 100%;
-	height: auto;
-	object-fit: contain;
-}
-
-.btn-icon {
-	height: auto;
-	width: auto;
-	min-width: 0;
-	font-size: 1.25rem;
-	min-height: 0;
-	line-height: 1;
-}
-
-.btn-icon.btn-circle {
-	height: auto;
-	width: auto;
-	min-width: 0;
-	font-size: 1.25rem;
-	min-height: 0;
-	line-height: 1;
-}
-
-.btn-icon .icon {
-	display: flex;
-}
-
-.color.devicon {
-	&-bootstrap-plain {
-		color: #7129f1;
-	}
-	&-bitbucket-original {
-		color: #2e87fc;
-	}
-	&-illustrator-plain {
-		color: #f59526;
-	}
-	&-photoshop-plain {
-		color: #38a5f4;
-	}
-	&-xd-plain {
-		color: #f565ec;
 	}
 }
 
@@ -126,8 +75,14 @@
 	}
 } */
 
-.inline-flex.items-baseline .icon {
-	display: block;
-	position: relative;
-	bottom: -0.125em;
+.btm-nav {
+	box-shadow: 0px -0.5px 0.6px hsl(var(--shadow-color) / 0.36),
+		0px -0.8px 0.9px -1.1px hsl(var(--shadow-color) / 0.38),
+		0px -2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41);
+}
+
+@media screen(lg) {
+	.btm-nav {
+		box-shadow: none;
+	}
 }
