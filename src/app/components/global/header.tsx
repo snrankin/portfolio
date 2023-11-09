@@ -2,22 +2,18 @@
 
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import SiteLinks from './site-links';
-import Nav from '../nav/nav';
+import Nav from '@/app/components/nav/nav';
 import classNames from 'classnames';
 import { Waypoint } from 'react-waypoint';
 import ThemeButton from '@/app/components/theme-swap/theme-button';
-
+import Logo from './logo';
 interface HeaderProps {
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
-import Logo from './logo';
 export default function Header(props: HeaderProps) {
 	let [isScrolled, setScrolled] = useState(false);
-
-	console.log('🚀 ~ file: header.tsx:20 ~ Header ~ isScrolled:', isScrolled);
 
 	let headerClasses = classNames({
 		fixed: true,

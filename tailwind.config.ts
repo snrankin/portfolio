@@ -3,12 +3,6 @@ import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-const round = (num: number) =>
-	num
-		.toFixed(7)
-		.replace(/(\.[0-9]+?)0+$/, '$1')
-		.replace(/\.0$/, '');
-
 const daisyBaseColor = (name = '', dark = false) => {
 	let colorObj = get(colors, name);
 
@@ -34,11 +28,6 @@ const daisyBaseColor = (name = '', dark = false) => {
 
 		baseColors = zipObject(levelNames, baseValues);
 	}
-
-	console.log(
-		'🚀 ~ file: tailwind.config.ts:40 ~ daisyBaseColor ~ baseColors:',
-		baseColors
-	);
 
 	return baseColors;
 };

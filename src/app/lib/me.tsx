@@ -1,6 +1,6 @@
 import { IBasics } from './interfaces';
 
-import MeColor from '@/img/me-color.jpeg';
+import MeColor from '@/img/Me.png';
 export const Me: IBasics = {
 	firstName: 'Sam',
 	lastName: 'Rankin',

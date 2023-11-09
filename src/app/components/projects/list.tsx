@@ -26,8 +26,8 @@ export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
 	);
 	return (
 		<ul {...atts}>
-			{projectList.map((project: IProject) => (
-				<li>
+			{projectList.map((project: IProject, i: number) => (
+				<li key={i}>
 					<span className="block font-display font-bold">
 						{project.shortTitle}
 					</span>

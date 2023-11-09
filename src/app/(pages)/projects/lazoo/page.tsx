@@ -1,17 +1,10 @@
 import { IProject } from '@/app/lib/interfaces';
 
-import { ProjectsList } from '@/app/lib/projects';
-import Section from '@/app/components/section/section';
-import DeviceTabs from '@/app/components/device/tabs';
-import { paramCase } from 'change-case-all';
-import Icon from '@/app/components/icons/icon-item';
-import { find } from 'lodash';
 import Content from '../content';
 import Desktop from './desktop.png';
 import Laptop from './laptop.png';
 import Tablet from './tablet.png';
 import Mobile from './mobile.png';
-import { Metadata } from 'next';
 export const project: IProject = {
 	title: 'LA Zoo Website Redesign',
 	shortTitle: 'LA Zoo Website',
@@ -32,10 +25,6 @@ export const project: IProject = {
 	},
 };
 
-export const metadata: Metadata = {
-	title: project.title,
-	description: project.summary,
-};
 export default function Page() {
 	return <Content project={project} useGrid={true} />;
 }

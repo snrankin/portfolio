@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import { Me } from '@/app/lib/me';
-import Logo from '@/img/logo.svg';
 import Section from '@/app/components/section/section';
 import SocialLinks from '@/app/components/social/group';
 import ProjectsGroup from '@/app/components/projects/list';
@@ -9,7 +8,7 @@ import { ProjectCardProps } from '@/app/components/projects/card';
 import SkillsList from '@/app/components/skills/skills';
 import Timeline from '@/app/components/timeline/print-group';
 import Icon from '@/app/components/icons/icon-item';
-
+import Logo from '@/app/components/global/logo';
 export default function Content() {
 	var projectCardProps: ProjectCardProps = {
 		bodyClasses: '!p-0 leading-none gap-0',

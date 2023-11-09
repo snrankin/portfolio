@@ -122,7 +122,7 @@ export default function Project(props: ProjectCardProps) {
 				<Link href={`/projects/${slug}`} className="btn btn-link">
 					View More
 				</Link>
-				<ProjectLinks project={project} />
+				{/* <ProjectLinks project={project} /> */}
 			</div>
 		</Card>
 	);
