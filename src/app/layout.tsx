@@ -3,7 +3,9 @@ import React, { useState, createContext } from 'react';
 import type { Metadata } from 'next';
 import { Inconsolata, Poppins, DM_Sans, Anonymous_Pro } from 'next/font/google';
 import Script from 'next/script';
-import Prism from 'prismjs';
+import { Me } from './lib/me';
+import localFont from 'next/font/local';
+
 import '@/css/style.css';
 const poppins = Poppins({
 	weight: ['400', '600', '700', '900'],
@@ -35,6 +37,12 @@ const anonymous = Anonymous_Pro({
 	variable: '--font-anonymous',
 });
 
+const customDev = localFont({
+	src: '../font/devicons-custom/devicons-custom.woff',
+	display: 'swap',
+	variable: '--font-devicons',
+});
+
 export const metadata: Metadata = {
 	robots: {
 		index: false,
@@ -59,6 +67,14 @@ export const metadata: Metadata = {
 		title: 'Sam Rankin',
 		statusBarStyle: 'black-translucent',
 	},
+	authors: [
+		{
+			name: `${Me.firstName} ${Me.lastName}`,
+			url: 'https://samrankin.dev',
+		},
+	],
+	creator: `${Me.firstName} ${Me.lastName}`,
+	publisher: `${Me.firstName} ${Me.lastName}`,
 };
 
 export const viewport = {
@@ -66,8 +82,8 @@ export const viewport = {
 	initialScale: 1,
 	viewportFit: 'cover',
 	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: 'cyan' },
-		{ media: '(prefers-color-scheme: dark)', color: 'black' },
+		{ media: '(prefers-color-scheme: light)', color: 'white' },
+		{ media: '(prefers-color-scheme: dark)', color: '#111827' },
 	],
 };
 export default function RootLayout({
@@ -79,7 +95,7 @@ export default function RootLayout({
 		<html
 			lang="en"
 			data-theme="light"
-			className={`${poppins.variable} ${inconsolata.variable} ${dmsans.variable} ${anonymous.variable} font-sans`}
+			className={`${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} ${anonymous.variable} font-sans`}
 			suppressHydrationWarning={true}
 		>
 			<body
@@ -87,7 +103,6 @@ export default function RootLayout({
 				suppressHydrationWarning={true}
 			>
 				{children}
-				<Script src="@/js/global.js" />
 			</body>
 		</html>
 	);
