@@ -17,7 +17,7 @@ function Laptop(props: Omit<DeviceProps, 'type'>) {
 	return (
 		<Device
 			type="laptop"
-			className="!absolute min-w-[230px] left-0 bottom-0 h-[54.26%] z-10 w-auto aspect-laptop"
+			className="!absolute left-0 bottom-0 h-[54.26%] z-10 w-auto aspect-laptop"
 			{...props}
 		>
 			{props.children}
