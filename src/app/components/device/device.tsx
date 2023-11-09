@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import Icon from '../icons/icon-item';
 import './devices.css';
 import BrowserToolbar from './toolbar';
-import DesktopFrame from '@/img/desktop.svg';
-import LaptopFrame from '@/img/laptop.svg';
-import TabletFrame from '@/img/tablet.svg';
-import MobileFrame from '@/img/mobile.svg';
+import DesktopFrame from './desktop.svg';
+import LaptopFrame from './laptop.svg';
+import TabletFrame from './tablet.svg';
+import MobileFrame from './mobile.svg';
 import { omit, pick, set } from 'lodash';
 
 export interface DeviceProps extends HTMLProps<HTMLDivElement> {
@@ -21,7 +21,6 @@ export default function Device(props: DeviceProps): JSX.Element {
 	var wrapperClasses = classNames(
 		'device',
 		`device-${props.type}`,
-		`aspect-${props.type}`,
 		'relative',
 		'z-10',
 		'block',
@@ -41,20 +40,21 @@ export default function Device(props: DeviceProps): JSX.Element {
 		'min-w-full',
 		'h-auto'
 	);
-	var innerClasses = classNames(
-		`aspect-${props.type}`,
-		'w-full',
-		'relative',
-		'z-10',
-		'block',
-		'min-w-full'
-	);
+	var innerClasses = classNames('w-full', {
+		'h-[69.67%]': props.type == 'desktop',
+		'pt-[2.5%]': props.type == 'laptop',
+		'pb-[6.389%]': props.type == 'laptop',
+		'px-[7.361%]': props.type == 'laptop',
+		'p-[5.247%]': props.type == 'tablet',
+		'px-[4.615%]': props.type == 'mobile',
+		'pt-[4.2%]': props.type == 'mobile',
+		'p-[2.6%]': props.type == 'desktop',
+	});
 
 	var screenClasses = classNames(
 		'screen',
 		'relative',
 		'overflow-hidden',
-		'display',
 		'rounded-0',
 		'w-full',
 		'h-full',
@@ -67,30 +67,22 @@ export default function Device(props: DeviceProps): JSX.Element {
 		'w-full',
 		'absolute',
 		'rounded-0',
-		'left-0',
-		'top-0',
-		'display',
-		{
-			'h-[58.8%]': props.type == 'desktop',
-			'pt-[2.8%]': props.type == 'laptop',
-			'px-[7.361%]': props.type == 'laptop',
-			'p-[5.247%]': props.type == 'tablet',
-			// 'p-[4.677%]': props.type == 'mobile',
-			'p-[2.6%]': props.type == 'desktop',
-		}
+		'inset-0',
+		'display'
 	);
 
-	let aspectClasses = classNames(
-		'screen',
-		'relative',
+	let browserClasses = classNames(
+		'absolute',
+		'!rounded-0',
+		'!rounded-none',
+		'inset-0',
 		'overflow-hidden',
-		'display',
-		'rounded-0',
-		'w-full',
-		'bg-white',
+		'mockup-browser',
+		'bg-base-200',
+		'dark:bg-gray-500',
+		props.type,
 		{
-			'aspect-tablet': props.type == 'tablet',
-			'aspect-mobile': props.type == 'mobile',
+			'pt-[1.3858437126%]': props.type == 'laptop',
 		}
 	);
 
@@ -98,15 +90,15 @@ export default function Device(props: DeviceProps): JSX.Element {
 	return (
 		<div {...atts}>
 			<div className={displayClasses}>
-				<div className={screenClasses}>
-					<div
-						className={`absolute top-0 left-0 w-full h-full  mockup-browser ${props.type} !rounded-none`}
-					>
-						{props.url != undefined && (
-							<BrowserToolbar {...props} />
-						)}
+				<div className={innerClasses}>
+					<div className={screenClasses}>
+						<div className={browserClasses}>
+							{props.url != undefined && (
+								<BrowserToolbar {...props} />
+							)}
 
-						{children}
+							{children}
+						</div>
 					</div>
 				</div>
 			</div>

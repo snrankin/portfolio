@@ -1,0 +1,12 @@
+@import 'react-tabs/style/react-tabs';
+
+.react-tabs__tab--selected {
+	--tw-bg-opacity: 1;
+	background-color: hsl(var(--p) / var(--tw-bg-opacity));
+	--tw-text-opacity: 1;
+	color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+[role='tabpanel']:not(.react-tabs__tab-panel--selected) {
+	display: none;
+}
