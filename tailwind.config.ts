@@ -1,3 +1,4 @@
+import { get, isEmpty, reverse, set, zip, zipObject } from 'lodash';
 import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
 const defaultTheme = require('tailwindcss/defaultTheme');
@@ -7,6 +8,40 @@ const round = (num: number) =>
 		.toFixed(7)
 		.replace(/(\.[0-9]+?)0+$/, '$1')
 		.replace(/\.0$/, '');
+
+const daisyBaseColor = (name = '', dark = false) => {
+	let colorObj = get(colors, name);
+
+	let baseColors = {};
+
+	let baseValues: string[] = [];
+	let levelNames: string[] = [];
+
+	if (colorObj != undefined) {
+		let levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+
+		levels.forEach((level, i) => {
+			let color = get(colorObj, level, '');
+			if (!isEmpty(color)) {
+				baseValues.push(color);
+				levelNames.push(`base-${level}`);
+			}
+		});
+
+		if (dark) {
+			reverse(baseValues);
+		}
+
+		baseColors = zipObject(levelNames, baseValues);
+	}
+
+	console.log(
+		'🚀 ~ file: tailwind.config.ts:40 ~ daisyBaseColor ~ baseColors:',
+		baseColors
+	);
+
+	return baseColors;
+};
 const config: Config = {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -87,6 +122,27 @@ const config: Config = {
 			width: {
 				'full-pg': 'calc(100% + var(--page-gutter))',
 			},
+			boxShadow: {
+				DEFAULT: ` 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.3),
+    0px 1px 1.2px -0.6px hsl(var(--shadow-color) / 0.31),
+    0px 1.9px 2.2px -1.1px hsl(var(--shadow-color) / 0.33),
+    -0.1px 3.8px 4.4px -1.7px hsl(var(--shadow-color) / 0.34),
+    -0.2px 7.3px 8.5px -2.2px hsl(var(--shadow-color) / 0.35)`,
+				sm: `0px 0.5px 0.6px hsl(var(--shadow-color) / 0.36),
+    0px 0.9px 1px -1.1px hsl(var(--shadow-color) / 0.38),
+    0px 2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41)`,
+
+				lg: `0px 0.2px 0.2px hsl(var(--shadow-color) / 0.28),
+    0px 1px 1.2px -0.2px hsl(var(--shadow-color) / 0.28),
+    -0.1px 1.7px 2px -0.5px hsl(var(--shadow-color) / 0.29),
+    -0.1px 2.6px 3px -0.7px hsl(var(--shadow-color) / 0.3),
+    -0.2px 3.7px 4.3px -1px hsl(var(--shadow-color) / 0.3),
+    -0.2px 5.3px 6.2px -1.2px hsl(var(--shadow-color) / 0.31),
+    -0.3px 7.5px 8.7px -1.5px hsl(var(--shadow-color) / 0.32),
+    -0.5px 10.4px 12.1px -1.7px hsl(var(--shadow-color) / 0.32),
+    -0.6px 14.2px 16.5px -2px hsl(var(--shadow-color) / 0.33),
+    -0.8px 19px 22.1px -2.2px hsl(var(--shadow-color) / 0.33)`,
+			},
 			strokeWidth: {
 				'10': '10px',
 				'15': '15px',
@@ -150,9 +206,18 @@ const config: Config = {
 			},
 			margin: {
 				pg: 'var(--page-gutter)',
+				section: 'var(--section-spacing)',
+				row: 'calc(var(--section-spacing) * 0.5)',
 			},
 			padding: {
 				pg: 'var(--page-gutter)',
+				section: 'var(--section-spacing)',
+				row: 'calc(var(--section-spacing) * 0.5)',
+			},
+			gap: {
+				pg: 'var(--page-gutter)',
+				section: 'var(--section-spacing)',
+				row: 'calc(var(--section-spacing) * 0.5)',
 			},
 		},
 
@@ -209,13 +274,11 @@ const config: Config = {
 					'secondary-content': '#301822',
 					accent: colors.purple[500],
 					neutral: colors.gray[800],
-					'base-100': colors.gray[100],
-					'base-200': colors.gray[200],
-					'base-300': colors.gray[300],
 					info: colors.cyan[500],
 					success: colors.lime[500],
 					warning: colors.amber[500],
 					error: colors.red[500],
+					...daisyBaseColor('gray'),
 				},
 			},
 			{
@@ -227,9 +290,10 @@ const config: Config = {
 					secondary: colors.pink[500],
 					accent: colors.purple[500],
 					neutral: colors.gray[100],
-					'base-100': colors.gray[700],
-					'base-200': colors.gray[800],
-					'base-300': colors.gray[900],
+					'base-50': colors.gray[700],
+					'base-100': colors.gray[800],
+					'base-200': colors.gray[900],
+					'base-300': colors.gray[950],
 					info: colors.cyan[500],
 					success: colors.lime[500],
 					warning: colors.amber[500],
