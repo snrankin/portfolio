@@ -4,7 +4,7 @@ import { hasIcon, getIconName, getIcon } from '@/app/lib/icons';
 import React, { createContext, useContext, HTMLProps } from 'react';
 import { get, isEmpty, startsWith, omit, set } from 'lodash';
 import classNames from 'classnames';
-
+import './icons.css';
 export interface IconConfig {
 	icon?: string;
 	group?: 'web' | 'dev' | 'ios';
