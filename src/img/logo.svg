@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path d="m6,23.25h-3.15c-.74,0-1.35-.6-1.35-1.35v-9.15l-.75-.75.75-.75V2.1c0-.74.6-1.35,1.35-1.35h3.15" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-  <path d="m18,.75h3.15c.74,0,1.35.6,1.35,1.35v9.15l.75.75-.75.75v9.15c0,.74-.6,1.35-1.35,1.35h-3.15" fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-  <polyline points="8.75 4 .75 12 8.75 20 15.25 4 23.25 12 15.25 20" fill="none" stroke="#14b8a6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-</svg>
