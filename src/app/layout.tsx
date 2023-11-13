@@ -43,9 +43,6 @@ const customDevTTF = localFont({
 	variable: '--font-devicons-ttf',
 });
 export async function generateMetadata() {
-	preloadAuthor('Sam Rankin');
-
-	const me = await getAuthor('Sam Rankin', false);
 	return {
 		robots: {
 			index: false,
@@ -54,7 +51,7 @@ export async function generateMetadata() {
 		},
 		title: {
 			default: 'Portfolio',
-			template: `%s | ${me.firstName} ${me.lastName}`,
+			template: `%s | Sam Rankin`,
 		},
 		icons: {
 			other: [
@@ -71,12 +68,12 @@ export async function generateMetadata() {
 		},
 		authors: [
 			{
-				name: `${me.firstName} ${me.lastName}`,
+				name: `Sam Rankin`,
 				url: 'https://samrankin.dev',
 			},
 		],
-		creator: `${me.firstName} ${me.lastName}`,
-		publisher: `${me.firstName} ${me.lastName}`,
+		creator: `Sam Rankin`,
+		publisher: `Sam Rankin`,
 	};
 }
 
