@@ -43,10 +43,17 @@ export default function Content({
 							<Logo className="fill-base-content w-full" />
 						</Link>
 						<h1 className="font-bold leading-0 m-0">
-							{me?.firstName} {me?.lastName}
-							<small className="block font-sans font-bold text-[0.49em]">
-								{me?.label}
-							</small>
+							{!!me?.firstName && !!me?.lastName && (
+								<>
+									{me.firstName} {me.lastName}
+								</>
+							)}
+
+							{!!me?.label && (
+								<small className="block font-sans font-bold text-[0.49em]">
+									{me?.label}
+								</small>
+							)}
 						</h1>
 					</div>
 					{!!me?.description && (

@@ -16,7 +16,7 @@ const MobileLightWireframe = require('@/img/wireframes/mobile-light.svg?url');
 import Image from 'next/image';
 import { titleCase } from 'change-case-all';
 import Link from 'next/link';
-export default function Hero({ me }: { me: IAuthor }): JSX.Element {
+export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
 	const switchWireframes = (device: string = 'desktop', theme = 'light') => {
 		let wireframe = null;
 		switch (device) {
@@ -72,7 +72,7 @@ export default function Hero({ me }: { me: IAuthor }): JSX.Element {
 						</small>{' '}
 						<br />
 						<span className="text-secondary-500">
-							{!!me.firstName && !!me.lastName && (
+							{!!me?.firstName && !!me?.lastName && (
 								<p className="lead">
 									{me.firstName} {me.lastName}
 								</p>
@@ -80,7 +80,7 @@ export default function Hero({ me }: { me: IAuthor }): JSX.Element {
 						</span>
 						.
 					</h1>
-					{!!me.description && (
+					{!!me?.description && (
 						<p className="lead">{me.description}</p>
 					)}
 					<div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
