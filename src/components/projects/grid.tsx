@@ -6,7 +6,7 @@ import { merge, omit } from 'lodash';
 
 interface ProjectGroupProps extends HTMLProps<HTMLDivElement> {
 	projectProps?: ProjectCardProps;
-	projects: IProject[];
+	projects?: IProject[];
 }
 
 export default function ProjectsGroup(props: ProjectGroupProps) {
