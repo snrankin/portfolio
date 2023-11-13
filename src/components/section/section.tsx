@@ -1,13 +1,17 @@
 'use client';
-import React, { useState, FunctionComponent, HTMLProps } from 'react';
+import React, { useContext, HTMLProps } from 'react';
 import { Waypoint } from 'react-waypoint';
 import Heading, { HeadingProps } from './heading';
 import classNames from 'classnames';
 import { pick, isEmpty, omit, set } from 'lodash';
-
-export interface SectionProps extends HeadingProps, HTMLProps<HTMLElement> {
+import { SectionContext } from '@/lib/section-context';
+export interface SectionProps
+	extends HeadingProps,
+		Omit<HTMLProps<HTMLElement>, 'id'> {
+	id: string;
 	intro?: string;
 }
+
 export default function Section(props: SectionProps) {
 	let args = props;
 	let children: React.ReactNode = props.children;
@@ -25,8 +29,23 @@ export default function Section(props: SectionProps) {
 
 	set(sectionProps, 'className', classes);
 
+	const sectionCtx: {
+		section: string;
+		updateSectionHandler: (str: string) => void;
+	} = useContext(SectionContext);
+
+	function enterHandler(args: Waypoint.CallbackArgs): void {
+		if (args.currentPosition == 'inside') {
+			sectionCtx.updateSectionHandler(props.id);
+		}
+		console.log(
+			'🚀 ~ file: site-links.tsx:23 ~ SiteLinks ~ sectionCtx.section:',
+			sectionCtx.section
+		);
+	}
+
 	return (
-		<Waypoint>
+		<Waypoint onEnter={enterHandler}>
 			<section className={classes} {...sectionProps}>
 				<div className="container flex flex-col gap-row">
 					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
