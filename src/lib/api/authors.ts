@@ -15,9 +15,9 @@ export interface IAuthor extends Object {
 	};
 	description?: string;
 	about?: Content;
-	heroIntro?: Content;
-	skillsIntro?: Content;
-	projectsIntro?: Content;
+	heroText?: string;
+	skillsText?: string;
+	projectsText?: string;
 	socialCollection?: {
 		items: {
 			title: string;
