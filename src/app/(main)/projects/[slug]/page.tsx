@@ -6,6 +6,7 @@ import {
 	getProject,
 	getProjectsExcept,
 	preloadProject,
+	preloadProjects,
 } from '@/lib/api/projects';
 
 export async function generateMetadata({
@@ -23,6 +24,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
+	preloadProjects();
 	const allProjects = await getAllProjects(false);
 
 	// console.log(
