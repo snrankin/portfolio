@@ -35,7 +35,7 @@ export default function Content({
 
 	return (
 		<>
-			<Section className="overflow-hidden">
+			<Section id="projects" className="overflow-hidden">
 				<div className={wrapperClasses}>
 					{(useImage || useGrid) && (
 						<div>
@@ -71,6 +71,7 @@ export default function Content({
 
 			{!!project.content && (
 				<Section
+					id="project-content"
 					title="Featured Projects"
 					command="ls"
 					argument="project"
@@ -86,6 +87,7 @@ export default function Content({
 			)}
 
 			<Section
+				id="more-projects"
 				title="More Projects"
 				command="ls"
 				argument="projects"

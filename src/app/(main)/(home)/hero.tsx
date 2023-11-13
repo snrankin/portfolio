@@ -62,7 +62,10 @@ export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
 	};
 
 	return (
-		<Section className="hero !block bg-base-200 pt-24 !pb-0  overflow-hidden">
+		<Section
+			id="hero"
+			className="hero !block bg-base-200 pt-24 !pb-0  overflow-hidden"
+		>
 			<div className="hero-content p-0 w-full flex flex-col md:flex-row md:items-end">
 				<div className="text-center prose lg:prose-xl md:text-left md:w-2/4 md:pb-section">
 					<h1 className="font-bold font-display">
