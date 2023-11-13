@@ -7,7 +7,7 @@ export default function Projects({
 	projects,
 	intro,
 }: {
-	projects: IProject[];
+	projects?: IProject[];
 	intro?: string;
 }): JSX.Element {
 	return (

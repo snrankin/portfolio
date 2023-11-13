@@ -66,23 +66,18 @@ export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
 			<div className="hero-content p-0 w-full flex flex-col md:flex-row md:items-end">
 				<div className="text-center prose lg:prose-xl md:text-left md:w-2/4 md:pb-section">
 					<h1 className="font-bold font-display">
-						<small>
+						<small className="block">
 							Hi there, <br />
 							my name is
 						</small>{' '}
-						<br />
-						<span className="text-secondary-500">
-							{!!me?.firstName && !!me?.lastName && (
-								<p className="lead">
-									{me.firstName} {me.lastName}
-								</p>
-							)}
-						</span>
+						{!!me?.firstName && !!me?.lastName && (
+							<span className="text-secondary-500">
+								{me.firstName} {me.lastName}
+							</span>
+						)}
 						.
 					</h1>
-					{!!me?.description && (
-						<p className="lead">{me.description}</p>
-					)}
+					{!!me?.heroText && <p className="lead">{me.heroText}</p>}
 					<div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
 						<Link href="#projects" className="btn btn-primary">
 							See My Work
