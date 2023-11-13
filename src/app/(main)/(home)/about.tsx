@@ -21,11 +21,17 @@ export default function About({ me }: { me: IAuthor }): JSX.Element {
 						<div className="aspect-w-1 aspect-h-1">
 							<ContentfulImage
 								src={me.picture?.url}
-								alt="Profile picture of Sam Rankin"
 								className="w-full h-auto mask mask-diamond grayscale will-change-auto hover:grayscale-0"
 								loading="lazy"
 								fill={true}
 								sizes="100vw"
+								// style={{
+								// 	width: '100%',
+								// 	height: 'auto',
+								// }}
+								alt={me.picture.description}
+								// width={me.picture.width}
+								// height={me.picture.height}
 							/>
 						</div>
 						<div className="absolute w-full h-full inset-0 flex">

@@ -39,11 +39,17 @@ function RichTextAsset({
 		let alt = !isEmpty(asset.description) ? asset.description : asset.title;
 		return (
 			<Image
-				src={asset.url}
+				className="w-full"
+				sizes="100vw"
 				loading="lazy"
+				style={{
+					width: '100%',
+					height: 'auto',
+				}}
+				alt={alt}
 				width={asset.width}
 				height={asset.height}
-				alt={alt}
+				src={asset.url}
 			/>
 		);
 	}

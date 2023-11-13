@@ -7,6 +7,7 @@ import { Me } from '@/lib/me';
 import localFont from 'next/font/local';
 import ThemeProvider from '@/lib/theme-context';
 import { getAllProjects } from '@/lib/api/projects';
+
 import '@/css/style.css';
 const poppins = Poppins({
 	weight: ['400', '600', '700', '900'],
@@ -35,8 +36,13 @@ const customDev = localFont({
 	src: '../../font/devicons-custom/devicons-custom.woff',
 	display: 'swap',
 	variable: '--font-devicons',
+	fallback: ['var(--font-devicons-ttf)'],
 });
-
+const customDevTTF = localFont({
+	src: '../../font/devicons-custom/devicons-custom.ttf',
+	display: 'swap',
+	variable: '--font-devicons-ttf',
+});
 export const metadata: Metadata = {
 	robots: {
 		index: false,
@@ -91,7 +97,7 @@ export default async function Layout({
 		<html
 			lang="en"
 			data-theme="light"
-			className={`${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
+			className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
 			suppressHydrationWarning={true}
 		>
 			<body

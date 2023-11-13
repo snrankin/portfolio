@@ -1,6 +1,9 @@
 import { get, has, isString } from 'lodash';
 import { Asset, Content } from '@/components/contentful/markdown';
 import { ISkillsCollection } from './skills';
+import { cache } from 'react';
+
+export const revalidate = 3600; // revalidate the data at most every hour
 export interface IProject extends Object {
 	title?: string;
 	shortTitle?: string;
@@ -128,6 +131,7 @@ async function fetchGraphQL(query: string, preview = false): Promise<any> {
 			},
 			body: JSON.stringify({ query }),
 			next: { tags: ['projects'] },
+			cache: 'force-cache',
 		}
 	)
 		.then((response: Response) => response.json())
@@ -169,11 +173,34 @@ export async function getPreviewProjectBySlug(
 	);
 	return extractItem(entry);
 }
-export async function getAllProjects(
-	isDraftMode: boolean
-): Promise<IProject[]> {
-	const entries = await fetchGraphQL(
+
+export const preloadProject = (slug: string) => {
+	void getProject(slug, false);
+};
+
+export const getProject = cache(async (slug: string, preview: boolean) => {
+	let entry = await fetchGraphQL(
 		`query {
+	      postCollection(where: { slug: "${slug}" }, preview: ${
+			preview ? 'true' : 'false'
+		}, limit: 1) {
+	        items {
+	          ${PROJECT_GRAPHQL_FIELDS}
+	        }
+	      }
+	    }`,
+		false
+	);
+
+	entry = extractItem(entry);
+
+	return entry;
+});
+
+export const getAllProjects = cache(
+	async (isDraftMode: boolean): Promise<IProject[]> => {
+		const entries = await fetchGraphQL(
+			`query {
 		      postCollection(where: { slug_exists: true }, preview: ${
 					isDraftMode ? 'true' : 'false'
 				}) {
@@ -182,74 +209,114 @@ export async function getAllProjects(
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	return extractEntries(entries);
-}
+		return extractEntries(entries);
+	}
+);
 
-export async function getProjects(
-	projects: string | string[],
-	isDraftMode: boolean
-): Promise<IProject[]> {
-	projects = isString(projects) ? projects.split(',') : projects;
+export const getProjects = cache(
+	async (
+		projects: string | string[],
+		isDraftMode: boolean
+	): Promise<IProject[]> => {
+		projects = isString(projects) ? projects.split(',') : projects;
 
-	projects = projects.map((slug) => `"${slug.trim()}"`);
+		projects = projects.map((slug) => `"${slug.trim()}"`);
 
-	projects.join(',');
+		projects.join(',');
 
-	let entries = await fetchGraphQL(
-		`query {
+		let entries = await fetchGraphQL(
+			`query {
 		      postCollection(where: { slug_in: [${projects}] }, preview: ${
-			isDraftMode ? 'true' : 'false'
-		}) {
+				isDraftMode ? 'true' : 'false'
+			}) {
 		        items {
 		          ${PROJECT_CARD_GRAPHQL_FIELDS}
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	entries = extractEntries(entries);
+		entries = extractEntries(entries);
 
-	console.log('🚀 ~ file: projects.ts:216 ~ entries:', entries);
+		return entries;
+	}
+);
 
-	return entries;
-}
+export const preloadProjectsExcept = (
+	projects: string | string[],
+	isDraftMode: boolean,
+	limit?: number
+) => {
+	void getProjectsExcept(projects, isDraftMode, limit);
+};
+export const getProjectsExcept = cache(
+	async (
+		projects: string | string[],
+		isDraftMode: boolean,
+		limit?: number
+	): Promise<IProject[]> => {
+		projects = isString(projects) ? projects.split(',') : projects;
 
-export async function getProjectAndMoreProjects(
-	slug: string,
-	preview: boolean
-): Promise<any> {
-	const entry = await fetchGraphQL(
-		`query {
+		projects = projects.map((slug) => `"${slug.trim()}"`);
+
+		projects.join(',');
+
+		let limitArg = limit != undefined ? `, limit: ${limit}` : '';
+
+		let entries = await fetchGraphQL(
+			`query {
+		      postCollection(where: { slug_not_in: [${projects}] }, preview: ${
+				isDraftMode ? 'true' : 'false'
+			}${limitArg}) {
+		        items {
+		          ${PROJECT_CARD_GRAPHQL_FIELDS}
+		        }
+		      }
+		    }`,
+			isDraftMode
+		);
+
+		entries = extractEntries(entries);
+
+		return entries;
+	}
+);
+
+export const getProjectAndMoreProjects = cache(
+	async (slug: string, preview: boolean): Promise<any> => {
+		const entry = await fetchGraphQL(
+			`query {
       postCollection(where: { slug: "${slug}" }, preview: ${
-			preview ? 'true' : 'false'
-		}, limit: 1) {
+				preview ? 'true' : 'false'
+			}, limit: 1) {
         items {
           ${PROJECT_GRAPHQL_FIELDS}
         }
       }
     }`,
-		preview
-	);
+			preview
+		);
 
-	const entries = await fetchGraphQL(
-		`query {
+		const entries = await fetchGraphQL(
+			`query {
       postCollection(where: { slug_not_in: "${slug}" }, preview: ${
-			preview ? 'true' : 'false'
-		}, limit: 3) {
+				preview ? 'true' : 'false'
+			}, limit: 3) {
         items {
           ${PROJECT_CARD_GRAPHQL_FIELDS}
         }
       }
     }`,
-		preview
-	);
+			preview
+		);
 
-	return {
-		project: extractItem(entry),
-		moreProjects: extractEntries(entries),
-	};
-}
+		return {
+			project: extractItem(entry),
+			moreProjects: extractEntries(entries),
+		};
+	}
+);

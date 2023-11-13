@@ -48,7 +48,6 @@ export default function Content({
 												)}
 											>
 												<ContentfulImage
-													alt={`Desktop view of ${project.shortTitle}`}
 													className="w-full"
 													sizes="100vw"
 													loading="lazy"
@@ -56,6 +55,18 @@ export default function Content({
 														width: '100%',
 														height: 'auto',
 													}}
+													alt={
+														project.desktopPreview
+															.description
+													}
+													width={
+														project.desktopPreview
+															.width
+													}
+													height={
+														project.desktopPreview
+															.height
+													}
 													src={
 														project.desktopPreview
 															.url
@@ -70,7 +81,6 @@ export default function Content({
 												)}
 											>
 												<ContentfulImage
-													alt={`Laptop view of ${project.shortTitle}`}
 													className="w-full"
 													sizes="100vw"
 													loading="lazy"
@@ -78,6 +88,18 @@ export default function Content({
 														width: '100%',
 														height: 'auto',
 													}}
+													alt={
+														project.laptopPreview
+															.description
+													}
+													width={
+														project.laptopPreview
+															.width
+													}
+													height={
+														project.laptopPreview
+															.height
+													}
 													src={
 														project.laptopPreview
 															.url
@@ -92,7 +114,6 @@ export default function Content({
 												)}
 											>
 												<ContentfulImage
-													alt={`Tablet view of ${project.shortTitle}`}
 													className="w-full"
 													sizes="100vw"
 													loading="lazy"
@@ -100,6 +121,18 @@ export default function Content({
 														width: '100%',
 														height: 'auto',
 													}}
+													alt={
+														project.tabletPreview
+															.description
+													}
+													width={
+														project.tabletPreview
+															.width
+													}
+													height={
+														project.tabletPreview
+															.height
+													}
 													src={
 														project.tabletPreview
 															.url
@@ -114,7 +147,6 @@ export default function Content({
 												)}
 											>
 												<ContentfulImage
-													alt={`Mobile view of ${project.shortTitle}`}
 													className="w-full"
 													sizes="100vw"
 													loading="lazy"
@@ -122,6 +154,18 @@ export default function Content({
 														width: '100%',
 														height: 'auto',
 													}}
+													alt={
+														project.mobilePreview
+															.description
+													}
+													width={
+														project.mobilePreview
+															.width
+													}
+													height={
+														project.mobilePreview
+															.height
+													}
 													src={
 														project.mobilePreview
 															.url

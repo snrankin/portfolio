@@ -1,18 +1,22 @@
 'use client';
 
-import Image from 'next/image';
-import { Asset } from './markdown';
-interface ContentfulImageProps {
+import Image, { ImageProps } from 'next/image';
+
+const contentfulLoader = ({
+	src,
+	width,
+	quality,
+}: {
 	src: string;
 	width?: number;
 	quality?: number;
-	[key: string]: any; // For other props that might be passed
-}
-
-const contentfulLoader = ({ src, width, quality }: ContentfulImageProps) => {
-	return `${src}?w=${width}&q=${quality || 75}`;
+}) => {
+	return `${src}?w=${width || 2000}&q=${quality || 75}`;
 };
 
-export default function ContentfulImage(props: ContentfulImageProps) {
-	return <Image alt={props.alt} loader={contentfulLoader} {...props} />;
+export default function ContentfulImage(props: ImageProps) {
+	return (
+		// eslint-disable-next-line
+		<Image loader={contentfulLoader} {...props} />
+	);
 }

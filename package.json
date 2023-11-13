@@ -13,7 +13,7 @@
     "dependencies": {
         "@tailwindcss/typography": "0.5.10",
         "classnames": "^2.3.2",
-        "daisyui": "3.9.4",
+        "daisyui": "4.0.3",
         "dayjs": "^1.11.10",
         "lodash": "^4.17.21",
         "next": "14.0.2",
@@ -41,6 +41,7 @@
         "eslint": "^8.42.0",
         "eslint-config-next": "14.0.2",
         "figlet": "^1.7.0",
+        "nextjs-google-analytics": "^2.3.3",
         "ololog": "^1.1.175",
         "pdfmake": "^0.2.8",
         "postcss": "^8.4.31",

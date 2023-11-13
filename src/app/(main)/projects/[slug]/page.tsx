@@ -1,14 +1,19 @@
 import { draftMode } from 'next/headers';
 import Content from './content';
-import { getAllProjects, getProjectAndMoreProjects } from '@/lib/api/projects';
+import {
+	getAllProjects,
+	getProject,
+	getProjectsExcept,
+	preloadProject,
+} from '@/lib/api/projects';
 
 export async function generateStaticParams() {
 	const allProjects = await getAllProjects(false);
 
-	console.log(
-		'🚀 ~ file: page.tsx:8 ~ generateStaticParams ~ allProjects:',
-		allProjects
-	);
+	// console.log(
+	// 	'🚀 ~ file: page.tsx:8 ~ generateStaticParams ~ allProjects:',
+	// 	allProjects
+	// );
 
 	return allProjects.map((project) => ({
 		slug: project.slug,
@@ -17,10 +22,9 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const { isEnabled } = draftMode();
-	const { project, moreProjects } = await getProjectAndMoreProjects(
-		params.slug,
-		isEnabled
-	);
+	preloadProject(params.slug);
+	let project = await getProject(params.slug, isEnabled);
+	const moreProjects = await getProjectsExcept(params.slug, isEnabled, 3);
 
 	return <Content project={project} moreProjects={moreProjects} />;
 }

@@ -11,11 +11,6 @@ interface ProjectGroupProps extends HTMLProps<HTMLUListElement> {
 }
 
 export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
-	console.log(
-		'🚀 ~ file: list.tsx:15 ~ ProjectsGroup ~ props:',
-		props.projects
-	);
-
 	var atts = omit(props, ['projects']);
 
 	let classes = classNames('projects', 'list', props.className);
