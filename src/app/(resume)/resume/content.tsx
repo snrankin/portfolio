@@ -26,7 +26,7 @@ export default function Content({
 		window.print();
 	};
 	return (
-		<Section className="print">
+		<Section id="resume" className="print">
 			<div className="print:hidden flex justify-center pb-14">
 				<button onClick={printClick} className="btn btn-primary">
 					<Icon

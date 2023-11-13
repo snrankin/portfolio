@@ -18,6 +18,7 @@ interface NavProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
 	menuOpenedIconGroup?: 'web' | 'dev' | 'ios';
 	menuClosedIconGroup?: 'web' | 'dev' | 'ios';
 	inNavbar: boolean;
+	dropdownLabel?: JSX.Element;
 }
 export default function Nav(props: NavProps): JSX.Element {
 	let {
@@ -29,6 +30,7 @@ export default function Nav(props: NavProps): JSX.Element {
 		menuOpenedIconGroup,
 		menuClosedIconGroup,
 		children,
+		dropdownLabel,
 	} = props;
 
 	let direction = props.direction != undefined ? props.direction : 'vertical';
@@ -41,19 +43,22 @@ export default function Nav(props: NavProps): JSX.Element {
 
 	let navClasses = classNames(props.className, dropdownClass, {
 		dropdown: dropdown != undefined,
+		'dropdown-hover': dropdown != undefined,
 	});
 
 	let menuSize = size != undefined ? `menu-${size}` : '',
 		menuDirection = direction != undefined ? `menu-${direction}` : '';
 
-	let menuClasses = classNames('menu', props.menuClasses, menuSize, {
+	let menuClasses = classNames(props.menuClasses, menuSize, {
+		menu: !dropdown,
 		'menu-horizontal': direction == 'horizontal',
-		'dropdown-content': dropdown != undefined,
+		'dropdown-content': !!dropdown,
 	});
 
 	let buttonClasses = classNames('btn', props.btnClasses);
 
 	let navAttr = omit(props, [
+		'dropdownLabel',
 		'label',
 		'size',
 		'direction',
@@ -84,30 +89,7 @@ export default function Nav(props: NavProps): JSX.Element {
 
 	return (
 		<nav {...navAttr}>
-			{dropdown != undefined ? (
-				<>
-					{menuOpenedIcon != undefined &&
-					menuClosedIcon != undefined ? (
-						<IconSwap
-							aria-haspopup="true"
-							className={buttonClasses}
-							iconOff={menuClosedIcon}
-							iconOn={menuOpenedIcon}
-							groupOff={menuClosedIconGroup}
-							groupOn={menuOpenedIconGroup}
-						/>
-					) : null}
-					{menuClosedIcon != undefined &&
-					menuOpenedIcon == undefined ? (
-						<button aria-haspopup="true" className={buttonClasses}>
-							<Icon
-								icon={menuClosedIcon}
-								group={menuClosedIconGroup}
-							/>
-						</button>
-					) : null}
-				</>
-			) : null}
+			{dropdownLabel}
 
 			<ul {...menuAttr}>{children}</ul>
 		</nav>
