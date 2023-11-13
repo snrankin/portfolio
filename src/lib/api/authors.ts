@@ -1,5 +1,6 @@
 import { get, has, isSet } from 'lodash';
 import { Asset, Content } from '@/components/contentful/markdown';
+import { cache } from 'react';
 export interface IAuthor extends Object {
 	name: string;
 	firstName?: string;
@@ -110,26 +111,27 @@ function extractEntry(fetchResponse: any): IAuthor {
 function extractEntries(fetchResponse: any): IAuthor[] {
 	return fetchResponse?.data?.authorCollection?.items;
 }
-
-export async function getAuthor(
-	name: string,
-	isDraftMode: boolean
-): Promise<IAuthor> {
-	const entries = await fetchGraphQL(
-		`query {
+export const preloadAuthor = (name: string) => {
+	void getAuthor(name, false);
+};
+export const getAuthor = cache(
+	async (name: string, isDraftMode: boolean): Promise<IAuthor> => {
+		const entries = await fetchGraphQL(
+			`query {
 		      authorCollection(where: { name: "${name}" }, limit: 1, preview: ${
-			isDraftMode ? 'true' : 'false'
-		}) {
+				isDraftMode ? 'true' : 'false'
+			}) {
 		        items {
 		          ${AUTHOR_GRAPHQL_FIELDS}
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	return extractEntry(entries);
-}
+		return extractEntry(entries);
+	}
+);
 
 export async function getAllAuthors(isDraftMode: boolean): Promise<IAuthor[]> {
 	const entries = await fetchGraphQL(

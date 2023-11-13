@@ -178,24 +178,30 @@ export const preloadProject = (slug: string) => {
 	void getProject(slug, false);
 };
 
-export const getProject = cache(async (slug: string, preview: boolean) => {
-	let entry = await fetchGraphQL(
-		`query {
+export const getProject = cache(
+	async (slug: string, preview: boolean): Promise<IProject> => {
+		let res = await fetchGraphQL(
+			`query {
 	      postCollection(where: { slug: "${slug}" }, preview: ${
-			preview ? 'true' : 'false'
-		}, limit: 1) {
+				preview ? 'true' : 'false'
+			}, limit: 1) {
 	        items {
 	          ${PROJECT_GRAPHQL_FIELDS}
 	        }
 	      }
 	    }`,
-		false
-	);
+			false
+		);
 
-	entry = extractItem(entry);
+		let entry = extractItem(res);
 
-	return entry;
-});
+		return entry;
+	}
+);
+
+export const preloadProjects = () => {
+	void getAllProjects(false);
+};
 
 export const getAllProjects = cache(
 	async (isDraftMode: boolean): Promise<IProject[]> => {

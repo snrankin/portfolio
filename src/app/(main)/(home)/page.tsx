@@ -4,7 +4,7 @@ import Skills from './skills';
 import Projects from './projects';
 import WorkHistory from './work-history';
 import { getAuthor } from '@/lib/api/authors';
-import { getAllProjects, getProjects } from '@/lib/api/projects';
+import { getAllProjects } from '@/lib/api/projects';
 import { getAllJobs } from '@/lib/api/jobs';
 import { getAllSkills } from '@/lib/api/skills';
 export default async function Page() {

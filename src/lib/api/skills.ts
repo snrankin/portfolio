@@ -1,4 +1,5 @@
 import { get, groupBy, has, isSet } from 'lodash';
+import { cache } from 'react';
 export type ISkill = {
 	title: string;
 	category: string;
@@ -60,41 +61,49 @@ function extractEntries(fetchResponse: any): ISkill[] {
 	return fetchResponse?.data?.skillCollection?.items;
 }
 
-export async function getAllSkills(isDraftMode: boolean): Promise<ISkills> {
-	let entries = await fetchGraphQL(
-		`query {
+export const preloadSkills = () => {
+	void getAllSkills(false);
+};
+
+export const getAllSkills = cache(
+	async (isDraftMode: boolean): Promise<ISkills> => {
+		let entries = await fetchGraphQL(
+			`query {
 		      skillCollection(preview: ${isDraftMode ? 'true' : 'false'}) {
 		        items {
 		          ${SKILL_GRAPHQL_FIELDS}
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	entries = extractEntries(entries);
+		entries = extractEntries(entries);
 
-	entries = groupBy(entries, 'category');
+		entries = groupBy(entries, 'category');
 
-	return entries;
-}
+		return entries;
+	}
+);
 
-export async function getSkillsGroup(
-	group: 'Languages' | 'Frameworks' | 'CMS' | 'Tools' | 'Software',
-	isDraftMode: boolean
-): Promise<ISkill[]> {
-	const entries = await fetchGraphQL(
-		`query {
+export const getSkillsGroup = cache(
+	async (
+		group: 'Languages' | 'Frameworks' | 'CMS' | 'Tools' | 'Software',
+		isDraftMode: boolean
+	): Promise<ISkill[]> => {
+		const entries = await fetchGraphQL(
+			`query {
 		      skillCollection(where: { category: "${group}" }, preview: ${
-			isDraftMode ? 'true' : 'false'
-		}) {
+				isDraftMode ? 'true' : 'false'
+			}) {
 		        items {
 		          ${SKILL_GRAPHQL_FIELDS}
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	return extractEntries(entries);
-}
+		return extractEntries(entries);
+	}
+);

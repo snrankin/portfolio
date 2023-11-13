@@ -78,9 +78,8 @@
 }
 
 .print {
-	.container {
-		max-width: 7.5in;
-	}
+	--container-width: 7.5in !important;
+	--section-spacing: 0.25in;
 	.project-wp-readme {
 		display: none;
 	}

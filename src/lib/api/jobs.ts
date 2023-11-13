@@ -1,5 +1,6 @@
 import { get, has, isSet } from 'lodash';
 import { Asset, Content } from '@/components/contentful/markdown';
+import { cache } from 'react';
 export interface IJob extends Object {
 	title: string;
 	company: string;
@@ -72,10 +73,13 @@ function extractItem(fetchResponse: any): IJob {
 function extractEntries(fetchResponse: any): IJob[] {
 	return fetchResponse?.data?.jobCollection?.items;
 }
-
-export async function getAllJobs(isDraftMode: boolean): Promise<IJob[]> {
-	const entries = await fetchGraphQL(
-		`query {
+export const preloadJobs = () => {
+	void getAllJobs(false);
+};
+export const getAllJobs = cache(
+	async (isDraftMode: boolean): Promise<IJob[]> => {
+		const entries = await fetchGraphQL(
+			`query {
 		      jobCollection(where: { startDate_exists: true }, order: startDate_DESC, preview: ${
 					isDraftMode ? 'true' : 'false'
 				}) {
@@ -84,8 +88,9 @@ export async function getAllJobs(isDraftMode: boolean): Promise<IJob[]> {
 		        }
 		      }
 		    }`,
-		isDraftMode
-	);
+			isDraftMode
+		);
 
-	return extractEntries(entries);
-}
+		return extractEntries(entries);
+	}
+);

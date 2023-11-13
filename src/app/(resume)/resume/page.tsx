@@ -4,6 +4,8 @@ import { getAuthor } from '@/lib/api/authors';
 import { getProjects } from '@/lib/api/projects';
 import { getAllJobs } from '@/lib/api/jobs';
 import { getAllSkills } from '@/lib/api/skills';
+
+import './page.css';
 export const metadata: Metadata = {
 	robots: {
 		index: false,

@@ -33,7 +33,7 @@ export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
 							{simplifyUrl(project.website)}
 						</a>
 					)}
-					{!!project.repo && !!project.website && (
+					{!!project.repo && !project.website && (
 						<a
 							href={project.repo}
 							target="_blank"
