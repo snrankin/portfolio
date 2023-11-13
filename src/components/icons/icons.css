@@ -1,0 +1,192 @@
+.icon {
+	font-size: 1em;
+	width: 1em;
+	height: 1em;
+	min-width: 1em;
+	min-height: 1em;
+	line-height: 2ex;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.inline-flex.items-baseline .icon {
+	display: block;
+	position: relative;
+	bottom: -0.125em;
+}
+
+.icon svg {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+.btn-icon {
+	height: auto;
+	width: auto;
+	min-width: 0;
+	font-size: 1.25rem;
+	min-height: 0;
+	line-height: 1;
+}
+
+.btn-icon.btn-circle {
+	height: auto;
+	width: auto;
+	min-width: 0;
+	font-size: 1.25rem;
+	min-height: 0;
+	line-height: 1;
+}
+
+.btn-icon .icon {
+	display: flex;
+}
+
+.color.devicon {
+	&-bootstrap-plain {
+		color: #7129f1;
+	}
+	&-bitbucket-original {
+		color: #2e87fc;
+	}
+	&-illustrator-plain {
+		color: #f59526;
+	}
+	&-photoshop-plain {
+		color: #38a5f4;
+	}
+	&-xd-plain {
+		color: #f565ec;
+	}
+}
+
+[class^='dev-'],
+[class*=' dev-'] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: var(--font-devicons) !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	min-width: 1em;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.dev-contentful .path1:before {
+	content: '\e900';
+	color: rgb(250, 229, 1);
+}
+.dev-contentful .path2:before {
+	content: '\e901';
+	margin-left: -1em;
+	color: rgb(79, 181, 225);
+}
+.dev-contentful .path3:before {
+	content: '\e902';
+	margin-left: -1em;
+	color: rgb(240, 87, 81);
+}
+.dev-contentful .path4:before {
+	content: '\e903';
+	margin-left: -1em;
+	color: rgb(6, 129, 182);
+}
+.dev-contentful .path5:before {
+	content: '\e904';
+	margin-left: -1em;
+	color: rgb(205, 71, 57);
+}
+.dev-figma .path1:before {
+	content: '\e905';
+	color: rgb(10, 207, 131);
+}
+.dev-figma .path2:before {
+	content: '\e906';
+	margin-left: -1em;
+	color: rgb(162, 89, 255);
+}
+.dev-figma .path3:before {
+	content: '\e907';
+	margin-left: -1em;
+	color: rgb(242, 78, 30);
+}
+.dev-figma .path4:before {
+	content: '\e908';
+	margin-left: -1em;
+	color: rgb(255, 114, 98);
+}
+.dev-figma .path5:before {
+	content: '\e909';
+	margin-left: -1em;
+	color: rgb(26, 188, 254);
+}
+.dev-kentico:before {
+	content: '\e90a';
+	color: #f05a22;
+}
+.dev-liquid:before {
+	content: '\e90b';
+	color: #0e83cc;
+}
+.dev-shopify:before {
+	content: '\e90d';
+	color: #96be4f;
+}
+.dev-sketch:before {
+	content: '';
+	display: block;
+	padding-bottom: 100%;
+	background-image: url('data:image/svg+xml, %3Csvg%20xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox=%220%200%20128%20128%22%3E%3Cpath%20fill=%22%23fdb300%22%20d=%22M29.62%2012.85L64%209.24l34.38%203.61L125%2048.29l-61%2070.47L3%2048.29z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23ea6c00%22%20d=%22M27.71%2048.29L64%20118.76%203%2048.29h24.71zM100.29%2048.29L64%20118.76l61-70.47h-24.71z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23fdad00%22%20d=%22M27.71%2048.29h72.58L64%20118.76%2027.71%2048.29z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23fdd231%22%20d=%22M64%209.24l-34.38%203.61-1.91%2035.44L64%209.24zM64%209.24l34.38%203.61%201.91%2035.44L64%209.24z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23fdad00%22%20d=%22M125%2048.29L98.38%2012.85l1.91%2035.44H125z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23feeeb7%22%20d=%22M64%209.24L27.71%2048.29h72.58L64%209.24z%22%3E%3C%2Fpath%3E%3Cpath%20fill=%22%23fdad00%22%20d=%22M3%2048.29l26.62-35.44-1.91%2035.44H3z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E%0A%20%20%20%20%20%20%20%20%20%20');
+	background-repeat: no-repeat;
+}
+.dev-sketch .path1:before {
+	content: '\e90e';
+	color: rgb(253, 179, 0);
+}
+.dev-sketch .path2:before {
+	content: '\e90f';
+	margin-left: -1em;
+	color: rgb(234, 108, 0);
+}
+.dev-sketch .path3:before {
+	content: '\e910';
+	margin-left: -1em;
+	color: rgb(253, 173, 0);
+}
+.dev-sketch .path4:before {
+	content: '\e911';
+	margin-left: -1em;
+	color: rgb(253, 210, 49);
+}
+.dev-sketch .path5:before {
+	content: '\e912';
+	margin-left: -1em;
+	color: rgb(253, 173, 0);
+}
+.dev-sketch .path6:before {
+	content: '\e913';
+	margin-left: -1em;
+	color: rgb(254, 238, 183);
+}
+.dev-sketch .path7:before {
+	content: '\e914';
+	margin-left: -1em;
+	color: rgb(253, 173, 0);
+}
+.dev-umbraco:before {
+	content: '\e915';
+	color: #3544b1;
+}
+.dev-postcss:before {
+	content: '\e90c';
+	color: #e53935;
+}
