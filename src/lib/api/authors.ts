@@ -71,8 +71,8 @@ const AUTHOR_GRAPHQL_FIELDS = `
     }
   }
 `;
-async function fetchGraphQL(query: string, preview = false): Promise<any> {
-	return await fetch(
+async function fetchGraphQL(query: string, preview = false) {
+	const res = await fetch(
 		`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
 		{
 			method: 'POST',
@@ -87,21 +87,13 @@ async function fetchGraphQL(query: string, preview = false): Promise<any> {
 			body: JSON.stringify({ query }),
 			next: { tags: ['authors'] },
 		}
-	)
-		.then((response: Response) => response.json())
-		.then((response: any) => {
-			if (has(response, 'errors')) {
-				let errors = get(response, 'errors');
+	);
+	if (!res.ok) {
+		// This will activate the closest `error.js` Error Boundary
+		throw new Error('Failed to fetch data');
+	}
 
-				throw new Error(
-					`${errors[0].message} at src/lib/api/authors.ts:${errors[0].locations[0].line}`
-				);
-			}
-			return response; //we only get here if there is no error
-		})
-		.catch((err: any) => {
-			console.error(err);
-		});
+	return res.json();
 }
 
 function extractEntry(fetchResponse: any): IAuthor {
@@ -116,7 +108,7 @@ export const preloadAuthor = (name: string) => {
 };
 export const getAuthor = cache(
 	async (name: string, isDraftMode: boolean): Promise<IAuthor> => {
-		const entries = await fetchGraphQL(
+		const entry = await fetchGraphQL(
 			`query {
 		      authorCollection(where: { name: "${name}" }, limit: 1, preview: ${
 				isDraftMode ? 'true' : 'false'
@@ -129,7 +121,9 @@ export const getAuthor = cache(
 			isDraftMode
 		);
 
-		return extractEntry(entries);
+		console.log('🚀 ~ file: authors.ts:124 ~ entry:', entry);
+
+		return extractEntry(entry);
 	}
 );
 
