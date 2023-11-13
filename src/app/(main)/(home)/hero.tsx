@@ -72,7 +72,11 @@ export default function Hero({ me }: { me: IAuthor }): JSX.Element {
 						</small>{' '}
 						<br />
 						<span className="text-secondary-500">
-							{me.firstName} {me.lastName}
+							{!!me.firstName && !!me.lastName && (
+								<p className="lead">
+									{me.firstName} {me.lastName}
+								</p>
+							)}
 						</span>
 						.
 					</h1>
