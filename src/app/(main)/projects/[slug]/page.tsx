@@ -5,6 +5,11 @@ import { getAllProjects, getProjectAndMoreProjects } from '@/lib/api/projects';
 export async function generateStaticParams() {
 	const allProjects = await getAllProjects(false);
 
+	console.log(
+		'🚀 ~ file: page.tsx:8 ~ generateStaticParams ~ allProjects:',
+		allProjects
+	);
+
 	return allProjects.map((project) => ({
 		slug: project.slug,
 	}));
