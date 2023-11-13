@@ -121,8 +121,6 @@ export const getAuthor = cache(
 			isDraftMode
 		);
 
-		console.log('🚀 ~ file: authors.ts:124 ~ entry:', entry);
-
 		return extractEntry(entry);
 	}
 );

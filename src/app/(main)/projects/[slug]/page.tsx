@@ -24,32 +24,14 @@ export async function generateMetadata({
 	};
 }
 
-// export async function generateStaticParams() {
-// 	preloadProjects();
-// 	const allProjects = getAllProjects(false).then((res) => {
-// 		res.map((project) => ({
-// 			slug: project.slug,
-// 		}));
-// 	});
+export async function generateStaticParams() {
+	preloadProjects();
+	const allProjects = await getAllProjects(false);
 
-// 	// console.log(
-// 	// 	'🚀 ~ file: page.tsx:8 ~ generateStaticParams ~ allProjects:',
-// 	// 	allProjects
-// 	// );
-
-// 	return getAllProjects(false).then((res) => {
-// 		console.log(
-// 			'🚀 ~ file: page.tsx:41 ~ returngetAllProjects ~ res:',
-// 			res
-// 		);
-
-// 		if (isArray(res)) {
-// 			return res.map((project) => ({
-// 				slug: project.slug,
-// 			}));
-// 		}
-// 	});
-// }
+	return allProjects.map((project) => ({
+		slug: project.slug,
+	}));
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
 	const { isEnabled } = draftMode();

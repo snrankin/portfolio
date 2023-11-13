@@ -94,10 +94,6 @@ export default function SkillsList(props: SkillsListProps) {
 								);
 								break;
 						}
-						console.log(
-							'🚀 ~ file: skills.tsx:106 ~ {Object.entries ~ classes:',
-							classes
-						);
 
 						let skillsGroup: SkillsGroupProps =
 							groupProps != undefined
