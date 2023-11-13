@@ -7,7 +7,7 @@ import ThemeSwap from '@/components/theme-swap/theme-swap';
 import DarkFrame from '@/img/frame-dark.svg';
 import LightFrame from '@/img/frame-light.svg';
 import { IAuthor } from '@/lib/api/authors';
-export default function About({ me }: { me: IAuthor }): JSX.Element {
+export default function About({ me }: { me?: IAuthor }): JSX.Element {
 	return (
 		<Section
 			id="about"
@@ -16,7 +16,7 @@ export default function About({ me }: { me: IAuthor }): JSX.Element {
 			flags="verbose"
 		>
 			<div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-11">
-				{!!me.picture && (
+				{!!me?.picture && (
 					<div className="relative">
 						<div className="aspect-w-1 aspect-h-1">
 							<ContentfulImage
@@ -46,7 +46,7 @@ export default function About({ me }: { me: IAuthor }): JSX.Element {
 						</div>
 					</div>
 				)}
-				{!!me.about && (
+				{!!me?.about && (
 					<div className="prose lg:prose-lg max-w-none">
 						<Markdown content={me.about} />
 					</div>
