@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '@/components/global/header';
 import Footer from '@/components/global/footer';
-import ThemeProvider from '@/lib/theme-context';
-import SectionProvider from '@/lib/section-context';
+import ThemeProvider from '@/lib/context/theme';
+import SectionProvider from '@/lib/context/section';
+import HeaderProvider from '@/lib/context/header';
 import { getAllProjects } from '@/lib/api/projects';
 
 export default async function Layout({
@@ -15,11 +16,14 @@ export default async function Layout({
 	return (
 		<ThemeProvider>
 			<SectionProvider>
-				<Header projects={allProjects} />
-				<main className="flex min-h-screen flex-col w-full overflow-y-none">
-					{children}
-				</main>
-				<Footer />
+				<HeaderProvider
+					headerContent={<Header projects={allProjects} />}
+				>
+					<main className="flex min-h-screen flex-col w-full overflow-y-none">
+						{children}
+					</main>
+					<Footer />
+				</HeaderProvider>
 			</SectionProvider>
 		</ThemeProvider>
 	);

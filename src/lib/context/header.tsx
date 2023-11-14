@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import React, {
 	useState,
 	useRef,
@@ -8,22 +7,20 @@ import React, {
 	createContext,
 	useLayoutEffect,
 } from 'react';
-import SiteLinks from './site-links';
-import Nav from '@/components/nav/nav';
 import classNames from 'classnames';
 import { Waypoint } from 'react-waypoint';
-import ThemeButton from '@/components/theme-swap/theme-button';
-import Logo from './logo';
 
-export const HeaderWaypointContext = createContext({
+export const HeaderContext = createContext({
 	height: 0,
 	isScrolled: false,
 });
 
-export default function HeaderWaypoint({
+export default function HeaderProvider({
 	children,
+	headerContent,
 }: {
 	children: React.ReactNode;
+	headerContent: JSX.Element;
 }) {
 	const [height, setHeight] = useState(0);
 	const [isScrolled, setScrolled] = useState(false);
@@ -85,9 +82,9 @@ export default function HeaderWaypoint({
 	};
 
 	return (
-		<HeaderWaypointContext.Provider value={{ height, isScrolled }}>
+		<HeaderContext.Provider value={{ height, isScrolled }}>
 			<header id="site-header" className={headerClasses} ref={header}>
-				{children}
+				{headerContent}
 			</header>
 			<Waypoint onEnter={handleEnter} onLeave={handleExit}>
 				<div
@@ -98,6 +95,7 @@ export default function HeaderWaypoint({
 					}}
 				></div>
 			</Waypoint>
-		</HeaderWaypointContext.Provider>
+			{children}
+		</HeaderContext.Provider>
 	);
 }

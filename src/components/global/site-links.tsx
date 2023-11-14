@@ -2,7 +2,7 @@
 import React, { useContext, HTMLProps } from 'react';
 import { IProject } from '@/lib/api/projects';
 import Link from 'next/link';
-import { SectionContext } from '@/lib/section-context';
+import { SectionContext } from '@/lib/context/section';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 export default function SiteLinks({ projects }: { projects?: IProject[] }) {
@@ -63,54 +63,48 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 				</Link>
 			</li>
 			<li role="none" data-section="projects">
-				<span className={projectsClasses} aria-haspopup="true">
-					<Link
-						role="menuitem"
-						className={topLevelClasses}
-						href="/#projects"
-					>
-						Projects
-					</Link>
-
+				<details>
+					<summary>
+						<Link
+							role="menuitem"
+							className={topLevelClasses}
+							href="/#projects"
+						>
+							Projects
+						</Link>
+					</summary>
 					{!!projects && (
-						<nav className="dropdown-content pt-3">
-							<ul className=" bg-base-100 dark:bg-gray-950 md:rounded-md md:p-3 shadow  ms-0 border-none before:content-none">
-								{projects.map(
-									({ shortTitle, slug }: IProject) => {
-										let subClasses = classNames(
-											'whitespace-nowrap',
-											'hover:dark:bg-primary-600',
-											'hover:dark:text-gray-950',
+						<ul className="menu rounded-box bg-base-100 dark:bg-gray-950 md:p-3 md:shadow ms-0 border-none before:content-none">
+							{projects.map(({ shortTitle, slug }: IProject) => {
+								let subClasses = classNames(
+									'whitespace-nowrap',
+									'hover:dark:bg-primary-600',
+									'hover:dark:text-gray-950',
 
-											{
-												'bg-primary-500':
-													!!slug &&
-													pathname.includes(slug),
-												'dark:bg-primary-600':
-													!!slug &&
-													pathname.includes(slug),
-												'dark:text-gray-950':
-													!!slug &&
-													pathname.includes(slug),
-											}
-										);
-										return (
-											<li key={slug}>
-												<Link
-													role="menuitem"
-													className={subClasses}
-													href={`/projects/${slug}`}
-												>
-													{shortTitle}
-												</Link>
-											</li>
-										);
+									{
+										'bg-primary-500':
+											!!slug && pathname.includes(slug),
+										'dark:bg-primary-600':
+											!!slug && pathname.includes(slug),
+										'dark:text-gray-950':
+											!!slug && pathname.includes(slug),
 									}
-								)}
-							</ul>
-						</nav>
+								);
+								return (
+									<li key={slug}>
+										<Link
+											role="menuitem"
+											className={subClasses}
+											href={`/projects/${slug}`}
+										>
+											{shortTitle}
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
 					)}
-				</span>
+				</details>
 			</li>
 			<li role="none" data-section="work-history">
 				<Link

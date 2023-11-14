@@ -4,7 +4,7 @@ import { Waypoint } from 'react-waypoint';
 import Heading, { HeadingProps } from './heading';
 import classNames from 'classnames';
 import { pick, isEmpty, omit, set } from 'lodash';
-import { SectionContext } from '@/lib/section-context';
+import { SectionContext } from '@/lib/context/section';
 export interface SectionProps
 	extends HeadingProps,
 		Omit<HTMLProps<HTMLElement>, 'id'> {
@@ -38,10 +38,6 @@ export default function Section(props: SectionProps) {
 		if (args.currentPosition == 'inside') {
 			sectionCtx.updateSectionHandler(props.id);
 		}
-		console.log(
-			'🚀 ~ file: site-links.tsx:23 ~ SiteLinks ~ sectionCtx.section:',
-			sectionCtx.section
-		);
 	}
 
 	return (

@@ -1,6 +1,6 @@
 'use client';
 import React, { useContext } from 'react';
-import { ThemeContext } from '@/lib/theme-context';
+import { ThemeContext } from '@/lib/context/theme';
 
 function ThemeSwap({
 	light,

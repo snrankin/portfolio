@@ -33,23 +33,23 @@ export default function Nav(props: NavProps): JSX.Element {
 		dropdownLabel,
 	} = props;
 
-	let direction = props.direction != undefined ? props.direction : 'vertical';
+	let direction = !!props.direction ? props.direction : 'vertical';
 
-	if (inNavbar && props.direction == undefined) {
+	if (inNavbar && !!props.direction) {
 		direction = 'horizontal';
 	}
 
-	let dropdownClass = dropdown != undefined ? `dropdown-${dropdown}` : '';
+	let dropdownClass = !!dropdown ? `dropdown-${dropdown}` : '';
 
 	let navClasses = classNames(props.className, dropdownClass, {
-		dropdown: dropdown != undefined,
-		'dropdown-hover': dropdown != undefined,
+		dropdown: !!dropdown,
+		'dropdown-hover': !!dropdown,
 	});
 
-	let menuSize = size != undefined ? `menu-${size}` : '',
+	let menuSize = !!size ? `menu-${size}` : '',
 		menuDirection = direction != undefined ? `menu-${direction}` : '';
 
-	let menuClasses = classNames(props.menuClasses, menuSize, {
+	let menuClasses = classNames('menu', props.menuClasses, menuSize, {
 		menu: !dropdown,
 		'menu-horizontal': direction == 'horizontal',
 		'dropdown-content': !!dropdown,
@@ -89,7 +89,28 @@ export default function Nav(props: NavProps): JSX.Element {
 
 	return (
 		<nav {...navAttr}>
-			{dropdownLabel}
+			{!!dropdown && (
+				<>
+					{!!menuOpenedIcon && !!menuClosedIcon && (
+						<IconSwap
+							aria-haspopup="true"
+							className={buttonClasses}
+							iconOff={menuClosedIcon}
+							iconOn={menuOpenedIcon}
+							groupOff={menuClosedIconGroup}
+							groupOn={menuOpenedIconGroup}
+						/>
+					)}
+					{!!menuClosedIcon && !menuOpenedIcon && (
+						<button aria-haspopup="true" className={buttonClasses}>
+							<Icon
+								icon={menuClosedIcon}
+								group={menuClosedIconGroup}
+							/>
+						</button>
+					)}
+				</>
+			)}
 
 			<ul {...menuAttr}>{children}</ul>
 		</nav>
