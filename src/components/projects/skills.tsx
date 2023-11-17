@@ -16,15 +16,18 @@ export default function ProjectSkills({
 	return (
 		<>
 			{!!skills && (
-				<ul className="flex list-none gap-3 !p-0 flex-wrap">
+				<div className="flex list-none gap-2 !p-0 flex-wrap">
 					{skills?.map((s, i) => {
 						return (
-							<li key={i} className="badge gap-1">
-								<Skill icon={s.title} titleDisplay="inline" />
-							</li>
+							<Skill
+								key={i}
+								icon={s.title}
+								titleDisplay="inline"
+								className="badge bg-base-200"
+							/>
 						);
 					})}
-				</ul>
+				</div>
 			)}
 		</>
 	);

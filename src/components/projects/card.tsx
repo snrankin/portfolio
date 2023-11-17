@@ -9,24 +9,19 @@ import { displayDate, simplifyUrl } from '@/lib/utils';
 import Link from 'next/link';
 import ProjectSkills from './skills';
 import { IProject } from '@/lib/api/projects';
+import { TypePostCardFields } from '@/lib/types';
 import { paramCase } from 'change-case-all';
 export interface ProjectCardProps
 	extends Omit<CardProps, 'content'>,
-		IProject {}
+		TypePostCardFields {}
 
 export default function ProjectCard(props: ProjectCardProps) {
-	let { excerpt, skillCollection } = props;
+	let { summary, skillCollection } = props;
 
 	let attr: Omit<CardProps, 'content'> = omit(props, [
 		'slug',
 		'shortTitle',
-		'featuredImage',
-		'startDate',
-		'endDate',
-		'excerpt',
-		'website',
-		'repo',
-		'highlights',
+		'summary',
 		'desktopPreview',
 		'laptopPreview',
 		'tabletPreview',
@@ -46,12 +41,11 @@ export default function ProjectCard(props: ProjectCardProps) {
 	return (
 		<Card {...attr}>
 			<ProjectSkills skillCollection={skillCollection} limit={4} />
-			{excerpt != undefined ? <p>{excerpt}</p> : null}
+			{!!summary && <p>{summary}</p>}
 			<div className="card-actions justify-end">
 				<Link href={`/projects/${slug}`} className="btn btn-link">
 					View More
 				</Link>
-				{/* <ProjectLinks project={project} /> */}
 			</div>
 		</Card>
 	);

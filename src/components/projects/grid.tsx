@@ -3,10 +3,11 @@ import React, { HTMLProps } from 'react';
 import { IProject } from '@/lib/api/projects';
 import ProjectCard, { ProjectCardProps } from './card';
 import { merge, omit } from 'lodash';
+import { TypePostCardFields } from '@/lib/types';
 
 interface ProjectGroupProps extends HTMLProps<HTMLDivElement> {
-	projectProps?: ProjectCardProps;
-	projects?: IProject[];
+	projectProps?: Omit<ProjectCardProps, 'slug'>;
+	projects?: TypePostCardFields[];
 }
 
 export default function ProjectsGroup(props: ProjectGroupProps) {
@@ -16,7 +17,7 @@ export default function ProjectsGroup(props: ProjectGroupProps) {
 	return (
 		<div {...atts}>
 			{!!projects &&
-				projects.map((project: IProject) => {
+				projects.map((project: TypePostCardFields) => {
 					merge(project, props.projectProps);
 					return <ProjectCard key={project.slug} {...project} />;
 				})}
