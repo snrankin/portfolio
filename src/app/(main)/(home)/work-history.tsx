@@ -1,25 +1,21 @@
 'use client';
 import React from 'react';
 import Timeline from '@/components/timeline/group';
-import { IJob } from '@/lib/api/jobs';
 import Section from '@/components/section/section';
-export default function WorkHistory({
-	jobs,
-	intro,
-}: {
-	jobs?: IJob[];
-	intro?: string;
-}): JSX.Element {
+import { TypeJobsSectionFields } from '@/lib/types';
+export default function WorkHistory(
+	props?: TypeJobsSectionFields
+): JSX.Element {
 	return (
 		<Section
-			id="work-history"
-			title="Work"
-			command="ls"
-			argument="work"
-			flags="history"
-			intro={intro}
+			id={`${props?.slug}`}
+			title={`${props?.title}`}
+			command={`${props?.command}`}
+			argument={`${props?.argument}`}
+			flags={props?.flags}
+			intro={props?.intro}
 		>
-			<Timeline jobs={jobs} />
+			<Timeline jobs={props?.jobsCollection?.items} />
 		</Section>
 	);
 }
