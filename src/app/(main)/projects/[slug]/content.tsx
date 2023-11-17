@@ -6,28 +6,30 @@ import { simplifyUrl } from '@/lib/utils';
 import ContentfulImage from '@/components/contentful/contentful-image';
 import classNames from 'classnames';
 import { Markdown } from '@/components/contentful/markdown';
-import MoreProjects from '@/app/(main)/projects/[slug]/more-projects';
 import Skill from '@/components/skills/item';
 import ProjectImage from '@/components/projects/image';
+import ProjectsGroup from '@/components/projects/grid';
+import ProjectLinks from '@/components/projects/links';
+import { TypePostFields, TypePostCardFields } from '@/lib/types';
 export default function Content({
 	project,
 	moreProjects,
 }: {
-	project: IProject;
-	moreProjects: IProject[];
+	project?: TypePostFields;
+	moreProjects?: TypePostCardFields[];
 }) {
 	let useGrid =
-		!!project.desktopPreview ||
-		!!project.mobilePreview ||
-		!!project.tabletPreview ||
-		!!project.laptopPreview;
+		!!project?.desktopPreview ||
+		!!project?.mobilePreview ||
+		!!project?.tabletPreview ||
+		!!project?.laptopPreview;
 
 	let useImage =
-		project.featuredImage != undefined &&
-		project.desktopPreview == undefined &&
-		project.laptopPreview == undefined &&
-		project.mobilePreview == undefined &&
-		project.tabletPreview == undefined;
+		project?.featuredImage != undefined &&
+		project?.desktopPreview == undefined &&
+		project?.laptopPreview == undefined &&
+		project?.mobilePreview == undefined &&
+		project?.tabletPreview == undefined;
 
 	let wrapperClasses = classNames('grid', 'grid-cols-1', 'gap-section', {
 		'lg:grid-cols-2': useImage || useGrid,
@@ -46,33 +48,42 @@ export default function Content({
 					)}
 					<div className="text-center prose lg:prose-xl md:text-left">
 						<div className="prose">
-							<h1>{project.title}</h1>
-							{!!project.skillCollection && (
+							<h1>{project?.title}</h1>
+							{!!project?.skillCollection && (
 								<ul className="flex list-none gap-3 !p-0 flex-wrap">
-									{project.skillCollection.items?.map(
+									{project?.skillCollection.items?.map(
 										(s, i) => {
 											return (
 												<li
 													key={i}
-													className="badge gap-1"
+													className="badge gap-1 !m-0"
 												>
-													<Skill icon={s.title} />
+													<Skill
+														icon={s.title}
+														titleDisplay="inline"
+													/>
 												</li>
 											);
 										}
 									)}
 								</ul>
 							)}
-							{!!project.excerpt && <p>{project.excerpt}</p>}
+							{!!project?.summary && (
+								<p className="lead">{project?.summary}</p>
+							)}
+							<ProjectLinks
+								repo={project?.repo}
+								website={project?.website}
+							/>
 						</div>
 					</div>
 				</div>
 			</Section>
 
-			{!!project.content && (
+			{!!project?.content && (
 				<Section
 					id="project-content"
-					title="Featured Projects"
+					title={`Case Study: ${project.title}`}
 					command="ls"
 					argument="project"
 					flags={`id=${project.slug}|verbose`}
@@ -85,19 +96,25 @@ export default function Content({
 					</div>
 				</Section>
 			)}
-
-			<Section
-				id="more-projects"
-				title="More Projects"
-				command="ls"
-				argument="projects"
-				flags={`exclude=${project.slug}`}
-				className="bg-base-200"
-			>
-				<div className="grid gap-6 lg:gap-11 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-					<MoreProjects moreProjects={moreProjects} />
-				</div>
-			</Section>
+			{!!moreProjects && (
+				<Section
+					id="more-projects"
+					title="More Projects"
+					command="ls"
+					argument="projects"
+					flags={`exclude=${project?.slug}`}
+					className="bg-base-200"
+				>
+					<ProjectsGroup
+						projectProps={{
+							compact: true,
+							className: 'bg-base-100 shadow',
+						}}
+						projects={moreProjects}
+						className="grid gap-6 lg:gap-11 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+					/>
+				</Section>
+			)}
 		</>
 	);
 }
