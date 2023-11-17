@@ -4,10 +4,10 @@ import { IProject } from '@/lib/api/projects';
 import Link from 'next/link';
 import { SectionContext } from '@/lib/context/section';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 	const pathname = usePathname();
-
+	const segment = useSelectedLayoutSegment();
 	const sectionCtx: {
 		section: string;
 		updateSectionHandler: (str: string) => void;
@@ -21,6 +21,7 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 	);
 
 	let aboutClasses = classNames(topLevelClasses, {
+		active: sectionCtx.section == 'about',
 		'bg-gray-200': sectionCtx.section == 'about',
 		'dark:bg-gray-950': sectionCtx.section == 'about',
 	});
@@ -28,17 +29,14 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 		'bg-gray-200': sectionCtx.section == 'skills',
 		'dark:bg-gray-950': sectionCtx.section == 'skills',
 	});
-	let projectsClasses = classNames(
-		'dropdown dropdown-hover dropdown-bottom block hover:bg-gray-200 hover:dark:bg-gray-950',
-		{
-			'bg-gray-200':
-				(pathname == '/' && sectionCtx.section == 'projects') ||
-				pathname.includes('projects'),
-			'dark:bg-gray-950':
-				(pathname == '/' && sectionCtx.section == 'projects') ||
-				pathname.includes('projects'),
-		}
-	);
+	let projectsClasses = classNames(topLevelClasses, {
+		'bg-gray-200':
+			(pathname == '/' && sectionCtx.section == 'projects') ||
+			pathname.includes('projects'),
+		'dark:bg-gray-950':
+			(pathname == '/' && sectionCtx.section == 'projects') ||
+			pathname.includes('projects'),
+	});
 
 	let workClasses = classNames(topLevelClasses, {
 		'bg-gray-200': sectionCtx.section == 'work-history',
@@ -53,35 +51,43 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 	return (
 		<>
 			<li role="none" data-section="about">
-				<Link role="menuitem" className={aboutClasses} href="/#about">
+				<Link
+					role="menuitem"
+					className={aboutClasses}
+					href="/#about"
+					scroll={false}
+				>
 					About
 				</Link>
 			</li>
 			<li role="none" data-section="skills">
-				<Link role="menuitem" className={skillsClasses} href="/#skills">
+				<Link
+					role="menuitem"
+					className={skillsClasses}
+					href="/#skills"
+					scroll={false}
+				>
 					Skills
 				</Link>
 			</li>
 			<li role="none" data-section="projects">
 				<details>
-					<summary>
-						<Link
-							role="menuitem"
-							className={topLevelClasses}
-							href="/#projects"
-						>
+					<summary className={projectsClasses}>
+						<Link role="menuitem" href="/#projects" scroll={false}>
 							Projects
 						</Link>
 					</summary>
 					{!!projects && (
 						<ul className="menu rounded-box bg-base-100 dark:bg-gray-950 md:p-3 md:shadow ms-0 border-none before:content-none">
 							{projects.map(({ shortTitle, slug }: IProject) => {
+								const isActive = slug === segment;
 								let subClasses = classNames(
 									'whitespace-nowrap',
 									'hover:dark:bg-primary-600',
 									'hover:dark:text-gray-950',
 
 									{
+										active: isActive,
 										'bg-primary-500':
 											!!slug && pathname.includes(slug),
 										'dark:bg-primary-600':
@@ -90,6 +96,7 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 											!!slug && pathname.includes(slug),
 									}
 								);
+
 								return (
 									<li key={slug}>
 										<Link
@@ -111,6 +118,7 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 					role="menuitem"
 					className={workClasses}
 					href="/#work-history"
+					scroll={false}
 				>
 					Work History
 				</Link>

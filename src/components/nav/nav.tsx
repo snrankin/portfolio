@@ -43,7 +43,6 @@ export default function Nav(props: NavProps): JSX.Element {
 
 	let navClasses = classNames(props.className, dropdownClass, {
 		dropdown: !!dropdown,
-		'dropdown-hover': !!dropdown,
 	});
 
 	let menuSize = !!size ? `menu-${size}` : '',
