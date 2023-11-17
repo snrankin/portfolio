@@ -12,11 +12,21 @@ const TabletDarkWireframe = require('@/img/wireframes/tablet-dark.svg?url');
 const TabletLightWireframe = require('@/img/wireframes/tablet-light.svg?url');
 const MobileDarkWireframe = require('@/img/wireframes/mobile-dark.svg?url');
 const MobileLightWireframe = require('@/img/wireframes/mobile-light.svg?url');
+import { TypeAuthorFields, TypeHomePageFields } from '@/lib/types';
 import { HeaderContext } from '@/lib/context/header';
 import Image from 'next/image';
 import { titleCase } from 'change-case-all';
 import Link from 'next/link';
-export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
+import { Markdown } from '@/components/contentful/markdown';
+
+import Shell from '@/components/code/shell';
+export default function Hero({
+	me,
+	home,
+}: {
+	me?: TypeAuthorFields;
+	home?: TypeHomePageFields;
+}): JSX.Element {
 	const switchWireframes = (device: string = 'desktop', theme = 'light') => {
 		let wireframe = null;
 		switch (device) {
@@ -80,17 +90,15 @@ export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
 							my name is
 						</small>{' '}
 						{!!me?.firstName && !!me?.lastName && (
-							<span className="text-secondary-500">
+							<span className="text-primary-500">
 								{me.firstName} {me.lastName}
 							</span>
 						)}
-						.
+						<span className="text-secondary-500">.</span>
 					</h1>
 				</div>
 				<div className="text-center prose lg:prose-xl md:text-left  md:row-start-2 md:col-start-1 xl:pb-section  ">
-					{!!me?.heroText && (
-						<p className="lead text-xl">{me.heroText}</p>
-					)}
+					{!!home?.heroText && <Markdown content={home.heroText} />}
 					<div className="flex flex-wrap gap-3 items-center justify-center md:justify-start">
 						<Link href="#projects" className="btn btn-primary">
 							See My Work
@@ -105,16 +113,9 @@ export default function Hero({ me }: { me?: IAuthor }): JSX.Element {
 						<div className="md:-mr-[40%] lg:mr-0">
 							<Grid>
 								<Grid.Desktop>
-									<ThemeSwap
-										light={switchWireframes(
-											'desktop',
-											'light'
-										)}
-										dark={switchWireframes(
-											'desktop',
-											'dark'
-										)}
-									/>
+									<div className="grow w-full h-full flex flex-col items-center justify-center">
+										<Shell command="$(whoami)" />
+									</div>
 								</Grid.Desktop>
 								<Grid.Laptop>
 									<ThemeSwap
