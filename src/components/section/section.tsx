@@ -5,11 +5,13 @@ import Heading, { HeadingProps } from './heading';
 import classNames from 'classnames';
 import { pick, isEmpty, omit, set } from 'lodash';
 import { SectionContext } from '@/lib/context/section';
+import { Content, Markdown } from '@/components/contentful/markdown';
+
 export interface SectionProps
 	extends HeadingProps,
 		Omit<HTMLProps<HTMLElement>, 'id'> {
 	id: string;
-	intro?: string;
+	intro?: Content;
 }
 
 export default function Section(props: SectionProps) {
@@ -42,19 +44,14 @@ export default function Section(props: SectionProps) {
 
 	return (
 		<Waypoint onEnter={enterHandler}>
-			<section className={classes} {...sectionProps}>
+			<section {...sectionProps}>
 				<div className="container flex flex-col gap-row">
 					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
 						<Heading {...headingArgs} />
 					)}
-					{props.intro != undefined && !isEmpty(props.intro) && (
-						<div className="prose mx-auto text-center my-0">
-							<p
-								className="lead"
-								dangerouslySetInnerHTML={{
-									__html: props.intro,
-								}}
-							></p>
+					{!!props.intro && (
+						<div className="prose-xl mx-auto text-center my-0 md:max-w-[60%]">
+							<Markdown content={props.intro} />
 						</div>
 					)}
 					{children}

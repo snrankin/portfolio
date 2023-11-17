@@ -65,30 +65,35 @@ export default function SkillsList(props: SkillsListProps) {
 						switch (k) {
 							case 'Languages':
 								classes = classNames(
+									classes,
 									groupProps?.className,
 									langClass
 								);
 								break;
 							case 'CMS':
 								classes = classNames(
+									classes,
 									groupProps?.className,
 									cmsClass
 								);
 								break;
 							case 'Frameworks':
 								classes = classNames(
+									classes,
 									groupProps?.className,
 									frameClass
 								);
 								break;
 							case 'Tools':
 								classes = classNames(
+									classes,
 									groupProps?.className,
 									toolClass
 								);
 								break;
 							case 'Software':
 								classes = classNames(
+									classes,
 									groupProps?.className,
 									softClass
 								);
