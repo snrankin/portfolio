@@ -1,29 +1,43 @@
 import Image from 'next/image';
+import ContentfulImage from './contentful-image';
+import { Entry, ResourceLink } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
-import { isEmpty } from 'lodash';
+import { BLOCKS, MARKS, INLINES, Document } from '@contentful/rich-text-types';
+import { isEmpty, get } from 'lodash';
 import { hasIcon, getIconString } from '@/components/icons/icons';
+import { TypeAssetFields } from '@/lib/types';
 import Icon from '@/components/icons/icon-item';
-export interface Asset {
-	sys: {
-		id: string;
-	};
-	url: string;
-	description: string;
-	width?: number;
-	height?: number;
-	title: string;
-}
+
+type TextLinks = {
+	entries: TextEntries;
+	assets: TextAssets;
+	resources: TextResources;
+};
+
+type TextEntries = {
+	inline: [Entry];
+	hyperlink: [Entry];
+	block: [Entry];
+};
+
+type TextAssets = {
+	hyperlink: [TypeAssetFields];
+	block: [TypeAssetFields];
+};
+
+type TextResources = {
+	block: [ResourceLink];
+	inline: [ResourceLink];
+	hyperlink: [ResourceLink];
+};
 
 export interface AssetLink {
-	block: Asset[];
+	block: TypeAssetFields[];
 }
 
 export interface Content {
-	json: any;
-	links: {
-		assets: AssetLink;
-	};
+	json: Document;
+	links: TextLinks;
 }
 
 function RichTextAsset({
@@ -31,14 +45,21 @@ function RichTextAsset({
 	assets,
 }: {
 	id: string;
-	assets: Asset[] | undefined;
+	assets: TypeAssetFields[] | undefined;
 }) {
-	const asset = assets?.find((asset: Asset) => asset.sys.id === id);
+	const asset = assets?.find((asset: TypeAssetFields) => asset.sys.id === id);
 
-	if (asset?.url) {
-		let alt = !isEmpty(asset.description) ? asset.description : asset.title;
+	if (asset) {
+		let alt = get(asset, 'description', ''),
+			width = get(asset, 'width', 300),
+			height = get(asset, 'height', 300),
+			src = get(asset, 'url', '');
+
+		if (isEmpty(alt)) {
+			alt = get(asset, 'title', '');
+		}
 		return (
-			<Image
+			<ContentfulImage
 				className="w-full"
 				sizes="100vw"
 				loading="lazy"
@@ -47,9 +68,47 @@ function RichTextAsset({
 					height: 'auto',
 				}}
 				alt={alt}
-				width={asset.width}
-				height={asset.height}
-				src={asset.url}
+				width={width}
+				height={height}
+				src={src}
+			/>
+		);
+	}
+
+	return null;
+}
+
+function EntryHyperlink({
+	id,
+	assets,
+}: {
+	id: string;
+	assets: TypeAssetFields[] | undefined;
+}) {
+	const asset = assets?.find((asset: TypeAssetFields) => asset.sys.id === id);
+
+	if (asset) {
+		let alt = get(asset, 'description', ''),
+			width = get(asset, 'width', 300),
+			height = get(asset, 'height', 300),
+			src = get(asset, 'url', '');
+
+		if (isEmpty(alt)) {
+			alt = get(asset, 'title', '');
+		}
+		return (
+			<ContentfulImage
+				className="w-full"
+				sizes="100vw"
+				loading="lazy"
+				style={{
+					width: '100%',
+					height: 'auto',
+				}}
+				alt={alt}
+				width={width}
+				height={height}
+				src={src}
 			/>
 		);
 	}
@@ -84,6 +143,7 @@ export function Markdown({ content }: { content: Content }) {
 				/>
 			),
 		},
+
 		renderMark: {
 			[MARKS.BOLD]: (node: any) => <SkillHighlightItem content={node} />,
 		},

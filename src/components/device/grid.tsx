@@ -3,11 +3,7 @@ import React, { useState, useContext } from 'react';
 import Device, { DeviceProps } from './device';
 function Desktop(props: Omit<DeviceProps, 'type'>) {
 	return (
-		<Device
-			type="desktop"
-			className="w-full col-span-8 row-span-10 col-start-3"
-			{...props}
-		>
+		<Device type="desktop" className="w-7/12" {...props}>
 			{props.children}
 		</Device>
 	);
@@ -41,7 +37,7 @@ function Mobile(props: Omit<DeviceProps, 'type'>) {
 	return (
 		<Device
 			type="mobile"
-			className="!absolute right-[20%] bottom-0 h-[31.04%] z-20"
+			className="!absolute right-[18%] bottom-0 h-[31.04%] z-20"
 			{...props}
 		>
 			{props.children}
@@ -51,7 +47,7 @@ function Mobile(props: Omit<DeviceProps, 'type'>) {
 
 function Grid({ children }: { children?: React.ReactNode }) {
 	return (
-		<div className="grid grid-cols-12 grid-rows-10  relative text-[12px]">
+		<div className="w-full flex flex-col items-center relative">
 			{children}
 		</div>
 	);
