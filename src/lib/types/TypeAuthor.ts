@@ -1,14 +1,13 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeSocialProfile } from './TypeSocialProfile';
-
+import type { TypeSocialProfile, TypeAssetFields } from '.';
 export interface TypeAuthorFields {
-	name: EntryFields.Symbol;
+	name: EntryFields.Text;
 	picture: Asset;
-	firstName?: EntryFields.Symbol;
-	lastName?: EntryFields.Symbol;
-	label?: EntryFields.Symbol;
-	email?: EntryFields.Symbol;
-	phone?: EntryFields.Symbol;
+	firstName?: EntryFields.Text;
+	lastName?: EntryFields.Text;
+	label?: EntryFields.Text;
+	email?: EntryFields.Text;
+	phone?: EntryFields.Text;
 	location?: EntryFields.Location;
 	social?: TypeSocialProfile[];
 }

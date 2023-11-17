@@ -1,28 +1,56 @@
-import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeAuthor } from './TypeAuthor';
-import type { TypeSkill } from './TypeSkill';
-
+import type { Entry, EntryFields, EntrySkeletonType } from 'contentful';
+import { Content } from '@/components/contentful/markdown';
+import type {
+	TypeAuthor,
+	TypeSkill,
+	TypeAssetFields,
+	TypeSkillFields,
+} from '.';
 export interface TypePostFields {
 	title: EntryFields.Symbol;
 	shortTitle?: EntryFields.Symbol;
 	slug: EntryFields.Symbol;
-	featuredImage?: Asset;
+	featuredImage?: TypeAssetFields;
 	summary?: EntryFields.Text;
 	excerpt?: EntryFields.Symbol;
-	content?: EntryFields.RichText;
+	content?: Content;
 	startDate?: EntryFields.Date;
 	endDate?: EntryFields.Date;
 	author: TypeAuthor;
-	desktopPreview?: Asset;
-	laptopPreview?: Asset;
-	tabletPreview?: Asset;
-	mobilePreview?: Asset;
+	desktopPreview?: TypeAssetFields;
+	laptopPreview?: TypeAssetFields;
+	tabletPreview?: TypeAssetFields;
+	mobilePreview?: TypeAssetFields;
 	website?: EntryFields.Symbol;
 	repo?: EntryFields.Symbol;
-	skill?: TypeSkill[];
+	skillCollection?: {
+		items: TypeSkillFields[];
+	};
 	seoTitle?: EntryFields.Symbol;
 	seoDescription?: EntryFields.Text;
-	seoImage?: Asset;
+	seoImage?: TypeAssetFields;
+}
+
+export interface TypePostCardFields {
+	shortTitle?: EntryFields.Symbol;
+	slug: EntryFields.Symbol;
+	summary?: EntryFields.Text;
+	excerpt?: EntryFields.Symbol;
+	skillCollection?: {
+		items: TypeSkillFields[];
+	};
+}
+
+export interface TypePostResumeFields {
+	shortTitle?: EntryFields.Symbol;
+	slug: EntryFields.Symbol;
+	website?: EntryFields.Symbol;
+	repo?: EntryFields.Symbol;
+}
+
+export interface TypePostLinkFields {
+	shortTitle?: EntryFields.Symbol;
+	slug: EntryFields.Symbol;
 }
 
 export interface Post extends EntrySkeletonType {

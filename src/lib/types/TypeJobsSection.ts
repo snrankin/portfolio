@@ -1,14 +1,16 @@
 import type { Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeJob } from './TypeJob';
-
+import type { TypeJobFields } from './TypeJob';
+import { Content } from '@/components/contentful/markdown';
 export interface TypeJobsSectionFields {
 	title: EntryFields.Symbol;
 	slug: EntryFields.Symbol;
 	command?: EntryFields.Symbol;
 	argument?: EntryFields.Symbol;
 	flags?: EntryFields.Symbol[];
-	intro?: EntryFields.RichText;
-	jobs?: TypeJob[];
+	intro?: Content;
+	jobsCollection?: {
+		items: TypeJobFields[];
+	};
 }
 export interface JobsSection extends EntrySkeletonType {
 	fields: TypeJobsSectionFields;

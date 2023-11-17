@@ -1,14 +1,16 @@
 import type { Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { Skill } from './TypeSkill';
-
+import type { TypeSkillFields } from '.';
+import { Content } from '@/components/contentful/markdown';
 export interface TypeSkillsSectionFields {
 	title: EntryFields.Symbol;
 	slug: EntryFields.Symbol;
 	command?: EntryFields.Symbol;
 	argument?: EntryFields.Symbol;
 	flags?: EntryFields.Symbol[];
-	intro?: EntryFields.RichText;
-	skills?: Entry<Skill>[];
+	intro?: Content;
+	skillsCollection?: {
+		items: TypeSkillFields[];
+	};
 }
 
 export interface SkillsSection extends EntrySkeletonType {

@@ -1,4 +1,5 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
+import { Content } from '@/components/contentful/markdown';
 import type { AboutSection } from './TypeAboutSection';
 import type { TypeAuthor } from './TypeAuthor';
 import type { JobsSection } from './TypeJobsSection';
@@ -10,7 +11,7 @@ export interface TypeHomePageFields {
 	slug: EntryFields.Symbol;
 	author?: TypeAuthor;
 	heroTitle?: EntryFields.RichText;
-	heroText?: EntryFields.RichText;
+	heroText?: Content;
 	sections?: Entry<
 		AboutSection | JobsSection | ProjectsSection | SkillsSection
 	>[];
