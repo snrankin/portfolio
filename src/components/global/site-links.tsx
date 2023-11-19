@@ -1,11 +1,15 @@
 'use client';
-import React, { useContext, HTMLProps } from 'react';
-import { IProject } from '@/lib/api/projects';
+import React, { useContext } from 'react';
+import { TypePostLinkFields } from '@/lib/types';
 import Link from 'next/link';
 import { SectionContext } from '@/lib/context/section';
 import classNames from 'classnames';
 import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
-export default function SiteLinks({ projects }: { projects?: IProject[] }) {
+export default function SiteLinks({
+	projects,
+}: {
+	projects?: TypePostLinkFields[];
+}) {
 	const pathname = usePathname();
 	const segment = useSelectedLayoutSegment();
 	const sectionCtx: {
@@ -16,36 +20,27 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 	let topLevelClasses = classNames(
 		'whitespace-nowrap',
 		'font-bold',
-		'font-display',
-		'hover:dark:bg-gray-950'
+		'font-display'
 	);
 
 	let aboutClasses = classNames(topLevelClasses, {
 		active: sectionCtx.section == 'about',
-		'bg-gray-200': sectionCtx.section == 'about',
-		'dark:bg-gray-950': sectionCtx.section == 'about',
 	});
 	let skillsClasses = classNames(topLevelClasses, {
-		'bg-gray-200': sectionCtx.section == 'skills',
-		'dark:bg-gray-950': sectionCtx.section == 'skills',
+		active: sectionCtx.section == 'skills',
 	});
 	let projectsClasses = classNames(topLevelClasses, {
-		'bg-gray-200':
-			(pathname == '/' && sectionCtx.section == 'projects') ||
-			pathname.includes('projects'),
-		'dark:bg-gray-950':
+		active:
 			(pathname == '/' && sectionCtx.section == 'projects') ||
 			pathname.includes('projects'),
 	});
 
 	let workClasses = classNames(topLevelClasses, {
-		'bg-gray-200': sectionCtx.section == 'work-history',
-		'dark:bg-gray-950': sectionCtx.section == 'work-history',
+		active: sectionCtx.section == 'work-history',
 	});
 
 	let resumeClasses = classNames(topLevelClasses, {
-		'bg-gray-200': sectionCtx.section == 'resume',
-		'dark:bg-gray-950': sectionCtx.section == 'resume',
+		active: sectionCtx.section == 'resume',
 	});
 
 	return (
@@ -73,42 +68,36 @@ export default function SiteLinks({ projects }: { projects?: IProject[] }) {
 			<li role="none" data-section="projects">
 				<details>
 					<summary className={projectsClasses}>
-						<Link role="menuitem" href="/#projects" scroll={false}>
+						<Link role="menuitem" href="/#projects">
 							Projects
 						</Link>
 					</summary>
 					{!!projects && (
-						<ul className="menu rounded-box bg-base-100 dark:bg-gray-950 md:p-3 md:shadow ms-0 border-none before:content-none">
-							{projects.map(({ shortTitle, slug }: IProject) => {
-								const isActive = slug === segment;
-								let subClasses = classNames(
-									'whitespace-nowrap',
-									'hover:dark:bg-primary-600',
-									'hover:dark:text-gray-950',
+						<ul className="menu rounded-box bg-base-100 dark:bg-neutral-950 md:p-3 md:shadow ms-0 border-none before:content-none">
+							{projects.map(
+								({ shortTitle, slug }: TypePostLinkFields) => {
+									const isActive = slug === segment;
+									let subClasses = classNames(
+										'whitespace-nowrap',
 
-									{
-										active: isActive,
-										'bg-primary-500':
-											!!slug && pathname.includes(slug),
-										'dark:bg-primary-600':
-											!!slug && pathname.includes(slug),
-										'dark:text-gray-950':
-											!!slug && pathname.includes(slug),
-									}
-								);
+										{
+											active: isActive,
+										}
+									);
 
-								return (
-									<li key={slug}>
-										<Link
-											role="menuitem"
-											className={subClasses}
-											href={`/projects/${slug}`}
-										>
-											{shortTitle}
-										</Link>
-									</li>
-								);
-							})}
+									return (
+										<li key={slug}>
+											<Link
+												role="menuitem"
+												className={subClasses}
+												href={`/projects/${slug}`}
+											>
+												{shortTitle}
+											</Link>
+										</li>
+									);
+								}
+							)}
 						</ul>
 					)}
 				</details>

@@ -40,6 +40,12 @@ const nextConfig = {
 				test: /\.svg$/i,
 				resourceQuery: /raw/,
 				type: 'asset/source',
+			},
+
+			{
+				test: /\.svg$/i,
+				issuer: /\.css$/,
+				loader: 'svg-inline-loader',
 			}
 		);
 

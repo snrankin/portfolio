@@ -1,0 +1,42 @@
+.heroBG {
+	background-image: svg-load(subtle-prism.svg);
+	background-size: cover;
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+[data-theme='dark'] {
+	.heroBG {
+		background-image: svg-load(prism-dark.svg);
+	}
+}
+
+.heroText {
+	padding-right: calc(17.8125% + var(--page-gutter));
+	padding-right: calc(17.8125vw - var(--page-gutter));
+}
+@media (min-width: 768px) {
+	.heroTitle,
+	.heroText {
+		padding-right: calc(42.8385416667vw - var(--page-gutter) + 1.5rem);
+	}
+}
+
+@media (min-width: 1024px) {
+	.heroTitle,
+	.heroText {
+		padding-right: calc(42.8385416667vw - var(--page-gutter) + 3rem);
+	}
+}
+
+@media (min-width: 1376px) {
+	.heroTitle,
+	.heroText {
+		padding-right: calc(53.4027777778vw - var(--page-gutter) + 2rem);
+	}
+}
+
+.profileMask {
+	mask-image: svg-load('frame-mask.svg');
+	/* mask-size: cover; */
+}

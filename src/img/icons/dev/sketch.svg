@@ -1,0 +1,9 @@
+<svg id="sketch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="m13.96,5.17l18.04-1.89,18.04,1.89,13.96,18.59-32,36.97L0,23.76,13.96,5.17Z" fill="#fdb300" stroke-width="0" />
+  <path d="m12.96,23.76l19.04,36.97L0,23.76h12.96Zm38.07,0l-19.04,36.97,32-36.97h-12.96Z" fill="#ea6c00" stroke-width="0" />
+  <path d="m12.96,23.76h38.07l-19.04,36.97L12.96,23.76Z" fill="#fdad00" stroke-width="0" />
+  <path d="m32,3.27l-18.04,1.89-1,18.59L32,3.27Zm0,0l18.04,1.89,1,18.59L32,3.27Z" fill="#fdd231" stroke-width="0" />
+  <path d="m64,23.76l-13.96-18.59,1,18.59h12.96Z" fill="#fdad00" stroke-width="0" />
+  <path d="m32,3.27L12.96,23.76h38.07L32,3.27Z" fill="#feeeb7" stroke-width="0" />
+  <path d="m0,23.76L13.96,5.17l-1,18.59H0Z" fill="#fdad00" stroke-width="0" />
+</svg>

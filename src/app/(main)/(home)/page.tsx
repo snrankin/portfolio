@@ -14,15 +14,8 @@ import {
 	TypeProjectsSectionFields,
 	TypeSkillsSectionFields,
 } from '@/lib/types';
-import { getAuthor, IAuthor } from '@/lib/api/authors';
-import { getAllProjects } from '@/lib/api/projects';
-import { getAllJobs } from '@/lib/api/jobs';
-import { getAllSkills } from '@/lib/api/skills';
 export default async function Page() {
 	const { isEnabled } = draftMode();
-	// const me = await getAuthor('Sam Rankin', isEnabled);
-	// const projects = await getAllProjects(isEnabled);
-	// const jobs = await getAllJobs(isEnabled);
 
 	const page = await getItem<TypeHomePageFields>(
 		isEnabled,
@@ -52,23 +45,17 @@ export default async function Page() {
 		'projects'
 	);
 
-	console.log('🚀 ~ file: page.tsx:55 ~ Page ~ projects:', projects);
-
 	const jobs = await getItem<TypeJobsSectionFields>(
 		isEnabled,
 		'jobsSection',
 		'work-history'
 	);
 
-	// console.log(
-	// 	'🚀 ~ file: page.tsx:24 ~ Page ~ page:',
-	// 	JSON.stringify(page, undefined, 4)
-	// );
-
 	return (
 		<>
 			<Hero me={me} home={page} />
 			{!!about && <About {...about} />}
+			{/* <Test id="test" /> */}
 			{!!skills && <Skills {...skills} />}
 			{!!projects && <Projects {...projects} />}
 			{!!jobs && <WorkHistory {...jobs} />}

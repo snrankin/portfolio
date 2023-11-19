@@ -1,11 +1,6 @@
 import React from 'react';
 import { Inconsolata, Poppins, DM_Sans } from 'next/font/google';
-import { ImageResponse } from 'next/og';
 import localFont from 'next/font/local';
-import { preloadProjects } from '@/lib/api/projects';
-import { getAuthor, preloadAuthor } from '@/lib/api/authors';
-import { preloadSkills } from '@/lib/api/skills';
-import { preloadJobs } from '@/lib/api/jobs';
 
 import '@/css/style.css';
 export const poppins = Poppins({
@@ -91,10 +86,6 @@ export default async function Layout({
 }: {
 	children: React.ReactNode;
 }) {
-	preloadSkills();
-	preloadJobs();
-	preloadProjects();
-
 	return (
 		<html
 			lang="en"

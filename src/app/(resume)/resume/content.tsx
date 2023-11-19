@@ -7,24 +7,31 @@ import SkillsList from '@/components/skills/skills';
 import Timeline from '@/components/timeline/print-group';
 import Icon from '@/components/icons/icon-item';
 import Logo from '@/components/global/logo';
-import { IAuthor } from '@/lib/api/authors';
-import { ISkills } from '@/lib/api/skills';
-import { IProject } from '../../../lib/api/projects';
-import { IJob } from '@/lib/api/jobs';
+import {
+	TypeAuthorFields,
+	TypeSkillsSectionFields,
+	sortSkills,
+	SkillsGroups,
+	TypeJobsSectionFields,
+	TypePostFields,
+} from '@/lib/types';
 export default function Content({
+	summary,
 	me,
 	skills,
 	projects,
 	jobs,
 }: {
-	me?: IAuthor;
-	skills?: ISkills;
-	projects?: IProject[];
-	jobs?: IJob[];
+	summary?: string;
+	me?: TypeAuthorFields;
+	skills?: TypeSkillsSectionFields;
+	projects?: TypePostFields[];
+	jobs?: TypeJobsSectionFields;
 }) {
 	var printClick = () => {
 		window.print();
 	};
+
 	return (
 		<Section id="resume" className="print">
 			<div className="print:hidden flex justify-center pb-14">
@@ -56,9 +63,7 @@ export default function Content({
 							)}
 						</h1>
 					</div>
-					{!!me?.description && (
-						<p className="m-0">{me?.description}</p>
-					)}
+					{!!summary && <p className="m-0">{summary}</p>}
 				</div>
 				<div className="col-span-4 pl-[0.25in] pb-[0.25in]">
 					<SocialLinks
@@ -76,7 +81,7 @@ export default function Content({
 
 						<SkillsList
 							className="grid grid-cols-1 gap-4"
-							skills={skills}
+							skills={skills?.skillsCollection?.items}
 							groupProps={{
 								className: 'p-0',
 								showGroupTitle: true,
@@ -86,6 +91,7 @@ export default function Content({
 								skillProps: {
 									titleDisplay: 'inline',
 									className: 'h-[18pt] ',
+									colored: true,
 								},
 								titleClasses: '!m-0 text-base',
 							}}
@@ -104,7 +110,7 @@ export default function Content({
 			</div>
 			<div className="py-[0.25in] prose-print max-w-none">
 				<h2 className="font-bold">Work History</h2>
-				<Timeline jobs={jobs} />
+				<Timeline jobs={jobs?.jobsCollection?.items} />
 			</div>
 		</Section>
 	);

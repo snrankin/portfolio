@@ -12,7 +12,7 @@ export function companyLink(name: string, url: string) {
 	return (
 		<a
 			href={url}
-			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-primary text-lg mt-4"
+			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-accent dark:link-secondary mt-4"
 			target="_blank"
 		>
 			<Image
@@ -36,15 +36,15 @@ export default function TimelineItem(props: TypeJobFields) {
 
 	return (
 		<>
-			<div className="grid relative grid-cols-[1.5rem_1fr] md:grid-cols-[2rem_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center md:items-stretch">
+			<div className="grid relative grid-cols-[2rem_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center md:items-stretch">
 				{/* Icon */}
 				<div
 					className={`items-center justify-center  relative lg:col-start-2  lg:row-start-1`}
 				>
-					<span className="w-0 border-[1px] border-gray-200 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block"></span>
+					<span className="w-0 border-[1px] border-base-200 dark:border-slate-600 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block"></span>
 					<Icon
 						icon="calendar"
-						className="flex items-center w-[1.5rem] h-[1.5rem] md:w-[2rem] md:h-[2rem] justify-center text-[1.2rem]  relative z-10 text-2xl leading-none bg-secondary-500 rounded-full py-1 text-gray-900"
+						className="flex items-center w-[2rem] h-[2rem] justify-center text-[1.2rem]  relative z-10 text-2xl leading-none bg-primary-500 dark:bg-primary-600 rounded-full py-1 text-neutral-900"
 						iconClasses="stroke-2"
 					/>
 				</div>
@@ -59,10 +59,10 @@ export default function TimelineItem(props: TypeJobFields) {
 			<div
 				className={`timeline-content md:pt-[2em] pb-4 lg:pb-11 lg:mt-0 lg:pt-0`}
 			>
-				<div className="prose">
-					<h3 className="font-semibold block">
+				<div className="prose dark:prose-invert">
+					<h3 className="font-semibold block mt-3">
 						{title}{' '}
-						<span className="block">
+						<span className="block text-base">
 							<span className="sr-only">at </span>
 							{companyLink(company, `${website}`)}
 						</span>

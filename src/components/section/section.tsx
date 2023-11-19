@@ -12,6 +12,7 @@ export interface SectionProps
 		Omit<HTMLProps<HTMLElement>, 'id'> {
 	id: string;
 	intro?: Content;
+	containerClasses?: string;
 }
 
 export default function Section(props: SectionProps) {
@@ -27,6 +28,7 @@ export default function Section(props: SectionProps) {
 		'argument',
 		'flags',
 		'intro',
+		'containerClasses',
 	]);
 
 	set(sectionProps, 'className', classes);
@@ -42,15 +44,23 @@ export default function Section(props: SectionProps) {
 		}
 	}
 
+	let containerClasses = classNames(
+		'container',
+		'gap-row',
+		'flex',
+		'flex-col',
+		props.containerClasses
+	);
+
 	return (
 		<Waypoint onEnter={enterHandler}>
 			<section {...sectionProps}>
-				<div className="container flex flex-col gap-row">
+				<div className={containerClasses}>
 					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
 						<Heading {...headingArgs} />
 					)}
 					{!!props.intro && (
-						<div className="prose-xl mx-auto text-center my-0 md:max-w-[60%]">
+						<div className="prose md:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
 							<Markdown content={props.intro} />
 						</div>
 					)}

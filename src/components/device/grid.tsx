@@ -1,9 +1,11 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import Device, { DeviceProps } from './device';
+
+import DeskLight from '@/img/desk-light.svg';
 function Desktop(props: Omit<DeviceProps, 'type'>) {
 	return (
-		<Device type="desktop" className="w-7/12" {...props}>
+		<Device type="desktop" className="w-8/12" {...props}>
 			{props.children}
 		</Device>
 	);
@@ -47,8 +49,13 @@ function Mobile(props: Omit<DeviceProps, 'type'>) {
 
 function Grid({ children }: { children?: React.ReactNode }) {
 	return (
-		<div className="w-full flex flex-col items-center relative">
-			{children}
+		<div className="device-grid w-full flex flex-col items-center relative">
+			<div className="w-full flex flex-col items-center relative mr-[5%]">
+				{children}
+			</div>
+			<div className="w-screen -mx-pg min-w-full xl:w-[175%]  md:-ml-[150vw] lg:-ml-[70vw] xl:-ml-[75%] xl:-mr-section 2xl:ml-0">
+				<DeskLight className="block w-full" />
+			</div>
 		</div>
 	);
 }

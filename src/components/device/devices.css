@@ -125,7 +125,7 @@
 		}
 
 		.display {
-			mask-image: url(./mask-mobile.svg);
+			mask-image: svg-load(mask-mobile.svg);
 			mask-repeat: no-repeat;
 		}
 	}

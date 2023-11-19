@@ -2,14 +2,7 @@ import { draftMode } from 'next/headers';
 import type { Metadata } from 'next';
 import Content from './content';
 import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
-import {
-	getAllProjects,
-	getProject,
-	getProjectsExcept,
-	preloadProject,
-	preloadProjects,
-} from '@/lib/api/projects';
-import { isArray } from 'lodash';
+
 import {
 	TypePostFields,
 	POST_LINKS_GRAPHQL_FIELDS,
@@ -36,8 +29,6 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-	preloadProjects();
-
 	const projects = await getItems<TypePostFields>(
 		false,
 		'post',
@@ -46,12 +37,14 @@ export async function generateStaticParams() {
 		POST_LINKS_GRAPHQL_FIELDS
 	);
 
+	let params: any[] = [];
+
 	if (!!projects) {
-		return projects?.map((project) => ({
+		params = projects?.map((project) => ({
 			slug: project.slug,
 		}));
 	}
-	return null;
+	return params;
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {

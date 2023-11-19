@@ -119,7 +119,8 @@ function EntryHyperlink({
 function SkillHighlightItem(node: { content: string }) {
 	let iconVal = `<span class="inline-flex items-baseline gap-1" style="line-height: 2ex">${getIconString(
 		node.content,
-		'dev'
+		'dev',
+		true
 	)} ${node.content}</span>`;
 
 	return (

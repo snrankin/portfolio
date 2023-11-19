@@ -5,9 +5,9 @@ import { ProjectsList } from '@/lib/projects';
 import { displayDate, simplifyUrl } from '@/lib/utils';
 import { filter, indexOf, isString, merge, omit, pick, set } from 'lodash';
 import classNames from 'classnames';
-
+import { TypePostCardFields } from '@/lib/types';
 interface ProjectGroupProps extends HTMLProps<HTMLUListElement> {
-	projects: IProject[];
+	projects?: TypePostCardFields[];
 }
 
 export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
@@ -19,31 +19,32 @@ export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
 
 	return (
 		<ul {...atts}>
-			{props.projects.map((project: IProject, i: number) => (
-				<li key={i}>
-					<span className="block font-display font-bold">
-						{project.shortTitle}
-					</span>
-					{!!project.website && (
-						<a
-							href={project.website}
-							target="_blank"
-							className="block"
-						>
-							{simplifyUrl(project.website)}
-						</a>
-					)}
-					{!!project.repo && !project.website && (
-						<a
-							href={project.repo}
-							target="_blank"
-							className="block"
-						>
-							{simplifyUrl(project.website)}
-						</a>
-					)}
-				</li>
-			))}
+			{!!props.projects &&
+				props.projects.map((project: IProject, i: number) => (
+					<li key={i}>
+						<span className="block font-display font-bold">
+							{project.shortTitle}
+						</span>
+						{!!project.website && (
+							<a
+								href={project.website}
+								target="_blank"
+								className="block"
+							>
+								{simplifyUrl(project.website)}
+							</a>
+						)}
+						{!!project.repo && !project.website && (
+							<a
+								href={project.repo}
+								target="_blank"
+								className="block"
+							>
+								{simplifyUrl(project.website)}
+							</a>
+						)}
+					</li>
+				))}
 		</ul>
 	);
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Section from '@/components/section/section';
-import { IAuthor } from '@/lib/api/authors';
-import { IProject } from '@/lib/api/projects';
+import styles from './home.module.css';
 import ProjectsGroup from '@/components/projects/grid';
 import { TypeProjectsSectionFields, TypePostFields } from '@/lib/types';
 export default function Projects(
@@ -15,11 +14,10 @@ export default function Projects(
 			argument={`${props?.argument}`}
 			flags={props?.flags}
 			intro={props?.intro}
-			className="bg-base-200"
+			className={`${styles.heroBG}`}
 		>
 			<ProjectsGroup
 				projectProps={{
-					compact: true,
 					className: 'bg-base-100 shadow',
 				}}
 				projects={props?.projectsCollection?.items}

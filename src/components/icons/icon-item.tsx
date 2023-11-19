@@ -12,6 +12,7 @@ export interface IconConfig {
 	titleClasses?: string;
 	iconClasses?: string;
 	title?: string;
+	colored?: boolean;
 }
 export interface IconProps extends IconConfig, HTMLProps<HTMLSpanElement> {}
 
@@ -75,6 +76,7 @@ export default function Icon(props: IconProps): JSX.Element {
 		'title',
 		'group',
 		'name',
+		'colored',
 	]);
 
 	if (titleDisplay == 'popover' && HAS_ICON) {
@@ -84,7 +86,7 @@ export default function Icon(props: IconProps): JSX.Element {
 	set(attr, 'className', classes);
 
 	if (!isEmpty(iconName)) {
-		icon = getIcon(iconName, group);
+		icon = getIcon(iconName, group, props.colored);
 	}
 	return (
 		<>

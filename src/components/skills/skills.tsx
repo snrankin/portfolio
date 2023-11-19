@@ -1,16 +1,13 @@
 'use client';
-import React, { useState, HTMLProps } from 'react';
+import React, { HTMLProps } from 'react';
 
 import classNames from 'classnames';
-import { get, groupBy, isEmpty, set, omit, pick, isArray } from 'lodash';
-import Card, { CardProps } from '../card/card';
-import Skill, { SkillProps } from './item';
+import { omit } from 'lodash';
 import SkillsGroup, { SkillsGroupProps } from './group';
-import { titleCase } from 'change-case-all';
-import { ISkills, ISkill } from '../../lib/api/skills';
+import { TypeSkillFields, sortSkills } from '@/lib/types';
 export interface SkillsListProps extends HTMLProps<HTMLDivElement> {
 	groups?: string;
-	skills?: ISkills;
+	skills?: TypeSkillFields[];
 	groupProps?: Omit<SkillsGroupProps, 'group' | 'groupName'>;
 	langClass?: string;
 	cmsClass?: string;
@@ -18,6 +15,14 @@ export interface SkillsListProps extends HTMLProps<HTMLDivElement> {
 	frameClass?: string;
 	softClass?: string;
 }
+
+export const skillGroupColors: { [key: string]: string } = {
+	languages: 'primary',
+	frameworks: 'secondary',
+	cms: 'accent',
+	tools: 'warning',
+	software: 'success',
+};
 
 export default function SkillsList(props: SkillsListProps) {
 	let {
@@ -45,16 +50,7 @@ export default function SkillsList(props: SkillsListProps) {
 			? props.groups.split(',')
 			: ['Languages', 'Frameworks', 'CMS', 'Tools', 'Software'];
 
-	let groups: { [key: string]: ISkill[] } = {};
-
-	let pickedGroups = pick(skills, groupsNames);
-	Object.entries(pickedGroups).map(([k, v]) => {
-		if (isArray(v)) {
-			if ('category' in v[0]) {
-				groups[k] = v;
-			}
-		}
-	});
+	let groups = sortSkills(props.skills);
 
 	return (
 		<>

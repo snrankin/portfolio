@@ -1,6 +1,5 @@
 'use client';
 import React, { HTMLProps } from 'react';
-import { IProject } from '@/lib/api/projects';
 import ProjectCard, { ProjectCardProps } from './card';
 import { merge, omit } from 'lodash';
 import { TypePostCardFields } from '@/lib/types';

@@ -65,6 +65,10 @@ export const preloadItem = <T>(
 	void getItem<T>(isDraftMode, type, slug);
 };
 
+export const preloadItems = <T>(isDraftMode: boolean, type: ContentKeys) => {
+	void getItems<T>(isDraftMode, type);
+};
+
 export const getItem = cache(
 	async <T>(
 		isDraftMode: boolean,

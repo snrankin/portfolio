@@ -1,7 +1,6 @@
 'use client';
-import React, { HTMLProps } from 'react';
-import TimelineItem, { TimelineItemProps } from './item';
-import { IJob } from '@/lib/api/jobs';
+import React from 'react';
+import TimelineItem from './item';
 import { TypeJobFields } from '@/lib/types';
 export default function Timeline({
 	jobs,

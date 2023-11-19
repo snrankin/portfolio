@@ -6,8 +6,9 @@ import Section from '@/components/section/section';
 import ThemeSwap from '@/components/theme-swap/theme-swap';
 import DarkFrame from '@/img/frame-dark.svg';
 import LightFrame from '@/img/frame-light.svg';
-import { IAuthor } from '@/lib/api/authors';
 import { TypeAboutSectionFields } from '@/lib/types';
+
+import styles from './home.module.css';
 export default function About(props?: TypeAboutSectionFields): JSX.Element {
 	return (
 		<Section
@@ -34,7 +35,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 						<div className="aspect-w-1 aspect-h-1">
 							<ContentfulImage
 								src={props.image.url}
-								className="w-full h-auto mask ease-in-out duration-300 grayscale will-change-auto hover:grayscale-0"
+								className={`w-full h-auto mask ease-in-out duration-300 grayscale will-change-auto hover:grayscale-0 ${styles.profileMask}`}
 								loading="lazy"
 								fill={true}
 								sizes="100vw"
@@ -50,7 +51,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 					</div>
 				)}
 				{!!props?.content && (
-					<div className="prose lg:prose-lg max-w-none">
+					<div className="prose lg:prose-lg dark:prose-invert max-w-none">
 						<Markdown content={props.content} />
 					</div>
 				)}

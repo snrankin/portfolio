@@ -6,6 +6,12 @@ import React, {
 	createContext,
 	useLayoutEffect,
 } from 'react';
+
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import xml from 'highlight.js/lib/languages/xml';
+import json from 'highlight.js/lib/languages/json';
+import bash from 'highlight.js/lib/languages/bash';
 export const ThemeContext = createContext({
 	theme: 'light',
 	toggleThemeHandler: (str: string) => {},
@@ -78,6 +84,14 @@ export default function ThemeProvider({
 
 				toggleTheme(newColorScheme);
 			});
+
+		if (hljs != undefined) {
+			hljs.registerLanguage('javascript', javascript);
+			hljs.registerLanguage('bash', bash);
+			hljs.registerLanguage('xml', xml);
+			hljs.registerLanguage('json', json);
+			hljs.highlightAll();
+		}
 	}
 
 	function setValueToLocalStorage(str: string): void {

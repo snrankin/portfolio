@@ -1,16 +1,11 @@
 'use client';
-import { IProject } from '@/lib/api/projects';
+
 import Section from '@/components/section/section';
-import Grid from '@/components/device/grid';
-import { simplifyUrl } from '@/lib/utils';
-import ContentfulImage from '@/components/contentful/contentful-image';
 import classNames from 'classnames';
 import { Markdown } from '@/components/contentful/markdown';
-import Skill from '@/components/skills/item';
-import ProjectImage from '@/components/projects/image';
 import ProjectsGroup from '@/components/projects/grid';
-import ProjectLinks from '@/components/projects/links';
 import { TypePostFields, TypePostCardFields } from '@/lib/types';
+import Hero from './hero';
 export default function Content({
 	project,
 	moreProjects,
@@ -37,48 +32,7 @@ export default function Content({
 
 	return (
 		<>
-			<Section id="projects" className="overflow-hidden">
-				<div className={wrapperClasses}>
-					{(useImage || useGrid) && (
-						<div>
-							<div className="md:w-full-pg drop-shadow-lg lg:-ml-pg">
-								<ProjectImage {...project} />
-							</div>
-						</div>
-					)}
-					<div className="text-center prose lg:prose-xl md:text-left">
-						<div className="prose">
-							<h1>{project?.title}</h1>
-							{!!project?.skillCollection && (
-								<ul className="flex list-none gap-3 !p-0 flex-wrap">
-									{project?.skillCollection.items?.map(
-										(s, i) => {
-											return (
-												<li
-													key={i}
-													className="badge gap-1 !m-0"
-												>
-													<Skill
-														icon={s.title}
-														titleDisplay="inline"
-													/>
-												</li>
-											);
-										}
-									)}
-								</ul>
-							)}
-							{!!project?.summary && (
-								<p className="lead">{project?.summary}</p>
-							)}
-							<ProjectLinks
-								repo={project?.repo}
-								website={project?.website}
-							/>
-						</div>
-					</div>
-				</div>
-			</Section>
+			{!!project && <Hero {...project} />}
 
 			{!!project?.content && (
 				<Section
@@ -87,12 +41,9 @@ export default function Content({
 					command="ls"
 					argument="project"
 					flags={`id=${project.slug}|verbose`}
-					className="bg-base-200"
 				>
-					<div className="text-center prose lg:prose-xl md:text-left mx-auto">
-						<div className="prose">
-							<Markdown content={project.content} />
-						</div>
+					<div className="dark:prose-invert prose lg:prose-xl mx-auto">
+						<Markdown content={project.content} />
 					</div>
 				</Section>
 			)}

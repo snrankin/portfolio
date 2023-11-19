@@ -1,12 +1,15 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeAuthor } from './TypeAuthor';
-import type { TypePost } from './TypePost';
+import type { TypeAuthorFields } from './TypeAuthor';
+import type { TypePostFields } from './TypePost';
 
 export interface TypeResumePageFields {
 	title?: EntryFields.Symbol;
-	author?: TypeAuthor;
-	projects?: TypePost[];
+	author?: TypeAuthorFields;
+	projectsCollection?: {
+		items: TypePostFields[];
+	};
 	seoTitle?: EntryFields.Symbol;
+	summary?: EntryFields.Text;
 	seoDescription?: EntryFields.Text;
 	seoImage?: Asset;
 }

@@ -11,7 +11,11 @@ const contentfulLoader = ({
 	width?: number;
 	quality?: number;
 }) => {
-	return `${src}?w=${width || 2000}&q=${quality || 75}`;
+	const url = new URL(src);
+	// url.searchParams.set('fm', 'webp');
+	url.searchParams.set('w', `${width || 2000}`);
+	url.searchParams.set('q', (quality || 75).toString());
+	return url.href;
 };
 
 export default function ContentfulImage(props: ImageProps) {

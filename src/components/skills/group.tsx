@@ -1,14 +1,13 @@
 'use client';
-import React, { useState, HTMLProps } from 'react';
-import { Me } from '@/lib/me';
+import React from 'react';
 import classNames from 'classnames';
-import { get, groupBy, isEmpty, set, omit } from 'lodash';
+import { set, omit } from 'lodash';
 import Card, { CardProps } from '../card/card';
 import Skill, { SkillProps } from './item';
 import { titleCase } from 'change-case-all';
-import { ISkill } from '@/lib/api/skills';
+import { TypeSkillFields } from '@/lib/types';
 export interface SkillsGroupProps extends CardProps {
-	group: ISkill[];
+	group: TypeSkillFields[];
 	groupName: string;
 	showGroupTitle?: boolean;
 	groupClasses?: string;
@@ -17,11 +16,7 @@ export interface SkillsGroupProps extends CardProps {
 
 export default function SkillsGroup(props: SkillsGroupProps) {
 	let group = props.group;
-	let classes = classNames(
-		'skill-group',
-		`skill-group-${props.group}`,
-		props.className
-	);
+	let classes = classNames('skill-group', props.className);
 
 	let groupProps = omit(props, [
 		'skillProps',
@@ -50,7 +45,7 @@ export default function SkillsGroup(props: SkillsGroupProps) {
 			{!!group && (
 				<Card {...groupProps}>
 					<div className={groupClasses}>
-						{group.map((skill: ISkill, i: number) => {
+						{group.map((skill: TypeSkillFields, i: number) => {
 							let skillProps: SkillProps = {
 								icon: skill.title,
 								...props.skillProps,

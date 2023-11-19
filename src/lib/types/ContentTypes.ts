@@ -125,6 +125,37 @@ export const HOMEPAGE_GRAPHQL_FIELDS = `
   }
 `;
 
+export const RESUME_GRAPHQL_FIELDS = `
+  sys {
+    publishedAt
+    firstPublishedAt
+  }
+  __typename
+  title
+  slug
+  summary
+  author {
+    name
+    firstName
+    lastName
+    slug
+    label
+  }
+  projectsCollection {
+	  items {
+	    slug
+	    shortTitle
+	    website
+      repo
+	  }
+  }
+  seoTitle
+  seoDescription
+  seoImage {
+    ${ASSET_GRAPHQL_FIELDS}
+  }
+`;
+
 export const ABOUT_SECTION_GRAPHQL_FIELDS = `
   sys {
   id
@@ -217,6 +248,7 @@ export enum ContentTypes {
 	post = POST_GRAPHQL_FIELDS,
 	author = AUTHOR_GRAPHQL_FIELDS,
 	homePage = HOMEPAGE_GRAPHQL_FIELDS,
+	resumePage = RESUME_GRAPHQL_FIELDS,
 	jobsSection = JOBS_SECTION_GRAPHQL_FIELDS,
 	skillsSection = SKILLS_SECTION_GRAPHQL_FIELDS,
 	projectsSection = PROJECTS_SECTION_GRAPHQL_FIELDS,

@@ -4,4 +4,6 @@ export interface TypeAssetFields extends FileFields, AssetDetails, AssetFile {
 	sys: {
 		id: string;
 	};
+	width: number;
+	height: number;
 }

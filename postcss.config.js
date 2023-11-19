@@ -1,5 +1,5 @@
 const postcssPresetEnv = require('postcss-preset-env');
-
+const path = require('path');
 /** @type {import('postcss-load-config').Config} */
 module.exports = {
 	plugins: {
@@ -11,6 +11,9 @@ module.exports = {
 		'postcss-momentum-scrolling': {},
 		'postcss-easings': {},
 		'postcss-easing-gradients': {},
+		'postcss-inline-svg': {
+			paths: [path.join(process.cwd(), 'src', 'img')],
+		},
 		autoprefixer: {},
 		'postcss-combine-duplicated-selectors': {},
 		'postcss-sort-media-queries': {

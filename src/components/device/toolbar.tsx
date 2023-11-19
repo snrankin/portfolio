@@ -22,7 +22,7 @@ const DesktopToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={1920}
 				height={52}
-				className="fill-gray-200 dark:fill-gray-500"
+				className="fill-neutral-200 dark:fill-neutral-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -32,12 +32,12 @@ const DesktopToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-gray-400"
+				className="fill-white dark:fill-neutral-400"
 				strokeWidth={0}
 			/>
 			<text
 				transform="translate(940 30.3)"
-				className="font-system fill-gray-800 dark:fill-white"
+				className="font-system fill-neutral-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
@@ -77,7 +77,7 @@ const LaptopToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={1440}
 				height={52}
-				className="fill-gray-200 dark:fill-gray-500"
+				className="fill-neutral-200 dark:fill-neutral-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -87,7 +87,7 @@ const LaptopToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-gray-400"
+				className="fill-white dark:fill-neutral-400"
 				strokeWidth={0}
 			/>
 			<g>
@@ -115,7 +115,7 @@ const LaptopToolbar = ({ url }: { url?: string }) => {
 			</g>
 			<text
 				transform="translate(672.79 30.11)"
-				className="font-system fill-gray-800 dark:fill-white"
+				className="font-system fill-neutral-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
@@ -134,7 +134,7 @@ const TabletToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={768}
 				height={52}
-				className="fill-gray-200 dark:fill-gray-500"
+				className="fill-neutral-200 dark:fill-neutral-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -144,12 +144,12 @@ const TabletToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-gray-400"
+				className="fill-white dark:fill-neutral-400"
 				strokeWidth={0}
 			/>
 			<text
 				transform="translate(360 30.74)"
-				className="font-system fill-gray-800 dark:fill-white"
+				className="font-system fill-neutral-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
@@ -168,7 +168,7 @@ const MobileToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={360}
 				height="90.76"
-				className="fill-gray-200 dark:fill-gray-500"
+				className="fill-neutral-200 dark:fill-neutral-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -178,12 +178,12 @@ const MobileToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="4.43"
 				ry="4.43"
-				className="fill-white dark:fill-gray-400"
+				className="fill-white dark:fill-neutral-400"
 				strokeWidth={0}
 			/>
 			<text
 				transform="translate(160 70.6621)"
-				className="font-system fill-gray-800 dark:fill-white"
+				className="font-system fill-neutral-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}

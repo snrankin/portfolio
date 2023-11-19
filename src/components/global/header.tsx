@@ -1,16 +1,15 @@
 'use client';
 import Link from 'next/link';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import SiteLinks from './site-links';
 import Nav from '@/components/nav/nav';
 import ThemeButton from '@/components/theme-swap/theme-button';
 import Logo from './logo';
-import { IProject } from '@/lib/api/projects';
-import { ThemeContext } from '@/lib/context/theme';
+import { TypePostLinkFields } from '@/lib/types';
 import { HeaderContext } from '@/lib/context/header';
 import classNames from 'classnames';
 interface HeaderProps {
-	projects?: IProject[];
+	projects?: TypePostLinkFields[];
 }
 
 export default function Header(props: HeaderProps) {
@@ -19,13 +18,7 @@ export default function Header(props: HeaderProps) {
 	} = useContext(HeaderContext);
 
 	let btnClasses = classNames(
-		'btn-circle justify-center items-center  md:hidden w-[40px] h-[40px]',
-		{
-			'bg-gray-700': headerCtx.isScrolled,
-			'bg-base-100': !headerCtx.isScrolled,
-			'text-primary-500': headerCtx.isScrolled,
-			'shadow-sm': !headerCtx.isScrolled,
-		}
+		'btn-circle btn-secondary justify-center items-center  md:hidden w-[40px] h-[40px]'
 	);
 
 	return (
@@ -55,7 +48,7 @@ export default function Header(props: HeaderProps) {
 						btnClasses={btnClasses}
 						menuClosedIcon="menu"
 						menuOpenedIcon="close"
-						menuClasses="bg-base-100 rounded-box shadow"
+						menuClasses="bg-base-100 dark:bg-slate-800 rounded-box shadow"
 					>
 						<SiteLinks projects={props.projects} />
 					</Nav>
