@@ -39,7 +39,7 @@ export default function Card(props: CardProps): JSX.Element {
 		'alt',
 	]);
 
-	let cardClasses = classNames('card', 'bg-base-100', props.className, {
+	let cardClasses = classNames('card', props.className, {
 		'card-bordered': border,
 		'image-full': imgBG,
 		'card-normal': !compact,

@@ -1,8 +1,9 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import Device, { DeviceProps } from './device';
-
+import ThemeSwap from '../theme-swap/theme-swap';
 import DeskLight from '@/img/desk-light.svg';
+import DeskDark from '@/img/desk-dark.svg';
 function Desktop(props: Omit<DeviceProps, 'type'>) {
 	return (
 		<Device type="desktop" className="w-8/12" {...props}>
@@ -50,11 +51,24 @@ function Mobile(props: Omit<DeviceProps, 'type'>) {
 function Grid({ children }: { children?: React.ReactNode }) {
 	return (
 		<div className="device-grid w-full flex flex-col items-center relative">
-			<div className="w-full flex flex-col items-center relative mr-[5%]">
-				{children}
-			</div>
-			<div className="w-screen -mx-pg min-w-full xl:w-[175%]  md:-ml-[150vw] lg:-ml-[70vw] xl:-ml-[75%] xl:-mr-section 2xl:ml-0">
-				<DeskLight className="block w-full" />
+			<div className="w-screen sm:w-full-pg drop-shadow-lg -mx-pg sm:ml-0 sm:-mr-pg">
+				<div className="-mx-[50vw] sm:-mx-[30vw] md:ml-0  flex flex-col items-center md:items-start">
+					<div className="w-[60%]">
+						<div className="flex flex-col items-center relative">
+							{children}
+						</div>
+					</div>
+					<div className="md:-ml-pg md:w-full-pg">
+						<ThemeSwap>
+							<ThemeSwap.Light>
+								<DeskLight className="block w-full" />
+							</ThemeSwap.Light>
+							<ThemeSwap.Dark>
+								<DeskDark className="block w-full" />
+							</ThemeSwap.Dark>
+						</ThemeSwap>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

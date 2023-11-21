@@ -8,9 +8,13 @@ export default function Logo({ className }: { className?: string }) {
 	let classes = classNames('logo', className);
 
 	return (
-		<ThemeSwap
-			light={<LogoDark className={classes} />}
-			dark={<LogoLight className={classes} />}
-		/>
+		<ThemeSwap>
+			<ThemeSwap.Light>
+				<LogoLight className={classes} />
+			</ThemeSwap.Light>
+			<ThemeSwap.Dark>
+				<LogoDark className={classes} />
+			</ThemeSwap.Dark>
+		</ThemeSwap>
 	);
 }

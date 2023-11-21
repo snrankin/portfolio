@@ -1,7 +1,6 @@
 import { get, isEmpty, reverse, set, zip, zipObject } from 'lodash';
 import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
-import { portfolio } from './src/lib/projects';
 import fontColorContrast from 'font-color-contrast';
 
 const defaultTheme = require('tailwindcss/defaultTheme');
@@ -92,7 +91,6 @@ const GREEN = {
 	'950': '#012211',
 };
 const TEAL = {
-	DEFAULT: '#14b8a6',
 	'50': '#D7F3F0',
 	'100': '#B0E7E1',
 	'200': '#89DBD2',
@@ -157,7 +155,6 @@ const config: Config = {
 				secondary: ORANGE,
 				accent: BLUE,
 				tertiary: YELLOW,
-				neutral: colors.slate,
 				info: BLUE,
 				success: GREEN,
 				warning: YELLOW,
@@ -190,25 +187,10 @@ const config: Config = {
 				'full-pg': 'calc(100% + var(--page-gutter))',
 			},
 			boxShadow: {
-				DEFAULT: ` 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.3),
-    0px 1px 1.2px -0.6px hsl(var(--shadow-color) / 0.31),
-    0px 1.9px 2.2px -1.1px hsl(var(--shadow-color) / 0.33),
-    -0.1px 3.8px 4.4px -1.7px hsl(var(--shadow-color) / 0.34),
-    -0.2px 7.3px 8.5px -2.2px hsl(var(--shadow-color) / 0.35)`,
-				sm: `0px 0.5px 0.6px hsl(var(--shadow-color) / 0.36),
-    0px 0.9px 1px -1.1px hsl(var(--shadow-color) / 0.38),
-    0px 2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41)`,
+				DEFAULT: ` 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.3), 0px 1px 1.2px -0.6px hsl(var(--shadow-color) / 0.31), 0px 1.9px 2.2px -1.1px hsl(var(--shadow-color) / 0.33), -0.1px 3.8px 4.4px -1.7px hsl(var(--shadow-color) / 0.34), -0.2px 7.3px 8.5px -2.2px hsl(var(--shadow-color) / 0.35)`,
+				sm: `0px 0.5px 0.6px hsl(var(--shadow-color) / 0.36), 0px 0.9px 1px -1.1px hsl(var(--shadow-color) / 0.38), 0px 2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41)`,
 
-				lg: `0px 0.2px 0.2px hsl(var(--shadow-color) / 0.28),
-    0px 1px 1.2px -0.2px hsl(var(--shadow-color) / 0.28),
-    -0.1px 1.7px 2px -0.5px hsl(var(--shadow-color) / 0.29),
-    -0.1px 2.6px 3px -0.7px hsl(var(--shadow-color) / 0.3),
-    -0.2px 3.7px 4.3px -1px hsl(var(--shadow-color) / 0.3),
-    -0.2px 5.3px 6.2px -1.2px hsl(var(--shadow-color) / 0.31),
-    -0.3px 7.5px 8.7px -1.5px hsl(var(--shadow-color) / 0.32),
-    -0.5px 10.4px 12.1px -1.7px hsl(var(--shadow-color) / 0.32),
-    -0.6px 14.2px 16.5px -2px hsl(var(--shadow-color) / 0.33),
-    -0.8px 19px 22.1px -2.2px hsl(var(--shadow-color) / 0.33)`,
+				lg: `0px 0.2px 0.2px hsl(var(--shadow-color) / 0.28), 0px 1px 1.2px -0.2px hsl(var(--shadow-color) / 0.28), -0.1px 1.7px 2px -0.5px hsl(var(--shadow-color) / 0.29), -0.1px 2.6px 3px -0.7px hsl(var(--shadow-color) / 0.3), -0.2px 3.7px 4.3px -1px hsl(var(--shadow-color) / 0.3), -0.2px 5.3px 6.2px -1.2px hsl(var(--shadow-color) / 0.31), -0.3px 7.5px 8.7px -1.5px hsl(var(--shadow-color) / 0.32), -0.5px 10.4px 12.1px -1.7px hsl(var(--shadow-color) / 0.32), -0.6px 14.2px 16.5px -2px hsl(var(--shadow-color) / 0.33), -0.8px 19px 22.1px -2.2px hsl(var(--shadow-color) / 0.33)`,
 			},
 			strokeWidth: {
 				'10': '10px',
@@ -315,6 +297,7 @@ const config: Config = {
 	plugins: [
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/aspect-ratio'),
+		require('tw-elements/dist/plugin.cjs'),
 		require('daisyui'),
 	],
 	corePlugins: {
@@ -331,51 +314,34 @@ const config: Config = {
 		themes: [
 			{
 				light: {
-					...require('daisyui/src/theming/themes')[
-						'[data-theme=light]'
-					],
+					...require('daisyui/src/theming/themes')['light'],
 					primary: TEAL[500],
-					'primary-content': TEAL[950],
 					secondary: ORANGE[500],
-					'secondary-content': ORANGE[900],
 					accent: BLUE[500],
-					'accent-content': BLUE[50],
 					neutral: colors.slate[800],
+					'base-100': colors.slate[100],
+					'base-200': colors.slate[200],
+					'base-300': colors.slate[300],
 					info: BLUE[500],
-					'info-content': colors.slate[100],
 					success: GREEN[500],
-					'success-content': fontColorContrast(GREEN[500]),
 					warning: YELLOW[500],
-					'warning-content': YELLOW[900],
 					error: colors.red[500],
-					'error-content': fontColorContrast(colors.red[500]),
-					...daisyBaseColor('base'),
 				},
 			},
 			{
 				dark: {
-					...require('daisyui/src/theming/themes')[
-						'[data-theme=dark]'
-					],
+					...require('daisyui/src/theming/themes')['dark'],
 					primary: TEAL[600],
-					'primary-content': TEAL[950],
 					secondary: ORANGE[600],
-					'secondary-content': ORANGE[950],
 					accent: BLUE[600],
-					'accent-content': BLUE[50],
-					neutral: colors.slate[200],
+					neutral: colors.slate[100],
+					'base-100': colors.slate[700],
+					'base-200': colors.slate[800],
+					'base-300': colors.slate[900],
 					info: BLUE[600],
-					'info-content': colors.slate[100],
 					success: GREEN[600],
-					'success-content': fontColorContrast(GREEN[600]),
 					warning: YELLOW[600],
-					'warning-content': YELLOW[950],
 					error: colors.red[600],
-					'error-content': fontColorContrast(colors.red[600]),
-					'base-50': colors.slate[700],
-					'base-100': colors.slate[800],
-					'base-200': colors.slate[900],
-					'base-300': colors.slate[950],
 				},
 			},
 		],

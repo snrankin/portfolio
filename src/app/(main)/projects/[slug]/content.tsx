@@ -42,7 +42,7 @@ export default function Content({
 					argument="project"
 					flags={`id=${project.slug}|verbose`}
 				>
-					<div className="dark:prose-invert prose lg:prose-xl mx-auto">
+					<div className="dark:prose-invert prose xl:prose-xl mx-auto">
 						<Markdown content={project.content} />
 					</div>
 				</Section>

@@ -1,5 +1,5 @@
 import { draftMode } from 'next/headers';
-
+import Test from './test';
 import Hero from './hero';
 import About from './about';
 import Skills from './skills';
@@ -55,7 +55,7 @@ export default async function Page() {
 		<>
 			<Hero me={me} home={page} />
 			{!!about && <About {...about} />}
-			{/* <Test id="test" /> */}
+
 			{!!skills && <Skills {...skills} />}
 			{!!projects && <Projects {...projects} />}
 			{!!jobs && <WorkHistory {...jobs} />}

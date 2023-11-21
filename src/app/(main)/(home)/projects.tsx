@@ -14,11 +14,11 @@ export default function Projects(
 			argument={`${props?.argument}`}
 			flags={props?.flags}
 			intro={props?.intro}
-			className={`${styles.heroBG}`}
+			className="pattern-bg"
 		>
 			<ProjectsGroup
 				projectProps={{
-					className: 'bg-base-100 shadow',
+					className: 'bg-base-100 shadow dark:bg-slate-900',
 				}}
 				projects={props?.projectsCollection?.items}
 				className="grid gap-6 lg:gap-11 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"

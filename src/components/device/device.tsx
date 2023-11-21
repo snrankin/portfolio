@@ -79,7 +79,7 @@ export default function Device(props: DeviceProps): JSX.Element {
 		'overflow-hidden',
 		'mockup-browser',
 		'bg-base-200',
-		'dark:bg-neutral-500',
+		'dark:bg-base-500',
 		props.type,
 		{
 			'pt-[1.3858437126%]': props.type == 'laptop',

@@ -14,6 +14,7 @@ export default function WorkHistory(
 			argument={`${props?.argument}`}
 			flags={props?.flags}
 			intro={props?.intro}
+			className="dark:bg-slate-800"
 		>
 			<Timeline jobs={props?.jobsCollection?.items} />
 		</Section>

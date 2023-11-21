@@ -33,11 +33,6 @@ export default function HeaderProvider({
 				// @ts-ignore
 				var clientHeight = el != null ? el.offsetHeight : 0;
 
-				console.log(
-					'🚀 ~ file: header-waypoint.tsx:40 ~ handleResize ~ clientHeight:',
-					clientHeight
-				);
-
 				if (clientHeight === height) return;
 				requestAnimationFrame(function updateViewportHeight() {
 					setHeight(clientHeight);
@@ -64,6 +59,7 @@ export default function HeaderProvider({
 		'duration-200': true,
 		'bg-transparent': !isScrolled,
 		'bg-base-100': isScrolled,
+		'dark:bg-slate-900': isScrolled,
 		'z-50': true,
 		'shadow-sm': isScrolled,
 		'shadow-none': !isScrolled,

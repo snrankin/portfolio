@@ -4,11 +4,11 @@ export default function NotFound() {
 			<div className="text-center">
 				<h1 className="font-black text-9xl">404</h1>
 
-				<p className="text-2xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+				<p className="text-2xl font-bold tracking-tight text-base-900 sm:text-4xl">
 					Uh-oh!
 				</p>
 
-				<p className="mt-4 text-neutral-500">
+				<p className="mt-4 text-base-500">
 					We can`&apos;`t find that page.
 				</p>
 

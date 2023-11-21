@@ -23,14 +23,14 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 				{!!props?.image && (
 					<div className="relative">
 						<div className="absolute w-full h-full inset-0 flex">
-							<ThemeSwap
-								light={
+							<ThemeSwap>
+								<ThemeSwap.Light>
 									<DarkFrame className="block w-full h-full grow stroke-[20px] md:stroke-[15px]" />
-								}
-								dark={
+								</ThemeSwap.Light>
+								<ThemeSwap.Dark>
 									<LightFrame className="block w-full h-full grow stroke-[20px] md:stroke-[15px]" />
-								}
-							/>
+								</ThemeSwap.Dark>
+							</ThemeSwap>
 						</div>
 						<div className="aspect-w-1 aspect-h-1">
 							<ContentfulImage

@@ -11,7 +11,8 @@
 		"**/node_modules": true,
 		"**/twenty*": true,
 		"**/uploads": true,
-		"**/wp-snapshots": true
+		"**/wp-snapshots": true,
+		"**/.next": true
 	},
 	"explorerExclude.backup": {}
 }

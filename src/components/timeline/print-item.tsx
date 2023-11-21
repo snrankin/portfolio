@@ -12,7 +12,7 @@ export default function TimelineItem(props: TypeJobFields) {
 		<div className={`timeline-item job-${paramCase(company)}`}>
 			<div className="grid grid-cols-[1rem_1fr] gap-x-5 w-full max-w-full">
 				<div className="flex flex-col h-full">
-					<div className="font-display uppercase font-black text-neutral-400 leading-none whitespace-nowrap flex flex-col grow  h-full gap-4">
+					<div className="font-display uppercase font-black text-base-400 leading-none whitespace-nowrap flex flex-col grow  h-full gap-4">
 						<div className="h-[80px] flex items-end">
 							<div className="-rotate-90 translate-x-1/4 origin-bottom-left">
 								{displayDate(endDate)}
@@ -20,7 +20,7 @@ export default function TimelineItem(props: TypeJobFields) {
 						</div>
 
 						<div className="flex flex-col grow items-center">
-							<span className="w-0 border-[0.5px] border-neutral-200 grow"></span>
+							<span className="w-0 border-[0.5px] border-base-200 grow"></span>
 						</div>
 
 						<div className="h-[80px] flex items-end">

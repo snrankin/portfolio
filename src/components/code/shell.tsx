@@ -27,7 +27,8 @@ export default function Heading(props: ShellProps): JSX.Element {
 
 	let classes = classNames(
 		'mockup-code',
-		'dark:bg-neutral-950',
+		'dark:bg-slate-950',
+		'dark:text-slate-300',
 		'before:content-none',
 		props.className
 	);
@@ -43,7 +44,7 @@ export default function Heading(props: ShellProps): JSX.Element {
 			<pre
 				data-prefix="$"
 				role="presentation"
-				className="font-mono dark:text-neutral-100"
+				className="font-mono dark:text-slate-300"
 			>
 				{!!props.command && props.command != null && (
 					<code className="text-primary-500 nohighlight">
@@ -51,7 +52,7 @@ export default function Heading(props: ShellProps): JSX.Element {
 					</code>
 				)}
 				{!!props.argument && props.argument != null && (
-					<code className="nohighlight">{props.argument}</code>
+					<code className="nohighlight ">{props.argument}</code>
 				)}
 				{!!flags && flags != null && (
 					<code className="text-secondary-500 nohighlight">

@@ -1,60 +1,39 @@
 'use client';
-import React, { useState, HTMLProps } from 'react';
-import Link from 'next/link';
+import React, { HTMLProps, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { omit, set } from 'lodash';
-import IconSwap from '../icons/icon-swap';
-import Icon from '../icons/icon-item';
 
-interface NavProps extends Omit<HTMLProps<HTMLElement>, 'size'> {
+interface NavProps extends Omit<HTMLProps<HTMLElement>, 'size' | 'id'> {
 	size?: 'xs' | 'sm' | 'md' | 'lg';
 	direction?: 'horizontal' | 'vertical';
-	dropdown?: 'end' | 'top' | 'bottom' | 'left' | 'right';
+	dropdown?: boolean;
 	menuClasses?: string;
-	btnClasses?: string;
-	menuOpenedIcon?: string;
-	menuClosedIcon?: string;
-	menuOpenedIconGroup?: 'web' | 'dev' | 'ios';
-	menuClosedIconGroup?: 'web' | 'dev' | 'ios';
-	inNavbar: boolean;
-	dropdownLabel?: JSX.Element;
+	navbar?: boolean;
+	id: string;
 }
 export default function Nav(props: NavProps): JSX.Element {
-	let {
-		size,
-		dropdown,
-		inNavbar,
-		menuOpenedIcon,
-		menuClosedIcon,
-		menuOpenedIconGroup,
-		menuClosedIconGroup,
-		children,
-		dropdownLabel,
-	} = props;
+	let { size, dropdown, navbar, children } = props;
 
 	let direction = !!props.direction ? props.direction : 'vertical';
 
-	if (inNavbar && !!props.direction) {
+	if (navbar && !!props.direction) {
 		direction = 'horizontal';
 	}
 
 	let dropdownClass = !!dropdown ? `dropdown-${dropdown}` : '';
 
 	let navClasses = classNames(props.className, dropdownClass, {
-		dropdown: !!dropdown,
+		'[&[data-te-collapse-show]]:block': !!dropdown || !!navbar,
+		hidden: !!dropdown || !!navbar,
 	});
 
-	let menuSize = !!size ? `menu-${size}` : '',
-		menuDirection = direction != undefined ? `menu-${direction}` : '';
+	let menuSize = !!size ? `menu-${size}` : '';
 
 	let menuClasses = classNames('menu', props.menuClasses, menuSize, {
 		menu: !dropdown,
 		'menu-horizontal': direction == 'horizontal',
-		'dropdown-content': !!dropdown,
 	});
-
-	let buttonClasses = classNames('btn', props.btnClasses);
 
 	let navAttr = omit(props, [
 		'dropdownLabel',
@@ -67,17 +46,23 @@ export default function Nav(props: NavProps): JSX.Element {
 		'menuClosedIcon',
 		'menuOpenedIconGroup',
 		'menuClosedIconGroup',
-		'inNavbar',
+		'navbar',
 		'menuClasses',
 	]);
+
+	if (!!props.dropdown) {
+		set(navAttr, 'data-te-collapse-item', null);
+	}
 
 	set(navAttr, 'className', navClasses);
 
 	let menuAttr: HTMLProps<HTMLUListElement> = {
 		className: menuClasses,
 	};
-	if (inNavbar) {
+	if (navbar) {
+		set(navAttr, 'aria-labelledby', `${props.id}-btn`);
 		set(menuAttr, 'role', 'menubar');
+		set(menuAttr, 'data-te-navbar-nav-ref', null);
 		if (direction == 'vertical') {
 			set(menuAttr, 'aria-orientation', direction);
 		}
@@ -86,31 +71,16 @@ export default function Nav(props: NavProps): JSX.Element {
 		set(menuAttr, 'aria-orientation', direction);
 	}
 
+	useEffect(() => {
+		const init = async () => {
+			const { Collapse, initTE } = await import('tw-elements');
+			initTE({ Collapse });
+		};
+		init();
+	}, []);
+
 	return (
 		<nav {...navAttr}>
-			{!!dropdown && (
-				<>
-					{!!menuOpenedIcon && !!menuClosedIcon && (
-						<IconSwap
-							aria-haspopup="true"
-							className={buttonClasses}
-							iconOff={menuClosedIcon}
-							iconOn={menuOpenedIcon}
-							groupOff={menuClosedIconGroup}
-							groupOn={menuOpenedIconGroup}
-						/>
-					)}
-					{!!menuClosedIcon && !menuOpenedIcon && (
-						<button aria-haspopup="true" className={buttonClasses}>
-							<Icon
-								icon={menuClosedIcon}
-								group={menuClosedIconGroup}
-							/>
-						</button>
-					)}
-				</>
-			)}
-
 			<ul {...menuAttr}>{children}</ul>
 		</nav>
 	);
