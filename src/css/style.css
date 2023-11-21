@@ -1,0 +1,347 @@
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@tailwind utilities;
+
+[data-theme='dark'] {
+	--shadow-color: 217deg 25% 14%;
+
+	.bg-base-200 {
+		--shadow-color: 215deg 42% 6%;
+	}
+}
+
+@layer base {
+	:root {
+		--container-width: 90vw;
+		--page-gutter: calc((100vw - var(--container-width)) * 0.5);
+		--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
+		--shadow-color: 220deg 5% 52%;
+
+		@media screen(lg) {
+			--container-width: 85vw;
+		}
+		@media screen(xl) {
+			--container-width: 1170px;
+		}
+
+		.prose {
+			--tw-prose-body: theme(colors.slate.700);
+			--tw-prose-headings: theme(colors.slate.900);
+			--tw-prose-lead: theme(colors.slate.800);
+			--tw-prose-links: theme(colors.primary.500);
+			--tw-prose-bold: theme(colors.primary.500);
+			--tw-prose-counters: theme(colors.primary.600);
+			--tw-prose-bullets: theme(colors.secondary.500);
+			--tw-prose-hr: theme(colors.slate.300);
+			--tw-prose-quotes: theme(colors.primary.700);
+			--tw-prose-quote-borders: theme(colors.secondary.500);
+			--tw-prose-captions: theme(colors.slate.700);
+			--tw-prose-code: theme(colors.primary.400);
+			--tw-prose-pre-code: theme(colors.slate.100);
+			--tw-prose-pre-bg: theme(colors.slate.800);
+			--tw-prose-th-borders: theme(colors.slate.300);
+			--tw-prose-td-borders: theme(colors.slate.200);
+
+			--tw-prose-invert-body: theme(colors.slate.200);
+			--tw-prose-invert-headings: theme(colors.slate.100);
+			--tw-prose-invert-lead: theme(colors.slate.300);
+			--tw-prose-invert-links: theme(colors.primary.400);
+			--tw-prose-invert-bold: theme(colors.white);
+			--tw-prose-invert-counters: theme(colors.primary.400);
+			--tw-prose-invert-bullets: theme(colors.secondary.600);
+			--tw-prose-invert-hr: theme(colors.slate.700);
+			--tw-prose-invert-quotes: theme(colors.primary.100);
+			--tw-prose-invert-quote-borders: theme(colors.primary.600);
+			--tw-prose-invert-captions: theme(colors.slate.400);
+			--tw-prose-invert-code: theme(colors.white);
+			--tw-prose-invert-pre-code: theme(colors.slate.300);
+			--tw-prose-invert-pre-bg: theme(colors.slate.950);
+			--tw-prose-invert-th-borders: theme(colors.slate.600);
+			--tw-prose-invert-td-borders: theme(colors.slate.700);
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--fallback-p: theme(colors.primary.600);
+			--fallback-pc: #050617;
+			--fallback-s: theme(colors.secondary.600);
+			--fallback-sc: #190211;
+			--fallback-a: theme(colors.accent.600);
+			--fallback-ac: #000e0c;
+			--fallback-n: theme(colors.slate.600);
+			--fallback-nc: #a6adbb;
+			--fallback-b1: theme(colors.slate.700);
+			--fallback-b2: theme(colors.slate.800);
+			--fallback-b3: theme(colors.slate.900);
+			--fallback-bc: theme(colors.slate.300);
+			--fallback-in: theme(colors.info.600);
+			--fallback-inc: #000000;
+			--fallback-su: theme(colors.success.600);
+			--fallback-suc: #000000;
+			--fallback-wa: theme(colors.warning.600);
+			--fallback-wac: #000000;
+			--fallback-er: theme(colors.error.600);
+			--fallback-erc: #000000;
+		}
+	}
+
+	[data-theme='dark'] .pattern-bg {
+		background-image: svg-load(subtle-bg-dark.svg);
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	h1 {
+		@apply font-display;
+	}
+	h2 {
+		@apply font-display;
+	}
+	h3 {
+		@apply font-display;
+	}
+	h4 {
+		@apply font-display;
+	}
+
+	.container {
+		max-width: var(--container-width);
+	}
+}
+
+@layer components {
+	.mockup-code {
+		padding-top: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+		padding-bottom: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+
+		pre {
+			padding-right: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+			line-height: 1;
+			&[data-prefix]:before {
+				width: 1ch;
+				margin-left: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+				margin-right: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+			}
+		}
+
+		.buttons {
+			padding-left: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+			padding-bottom: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+		}
+	}
+
+	.pattern-bg {
+		background-image: svg-load(subtle-bg-light.svg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	[data-theme='dark'] .pattern-bg {
+		background-image: svg-load(subtle-bg-dark.svg);
+	}
+
+	.card-normal {
+		.card-body {
+			padding: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
+		}
+	}
+	.prose
+		:where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+		background-color: var(--tw-prose-pre-bg);
+	}
+
+	.btn {
+		min-height: auto;
+		height: auto;
+		@apply p-3;
+	}
+	.btm-nav {
+		box-shadow: 0px -0.5px 0.6px hsl(var(--shadow-color) / 0.36),
+			0px -0.8px 0.9px -1.1px hsl(var(--shadow-color) / 0.38),
+			0px -2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41);
+	}
+
+	@media screen(lg) {
+		.btm-nav {
+			box-shadow: none;
+		}
+	}
+
+	.menu {
+		.active {
+			background-color: theme(colors.primary.500);
+			color: theme(colors.slate.950);
+		}
+	}
+	:where(
+			.menu
+				li:not(.menu-title):not(.disabled)
+				> *:not(ul):not(details):not(.menu-title)
+		):not(.active):hover,
+	:where(
+			.menu
+				li:not(.menu-title):not(.disabled)
+				> details
+				> summary:not(.menu-title)
+		):not(.active):hover {
+		background-color: theme(colors.primary.500);
+		color: theme(colors.slate.950);
+	}
+	[data-theme='dark'] {
+		.menu {
+			.active {
+				background-color: theme(colors.primary.600);
+			}
+		}
+		:where(
+				.menu
+					li:not(.menu-title):not(.disabled)
+					> *:not(ul):not(details):not(.menu-title)
+			):not(.active):hover,
+		:where(
+				.menu
+					li:not(.menu-title):not(.disabled)
+					> details
+					> summary:not(.menu-title)
+			):not(.active):hover {
+			background-color: theme(colors.primary.600);
+			color: theme(colors.slate.950);
+		}
+	}
+}
+
+[data-nimg='fill'] {
+	object-fit: cover;
+	font-family: 'object-fit: cover;';
+}
+
+/*  Comment */
+.hljs-meta,
+.hljs-comment {
+	color: theme(colors.slate.400);
+}
+
+/* Red */
+/*INFO: This keyword, HTML elements, Regex group symbol, CSS units, Terminal Red */
+.hljs-tag,
+.hljs-doctag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-template-tag,
+.hljs-selector-pseudo,
+.hljs-selector-attr,
+.hljs-variable.language_,
+.hljs-name,
+.hljs-deletion {
+	color: theme(colors.primary.400);
+}
+
+/*Orange */
+/*INFO: Number and Boolean constants, Language support constants */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-number,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-link {
+	color: theme(colors.primary.400);
+}
+
+/*  Yellow */
+/* INFO:  	Function parameters, Regex character sets, Terminal Yellow */
+.hljs-built_in,
+.hljs-attribute {
+	color: theme(colors.warning.400);
+}
+/* cyan */
+/* INFO: Language support functions, CSS HTML elements */
+.hljs-selector-tag {
+	color: theme(colors.primary.400);
+}
+
+/* light blue */
+/* INFO: Object properties, Regex quantifiers and flags, Markdown headings, Terminal Cyan, Markdown code, Import/export keywords */
+.hljs-keyword,
+.hljs-title.function_,
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-subst,
+.hljs-property {
+	color: theme(colors.warning.400);
+}
+
+/*Green*/
+/* INFO: Object literal keys, Markdown links, Terminal Green */
+.hljs-selector-tag {
+	color: theme(colors.accent.400);
+}
+
+/*Green(er) */
+/* INFO: Strings, CSS class names */
+.hljs-quote,
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: theme(colors.warning.400);
+}
+
+/* Blue */
+/* INFO:  	Function names, CSS property names, Terminal Blue */
+.hljs-code,
+.hljs-formula,
+.hljs-section {
+	color: #7aa2f7;
+}
+
+/* Magenta */
+/*INFO: Control Keywords, Storage Types, Regex symbols and operators, HTML Attributes, Terminal Magenta */
+
+.hljs-keyword,
+.hljs-operator,
+.hljs-keyword,
+.hljs-char.escape_,
+.hljs-attr {
+	color: theme(colors.success.400);
+}
+
+/* white*/
+/* INFO: Variables, Class names, Terminal White */
+.hljs-punctuation {
+	color: theme(colors.slate.200);
+}
+
+/* .hljs {
+	background: theme(colors.slate.800);
+	color: theme(colors.slate.200);
+} */
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
