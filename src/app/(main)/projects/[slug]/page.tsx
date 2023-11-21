@@ -51,6 +51,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const { isEnabled } = draftMode();
 
 	let project = await getItem<TypePostFields>(isEnabled, 'post', params.slug);
+
+	console.log('🚀 ~ file: page.tsx:55 ~ Page ~ project:', project);
+
 	const moreProjects = await getItemsExcept<TypePostCardFields>(
 		isEnabled,
 		'post',

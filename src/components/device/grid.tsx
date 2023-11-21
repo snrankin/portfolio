@@ -52,13 +52,13 @@ function Grid({ children }: { children?: React.ReactNode }) {
 	return (
 		<div className="device-grid w-full flex flex-col items-center relative">
 			<div className="w-screen sm:w-full-pg drop-shadow-lg -mx-pg sm:ml-0 sm:-mr-pg">
-				<div className="-mx-[50vw] sm:-mx-[30vw] md:ml-0  flex flex-col items-center md:items-start">
+				<div className="-mx-[50vw] sm:-mx-[30vw] md:ml-0 2xl:mr-0  flex flex-col items-center md:items-start">
 					<div className="w-[60%]">
 						<div className="flex flex-col items-center relative">
 							{children}
 						</div>
 					</div>
-					<div className="md:-ml-pg md:w-full-pg">
+					<div className="md:-ml-pg md:w-full-pg 2xl:w-full 2xl:-ml-[5%]">
 						<ThemeSwap>
 							<ThemeSwap.Light>
 								<DeskLight className="block w-full" />

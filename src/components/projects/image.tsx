@@ -1,7 +1,7 @@
 import Grid from '@/components/device/grid';
 import ContentfulImage from '@/components/contentful/contentful-image';
 import { simplifyUrl } from '@/lib/utils';
-import { TypePostFields } from '@/lib/types';
+import { TypePostFields, deviceImageHeight } from '@/lib/types';
 export default function ProjectImage(props?: TypePostFields) {
 	let useGrid =
 		!!props?.desktopPreview ||

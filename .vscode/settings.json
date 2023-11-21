@@ -12,7 +12,7 @@
 		"**/twenty*": true,
 		"**/uploads": true,
 		"**/wp-snapshots": true,
-		"**/.next": true
+		"**/.next": false
 	},
 	"explorerExclude.backup": {}
 }
