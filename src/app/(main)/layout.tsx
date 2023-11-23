@@ -15,12 +15,11 @@ export default async function Layout({
 }) {
 	const { isEnabled } = draftMode();
 	let site = await getItem<TypeSiteFields>(
-		true,
+		isEnabled,
 		'site',
 		'sam-rankin',
 		SITE_GRAPHQL_FIELDS
 	);
-
 	return (
 		<ThemeProvider>
 			<SectionProvider>
@@ -30,7 +29,7 @@ export default async function Layout({
 					<main className="flex min-h-screen flex-col w-full overflow-y-none">
 						{children}
 					</main>
-					<Footer />
+					<Footer author={site?.author} />
 				</HeaderProvider>
 			</SectionProvider>
 		</ThemeProvider>

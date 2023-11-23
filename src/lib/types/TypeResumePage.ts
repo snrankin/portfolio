@@ -17,6 +17,14 @@ export const RESUME_GRAPHQL_FIELDS = `
     lastName
     slug
     label
+    phone
+    email
+    socialCollection {
+      items {
+        url
+        title
+      }
+    }
   }
   projectsCollection {
 	  items {

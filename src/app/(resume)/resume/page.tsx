@@ -6,17 +6,10 @@ import {
 	TypeJobsSectionFields,
 	TypeSkillsSectionFields,
 	TypeResumePageFields,
+	TypeSiteFields,
 } from '@/lib/types';
 import './page.css';
-export const metadata: Metadata = {
-	robots: {
-		index: false,
-		follow: false,
-		nocache: true,
-	},
-	title: 'Resume',
-	description: 'Portfolio for Phoenix, AZ Based Web Developer',
-};
+
 export default async function Page() {
 	const { isEnabled } = draftMode();
 	const page = await getItem<TypeResumePageFields>(

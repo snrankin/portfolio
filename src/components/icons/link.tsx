@@ -28,7 +28,7 @@ export const IconLinkContextConfig: IIconLinkContext = {
 
 export const IconLinkContext = createContext(IconLinkContextConfig);
 
-export default function Icon(props: IconLinkProps): JSX.Element {
+export default function IconLink(props: IconLinkProps): JSX.Element {
 	let { group, titleDisplay, titleClasses, iconClasses, displayUrl } = props;
 	let iconName = props.icon != undefined ? props.icon : '';
 	const HAS_ICON = hasIcon(iconName, group);

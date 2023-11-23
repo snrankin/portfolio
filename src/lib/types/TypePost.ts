@@ -81,16 +81,16 @@ export const POST_LINKS_GRAPHQL_FIELDS = `
 `;
 
 export interface TypePostFields {
-	title: EntryFields.Symbol;
+	title?: EntryFields.Symbol;
 	shortTitle?: EntryFields.Symbol;
-	slug: EntryFields.Symbol;
+	slug?: EntryFields.Symbol;
 	featuredImage?: TypeAssetFields;
 	summary?: EntryFields.Text;
 	excerpt?: EntryFields.Symbol;
 	content?: Content;
 	startDate?: EntryFields.Date;
 	endDate?: EntryFields.Date;
-	author: TypeAuthor;
+	author?: TypeAuthor;
 	desktopPreview?: TypeAssetFields;
 	laptopPreview?: TypeAssetFields;
 	tabletPreview?: TypeAssetFields;

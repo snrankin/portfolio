@@ -11,6 +11,14 @@ export const SITE_GRAPHQL_FIELDS = `
     lastName
     slug
     label
+    phone
+    email
+    socialCollection {
+      items {
+        url
+        title
+      }
+    }
   }
   navLinks
   seoTitle

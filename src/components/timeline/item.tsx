@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { displayDate } from '@/lib/utils';
 import { trim } from 'lodash';
 import Icon from '../icons/icon-item';
-import { IPosition } from '@/lib/interfaces';
 import { Markdown } from '@/components/contentful/markdown';
 import { TypeJobFields } from '@/lib/types';
 export function companyLink(name: string, url: string) {
@@ -28,9 +27,6 @@ export function companyLink(name: string, url: string) {
 	);
 }
 
-export interface TimelineItemProps extends IPosition {
-	index: number;
-}
 export default function TimelineItem(props: TypeJobFields) {
 	const { company, title, startDate, endDate, website, description } = props;
 

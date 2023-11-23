@@ -1,12 +1,12 @@
-import { IProject } from '@/lib/interfaces';
 import IconLink from '../icons/link';
+import { TypePostFields } from '@/lib/types';
 
-export default function ProjectLinks({ repo, website }: IProject) {
+export default function ProjectLinks(props?: TypePostFields) {
 	return (
 		<div className="inline-flex items-center gap-4">
-			{!!repo && (
+			{!!props?.repo && (
 				<IconLink
-					href={repo}
+					href={props?.repo}
 					icon="code"
 					title="View Code"
 					titleDisplay="inline"
@@ -15,9 +15,9 @@ export default function ProjectLinks({ repo, website }: IProject) {
 					className="btn btn-primary"
 				/>
 			)}
-			{!!website && (
+			{!!props?.website && (
 				<IconLink
-					href={website}
+					href={props?.website}
 					group="web"
 					icon="web"
 					title="View Website"

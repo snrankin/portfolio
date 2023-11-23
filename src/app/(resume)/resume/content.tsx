@@ -1,12 +1,14 @@
 'use client';
 import Link from 'next/link';
 import Section from '@/components/section/section';
-import SocialLinks from '@/components/social/group';
+import SocialLinks, { getSocialLinks } from '@/components/social/group';
 import ProjectsGroup from '@/components/projects/list';
 import SkillsList from '@/components/skills/skills';
 import Timeline from '@/components/timeline/print-group';
 import Icon from '@/components/icons/icon-item';
 import Logo from '@/components/global/logo';
+import IconLink from '@/components/icons/link';
+import { lowerCase, paramCase } from 'change-case-all';
 import {
 	TypeAuthorFields,
 	TypeSkillsSectionFields,
@@ -31,6 +33,8 @@ export default function Content({
 	var printClick = () => {
 		window.print();
 	};
+
+	const links = getSocialLinks(me);
 
 	return (
 		<Section id="resume" className="print">
@@ -66,14 +70,23 @@ export default function Content({
 					{!!summary && <p className="m-0">{summary}</p>}
 				</div>
 				<div className="col-span-4 pl-[0.25in] pb-[0.25in]">
-					<SocialLinks
-						className="flex flex-col gap-3"
-						iconProps={{
-							displayUrl: true,
-							titleDisplay: 'inline',
-							iconClasses: 'stroke-2 text-black',
-						}}
-					/>
+					<div className="flex flex-col gap-3">
+						{links.map((link, k) => {
+							return (
+								<IconLink
+									iconClasses="stroke-2 text-black"
+									displayUrl={true}
+									titleDisplay="inline"
+									icon={`${link.icon}`}
+									title={`${link.title}`}
+									href={`${link.href}`}
+									target="_blank"
+									key={k}
+									className="primary-link no-underline"
+								/>
+							);
+						})}
+					</div>
 				</div>
 				{!!skills && (
 					<div className="col-span-8 border-y py-[0.25in]  border-r">

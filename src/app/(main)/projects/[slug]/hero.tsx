@@ -62,7 +62,7 @@ export default function Hero(props?: TypePostFields): JSX.Element {
 					{!!props?.summary && (
 						<p className="lead !mt-0">{props?.summary}</p>
 					)}
-					<ProjectLinks repo={props?.repo} website={props?.website} />
+					<ProjectLinks {...props} />
 				</div>
 			</div>
 			{(useImage || useGrid) && !!props && (

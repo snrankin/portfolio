@@ -1,5 +1,5 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeSocialProfile, TypeAssetFields } from '.';
+import type { TypeSocialProfileFields, TypeAssetFields } from '.';
 import { RICHTEXT_GRAPHQL_FIELDS, ASSET_GRAPHQL_FIELDS } from '.';
 export const AUTHOR_GRAPHQL_FIELDS = `
   name
@@ -33,7 +33,9 @@ export interface TypeAuthorFields {
 	email?: EntryFields.Text;
 	phone?: EntryFields.Text;
 	location?: EntryFields.Location;
-	social?: TypeSocialProfile[];
+	socialCollection?: {
+		items: TypeSocialProfileFields[];
+	};
 }
 
 export interface Author extends EntrySkeletonType {

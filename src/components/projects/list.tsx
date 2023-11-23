@@ -1,13 +1,11 @@
 'use client';
 import React, { HTMLProps } from 'react';
-import { IProject } from '@/lib/interfaces';
-import { ProjectsList } from '@/lib/projects';
-import { displayDate, simplifyUrl } from '@/lib/utils';
-import { filter, indexOf, isString, merge, omit, pick, set } from 'lodash';
+import { simplifyUrl } from '@/lib/utils';
+import { omit, set } from 'lodash';
 import classNames from 'classnames';
-import { TypePostCardFields } from '@/lib/types';
-interface ProjectGroupProps extends HTMLProps<HTMLUListElement> {
-	projects?: TypePostCardFields[];
+import { TypePostFields } from '@/lib/types';
+interface ProjectGroupProps extends HTMLProps<HTMLDivElement> {
+	projects?: TypePostFields[];
 }
 
 export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
@@ -18,33 +16,35 @@ export default function ProjectsGroup(props: ProjectGroupProps): JSX.Element {
 	set(atts, 'className', classes);
 
 	return (
-		<ul {...atts}>
+		<div {...atts}>
 			{!!props.projects &&
-				props.projects.map((project: IProject, i: number) => (
-					<li key={i}>
-						<span className="block font-display font-bold">
+				props.projects.map((project: TypePostFields, i: number) => (
+					<div key={i}>
+						<h3 className="card-title text-base">
 							{project.shortTitle}
-						</span>
-						{!!project.website && (
-							<a
-								href={project.website}
-								target="_blank"
-								className="block"
-							>
-								{simplifyUrl(project.website)}
-							</a>
-						)}
-						{!!project.repo && !project.website && (
-							<a
-								href={project.repo}
-								target="_blank"
-								className="block"
-							>
-								{simplifyUrl(project.website)}
-							</a>
-						)}
-					</li>
+						</h3>
+						<p>
+							{!!project.website && (
+								<a
+									href={project.website}
+									target="_blank"
+									className="block"
+								>
+									{simplifyUrl(project.website)}
+								</a>
+							)}
+							{!!project.repo && !project.website && (
+								<a
+									href={project.repo}
+									target="_blank"
+									className="block"
+								>
+									{simplifyUrl(project.website)}
+								</a>
+							)}
+						</p>
+					</div>
 				))}
-		</ul>
+		</div>
 	);
 }

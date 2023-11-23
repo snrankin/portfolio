@@ -21,7 +21,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 		>
 			<div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-center gap-11">
 				{!!props?.image && (
-					<div className="relative">
+					<div className="relative w-4/6 mx-auto md:w-full">
 						<div className="absolute w-full h-full inset-0 flex">
 							<ThemeSwap>
 								<ThemeSwap.Light>
