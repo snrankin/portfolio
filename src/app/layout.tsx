@@ -2,6 +2,7 @@ import React from 'react';
 import { Inconsolata, Poppins, DM_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
+import Analytics from '@/components/global/analytics';
 import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
 import '@/css/style.css';
 export const poppins = Poppins({
@@ -38,6 +39,7 @@ const customDevTTF = localFont({
 	display: 'swap',
 	variable: '--font-devicons-ttf',
 });
+
 export async function generateMetadata() {
 	let site = await getItem<TypeSiteFields>(
 		true,
@@ -99,18 +101,21 @@ export default async function Layout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html
-			lang="en"
-			data-theme="light"
-			className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
-			suppressHydrationWarning={true}
-		>
-			<body
-				className="max-w-screen overscroll-x-none"
+		<>
+			<Analytics />
+			<html
+				lang="en"
+				data-theme="light"
+				className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
 				suppressHydrationWarning={true}
 			>
-				{children}
-			</body>
-		</html>
+				<body
+					className="max-w-screen overscroll-x-none"
+					suppressHydrationWarning={true}
+				>
+					{children}
+				</body>
+			</html>
+		</>
 	);
 }

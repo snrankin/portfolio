@@ -33,6 +33,9 @@ export async function generateMetadata({
 
 	let title = page?.seoTitle ? page?.seoTitle : page?.title;
 	let description = page?.seoDescription;
+
+	console.log('🚀 ~ file: page.tsx:37 ~ description:', description);
+
 	let url = site?.url ?? process.env.VERCEL_CUSTOM_DOMAIN;
 	const meta = {
 		title: `${title}`,

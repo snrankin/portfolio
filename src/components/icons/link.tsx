@@ -35,7 +35,7 @@ export default function Icon(props: IconLinkProps): JSX.Element {
 
 	let icon;
 
-	let classes = classNames(
+	const classes = classNames(
 		{
 			'items-center':
 				titleDisplay == 'inline' && !isEmpty(props.title) && HAS_ICON,
