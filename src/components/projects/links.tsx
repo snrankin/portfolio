@@ -3,7 +3,7 @@ import IconLink from '../icons/link';
 
 export default function ProjectLinks({ repo, website }: IProject) {
 	return (
-		<>
+		<div className="inline-flex items-center gap-4">
 			{!!repo && (
 				<IconLink
 					href={repo}
@@ -27,6 +27,6 @@ export default function ProjectLinks({ repo, website }: IProject) {
 					className="btn btn-secondary"
 				/>
 			)}
-		</>
+		</div>
 	);
 }
