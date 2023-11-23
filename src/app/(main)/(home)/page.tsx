@@ -15,6 +15,7 @@ import {
 	TypeJobsSectionFields,
 	TypeProjectsSectionFields,
 	TypeSkillsSectionFields,
+	TypeSiteFields,
 } from '@/lib/types';
 
 export async function generateMetadata({
@@ -23,6 +24,7 @@ export async function generateMetadata({
 	params: { slug: string };
 }): Promise<Metadata> {
 	const { isEnabled } = draftMode();
+	let site = await getItem<TypeSiteFields>(isEnabled, 'site', 'sam-rankin');
 	const page = await getItem<TypeHomePageFields>(
 		isEnabled,
 		'homePage',
@@ -31,15 +33,15 @@ export async function generateMetadata({
 
 	let title = page?.seoTitle ? page?.seoTitle : page?.title;
 	let description = page?.seoDescription;
-
+	let url = site?.url ?? process.env.VERCEL_CUSTOM_DOMAIN;
 	const meta = {
-		title: `${title} | Projects`,
+		title: `${title}`,
 		description,
 		openGraph: {
-			title: `${title} | Projects`,
+			title: `${title}`,
 			description,
-			url: process.env.VERCEL_CUSTOM_DOMAIN,
-			siteName: process.env.VERCEL_SEO_SITE_NAME,
+			url: url,
+			siteName: site?.seoTitle ?? process.env.VERCEL_SEO_SITE_NAME,
 			locale: 'en_US',
 			type: 'website',
 		},

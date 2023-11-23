@@ -126,6 +126,12 @@ export function getIcon(
 					<use href={`/ios-sprite.svg#ios-${iconName} `} />
 				</svg>
 			);
+		} else if (group == 'web') {
+			icon = (
+				<svg style={{ width: '1em', height: '1em' }}>
+					<use href={`/web-sprite.svg#web-${iconName} `} />
+				</svg>
+			);
 		} else {
 			icon = (
 				<svg

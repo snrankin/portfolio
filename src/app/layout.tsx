@@ -45,15 +45,20 @@ export async function generateMetadata() {
 		'sam-rankin',
 		SITE_GRAPHQL_FIELDS
 	);
+	let url = site?.url ?? process.env.VERCEL_CUSTOM_DOMAIN;
 	return {
+		metadataBase: new URL(`${url}`),
+		alternates: {
+			canonical: '/',
+		},
 		robots: {
 			index: false,
 			follow: false,
 			nocache: true,
 		},
 		title: {
-			default: 'Portfolio',
-			template: `%s | Sam Rankin`,
+			default: site?.seoTitle,
+			template: `%s | ${site?.title}`,
 		},
 		icons: {
 			other: [
@@ -65,17 +70,17 @@ export async function generateMetadata() {
 			],
 		},
 		appleWebApp: {
-			title: 'Sam Rankin',
+			title: `${site?.author?.name}`,
 			statusBarStyle: 'black-translucent',
 		},
 		authors: [
 			{
-				name: `Sam Rankin`,
-				url: 'https://samrankin.dev',
+				name: `${site?.author?.name}`,
+				url: `${url}`,
 			},
 		],
-		creator: `Sam Rankin`,
-		publisher: `Sam Rankin`,
+		creator: `${site?.author?.name}`,
+		publisher: `${site?.author?.name}`,
 	};
 }
 

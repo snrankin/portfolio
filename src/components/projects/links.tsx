@@ -7,7 +7,6 @@ export default function ProjectLinks({ repo, website }: IProject) {
 			{!!repo && (
 				<IconLink
 					href={repo}
-					group="web"
 					icon="code"
 					title="View Code"
 					titleDisplay="inline"

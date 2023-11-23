@@ -9,6 +9,7 @@ import {
 	POST_CARD_GRAPHQL_FIELDS,
 	POST_SEO_GRAPHQL_FIELDS,
 	TypePostCardFields,
+	TypeSiteFields,
 } from '@/lib/types';
 import { set } from 'lodash';
 export async function generateMetadata({
@@ -17,6 +18,7 @@ export async function generateMetadata({
 	params: { slug: string };
 }): Promise<Metadata> {
 	const { isEnabled } = draftMode();
+	let site = await getItem<TypeSiteFields>(isEnabled, 'site', 'sam-rankin');
 	preloadItem(isEnabled, 'post', params.slug);
 	let project = await getItem<TypePostFields>(
 		isEnabled,
@@ -29,15 +31,15 @@ export async function generateMetadata({
 	let description = project?.seoDescription
 		? project?.seoDescription
 		: project?.summary;
-
+	let url = site?.url ?? process.env.VERCEL_CUSTOM_DOMAIN;
 	const meta = {
 		title: `${title} | Projects`,
 		description,
 		openGraph: {
 			title: `${title} | Projects`,
 			description,
-			url: process.env.VERCEL_CUSTOM_DOMAIN,
-			siteName: process.env.VERCEL_SEO_SITE_NAME,
+			url: url,
+			siteName: site?.seoTitle ?? process.env.VERCEL_SEO_SITE_NAME,
 			locale: 'en_US',
 			type: 'website',
 		},

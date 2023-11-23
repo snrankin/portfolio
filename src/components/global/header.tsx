@@ -41,7 +41,7 @@ export default function Header(props: HeaderProps) {
 			<div className="navbar-center" ref={ref} onClick={closeDropdown}>
 				<nav
 					{...getCollapseProps()}
-					className=" absolute top-full right-0 md:relative md:top-auto md:right-auto w-screen md:w-auto md:!flex md:!h-auto grow dark:bg-slate-900 bg-base-100 md:!bg-transparent shadow md:shadow-none"
+					className=" absolute top-full right-0 md:relative md:top-auto md:right-auto w-screen md:w-auto md:!flex md:!h-auto md:!overflow-visible grow dark:bg-slate-900 bg-base-100 md:!bg-transparent shadow md:shadow-none"
 				>
 					<NavBar links={props.links} />
 				</nav>

@@ -252,7 +252,21 @@
 		stroke-linejoin: round;
 		fill: none;
 	}
-	@media (hover: hover) {
+	@media (max-width: 768px) {
+		.dropdown:is(:not(details)) .menu.dropdown-content {
+			--tw-scale-x: 1 !important;
+			--tw-scale-y: 1 !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+			position: relative;
+		}
+		.dropdown {
+			label .icon-wrapper {
+				display: none;
+			}
+		}
+	}
+	/* @media (hover: hover) {
 		@supports (color: oklch(0 0 0)):
 				where(
 					.menu li: not (.menu-title): not (.disabled) > *: not (ul):
@@ -265,7 +279,7 @@
 				): not (.active): hover {
 			background-color: var(--p, oklch(var(--p) / 0.1));
 		}
-	}
+	} */
 	.menu .active {
 		border-radius: var(--rounded-btn, 0.5rem);
 	}

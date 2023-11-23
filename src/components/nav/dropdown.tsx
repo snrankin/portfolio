@@ -13,7 +13,10 @@ export default function Dropdown({
 	return (
 		<>
 			{!!links && (
-				<ul className="menu  z-[1] p-0 md:shadow rounded-box md:bg-base-100">
+				<ul
+					tabIndex={0}
+					className="menu dropdown-content z-[10] md:before:content-none md:shadow rounded-box md:bg-base-100"
+				>
 					{links.map((item, index) => {
 						return (
 							<MenuItems {...item} key={index} depth={depth} />

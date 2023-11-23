@@ -19,7 +19,13 @@ export default function Section(props: SectionProps) {
 	let args = props;
 	let children: React.ReactNode = props.children;
 
-	let classes = classNames('py-12', 'xl:py-32', props.className);
+	let classes = classNames(
+		'py-12',
+		'xl:py-32',
+		'pb-envl',
+		'pb-envr',
+		props.className
+	);
 
 	let headingArgs = pick(props, ['title', 'command', 'argument', 'flags']);
 	let sectionProps = omit(props, [

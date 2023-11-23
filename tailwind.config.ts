@@ -262,6 +262,10 @@ const config: Config = {
 				pg: 'var(--page-gutter)',
 				section: 'var(--section-spacing)',
 				row: 'calc(var(--section-spacing) * 0.5)',
+				envt: 'env(safe-area-inset-top)',
+				envb: 'env(safe-area-inset-bottom)',
+				envl: 'env(safe-area-inset-left)',
+				envr: 'env(safe-area-inset-right)',
 			},
 			gap: {
 				pg: 'var(--page-gutter)',

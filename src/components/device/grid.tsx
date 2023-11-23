@@ -58,7 +58,7 @@ function Grid({ children }: { children?: React.ReactNode }) {
 							{children}
 						</div>
 					</div>
-					<div className="md:-ml-pg md:w-full-pg 2xl:w-full 2xl:-ml-[5%]">
+					<div className="w-full md:-ml-pg md:w-full-pg 2xl:w-full 2xl:-ml-[5%]">
 						<ThemeSwap>
 							<ThemeSwap.Light>
 								<DeskLight className="block w-full" />

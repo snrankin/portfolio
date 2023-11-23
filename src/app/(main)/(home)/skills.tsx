@@ -29,7 +29,7 @@ export default function Skills(props?: TypeSkillsSectionFields): JSX.Element {
 					showGroupTitle: true,
 					bodyClasses: 'items-center text-center',
 					groupClasses:
-						'text-2xl flex justify-center flex-wrap items-center gap-3',
+						'text-5xl md:text-2xl flex justify-center flex-wrap items-center gap-3',
 					skillProps: { titleDisplay: 'popover' },
 				}}
 			/>

@@ -37,7 +37,7 @@ export default function Content({
 			<div className="print:hidden flex justify-center pb-14">
 				<button onClick={printClick} className="btn btn-primary">
 					<Icon
-						icon="print"
+						icon="printer"
 						title="Print My Resume"
 						titleDisplay="inline"
 					/>

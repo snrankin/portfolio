@@ -36,7 +36,7 @@ export default function TimelineItem(props: TypeJobFields) {
 
 	return (
 		<>
-			<div className="grid relative grid-cols-[2rem_1fr] lg:grid-cols-[1fr_2rem] gap-x-1 md:gap-x-5 items-center md:items-stretch">
+			<div className="grid relative grid-cols-[2rem_1fr] lg:grid-cols-[1fr_2rem] gap-x-2 md:gap-x-5 items-center md:items-stretch">
 				{/* Icon */}
 				<div
 					className={`items-center justify-center  relative lg:col-start-2  lg:row-start-1`}
