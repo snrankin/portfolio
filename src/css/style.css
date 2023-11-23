@@ -266,6 +266,13 @@
 			}
 		}
 	}
+	.dropdown:not(.dropdown-open):focus .dropdown-content,
+	.dropdown:not(.dropdown-open):focus-within .dropdown-content {
+		--tw-scale-x: 0.95;
+		--tw-scale-y: 0.95;
+		opacity: 0;
+		visibility: hidden;
+	}
 	/* @media (hover: hover) {
 		@supports (color: oklch(0 0 0)):
 				where(
