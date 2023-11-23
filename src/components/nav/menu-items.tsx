@@ -38,9 +38,10 @@ export default function MenuItems(props: MenuItem) {
 	let itemClasses = classNames(
 		`level-${depth}`,
 		'dropdown',
-		'dropdown-hover',
+
 		{
 			active: sectionCtx.section == url || pathname.includes(url),
+			'dropdown-open': isExpanded,
 		}
 	);
 	let linkClasses = classNames('whitespace-nowrap', 'md:leading-[32px]', {
@@ -49,8 +50,26 @@ export default function MenuItems(props: MenuItem) {
 	});
 	let ref = useRef(null);
 
+	const onMouseEnter = () => {
+		setExpanded(true);
+	};
+
+	const onMouseLeave = () => {
+		setExpanded(false);
+	};
+
+	const closeDropdown = () => {
+		isExpanded && setExpanded(false);
+	};
+
 	return (
-		<li role="none" className={itemClasses}>
+		<li
+			role="none"
+			className={itemClasses}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+			onClick={closeDropdown}
+		>
 			{props.submenu ? (
 				<>
 					<label tabIndex={0}>
