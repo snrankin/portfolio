@@ -55,13 +55,24 @@ export default function ThemeProvider({
 	const style = {
 		'--vh': `${height * 0.01}px`,
 	} as React.CSSProperties;
-	useEffect(() => initialThemeHandler());
 
 	function isLocalStorageEmpty(): boolean {
 		return !localStorage.getItem('theme');
 	}
 
-	function initialThemeHandler(): void {
+	function setValueToLocalStorage(str: string): void {
+		localStorage.setItem('theme', str);
+	}
+
+	const toggleThemeCB = (str: string) => {
+		setTheme(str);
+		setValueToLocalStorage(str);
+	};
+	useEffect(() => {
+		const toggleTheme = (str: string) => {
+			setTheme(str);
+			setValueToLocalStorage(str);
+		};
 		if (isLocalStorageEmpty()) {
 			if (
 				window.matchMedia &&
@@ -77,13 +88,15 @@ export default function ThemeProvider({
 			setTheme(`${localTheme}`);
 		}
 
+		const listener = (e: MediaQueryListEvent) => {
+			const newColorScheme = e.matches ? 'dark' : 'light';
+
+			toggleTheme(newColorScheme);
+		};
+
 		window
 			.matchMedia('(prefers-color-scheme: dark)')
-			.addEventListener('change', (event) => {
-				const newColorScheme = event.matches ? 'dark' : 'light';
-
-				toggleTheme(newColorScheme);
-			});
+			.addEventListener('change', listener);
 
 		if (hljs != undefined) {
 			hljs.registerLanguage('javascript', javascript);
@@ -92,20 +105,17 @@ export default function ThemeProvider({
 			hljs.registerLanguage('json', json);
 			hljs.highlightAll();
 		}
-	}
 
-	function setValueToLocalStorage(str: string): void {
-		localStorage.setItem('theme', str);
-	}
-
-	function toggleTheme(str: string) {
-		setTheme(str);
-		setValueToLocalStorage(str);
-	}
+		return () => {
+			window
+				.matchMedia('(prefers-color-scheme: dark)')
+				.removeEventListener('change', listener);
+		};
+	}, [theme]);
 
 	return (
 		<ThemeContext.Provider
-			value={{ theme, toggleThemeHandler: toggleTheme }}
+			value={{ theme, toggleThemeHandler: toggleThemeCB }}
 		>
 			<div data-theme={theme} style={style}>
 				{children}

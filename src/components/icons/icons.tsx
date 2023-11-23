@@ -81,7 +81,7 @@ export const IosIcons: StringDictionary = {
 
 export function getIconName(
 	iconName: string,
-	groupName: 'web' | 'dev' | 'ios' = 'web'
+	groupName: 'web' | 'dev' | 'ios' | 'feather' = 'feather'
 ) {
 	let group = WebIcons;
 	if (groupName == 'dev') {
@@ -100,16 +100,17 @@ export function getIconName(
 }
 export function hasIcon(
 	iconName: string,
-	groupName: 'web' | 'dev' | 'ios' = 'web'
+	groupName: 'web' | 'dev' | 'ios' | 'feather' = 'feather'
 ): boolean {
-	return !isEmpty(getIconName(iconName, groupName));
+	return groupName == 'feather' || !isEmpty(getIconName(iconName, groupName));
 }
 
 export function getIcon(
 	iconName: string,
-	group: 'web' | 'dev' | 'ios' = 'web',
+	group: 'web' | 'dev' | 'ios' | 'feather' = 'feather',
 	useColor?: boolean
 ) {
+	let feather = iconName;
 	iconName = getIconName(iconName, group);
 	let icon = null;
 
@@ -127,11 +128,20 @@ export function getIcon(
 			);
 		} else {
 			icon = (
-				<svg style={{ width: '1em', height: '1em' }}>
-					<use href={`/web-sprite.svg#web-${iconName}`} />
+				<svg
+					className="feather"
+					style={{ width: '1em', height: '1em' }}
+				>
+					<use href={`/feather-sprite.svg#${feather}`} />
 				</svg>
 			);
 		}
+	} else {
+		icon = (
+			<svg className="feather" style={{ width: '1em', height: '1em' }}>
+				<use href={`/feather-sprite.svg#${feather}`} />
+			</svg>
+		);
 	}
 	return icon;
 }
@@ -141,30 +151,29 @@ export function getIconString(
 	useColor?: boolean,
 	classes?: string
 ): string {
-	if (hasIcon(iconName, groupName)) {
-		iconName = getIconName(iconName, groupName);
+	iconName = getIconName(iconName, groupName);
 
-		classes = classNames('icon', classes);
+	classes = classNames('icon', classes);
 
-		if (!isEmpty(iconName)) {
-			let icon;
-			let iconClasses = classNames(iconName, {
-				colored: useColor,
-			});
-			if (groupName == 'dev') {
-				icon = `<span class="${iconClasses}"></span>`;
-			} else if (groupName == 'ios') {
-				icon = `<svg style="width: 1em; height: 1em">
+	if (!isEmpty(iconName)) {
+		let icon;
+		let iconClasses = classNames(iconName, {
+			colored: useColor,
+		});
+		if (groupName == 'dev') {
+			icon = `<span class="${iconClasses}"></span>`;
+		} else if (groupName == 'ios') {
+			icon = `<svg style="width: 1em; height: 1em">
 						<use href="ios-sprite.svg#ios-${iconName}" />
 					</svg>`;
-			} else {
-				icon = `<svg style="width: 1em; height: 1em">
-						<use href="web-sprite.svg#web-${iconName}" />
+		} else {
+			icon = `<svg class="feather" style="width: 1em; height: 1em">
+						<use href="/feather-sprite.svg#${iconName}" />
 					</svg>`;
-			}
-
-			return `<span aria-hidden="true" role="presentation" class="${classes}">${icon}</span>`;
 		}
+
+		return `<span aria-hidden="true" role="presentation" class="${classes}">${icon}</span>`;
 	}
+
 	return '';
 }

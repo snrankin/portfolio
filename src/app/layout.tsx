@@ -1,7 +1,8 @@
 import React from 'react';
 import { Inconsolata, Poppins, DM_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
-
+import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
+import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
 import '@/css/style.css';
 export const poppins = Poppins({
 	weight: ['400', '600', '700', '900'],
@@ -38,6 +39,12 @@ const customDevTTF = localFont({
 	variable: '--font-devicons-ttf',
 });
 export async function generateMetadata() {
+	let site = await getItem<TypeSiteFields>(
+		true,
+		'site',
+		'sam-rankin',
+		SITE_GRAPHQL_FIELDS
+	);
 	return {
 		robots: {
 			index: false,

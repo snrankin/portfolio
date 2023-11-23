@@ -41,14 +41,12 @@ export default function Icon(props: IconProps): JSX.Element {
 
 	let classes = classNames(
 		{
-			'items-center':
-				titleDisplay == 'inline' && !isEmpty(props.title) && HAS_ICON,
-			'gap-1':
-				titleDisplay == 'inline' && !isEmpty(props.title) && HAS_ICON,
-			'inline-flex':
-				titleDisplay == 'inline' && !isEmpty(props.title) && HAS_ICON,
-			tooltip: titleDisplay == 'popover' && HAS_ICON,
+			'items-center': titleDisplay == 'inline' && !isEmpty(props.title),
+			'gap-1': titleDisplay == 'inline' && !isEmpty(props.title),
+			'inline-flex': titleDisplay == 'inline' && !isEmpty(props.title),
+			tooltip: titleDisplay == 'popover',
 		},
+		'icon-wrapper',
 		props.className
 	);
 
@@ -61,9 +59,7 @@ export default function Icon(props: IconProps): JSX.Element {
 	titleClasses = classNames(
 		'icon-label',
 		{
-			'sr-only':
-				(titleDisplay == 'hidden' || titleDisplay == 'popover') &&
-				HAS_ICON,
+			'sr-only': titleDisplay == 'hidden' || titleDisplay == 'popover',
 		},
 		titleClasses
 	);

@@ -1,15 +1,44 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
 import { Content } from '@/components/contentful/markdown';
-import type { AboutSection } from './TypeAboutSection';
-import type { TypeAuthor } from './TypeAuthor';
-import type { JobsSection } from './TypeJobsSection';
-import type { ProjectsSection } from './TypeProjectsSection';
-import type { SkillsSection } from './TypeSkillsSection';
+import { RICHTEXT_GRAPHQL_FIELDS, ASSET_GRAPHQL_FIELDS } from '.';
+import type {
+	AboutSection,
+	TypeAuthorFields,
+	JobsSection,
+	ProjectsSection,
+	SkillsSection,
+	TypeAssetFields,
+} from '.';
+
+export const HOMEPAGE_GRAPHQL_FIELDS = `
+  sys {
+    publishedAt
+    firstPublishedAt
+  }
+  __typename
+  title
+  slug
+  author {
+    name
+    firstName
+    lastName
+    slug
+    label
+  }
+  heroText {
+    ${RICHTEXT_GRAPHQL_FIELDS}
+  }
+  seoTitle
+  seoDescription
+  seoImage {
+    ${ASSET_GRAPHQL_FIELDS}
+  }
+`;
 
 export interface TypeHomePageFields {
 	title?: EntryFields.Symbol;
 	slug: EntryFields.Symbol;
-	author?: TypeAuthor;
+	author?: TypeAuthorFields;
 	heroTitle?: EntryFields.RichText;
 	heroText?: Content;
 	sections?: Entry<
@@ -17,7 +46,7 @@ export interface TypeHomePageFields {
 	>[];
 	seoTitle?: EntryFields.Symbol;
 	seoDescription?: EntryFields.Text;
-	seoImage?: Asset;
+	seoImage?: TypeAssetFields;
 }
 export interface HomePage extends EntrySkeletonType {
 	fields: TypeHomePageFields;

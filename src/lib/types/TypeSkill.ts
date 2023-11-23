@@ -1,5 +1,10 @@
 import type { Entry, EntryFields, EntrySkeletonType } from 'contentful';
 
+export const SKILL_GRAPHQL_FIELDS = `
+  title
+  category
+`;
+
 export interface TypeSkillFields {
 	title: EntryFields.Symbol;
 	category: 'CMS' | 'Frameworks' | 'Languages' | 'Software' | 'Tools';

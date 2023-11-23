@@ -128,6 +128,22 @@
 }
 
 @layer components {
+	@media (screen(lg)) {
+		.lg\:dropdown-hover.dropdown:hover {
+			.dropdown-content {
+				visibility: hidden !important;
+				opacity: 0 !important;
+				--tw-scale-x: 0.95 !important;
+				--tw-scale-y: 0.95 !important;
+			}
+			> .dropdown-content {
+				visibility: visible !important;
+				opacity: 1 !important;
+				--tw-scale-x: 1 !important;
+				--tw-scale-y: 1 !important;
+			}
+		}
+	}
 	.mockup-code {
 		padding-top: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
 		padding-bottom: clamp(0.9375rem, 0.7481rem + 0.947vw, 1.5625rem);
@@ -226,6 +242,32 @@
 			background-color: theme(colors.primary.600);
 			color: theme(colors.slate.950);
 		}
+	}
+	.feather {
+		width: 1em;
+		height: 1em;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		fill: none;
+	}
+	@media (hover: hover) {
+		@supports (color: oklch(0 0 0)):
+				where(
+					.menu li: not (.menu-title): not (.disabled) > *: not (ul):
+						not (details): not (.menu-title)
+				):
+				not (.active): hover,
+			: where(
+					.menu li: not (.menu-title): not (.disabled) > details >
+						summary: not (.menu-title)
+				): not (.active): hover {
+			background-color: var(--p, oklch(var(--p) / 0.1));
+		}
+	}
+	.menu .active {
+		border-radius: var(--rounded-btn, 0.5rem);
 	}
 }
 

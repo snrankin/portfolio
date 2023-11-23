@@ -7,6 +7,7 @@ export * from './TypeJobsSection';
 export * from './TypePost';
 export * from './TypeProjectsSection';
 export * from './TypeResumePage';
+export * from './TypeSite';
 export * from './TypeSkill';
 export * from './TypeSkillsSection';
 export * from './TypeSocialProfile';

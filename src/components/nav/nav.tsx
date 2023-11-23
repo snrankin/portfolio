@@ -21,11 +21,11 @@ export default function Nav(props: NavProps): JSX.Element {
 		direction = 'horizontal';
 	}
 
-	let dropdownClass = !!dropdown ? `dropdown-${dropdown}` : '';
+	let dropdownClass = '';
 
 	let navClasses = classNames(props.className, dropdownClass, {
-		'[&[data-te-collapse-show]]:block': !!dropdown || !!navbar,
-		hidden: !!dropdown || !!navbar,
+		// '[&[data-te-collapse-show]]:block': !!dropdown || !!navbar,
+		// hidden: !!dropdown || !!navbar,
 	});
 
 	let menuSize = !!size ? `menu-${size}` : '';
@@ -50,9 +50,9 @@ export default function Nav(props: NavProps): JSX.Element {
 		'menuClasses',
 	]);
 
-	if (!!props.dropdown) {
-		set(navAttr, 'data-te-collapse-item', null);
-	}
+	// if (!!props.dropdown) {
+	// 	set(navAttr, 'data-te-collapse-item', null);
+	// }
 
 	set(navAttr, 'className', navClasses);
 
@@ -60,24 +60,13 @@ export default function Nav(props: NavProps): JSX.Element {
 		className: menuClasses,
 	};
 	if (navbar) {
-		set(navAttr, 'aria-labelledby', `${props.id}-btn`);
+		// set(navAttr, 'aria-labelledby', `${props.id}-btn`);
 		set(menuAttr, 'role', 'menubar');
-		set(menuAttr, 'data-te-navbar-nav-ref', null);
-		if (direction == 'vertical') {
-			set(menuAttr, 'aria-orientation', direction);
-		}
+		set(menuAttr, 'aria-orientation', 'horizontal');
 	} else {
 		set(menuAttr, 'role', 'menu');
 		set(menuAttr, 'aria-orientation', direction);
 	}
-
-	useEffect(() => {
-		const init = async () => {
-			const { Collapse, initTE } = await import('tw-elements');
-			initTE({ Collapse });
-		};
-		init();
-	}, []);
 
 	return (
 		<nav {...navAttr}>

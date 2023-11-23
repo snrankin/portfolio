@@ -1,6 +1,37 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeAuthorFields } from './TypeAuthor';
-import type { TypePostFields } from './TypePost';
+import { RICHTEXT_GRAPHQL_FIELDS, ASSET_GRAPHQL_FIELDS } from '.';
+import type { TypeAuthorFields, TypePostFields } from '.';
+
+export const RESUME_GRAPHQL_FIELDS = `
+  sys {
+    publishedAt
+    firstPublishedAt
+  }
+  __typename
+  title
+  slug
+  summary
+  author {
+    name
+    firstName
+    lastName
+    slug
+    label
+  }
+  projectsCollection {
+	  items {
+	    slug
+	    shortTitle
+	    website
+      repo
+	  }
+  }
+  seoTitle
+  seoDescription
+  seoImage {
+    ${ASSET_GRAPHQL_FIELDS}
+  }
+`;
 
 export interface TypeResumePageFields {
 	title?: EntryFields.Symbol;
