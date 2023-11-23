@@ -57,7 +57,7 @@ export default function Hero(props?: TypePostFields): JSX.Element {
 					</div>
 				</div>
 			</div>
-			<div className="text-center prose xl:prose-xl md:text-left md:col-start-1 md:row-start-2 self-start lg:pb-12">
+			<div className="text-center prose xl:prose-xl md:text-left md:col-start-1 md:row-start-2 self-start lg:pb-section">
 				<div className="prose dark:prose-invert">
 					{!!props?.summary && (
 						<p className="lead !mt-0">{props?.summary}</p>

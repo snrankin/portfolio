@@ -22,8 +22,9 @@ export default function Section(props: SectionProps) {
 	let classes = classNames(
 		'py-12',
 		'xl:py-32',
-		'pb-envl',
-		'pb-envr',
+		'pl-envl',
+		'pr-envr',
+
 		props.className
 	);
 
@@ -61,16 +62,18 @@ export default function Section(props: SectionProps) {
 	return (
 		<Waypoint onEnter={enterHandler}>
 			<section {...sectionProps}>
-				<div className={containerClasses}>
-					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
-						<Heading {...headingArgs} />
-					)}
-					{!!props.intro && (
-						<div className="prose md:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
-							<Markdown content={props.intro} />
-						</div>
-					)}
-					{children}
+				<div className="section-inner">
+					<div className={containerClasses}>
+						{(!isEmpty(props.title) || !isEmpty(props.command)) && (
+							<Heading {...headingArgs} />
+						)}
+						{!!props.intro && (
+							<div className="prose md:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
+								<Markdown content={props.intro} />
+							</div>
+						)}
+						{children}
+					</div>
 				</div>
 			</section>
 		</Waypoint>
