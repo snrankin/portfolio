@@ -2,7 +2,7 @@ import React from 'react';
 import { Inconsolata, Poppins, DM_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
-import Analytics from '@/components/global/analytics';
+import { Analytics } from '@vercel/analytics/react';
 import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
 import '@/css/style.css';
 export const poppins = Poppins({
