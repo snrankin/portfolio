@@ -55,7 +55,7 @@ export default function TimelineItem(props: TypeJobFields) {
 			<div
 				className={`timeline-content md:pt-[2em] pb-4 lg:pb-11 lg:mt-0 lg:pt-0`}
 			>
-				<div className="prose dark:prose-invert">
+				<div className="prose">
 					<h3 className="font-semibold block mt-3">
 						{title}{' '}
 						<span className="block text-base">

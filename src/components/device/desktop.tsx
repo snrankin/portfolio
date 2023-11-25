@@ -12,9 +12,10 @@ import OrganizerLight from '@/img/organizer-light.svg';
 import OrganizerDark from '@/img/organizer-dark.svg';
 import KeyboardLight from '@/img/keyboard-light.svg';
 import KeyboardDark from '@/img/keyboard-dark.svg';
+
 function Desktop(props: Omit<DeviceProps, 'type'>) {
 	return (
-		<Device type="desktop" className="w-8/12 mx-auto" {...props}>
+		<Device type="desktop" className="w-8/12" {...props}>
 			{props.children}
 		</Device>
 	);
@@ -56,24 +57,13 @@ function Mobile(props: Omit<DeviceProps, 'type'>) {
 	);
 }
 
-function Grid({
-	children,
-	desktopOnly,
-}: {
-	children?: React.ReactNode;
-	desktopOnly?: boolean;
-}) {
-	const featured = desktopOnly != undefined ? desktopOnly : false;
-
+function Grid({ children }: { children?: React.ReactNode }) {
+	console.log(Children.count(children));
 	return (
-		<div
-			role="img"
-			aria-label="Desk with devices showcasing project images"
-			className="device-grid w-full"
-		>
+		<div className="device-grid w-full">
 			<div className="w-screen sm:w-full-pg drop-shadow-lg -mx-pg sm:ml-0 sm:-mr-pg">
-				<div className="-mx-[50vw] sm:-mx-[20vw] md:-ml-[20vw] md:-mr-[40vw] lg:-ml-[10%] 2xl:mr-0 grid grid-cols-12">
-					<div className="w-full col-span-6 col-start-4 md:col-start-2">
+				<div className="-mx-[50vw] md:-ml-[20vw] md:-mr-[40vw] lg:-ml-[10%] 2xl:mr-0 grid grid-cols-12">
+					<div className="w-full col-span-6 col-start-3 md:col-start-2">
 						<div className="flex flex-col items-center relative">
 							{children}
 						</div>
@@ -81,21 +71,17 @@ function Grid({
 					<div className="w-full col-span-12">
 						<ThemeSwap>
 							<ThemeSwap.Light>
-								{featured && (
-									<div className="relative ">
-										<CupLight className="block absolute top-0 left-[25%] md:left-[10%]  -translate-y-full w-[8.33%] z-10" />
-										<LaptopLight className="block absolute top-0 -translate-y-full w-[26.53809167%] z-10 right-[4.167%]  md:right-[20%]" />
+								{Children.only(children) && (
+									<div>
+										<OrganizerLight />
+										<CupLight />
+										<KeyboardLight />
+										<LaptopLight />
 									</div>
 								)}
 								<DeskLight className="block w-full" />
 							</ThemeSwap.Light>
 							<ThemeSwap.Dark>
-								{featured && (
-									<div className="relative ">
-										<CupDark className="block absolute top-0 left-[27.9%] md:left-[10%]  -translate-y-full w-[8.33%] z-10" />
-										<LaptopDark className="block absolute top-0 -translate-y-full w-[26.53809167%] z-10 right-[4.167%]  md:right-[20%]" />
-									</div>
-								)}
 								<DeskDark className="block w-full" />
 							</ThemeSwap.Dark>
 						</ThemeSwap>

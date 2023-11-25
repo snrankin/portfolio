@@ -1,16 +1,20 @@
 import dayjs from 'dayjs';
 import { isString, replace, isEmpty, trimEnd } from 'lodash';
-
+import { NDASH } from '@/lib/symbols';
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
-export function displayDate(
-	start?: Date | string,
-	end?: Date | string,
-	format: string = 'MMM YYYY'
-) {
+export default function Date({
+	start,
+	end,
+	format,
+}: {
+	start?: Date | string;
+	end?: Date | string;
+	format?: string;
+}) {
 	let startDate = null,
 		endDate = null,
-		startFormat = format;
+		startFormat = format ?? 'MMM YYYY';
 
 	if (start != undefined && dayjs(start).isValid()) {
 		let startYear = dayjs(start).year();
@@ -19,7 +23,7 @@ export function displayDate(
 			let endYear = dayjs(end).year();
 			const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
 			if (startYear == endYear) {
-				startFormat = format.replace(regex, '');
+				startFormat = startFormat.replace(regex, '');
 			}
 		}
 		startDate = (
@@ -39,14 +43,12 @@ export function displayDate(
 		endDate = <span className="end-date">{end}</span>;
 	}
 
-	var nDash = String.fromCharCode(8211);
-
 	return (
 		<>
 			{startDate}
 			{end != undefined && dayjs(end).isValid() ? (
 				<>
-					{nDash}
+					{NDASH}
 					{endDate}
 				</>
 			) : null}

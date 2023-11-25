@@ -3,15 +3,17 @@ import React from 'react';
 import SocialLinks from '@/components/social/group';
 import dayjs from 'dayjs';
 import { TypeAuthorFields } from '@/lib/types';
+import { COPY } from '@/lib/symbols';
 export default function Footer({ author }: { author?: TypeAuthorFields }) {
 	return (
 		<>
-			<footer className="{`print:hidden footer footer-center pb-envb bg-base-300 dark:bg-slate-900 text-base-content print:bg-white lg:pb-0`}">
+			<footer className="print:hidden footer footer-center pb-envb bg-base-300 dark:bg-slate-900 text-base-content print:bg-white lg:pb-0 ">
 				<aside className="p-4">
-					<div className="pb-10">
+					<div className="pb-10 lg:pb-0">
 						<p>
-							Copyright © {dayjs().format('YYYY')} - All rights
-							reserved by {author?.firstName} {author?.lastName}
+							Copyright {COPY} {dayjs().format('YYYY')} - All
+							rights reserved by {author?.firstName}{' '}
+							{author?.lastName}
 						</p>
 					</div>
 				</aside>

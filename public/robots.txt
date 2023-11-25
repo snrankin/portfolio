@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://samrankin.dev
+
+# Sitemaps
+Sitemap: https://samrankin.dev/sitemap.xml
+Sitemap: https://samrankin.dev/server-sitemap.xml

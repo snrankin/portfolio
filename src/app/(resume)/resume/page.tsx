@@ -8,7 +8,6 @@ import {
 	TypeResumePageFields,
 	TypeSiteFields,
 } from '@/lib/types';
-import './page.css';
 
 export default async function Page() {
 	const { isEnabled } = draftMode();

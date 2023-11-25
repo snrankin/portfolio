@@ -3,6 +3,9 @@ import { isString, replace, isEmpty, trimEnd } from 'lodash';
 
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
+
+import { NDASH } from './symbols';
+
 export function displayDate(
 	start?: Date | string,
 	end?: Date | string,
@@ -39,14 +42,12 @@ export function displayDate(
 		endDate = <span className="end-date">{end}</span>;
 	}
 
-	var nDash = String.fromCharCode(8211);
-
 	return (
 		<>
 			{startDate}
 			{end != undefined && dayjs(end).isValid() ? (
 				<>
-					{nDash}
+					{NDASH}
 					{endDate}
 				</>
 			) : null}

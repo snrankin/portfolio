@@ -1,0 +1,54 @@
+.print {
+	@media screen(lg) {
+		--container-width: 7.5in !important;
+		--section-spacing: 0.25in;
+	}
+
+	.page {
+		break-before: always;
+		break-after: always;
+
+		max-width: 8.5in;
+		min-height: 11in;
+		border: solid 1px #000;
+	}
+	.page-break {
+		page-break-before: always;
+		margin-bottom: 1in;
+	}
+
+	.prose-sm {
+		font-size: 12pt;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin-top: 0;
+		}
+	}
+	abbr {
+		text-decoration: none;
+	}
+
+	.projects.list {
+		.card-body {
+			font-size: 12pt;
+			gap: 0;
+		}
+		h3.card-title {
+			font-size: 12pt;
+			margin-bottom: 0;
+		}
+	}
+
+	.prose li {
+		page-break-inside: avoid;
+	}
+}
+
+.resume {
+	width: calc(100% + 2px);
+	margin: -1px;
+}

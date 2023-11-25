@@ -24,10 +24,53 @@ export const SITE_GRAPHQL_FIELDS = `
   seoTitle
 `;
 
+export const PROJECTS_SITEMAP_GRAPHQL_FIELDS = `
+  projectsCollection {
+      items {
+        sys {
+          publishedAt
+          firstPublishedAt
+        }
+        slug
+        title
+      }
+    }
+`;
+
 export interface NavLink {
 	title: string;
 	url: string;
 	submenu?: NavLink[];
+}
+
+export interface TypeSitemapFields {
+	title: EntryFields.Symbol;
+	slug?: EntryFields.Symbol;
+	sys: {
+		publishedAt: string;
+		firstPublishedAt: string;
+	};
+}
+
+export interface TypeSiteFields {
+	title: EntryFields.Symbol;
+	slug?: EntryFields.Symbol;
+	seoTitle?: EntryFields.Symbol;
+	navLinks?: NavLink[];
+	url?: EntryFields.Symbol;
+	author?: TypeAuthorFields;
+	projectsCollection?: {
+		items: [
+			{
+				title: EntryFields.Symbol;
+				slug?: EntryFields.Symbol;
+				sys: {
+					publishedAt: string;
+					firstPublishedAt: string;
+				};
+			}
+		];
+	};
 }
 
 export interface TypeSiteFields {

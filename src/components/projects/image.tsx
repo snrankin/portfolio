@@ -16,12 +16,22 @@ export default function ProjectImage(props?: TypePostFields) {
 		props?.mobilePreview == undefined &&
 		props?.tabletPreview == undefined;
 
+	let featured =
+		props?.featuredImage == undefined &&
+		props?.desktopPreview != undefined &&
+		props?.laptopPreview == undefined &&
+		props?.mobilePreview == undefined &&
+		props?.tabletPreview == undefined;
+
 	return (
 		<>
 			{useGrid && (
-				<Grid>
+				<Grid desktopOnly={featured}>
 					{!!props?.desktopPreview && (
-						<Grid.Desktop url={simplifyUrl(props.website)}>
+						<Grid.Desktop
+							url={simplifyUrl(props.website)}
+							desktopOnly={featured}
+						>
 							<ContentfulImage
 								className="w-full"
 								sizes="100vw"

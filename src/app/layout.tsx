@@ -53,11 +53,7 @@ export async function generateMetadata() {
 		alternates: {
 			canonical: '/',
 		},
-		robots: {
-			index: false,
-			follow: false,
-			nocache: true,
-		},
+
 		title: {
 			default: site?.seoTitle,
 			template: `%s | ${site?.title}`,

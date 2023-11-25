@@ -2,7 +2,7 @@ import { get, isEmpty, reverse, set, zip, zipObject } from 'lodash';
 import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
 import fontColorContrast from 'font-color-contrast';
-
+const { contrastColor } = require('contrast-color');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const shadesOf = require('tailwind-shades');
 const daisyBaseColor = (name = '', dark = false) => {
@@ -103,9 +103,10 @@ const TEAL = {
 	'900': '#063D37',
 	'950': '#031E1B',
 };
+
 const config: Config = {
 	content: [
-		'./src/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/**/*.{js,ts,jsx,tsx,mdx,svg}',
 		'./node_modules/tw-elements-react/dist/js/**/*.js',
 	],
 
@@ -326,6 +327,7 @@ const config: Config = {
 					'base-100': colors.slate[100],
 					'base-200': colors.slate[200],
 					'base-300': colors.slate[300],
+					'base-content': colors.slate[800],
 					info: BLUE[500],
 					success: GREEN[500],
 					warning: YELLOW[500],
@@ -342,6 +344,7 @@ const config: Config = {
 					'base-100': colors.slate[700],
 					'base-200': colors.slate[800],
 					'base-300': colors.slate[900],
+					'base-content': colors.slate[100],
 					info: BLUE[600],
 					success: GREEN[600],
 					warning: YELLOW[600],

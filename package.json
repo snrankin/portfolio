@@ -9,7 +9,8 @@
         "lint": "next lint",
         "sprite:ios": "svg-symbol-sprite -i ./src/img/icons/ios -o ./public/ios-sprite.svg -c false -p ios-",
         "sprite:web": "svg-symbol-sprite -i ./src/img/icons/web -o ./public/web-sprite.svg -c false -p web-",
-        "start": "next start"
+        "start": "next start",
+        "postbuild": "next-sitemap"
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^15.19.0",
@@ -42,14 +43,17 @@
         "autoprefixer": "^10.4.16",
         "cf-content-types-generator": "^2.12.9",
         "change-case-all": "^1.0.15",
+        "contrast-color": "^1.0.1",
         "cssnano": "6.0.1",
         "cssnano-preset-lite": "^3.0.0",
         "eslint": "^8.42.0",
         "eslint-config-next": "14.0.3",
         "figlet": "^1.7.0",
+        "fitty": "^2.4.2",
         "font-color-contrast": "^11.1.0",
         "hamburgers": "^1.2.1",
         "highlight.js": "^11.9.0",
+        "next-sitemap": "^4.2.3",
         "ololog": "^1.1.175",
         "pdfmake": "^0.2.8",
         "postcss": "^8.4.31",

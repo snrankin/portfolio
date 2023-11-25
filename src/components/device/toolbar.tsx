@@ -22,7 +22,7 @@ const DesktopToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={1920}
 				height={52}
-				className="fill-neutral-200 dark:fill-neutral-500"
+				className="fill-slate-200 dark:fill-slate-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -32,16 +32,16 @@ const DesktopToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-neutral-400"
+				className="fill-white dark:fill-slate-400"
 				strokeWidth={0}
 			/>
-			<text
-				transform="translate(940 30.3)"
-				className="font-system fill-neutral-800 dark:fill-white"
+			{/* <text
+				transform="translate(912.79 30.3)"
+				className="font-system text-center fill-slate-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
-			</text>
+			</text> */}
 			<circle
 				cx={26}
 				cy={26}
@@ -72,54 +72,46 @@ const LaptopToolbar = ({ url }: { url?: string }) => {
 		<svg
 			id="laptop-toolbar"
 			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 1440 52"
+			viewBox="0 0 1440 72"
 		>
 			<rect
 				width={1440}
-				height={52}
-				className="fill-neutral-200 dark:fill-neutral-500"
+				height={72}
+				className="fill-slate-200 dark:fill-slate-500"
 				strokeWidth={0}
 			/>
 			<rect
 				x={429}
-				y="13.5"
+				y="33.58"
 				width={582}
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-neutral-400"
+				className="fill-white dark:fill-slate-400"
 				strokeWidth={0}
 			/>
-			<g>
-				<circle
-					cx={26}
-					cy={26}
-					r={6}
-					className="fill-error-400"
-					strokeWidth={0}
-				/>
-				<circle
-					cx="45.5"
-					cy={26}
-					r={6}
-					className="fill-warning-400"
-					strokeWidth={0}
-				/>
-				<circle
-					cx={65}
-					cy={26}
-					r={6}
-					className="fill-success-400"
-					strokeWidth={0}
-				/>
-			</g>
-			<text
-				transform="translate(672.79 30.11)"
-				className="font-system fill-neutral-800 dark:fill-white"
-				fontSize={12}
-			>
-				{url}
-			</text>
+
+			<circle
+				cx={26}
+				cy="46.08"
+				r={6}
+				className="fill-error-400"
+				strokeWidth={0}
+			/>
+			<circle
+				cx="45.5"
+				cy="46.08"
+				r={6}
+				className="fill-warning-400"
+				strokeWidth={0}
+			/>
+			<circle
+				cx={65}
+				cy="46.08"
+				r={6}
+				className="fill-success-400"
+				strokeWidth={0}
+			/>
 		</svg>
 	);
 };
@@ -134,7 +126,7 @@ const TabletToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={768}
 				height={52}
-				className="fill-neutral-200 dark:fill-neutral-500"
+				className="fill-slate-200 dark:fill-slate-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -144,16 +136,16 @@ const TabletToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="5.78"
 				ry="5.78"
-				className="fill-white dark:fill-neutral-400"
+				className="fill-white dark:fill-slate-400"
 				strokeWidth={0}
 			/>
-			<text
+			{/* <text
 				transform="translate(360 30.74)"
-				className="font-system fill-neutral-800 dark:fill-white"
+				className="font-system fill-slate-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
-			</text>
+			</text> */}
 		</svg>
 	);
 };
@@ -168,7 +160,7 @@ const MobileToolbar = ({ url }: { url?: string }) => {
 			<rect
 				width={360}
 				height="90.76"
-				className="fill-neutral-200 dark:fill-neutral-500"
+				className="fill-slate-200 dark:fill-slate-500"
 				strokeWidth={0}
 			/>
 			<rect
@@ -178,16 +170,16 @@ const MobileToolbar = ({ url }: { url?: string }) => {
 				height={27}
 				rx="4.43"
 				ry="4.43"
-				className="fill-white dark:fill-neutral-400"
+				className="fill-white dark:fill-slate-400"
 				strokeWidth={0}
 			/>
-			<text
+			{/* <text
 				transform="translate(160 70.6621)"
-				className="font-system fill-neutral-800 dark:fill-white"
+				className="font-system fill-slate-800 dark:fill-white"
 				fontSize={12}
 			>
 				{url}
-			</text>
+			</text> */}
 		</svg>
 	);
 };

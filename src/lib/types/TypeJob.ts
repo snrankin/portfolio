@@ -14,8 +14,8 @@ export const JOB_GRAPHQL_FIELDS = `
 export interface TypeJobFields {
 	title: EntryFields.Symbol;
 	company: EntryFields.Symbol;
-	startDate: EntryFields.Date;
-	endDate?: EntryFields.Date;
+	startDate: string;
+	endDate?: string;
 	website?: EntryFields.Symbol;
 	description?: Content;
 }

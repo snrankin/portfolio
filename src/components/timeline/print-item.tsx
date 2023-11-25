@@ -5,6 +5,7 @@ import { Markdown } from '@/components/contentful/markdown';
 import { companyLink } from './item';
 import { paramCase } from 'change-case-all';
 import { TypeJobFields } from '@/lib/types';
+import Date from '../global/date';
 export default function TimelineItem(props: TypeJobFields) {
 	const { company, title, startDate, endDate, website, description } = props;
 
@@ -12,10 +13,10 @@ export default function TimelineItem(props: TypeJobFields) {
 		<div className={`timeline-item job-${paramCase(company)}`}>
 			<div className="grid grid-cols-[1rem_1fr] gap-x-5 w-full max-w-full">
 				<div className="flex flex-col h-full">
-					<div className="font-display uppercase font-black text-base-400 leading-none whitespace-nowrap flex flex-col grow  h-full gap-4">
+					<div className="font-display uppercase font-black text-slate-400  leading-none whitespace-nowrap flex flex-col grow  h-full gap-4">
 						<div className="h-[80px] flex items-end">
 							<div className="-rotate-90 translate-x-1/4 origin-bottom-left">
-								{displayDate(endDate)}
+								<Date start={endDate} />
 							</div>
 						</div>
 
@@ -25,7 +26,7 @@ export default function TimelineItem(props: TypeJobFields) {
 
 						<div className="h-[80px] flex items-end">
 							<div className="-rotate-90 translate-x-1/4 origin-bottom-left">
-								{displayDate(startDate)}
+								<Date start={startDate} />
 							</div>
 						</div>
 					</div>

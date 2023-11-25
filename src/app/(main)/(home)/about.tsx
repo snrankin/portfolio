@@ -3,9 +3,7 @@ import React from 'react';
 import ContentfulImage from '@/components/contentful/contentful-image';
 import { Markdown } from '@/components/contentful/markdown';
 import Section from '@/components/section/section';
-import ThemeSwap from '@/components/theme-swap/theme-swap';
-import DarkFrame from '@/img/frame-dark.svg';
-import LightFrame from '@/img/frame-light.svg';
+import Frame from '@/img/frame.svg';
 import { TypeAboutSectionFields } from '@/lib/types';
 
 import styles from './home.module.css';
@@ -23,14 +21,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 				{!!props?.image && (
 					<div className="relative w-4/6 mx-auto md:w-full">
 						<div className="absolute w-full h-full inset-0 flex">
-							<ThemeSwap>
-								<ThemeSwap.Light>
-									<DarkFrame className="block w-full h-full grow stroke-[20px] md:stroke-[15px]" />
-								</ThemeSwap.Light>
-								<ThemeSwap.Dark>
-									<LightFrame className="block w-full h-full grow stroke-[20px] md:stroke-[15px]" />
-								</ThemeSwap.Dark>
-							</ThemeSwap>
+							<Frame className="block w-full h-full grow stroke-[20px] md:stroke-[15px]" />
 						</div>
 						<div className="aspect-w-1 aspect-h-1">
 							<ContentfulImage
@@ -51,7 +42,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 					</div>
 				)}
 				{!!props?.content && (
-					<div className="prose lg:prose-lg dark:prose-invert max-w-none">
+					<div className="prose lg:prose-lg max-w-none">
 						<Markdown content={props.content} />
 					</div>
 				)}

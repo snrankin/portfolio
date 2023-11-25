@@ -16,94 +16,117 @@
  */
 @tailwind utilities;
 
-[data-theme='dark'] {
-	--shadow-color: 217deg 25% 14%;
+:root {
+	--container-width: 90vw;
+	--page-gutter: calc((100vw - var(--container-width)) * 0.5);
+	--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
+	--shadow-color: 220deg 5% 52%;
 
+	@media screen(lg) {
+		--container-width: 85vw;
+	}
+	@media screen(xl) {
+		--container-width: 1170px;
+	}
+}
+
+[data-theme='light'] {
+	--shadow-color: 217deg 25% 14%;
+	--logo-color-1: theme(colors.primary.600);
+	--logo-color-2: theme(colors.slate.700);
+	--fallback-p: theme(colors.primary.600);
+	--fallback-pc: #050617;
+	--fallback-s: theme(colors.secondary.600);
+	--fallback-sc: #190211;
+	--fallback-a: theme(colors.accent.600);
+	--fallback-ac: #000e0c;
+	--fallback-n: theme(colors.slate.800);
+	--fallback-nc: #a6adbb;
+	--fallback-b1: theme(colors.slate.100);
+	--fallback-b2: theme(colors.slate.200);
+	--fallback-b3: theme(colors.slate.300);
+	--fallback-bc: theme(colors.slate.700);
+	--fallback-in: theme(colors.info.600);
+	--fallback-inc: #000000;
+	--fallback-su: theme(colors.success.600);
+	--fallback-suc: #000000;
+	--fallback-wa: theme(colors.warning.600);
+	--fallback-wac: #000000;
+	--fallback-er: theme(colors.error.600);
+	--fallback-erc: #000000;
+	--pattern-bg: svg-load(subtle-bg-light.svg);
 	.bg-base-200 {
 		--shadow-color: 215deg 42% 6%;
+	}
+	.prose {
+		--tw-prose-body: theme(colors.slate.700);
+		--tw-prose-headings: theme(colors.slate.900);
+		--tw-prose-lead: theme(colors.slate.800);
+		--tw-prose-links: theme(colors.primary.500);
+		--tw-prose-bold: theme(colors.primary.500);
+		--tw-prose-counters: theme(colors.primary.600);
+		--tw-prose-bullets: theme(colors.secondary.500);
+		--tw-prose-hr: theme(colors.slate.300);
+		--tw-prose-quotes: theme(colors.primary.700);
+		--tw-prose-quote-borders: theme(colors.secondary.500);
+		--tw-prose-captions: theme(colors.slate.700);
+		--tw-prose-code: theme(colors.primary.400);
+		--tw-prose-pre-code: theme(colors.slate.100);
+		--tw-prose-pre-bg: theme(colors.slate.800);
+		--tw-prose-th-borders: theme(colors.slate.300);
+		--tw-prose-td-borders: theme(colors.slate.200);
+	}
+}
+
+[data-theme='dark'] {
+	--shadow-color: 217deg 25% 14%;
+	--logo-color-1: theme(colors.primary.600);
+	--logo-color-2: theme(colors.slate.300);
+	--fallback-p: theme(colors.primary.600);
+	--fallback-pc: #050617;
+	--fallback-s: theme(colors.secondary.600);
+	--fallback-sc: #190211;
+	--fallback-a: theme(colors.accent.600);
+	--fallback-ac: #000e0c;
+	--fallback-n: theme(colors.slate.600);
+	--fallback-nc: #a6adbb;
+	--fallback-b1: theme(colors.slate.700);
+	--fallback-b2: theme(colors.slate.800);
+	--fallback-b3: theme(colors.slate.900);
+	--fallback-bc: theme(colors.slate.300);
+	--fallback-in: theme(colors.info.600);
+	--fallback-inc: #000000;
+	--fallback-su: theme(colors.success.600);
+	--fallback-suc: #000000;
+	--fallback-wa: theme(colors.warning.600);
+	--fallback-wac: #000000;
+	--fallback-er: theme(colors.error.600);
+	--fallback-erc: #000000;
+	--pattern-bg: svg-load(subtle-bg-dark.svg);
+	.bg-base-200 {
+		--shadow-color: 215deg 42% 6%;
+	}
+	.prose {
+		--tw-prose-body: theme(colors.slate.200);
+		--tw-prose-headings: theme(colors.slate.100);
+		--tw-prose-lead: theme(colors.slate.300);
+		--tw-prose-links: theme(colors.primary.400);
+		--tw-prose-bold: theme(colors.white);
+		--tw-prose-counters: theme(colors.primary.400);
+		--tw-prose-bullets: theme(colors.secondary.600);
+		--tw-prose-hr: theme(colors.slate.700);
+		--tw-prose-quotes: theme(colors.primary.100);
+		--tw-prose-quote-borders: theme(colors.primary.600);
+		--tw-prose-captions: theme(colors.slate.400);
+		--tw-prose-code: theme(colors.white);
+		--tw-prose-pre-code: theme(colors.slate.300);
+		--tw-prose-pre-bg: theme(colors.slate.950);
+		--tw-prose-th-borders: theme(colors.slate.600);
+		--tw-prose-td-borders: theme(colors.slate.700);
 	}
 }
 
 @layer base {
-	:root {
-		--container-width: 90vw;
-		--page-gutter: calc((100vw - var(--container-width)) * 0.5);
-		--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
-		--shadow-color: 220deg 5% 52%;
-
-		@media screen(lg) {
-			--container-width: 85vw;
-		}
-		@media screen(xl) {
-			--container-width: 1170px;
-		}
-
-		.prose {
-			--tw-prose-body: theme(colors.slate.700);
-			--tw-prose-headings: theme(colors.slate.900);
-			--tw-prose-lead: theme(colors.slate.800);
-			--tw-prose-links: theme(colors.primary.500);
-			--tw-prose-bold: theme(colors.primary.500);
-			--tw-prose-counters: theme(colors.primary.600);
-			--tw-prose-bullets: theme(colors.secondary.500);
-			--tw-prose-hr: theme(colors.slate.300);
-			--tw-prose-quotes: theme(colors.primary.700);
-			--tw-prose-quote-borders: theme(colors.secondary.500);
-			--tw-prose-captions: theme(colors.slate.700);
-			--tw-prose-code: theme(colors.primary.400);
-			--tw-prose-pre-code: theme(colors.slate.100);
-			--tw-prose-pre-bg: theme(colors.slate.800);
-			--tw-prose-th-borders: theme(colors.slate.300);
-			--tw-prose-td-borders: theme(colors.slate.200);
-
-			--tw-prose-invert-body: theme(colors.slate.200);
-			--tw-prose-invert-headings: theme(colors.slate.100);
-			--tw-prose-invert-lead: theme(colors.slate.300);
-			--tw-prose-invert-links: theme(colors.primary.400);
-			--tw-prose-invert-bold: theme(colors.white);
-			--tw-prose-invert-counters: theme(colors.primary.400);
-			--tw-prose-invert-bullets: theme(colors.secondary.600);
-			--tw-prose-invert-hr: theme(colors.slate.700);
-			--tw-prose-invert-quotes: theme(colors.primary.100);
-			--tw-prose-invert-quote-borders: theme(colors.primary.600);
-			--tw-prose-invert-captions: theme(colors.slate.400);
-			--tw-prose-invert-code: theme(colors.white);
-			--tw-prose-invert-pre-code: theme(colors.slate.300);
-			--tw-prose-invert-pre-bg: theme(colors.slate.950);
-			--tw-prose-invert-th-borders: theme(colors.slate.600);
-			--tw-prose-invert-td-borders: theme(colors.slate.700);
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--fallback-p: theme(colors.primary.600);
-			--fallback-pc: #050617;
-			--fallback-s: theme(colors.secondary.600);
-			--fallback-sc: #190211;
-			--fallback-a: theme(colors.accent.600);
-			--fallback-ac: #000e0c;
-			--fallback-n: theme(colors.slate.600);
-			--fallback-nc: #a6adbb;
-			--fallback-b1: theme(colors.slate.700);
-			--fallback-b2: theme(colors.slate.800);
-			--fallback-b3: theme(colors.slate.900);
-			--fallback-bc: theme(colors.slate.300);
-			--fallback-in: theme(colors.info.600);
-			--fallback-inc: #000000;
-			--fallback-su: theme(colors.success.600);
-			--fallback-suc: #000000;
-			--fallback-wa: theme(colors.warning.600);
-			--fallback-wac: #000000;
-			--fallback-er: theme(colors.error.600);
-			--fallback-erc: #000000;
-		}
-	}
-
-	[data-theme='dark'] .pattern-bg {
-		background-image: svg-load(subtle-bg-dark.svg);
-	}
-
 	*,
 	*::before,
 	*::after {
@@ -165,14 +188,10 @@
 	}
 
 	.pattern-bg {
-		background-image: svg-load(subtle-bg-light.svg);
+		background-image: var(--pattern-bg);
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-	}
-
-	[data-theme='dark'] .pattern-bg {
-		background-image: svg-load(subtle-bg-dark.svg);
 	}
 
 	.card-normal {
@@ -243,15 +262,7 @@
 			color: theme(colors.slate.950);
 		}
 	}
-	.feather {
-		width: 1em;
-		height: 1em;
-		stroke: currentColor;
-		stroke-width: 2;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		fill: none;
-	}
+
 	@media (max-width: 767.98px) {
 		.dropdown:is(:not(details)) .menu.dropdown-content {
 			--tw-scale-x: 1 !important;
@@ -273,28 +284,51 @@
 		opacity: 0;
 		visibility: hidden;
 	}
-	/* @media (hover: hover) {
-		@supports (color: oklch(0 0 0)):
-				where(
-					.menu li: not (.menu-title): not (.disabled) > *: not (ul):
-						not (details): not (.menu-title)
-				):
-				not (.active): hover,
-			: where(
-					.menu li: not (.menu-title): not (.disabled) > details >
-						summary: not (.menu-title)
-				): not (.active): hover {
-			background-color: var(--p, oklch(var(--p) / 0.1));
-		}
-	} */
-	.menu .active {
-		border-radius: var(--rounded-btn, 0.5rem);
-	}
+}
+.feather {
+	width: 1em;
+	height: 1em;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
+.menu .active {
+	border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.logo-color-1 {
+	fill: var(--logo-color-1);
+}
+.logo-color-2 {
+	fill: var(--logo-color-2);
 }
 
 [data-nimg='fill'] {
 	object-fit: cover;
 	font-family: 'object-fit: cover;';
+}
+
+.prose {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	li,
+	ul,
+	ol,
+	dl,
+	tablet,
+	figure,
+	pre {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 /*  Comment */
@@ -407,4 +441,26 @@
 
 .hljs-strong {
 	font-weight: bold;
+}
+
+/* override styles when printing */
+@media print {
+	@page {
+		size: auto; /* auto is the initial value */
+
+		/* this affects the margin in the printer settings */
+		margin: 12.7mm 12.7mm 12.7mm 12.7mm;
+	}
+	:root {
+		--container-width: 7.5in !important;
+		--section-spacing: 0.25in;
+	}
+
+	html {
+		background-color: #fff !important;
+	}
+	body {
+		margin: 0;
+		background-color: #fff !important;
+	}
 }
