@@ -310,6 +310,10 @@
 	font-family: 'object-fit: cover;';
 }
 
+.timeline li:last-child .prose {
+	padding-bottom: 0 !important;
+}
+
 .prose {
 	h1,
 	h2,

@@ -11,7 +11,7 @@ export function companyLink(name: string, url: string) {
 	return (
 		<a
 			href={url}
-			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-accent dark:link-secondary mt-4"
+			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-primary mt-4"
 			target="_blank"
 		>
 			<Image
@@ -53,12 +53,12 @@ export default function TimelineItem(props: TypeJobFields) {
 			</div>
 			{/* Content */}
 			<div
-				className={`timeline-content md:pt-[2em] pb-4 lg:pb-11 lg:mt-0 lg:pt-0`}
+				className={`timeline-content last:pb-0 md:pt-[2em] pb-4 lg:pb-11 lg:mt-0 lg:pt-0`}
 			>
 				<div className="prose">
 					<h3 className="font-semibold block mt-3">
 						{title}{' '}
-						<span className="block text-base">
+						<span className="block text-[0.75em]">
 							<span className="sr-only">at </span>
 							{companyLink(company, `${website}`)}
 						</span>

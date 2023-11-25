@@ -130,7 +130,7 @@ export default function Device(props: DeviceProps): JSX.Element {
 							<KeyboardLight className={keybaordClasses} />
 						</ThemeSwap.Light>
 						<ThemeSwap.Dark>
-							<KeyboardLight className={keybaordClasses} />
+							<KeyboardDark className={keybaordClasses} />
 						</ThemeSwap.Dark>
 					</ThemeSwap>
 				</div>

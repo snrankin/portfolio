@@ -228,9 +228,15 @@ const config: Config = {
 				'mp-h': '1950',
 			},
 			typography: {
+				DEFAULT: {
+					css: {
+						ul: {
+							paddingLeft: '0.9em',
+						},
+					},
+				},
 				print: {
 					css: {
-						color: '#000',
 						fontSize: '12pt',
 						lineHeight: 1.5,
 						a: {
@@ -248,8 +254,23 @@ const config: Config = {
 						h2: {
 							fontSize: '18pt',
 							marginTop: '0',
-							marginBottom: '0.75em',
+							marginBottom: '0.25in',
 							lineHeight: 1,
+							color: colors.slate[950],
+						},
+						h3: {
+							fontSize: '14pt',
+							marginTop: '0',
+							marginBottom: '0',
+							lineHeight: 1,
+							color: colors.slate[700],
+							fontFamily: [
+								'var(--font-poppins)',
+								...defaultTheme.fontFamily.sans,
+							].join(' '),
+						},
+						ul: {
+							paddingLeft: '0.9em',
 						},
 					},
 				},

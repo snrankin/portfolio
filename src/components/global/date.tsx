@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { isString, replace, isEmpty, trimEnd } from 'lodash';
-import { NDASH } from '@/lib/symbols';
+import { NDASH, NOBREAK } from '@/lib/symbols';
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
 export default function Date({
@@ -15,6 +15,8 @@ export default function Date({
 	let startDate = null,
 		endDate = null,
 		startFormat = format ?? 'MMM YYYY';
+
+	format = format ?? 'MMM YYYY';
 
 	if (start != undefined && dayjs(start).isValid()) {
 		let startYear = dayjs(start).year();
@@ -48,7 +50,9 @@ export default function Date({
 			{startDate}
 			{end != undefined && dayjs(end).isValid() ? (
 				<>
+					{NOBREAK}
 					{NDASH}
+					{NOBREAK}
 					{endDate}
 				</>
 			) : null}

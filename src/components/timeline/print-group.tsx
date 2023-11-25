@@ -8,11 +8,11 @@ export default function Timeline({
 	jobs?: TypeJobFields[];
 }): JSX.Element {
 	return (
-		<div className="flex flex-col gap-y-[1in]">
+		<ul className="timeline timeline-vertical timeline-compact	  timeline-snap-icon">
 			{!!jobs &&
 				jobs.map((job, i) => {
 					return <TimelineItem key={i} {...job} />;
 				})}
-		</div>
+		</ul>
 	);
 }
