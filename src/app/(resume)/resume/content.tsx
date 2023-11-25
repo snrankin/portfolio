@@ -56,7 +56,7 @@ export default function Content({
 
 	return (
 		<Section id="resume" className={styles.print}>
-			<div className="print:hidden flex gap-4 justify-center pb-14">
+			<div className="print:hidden flex flex-wrap gap-4 justify-center pb-14">
 				<button onClick={printClick} className="btn btn-primary">
 					<Icon
 						icon="printer"
@@ -73,10 +73,8 @@ export default function Content({
 				</Link>
 			</div>
 			<div className="overflow-hidden">
-				<div
-					className={`prose-print max-w-none grid grid-cols-1 md:grid-cols-12 divide-y md:divide-x ${styles.resume}`}
-				>
-					<div className="md:col-span-8 pr-[0.25in] py-[0.25in] md:pt-0">
+				<div className="prose-print max-w-none grid grid-cols-1 md:grid-cols-12 print:grid-cols-12">
+					<div className="border-b md:border-r print:border-r md:col-span-8 print:col-span-8 pr-[0.25in] py-[0.25in] md:pt-0">
 						<h1 className="pb-4">
 							<span className="sr-only">
 								{!!me?.firstName && !!me?.lastName && (
@@ -87,13 +85,16 @@ export default function Content({
 									</>
 								)}
 							</span>
-							<Link href="/" className="block md:max-w-[60%]">
+							<Link
+								href="/"
+								className="block md:max-w-[60%] print:max-w-[60%]"
+							>
 								<LogoFull className="w-full block" />
 							</Link>
 						</h1>
 						{!!summary && <p className="m-0">{summary}</p>}
 					</div>
-					<div className="md:col-span-4 md:pl-[0.23in] py-[0.25in] md:pt-0">
+					<div className="border-b md:col-span-4 print:col-span-4 md:pl-[0.23in] print:pl-[0.23in] py-[0.25in] md:pt-0">
 						<div className="flex flex-col gap-3">
 							{links.map((link, k) => {
 								return (
@@ -113,7 +114,7 @@ export default function Content({
 						</div>
 					</div>
 					{!!skills && (
-						<div className="md:col-span-8 py-[0.25in]">
+						<div className="border-b md:border-r print:border-r md:col-span-8 print:col-span-8 py-[0.25in]">
 							<h2 className="font-bold">Skillset</h2>
 
 							<SkillsList
@@ -136,10 +137,10 @@ export default function Content({
 						</div>
 					)}
 					{!!projects && (
-						<div className="md:col-span-4 py-[0.25in] md:pl-[0.25in]">
+						<div className="border-b md:col-span-4 print:col-span-4 py-[0.25in] md:pl-[0.25in] print:pl-[0.25in]">
 							<h2 className="font-bold">Projects</h2>
 							<ProjectsGroup
-								className="grid grid-cols-2 md:grid-cols-1 gap-4 justify-between"
+								className="grid grid-cols-2 md:grid-cols-1 print:grid-cols-1 gap-4 justify-between"
 								projects={projects}
 							/>
 						</div>

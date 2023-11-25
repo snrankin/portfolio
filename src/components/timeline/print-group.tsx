@@ -8,7 +8,7 @@ export default function Timeline({
 	jobs?: TypeJobFields[];
 }): JSX.Element {
 	return (
-		<div className="flex flex-col gap-y-[0.5in]">
+		<div className="flex flex-col gap-y-[1in]">
 			{!!jobs &&
 				jobs.map((job, i) => {
 					return <TimelineItem key={i} {...job} />;
