@@ -31,7 +31,5 @@ export async function GET(request: Request) {
 		};
 	});
 
-	console.log('🚀 ~ file: route.ts:34 ~ links ~ links:', links);
-
 	return getServerSideSitemap(links);
 }

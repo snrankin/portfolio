@@ -101,7 +101,6 @@ export default async function Layout({
 			<Analytics />
 			<html
 				lang="en"
-				data-theme="light"
 				className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
 				suppressHydrationWarning={true}
 			>

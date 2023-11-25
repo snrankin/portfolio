@@ -1,7 +1,8 @@
 'use client';
-import { get, has, isEmpty, startsWith } from 'lodash';
-import classNames from 'classnames';
 import { camelCase, lowerCase } from 'change-case-all';
+import classNames from 'classnames';
+import { get, isEmpty } from 'lodash';
+
 import { StringDictionary } from '../../lib/utils';
 
 export const WebIcons: StringDictionary = {
@@ -19,6 +20,7 @@ export const WebIcons: StringDictionary = {
 	sun: 'sun',
 	web: 'web',
 	code: 'code',
+	contact: 'contact',
 };
 
 export const DevIcons: StringDictionary = {

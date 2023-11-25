@@ -14,20 +14,6 @@ export interface IconLinkProps
 	displayUrl?: boolean;
 }
 
-export type IIconLinkContext = IIconContext & {
-	displayUrl?: boolean;
-};
-
-export const IconLinkContextConfig: IIconLinkContext = {
-	group: 'web',
-	titleDisplay: 'hidden',
-	titleClasses: '',
-	iconClasses: '',
-	displayUrl: false,
-};
-
-export const IconLinkContext = createContext(IconLinkContextConfig);
-
 export default function IconLink(props: IconLinkProps): JSX.Element {
 	let { group, titleDisplay, titleClasses, iconClasses, displayUrl } = props;
 	let iconName = props.icon != undefined ? props.icon : '';

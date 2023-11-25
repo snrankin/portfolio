@@ -32,7 +32,7 @@ export default function Device(props: DeviceProps): JSX.Element {
 		props.className
 	);
 
-	let atts = omit(props, ['type', 'url', 'title', 'children']);
+	let atts = omit(props, ['type', 'url', 'title', 'children', 'desktopOnly']);
 
 	set(atts, 'className', wrapperClasses);
 

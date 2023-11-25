@@ -1,11 +1,13 @@
 'use client';
-import React, { useContext, HTMLProps } from 'react';
-import { Waypoint } from 'react-waypoint';
-import Heading, { HeadingProps } from './heading';
 import classNames from 'classnames';
-import { pick, isEmpty, omit, set } from 'lodash';
-import { SectionContext } from '@/lib/context/section';
+import { isEmpty, omit, pick, set } from 'lodash';
+import React, { HTMLProps, useContext } from 'react';
+import { Waypoint } from 'react-waypoint';
+
 import { Content, Markdown } from '@/components/contentful/markdown';
+import { SectionContext } from '@/lib/context/section';
+
+import Heading, { HeadingProps } from './heading';
 
 export interface SectionProps
 	extends HeadingProps,
@@ -68,7 +70,7 @@ export default function Section(props: SectionProps) {
 							<Heading {...headingArgs} />
 						)}
 						{!!props.intro && (
-							<div className="prose md:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
+							<div className="prose xl:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
 								<Markdown content={props.intro} />
 							</div>
 						)}

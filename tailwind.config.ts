@@ -1,40 +1,12 @@
-import { get, isEmpty, reverse, set, zip, zipObject } from 'lodash';
-import type { Config } from 'tailwindcss';
 import { default as colors } from 'tailwindcss/colors';
-import fontColorContrast from 'font-color-contrast';
+
+import type { Config } from 'tailwindcss';
+const { getContrastingHex } = require('color-contrast-picker');
 const { contrastColor } = require('contrast-color');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const shadesOf = require('tailwind-shades');
-const daisyBaseColor = (name = '', dark = false) => {
-	let colorObj = get(colors, name);
 
-	let baseColors = {};
-
-	let baseValues: string[] = [];
-	let levelNames: string[] = [];
-
-	if (colorObj != undefined) {
-		let levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-
-		levels.forEach((level, i) => {
-			let color = get(colorObj, level, '');
-			if (!isEmpty(color)) {
-				baseValues.push(color);
-				levelNames.push(`base-${level}`);
-			}
-		});
-
-		if (dark) {
-			reverse(baseValues);
-		}
-
-		baseColors = zipObject(levelNames, baseValues);
-	}
-
-	return baseColors;
-};
-
-const BLUE = {
+export const BLUE = {
 	DEFAULT: '#255cc0',
 	'50': '#DAE3F4',
 	'100': '#B6C8EA',
@@ -48,7 +20,7 @@ const BLUE = {
 	'900': '#0C1E3F',
 	'950': '#060F1F',
 };
-const YELLOW = {
+export const YELLOW = {
 	DEFAULT: '#FFAF1C',
 	'50': '#FFF1D9',
 	'100': '#FFE4B3',
@@ -62,7 +34,7 @@ const YELLOW = {
 	'900': '#543A09',
 	'950': '#2A1D04',
 };
-const ORANGE = {
+export const ORANGE = {
 	DEFAULT: '#FF7C1C',
 	'50': '#FFE9D9',
 	'100': '#FFD3B3',
@@ -76,7 +48,7 @@ const ORANGE = {
 	'900': '#542909',
 	'950': '#2A1404',
 };
-const GREEN = {
+export const GREEN = {
 	DEFAULT: '#0CCE6B',
 	'50': '#D6F6E6',
 	'100': '#AEEECD',
@@ -90,7 +62,7 @@ const GREEN = {
 	'900': '#034423',
 	'950': '#012211',
 };
-const TEAL = {
+export const TEAL = {
 	'50': '#D7F3F0',
 	'100': '#B0E7E1',
 	'200': '#89DBD2',
@@ -102,6 +74,52 @@ const TEAL = {
 	'800': '#0A5C53',
 	'900': '#063D37',
 	'950': '#031E1B',
+};
+
+export const LIGHT_THEME = {
+	primary: TEAL[500],
+	'primary-content': getContrastingHex(TEAL[500], 7),
+	secondary: ORANGE[500],
+	'secondary-content': getContrastingHex(ORANGE[500], 7),
+	accent: BLUE[500],
+	'accent-content': getContrastingHex(BLUE[500], 5),
+	neutral: colors.slate[800],
+	'neutral-content': colors.slate[300],
+	'base-100': colors.slate[100],
+	'base-200': colors.slate[200],
+	'base-300': colors.slate[300],
+	'base-content': colors.slate[800],
+	info: BLUE[500],
+	'info-content': getContrastingHex(BLUE[500], 5),
+	success: GREEN[500],
+	'success-content': getContrastingHex(GREEN[500], 7),
+	warning: YELLOW[500],
+	'warning-content': getContrastingHex(YELLOW[500], 7),
+	error: colors.red[500],
+	'error-content': getContrastingHex(colors.red[500], 5),
+};
+
+export const DARK_THEME = {
+	primary: TEAL[600],
+	'primary-content': getContrastingHex(TEAL[600], 5),
+	secondary: ORANGE[600],
+	'secondary-content': getContrastingHex(ORANGE[600], 5),
+	accent: BLUE[600],
+	'accent-content': getContrastingHex(BLUE[600], 5),
+	neutral: colors.slate[300],
+	'neutral-content': colors.slate[900],
+	'base-100': colors.slate[700],
+	'base-200': colors.slate[800],
+	'base-300': colors.slate[900],
+	'base-content': colors.slate[300],
+	info: BLUE[600],
+	'info-content': getContrastingHex(BLUE[600], 5),
+	success: GREEN[600],
+	'success-content': getContrastingHex(GREEN[600], 5),
+	warning: YELLOW[600],
+	'warning-content': getContrastingHex(YELLOW[600], 5),
+	error: colors.red[600],
+	'error-content': getContrastingHex(colors.red[600], 4),
 };
 
 const config: Config = {
@@ -188,10 +206,10 @@ const config: Config = {
 				'full-pg': 'calc(100% + var(--page-gutter))',
 			},
 			boxShadow: {
-				DEFAULT: ` 0px 0.3px 0.3px hsl(var(--shadow-color) / 0.3), 0px 1px 1.2px -0.6px hsl(var(--shadow-color) / 0.31), 0px 1.9px 2.2px -1.1px hsl(var(--shadow-color) / 0.33), -0.1px 3.8px 4.4px -1.7px hsl(var(--shadow-color) / 0.34), -0.2px 7.3px 8.5px -2.2px hsl(var(--shadow-color) / 0.35)`,
+				DEFAULT: `0px 0.3px 0.3px hsl(var(--shadow-color) / 0.36), 0px 1.1px 1.2px -0.8px hsl(var(--shadow-color) / 0.36), 0px 2.7px 3px -1.7px hsl(var(--shadow-color) / 0.36), 0.1px 6.5px 7.3px -2.5px hsl(var(--shadow-color) / 0.36)`,
 				sm: `0px 0.5px 0.6px hsl(var(--shadow-color) / 0.36), 0px 0.9px 1px -1.1px hsl(var(--shadow-color) / 0.38), 0px 2.1px 2.4px -2.2px hsl(var(--shadow-color) / 0.41)`,
 
-				lg: `0px 0.2px 0.2px hsl(var(--shadow-color) / 0.28), 0px 1px 1.2px -0.2px hsl(var(--shadow-color) / 0.28), -0.1px 1.7px 2px -0.5px hsl(var(--shadow-color) / 0.29), -0.1px 2.6px 3px -0.7px hsl(var(--shadow-color) / 0.3), -0.2px 3.7px 4.3px -1px hsl(var(--shadow-color) / 0.3), -0.2px 5.3px 6.2px -1.2px hsl(var(--shadow-color) / 0.31), -0.3px 7.5px 8.7px -1.5px hsl(var(--shadow-color) / 0.32), -0.5px 10.4px 12.1px -1.7px hsl(var(--shadow-color) / 0.32), -0.6px 14.2px 16.5px -2px hsl(var(--shadow-color) / 0.33), -0.8px 19px 22.1px -2.2px hsl(var(--shadow-color) / 0.33)`,
+				lg: `0px 0.2px 0.2px hsl(var(--shadow-color) / 0.34), 0px 0.9px 1px -0.4px hsl(var(--shadow-color) / 0.34), 0px 1.8px 2px -0.7px hsl(var(--shadow-color) / 0.34), 0px 2.9px 3.3px -1.1px hsl(var(--shadow-color) / 0.34), 0.1px 4.6px 5.2px -1.4px hsl(var(--shadow-color) / 0.34), 0.1px 7.2px 8.1px -1.8px hsl(var(--shadow-color) / 0.34), 0.2px 10.9px 12.3px -2.1px hsl(var(--shadow-color) / 0.34), 0.3px 16.1px 18.1px -2.5px hsl(var(--shadow-color) / 0.34);`,
 			},
 			strokeWidth: {
 				'10': '10px',
@@ -341,35 +359,13 @@ const config: Config = {
 			{
 				light: {
 					...require('daisyui/src/theming/themes')['light'],
-					primary: TEAL[500],
-					secondary: ORANGE[500],
-					accent: BLUE[500],
-					neutral: colors.slate[800],
-					'base-100': colors.slate[100],
-					'base-200': colors.slate[200],
-					'base-300': colors.slate[300],
-					'base-content': colors.slate[800],
-					info: BLUE[500],
-					success: GREEN[500],
-					warning: YELLOW[500],
-					error: colors.red[500],
+					...LIGHT_THEME,
 				},
 			},
 			{
 				dark: {
 					...require('daisyui/src/theming/themes')['dark'],
-					primary: TEAL[600],
-					secondary: ORANGE[600],
-					accent: BLUE[600],
-					neutral: colors.slate[100],
-					'base-100': colors.slate[700],
-					'base-200': colors.slate[800],
-					'base-300': colors.slate[900],
-					'base-content': colors.slate[100],
-					info: BLUE[600],
-					success: GREEN[600],
-					warning: YELLOW[600],
-					error: colors.red[600],
+					...DARK_THEME,
 				},
 			},
 		],

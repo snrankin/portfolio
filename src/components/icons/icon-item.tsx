@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import './icons.css';
 export interface IconConfig {
 	icon?: string;
-	group?: 'web' | 'dev' | 'ios';
+	group?: 'web' | 'dev' | 'ios' | 'feather';
 	titleDisplay?: 'hidden' | 'popover' | 'inline' | 'block';
 	titleClasses?: string;
 	iconClasses?: string;
@@ -17,7 +17,7 @@ export interface IconConfig {
 export interface IconProps extends IconConfig, HTMLProps<HTMLSpanElement> {}
 
 export type IIconContext = {
-	group?: 'web' | 'dev' | 'ios';
+	group?: 'web' | 'dev' | 'ios' | 'feather';
 	titleDisplay?: 'hidden' | 'popover' | 'inline' | 'block';
 	titleClasses?: string;
 	iconClasses?: string;

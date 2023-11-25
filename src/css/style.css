@@ -21,6 +21,30 @@
 	--page-gutter: calc((100vw - var(--container-width)) * 0.5);
 	--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
 	--shadow-color: 220deg 5% 52%;
+	--shadow-color: 210deg 12% 60%;
+	--logo-color-1: theme(colors.primary.500);
+	--logo-color-2: theme(colors.slate.700);
+	--fallback-p: theme(colors.primary.500);
+	--fallback-pc: #031c19;
+	--fallback-s: theme(colors.secondary.500);
+	--fallback-sc: #240f00;
+	--fallback-a: theme(colors.accent.500);
+	--fallback-ac: #e1eaf9;
+	--fallback-n: theme(colors.slate.800);
+	--fallback-nc: theme(colors.slate.300);
+	--fallback-b1: theme(colors.slate.100);
+	--fallback-b2: theme(colors.slate.200);
+	--fallback-b3: theme(colors.slate.300);
+	--fallback-bc: theme(colors.slate.700);
+	--fallback-in: theme(colors.info.500);
+	--fallback-inc: #e1eaf9;
+	--fallback-su: theme(colors.success.500);
+	--fallback-suc: #032b16;
+	--fallback-wa: theme(colors.warning.500);
+	--fallback-wac: #422b00;
+	--fallback-er: theme(colors.error.500);
+	--fallback-erc: #260303;
+	--pattern-bg: svg-load(subtle-bg-light.svg);
 
 	@media screen(lg) {
 		--container-width: 85vw;
@@ -30,81 +54,61 @@
 	}
 }
 
-[data-theme='light'] {
-	--shadow-color: 217deg 25% 14%;
-	--logo-color-1: theme(colors.primary.600);
-	--logo-color-2: theme(colors.slate.700);
-	--fallback-p: theme(colors.primary.600);
-	--fallback-pc: #050617;
-	--fallback-s: theme(colors.secondary.600);
-	--fallback-sc: #190211;
-	--fallback-a: theme(colors.accent.600);
-	--fallback-ac: #000e0c;
-	--fallback-n: theme(colors.slate.800);
-	--fallback-nc: #a6adbb;
-	--fallback-b1: theme(colors.slate.100);
-	--fallback-b2: theme(colors.slate.200);
-	--fallback-b3: theme(colors.slate.300);
-	--fallback-bc: theme(colors.slate.700);
-	--fallback-in: theme(colors.info.600);
-	--fallback-inc: #000000;
-	--fallback-su: theme(colors.success.600);
-	--fallback-suc: #000000;
-	--fallback-wa: theme(colors.warning.600);
-	--fallback-wac: #000000;
-	--fallback-er: theme(colors.error.600);
-	--fallback-erc: #000000;
-	--pattern-bg: svg-load(subtle-bg-light.svg);
-	.bg-base-200 {
-		--shadow-color: 215deg 42% 6%;
-	}
-	.prose {
-		--tw-prose-body: theme(colors.slate.700);
-		--tw-prose-headings: theme(colors.slate.900);
-		--tw-prose-lead: theme(colors.slate.800);
-		--tw-prose-links: theme(colors.primary.500);
-		--tw-prose-bold: theme(colors.primary.500);
-		--tw-prose-counters: theme(colors.primary.600);
-		--tw-prose-bullets: theme(colors.secondary.500);
-		--tw-prose-hr: theme(colors.slate.300);
-		--tw-prose-quotes: theme(colors.primary.700);
-		--tw-prose-quote-borders: theme(colors.secondary.500);
-		--tw-prose-captions: theme(colors.slate.700);
-		--tw-prose-code: theme(colors.primary.400);
-		--tw-prose-pre-code: theme(colors.slate.100);
-		--tw-prose-pre-bg: theme(colors.slate.800);
-		--tw-prose-th-borders: theme(colors.slate.300);
-		--tw-prose-td-borders: theme(colors.slate.200);
-	}
+.bg-base-200 {
+	--shadow-color: 213deg 13% 58%;
+}
+.pattern-bg {
+	--shadow-color: 216deg 12% 54%;
+}
+html .prose {
+	--tw-prose-body: theme(colors.slate.700);
+	--tw-prose-headings: theme(colors.slate.900);
+	--tw-prose-lead: theme(colors.slate.800);
+	--tw-prose-links: theme(colors.primary.500);
+	--tw-prose-bold: theme(colors.primary.500);
+	--tw-prose-counters: theme(colors.primary.600);
+	--tw-prose-bullets: theme(colors.secondary.500);
+	--tw-prose-hr: theme(colors.slate.300);
+	--tw-prose-quotes: theme(colors.primary.700);
+	--tw-prose-quote-borders: theme(colors.secondary.500);
+	--tw-prose-captions: theme(colors.slate.700);
+	--tw-prose-code: theme(colors.primary.400);
+	--tw-prose-pre-code: theme(colors.slate.100);
+	--tw-prose-pre-bg: theme(colors.slate.800);
+	--tw-prose-th-borders: theme(colors.slate.300);
+	--tw-prose-td-borders: theme(colors.slate.200);
 }
 
 [data-theme='dark'] {
-	--shadow-color: 217deg 25% 14%;
+	--shadow-color: 216deg 34% 13%;
 	--logo-color-1: theme(colors.primary.600);
 	--logo-color-2: theme(colors.slate.300);
 	--fallback-p: theme(colors.primary.600);
-	--fallback-pc: #050617;
+	--fallback-pc: #031c19;
 	--fallback-s: theme(colors.secondary.600);
-	--fallback-sc: #190211;
+	--fallback-sc: #200f03;
 	--fallback-a: theme(colors.accent.600);
-	--fallback-ac: #000e0c;
-	--fallback-n: theme(colors.slate.600);
-	--fallback-nc: #a6adbb;
+	--fallback-ac: #bacef2;
+	--fallback-n: theme(colors.slate.300);
+	--fallback-nc: theme(colors.slate.900);
 	--fallback-b1: theme(colors.slate.700);
 	--fallback-b2: theme(colors.slate.800);
 	--fallback-b3: theme(colors.slate.900);
 	--fallback-bc: theme(colors.slate.300);
 	--fallback-in: theme(colors.info.600);
-	--fallback-inc: #000000;
+	--fallback-inc: #bacef2;
 	--fallback-su: theme(colors.success.600);
-	--fallback-suc: #000000;
+	--fallback-suc: #022c17;
 	--fallback-wa: theme(colors.warning.600);
-	--fallback-wac: #000000;
+	--fallback-wac: #3c2906;
 	--fallback-er: theme(colors.error.600);
-	--fallback-erc: #000000;
+	--fallback-erc: #fbe5e5;
 	--pattern-bg: svg-load(subtle-bg-dark.svg);
 	.bg-base-200 {
-		--shadow-color: 215deg 42% 6%;
+		--shadow-color: 218deg 49% 7%;
+	}
+	.pattern-bg {
+		--shadow-color: 222deg 54% 6%;
 	}
 	.prose {
 		--tw-prose-body: theme(colors.slate.200);
@@ -123,6 +127,33 @@
 		--tw-prose-pre-bg: theme(colors.slate.950);
 		--tw-prose-th-borders: theme(colors.slate.600);
 		--tw-prose-td-borders: theme(colors.slate.700);
+	}
+}
+
+.bg-primary {
+	background-color: var(--fallback-p);
+	color: var(--fallback-pc);
+}
+.bg-secondary {
+	color: var(--fallback-sc);
+}
+.bg-accent {
+	color: var(--fallback-ac);
+}
+.bg-warning {
+	color: var(--fallback-wac);
+}
+.bg-success {
+	color: var(--fallback-suc);
+}
+
+.modal-box {
+	position: relative;
+	.calendly {
+		position: relative;
+		iframe {
+			position: absolute;
+		}
 	}
 }
 

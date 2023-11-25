@@ -30,6 +30,7 @@ export default function Heading(props: ShellProps): JSX.Element {
 		'dark:bg-slate-950',
 		'dark:text-slate-300',
 		'before:content-none',
+		'shadow',
 		props.className
 	);
 

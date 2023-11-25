@@ -1,14 +1,16 @@
 'use client';
 import React, { useContext } from 'react';
-import styles from './home.module.css';
+
+import { Markdown } from '@/components/contentful/markdown';
 import Section from '@/components/section/section';
 import ThemeSwap from '@/components/theme-swap/theme-swap';
+import { HeaderContext } from '@/lib/context/header';
+import { TypeAuthorFields, TypeHomePageFields } from '@/lib/types';
+
+import styles from './home.module.css';
 
 const HeroLight = require('@/img/hero-light.svg?url');
 const HeroDark = require('@/img/hero-dark.svg?url');
-import { TypeAuthorFields, TypeHomePageFields } from '@/lib/types';
-import { HeaderContext } from '@/lib/context/header';
-import { Markdown } from '@/components/contentful/markdown';
 export default function Hero({
 	me,
 	home,
