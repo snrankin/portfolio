@@ -92,7 +92,9 @@ export default function Content({
 								<LogoFull className="w-full block" />
 							</Link>
 						</h1>
-						{!!summary && <p className="m-0">{summary}</p>}
+						{!!summary && (
+							<p className="m-0 tracking-[-0.009em]">{summary}</p>
+						)}
 					</div>
 					<div className="border-b md:col-span-4 print:col-span-4 md:pl-[0.23in] print:pl-[0.23in] py-[0.25in] md:pt-0">
 						<div className="flex flex-col gap-3">
