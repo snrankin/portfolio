@@ -41,3 +41,15 @@
 	mask-image: svg-load('frame-mask.svg');
 	/* mask-size: cover; */
 }
+
+.ctaBg {
+	background-image: svg-load(cta-bg.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+}
+@media (min-width: 576px) {
+	.ctaBg {
+		background-position: 80% top;
+	}
+}

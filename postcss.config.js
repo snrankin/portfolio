@@ -8,6 +8,7 @@ module.exports = {
 		tailwindcss: {},
 		'postcss-viewport-height-correction': {},
 		'postcss-fixes': {},
+		'postcss-each': {},
 		'postcss-momentum-scrolling': {},
 		'postcss-easings': {},
 		'postcss-easing-gradients': {},
@@ -15,11 +16,11 @@ module.exports = {
 			paths: [path.join(process.cwd(), 'src', 'img')],
 		},
 		autoprefixer: {},
-		'postcss-combine-duplicated-selectors': {},
-		'postcss-sort-media-queries': {
-			configuration: {
-				unitlessMqAlwaysFirst: true,
-			},
-		},
+		// 'postcss-combine-duplicated-selectors': {},
+		// 'postcss-sort-media-queries': {
+		// 	configuration: {
+		// 		unitlessMqAlwaysFirst: true,
+		// 	},
+		// },
 	},
 };

@@ -1,19 +1,20 @@
-import React from 'react';
-import Image from 'next/image';
-import { displayDate } from '@/lib/utils';
 import { trim } from 'lodash';
-import Icon from '../icons/icon-item';
+import Image from 'next/image';
+
 import { Markdown } from '@/components/contentful/markdown';
-import { TypeJobFields } from '@/lib/types';
-import Date from '../global/date';
 import { NDASH, NOBREAK } from '@/lib/symbols';
+import { TypeJobFields } from '@/lib/types';
+
+import Date from '../global/date';
+import Icon from '../icons/icon-item';
+
 export function companyLink(name: string, url: string) {
 	let favicon = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=32`;
 
 	return (
 		<a
 			href={url}
-			className="italic link leading-none flex items-center font-sans gap-2 no-underline link-primary mt-4"
+			className="italic leading-none flex items-center font-sans no-underline gap-2 mt-4"
 			target="_blank"
 		>
 			<Image

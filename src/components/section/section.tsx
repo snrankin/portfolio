@@ -62,7 +62,7 @@ export default function Section(props: SectionProps) {
 	);
 
 	return (
-		<Waypoint onEnter={enterHandler}>
+		<Waypoint topOffset="-90%" onEnter={enterHandler}>
 			<section {...sectionProps}>
 				<div className="section-inner">
 					<div className={containerClasses}>

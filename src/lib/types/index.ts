@@ -11,5 +11,6 @@ export * from './TypeSite';
 export * from './TypeSkill';
 export * from './TypeSkillsSection';
 export * from './TypeSocialProfile';
+export * from './TypeCtaSection';
 
 export * from './ContentTypes';

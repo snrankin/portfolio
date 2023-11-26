@@ -57,15 +57,15 @@ export default function Hero({
 							Hi there, my name is
 						</small>{' '}
 						{!!me?.firstName && !!me?.lastName && (
-							<span className="text-primary-500 whitespace-nowrap">
+							<span className="text-primary whitespace-nowrap">
 								{me.firstName} {me.lastName}
 							</span>
 						)}
-						<span className="text-secondary-500">.</span>
+						<span className="text-secondary">.</span>
 					</h1>
 				</div>
 				<div
-					className={`prose lg:prose-xl dark:prose-invert text-center sm:text-left max-w-none relative z-10 row-start-2 col-start-1 col-end-2  xl:pb-section sm:self-start md:pr-[50%] ${styles.heroText}`}
+					className={`prose lg:prose-xl text-center sm:text-left max-w-none relative z-10 row-start-2 col-start-1 col-end-2  xl:pb-section sm:self-start md:pr-[50%] ${styles.heroText}`}
 				>
 					{!!home?.heroText && <Markdown content={home.heroText} />}
 				</div>

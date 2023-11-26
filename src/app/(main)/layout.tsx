@@ -42,7 +42,7 @@ export default async function Layout({
 							className:
 								'tooltip-top lg:tooltip-left block !lg:h-auto p-3 !p-3 lg:text-xl flex items-center justify-center',
 							titleDisplay: 'popover',
-							iconClasses: 'stroke-2 text-slate-900',
+							iconClasses: ' text-slate-900',
 						}}
 					/>
 				</HeaderProvider>

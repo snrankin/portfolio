@@ -17,6 +17,7 @@
 @tailwind utilities;
 
 :root {
+	--p: 70.38% 0.123 182.5;
 	--container-width: 90vw;
 	--page-gutter: calc((100vw - var(--container-width)) * 0.5);
 	--section-spacing: clamp(3rem, 1.6059rem + 7.4349vw, 8rem);
@@ -25,11 +26,11 @@
 	--logo-color-1: theme(colors.primary.500);
 	--logo-color-2: theme(colors.slate.700);
 	--fallback-p: theme(colors.primary.500);
-	--fallback-pc: #031c19;
+	--fallback-pc: theme(colors.primaryContent.light);
 	--fallback-s: theme(colors.secondary.500);
-	--fallback-sc: #240f00;
+	--fallback-sc: theme(colors.secondaryContent.light);
 	--fallback-a: theme(colors.accent.500);
-	--fallback-ac: #e1eaf9;
+	--fallback-ac: theme(colors.accentContent.light);
 	--fallback-n: theme(colors.slate.800);
 	--fallback-nc: theme(colors.slate.300);
 	--fallback-b1: theme(colors.slate.100);
@@ -37,20 +38,51 @@
 	--fallback-b3: theme(colors.slate.300);
 	--fallback-bc: theme(colors.slate.700);
 	--fallback-in: theme(colors.info.500);
-	--fallback-inc: #e1eaf9;
+	--fallback-inc: theme(colors.infoContent.light);
 	--fallback-su: theme(colors.success.500);
-	--fallback-suc: #032b16;
+	--fallback-suc: theme(colors.successContent.light);
 	--fallback-wa: theme(colors.warning.500);
-	--fallback-wac: #422b00;
+	--fallback-wac: theme(colors.warningContent.light);
 	--fallback-er: theme(colors.error.500);
-	--fallback-erc: #260303;
+	--fallback-erc: theme(colors.errorContent.light);
 	--pattern-bg: svg-load(subtle-bg-light.svg);
-
+	--menu-active-bg: var(--fallback-p);
+	--menu-active-color: var(--fallback-pc);
 	@media screen(lg) {
 		--container-width: 85vw;
 	}
 	@media screen(xl) {
 		--container-width: 1170px;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	[data-theme='light'] {
+		--shadow-color: 220deg 5% 52%;
+		--shadow-color: 210deg 12% 60%;
+		--logo-color-1: theme(colors.primary.500);
+		--logo-color-2: theme(colors.slate.700);
+		--fallback-p: theme(colors.primary.500);
+		--fallback-pc: theme(colors.primaryContent.light);
+		--fallback-s: theme(colors.secondary.500);
+		--fallback-sc: theme(colors.secondaryContent.light);
+		--fallback-a: theme(colors.accent.500);
+		--fallback-ac: theme(colors.accentContent.light);
+		--fallback-n: theme(colors.slate.800);
+		--fallback-nc: theme(colors.slate.300);
+		--fallback-b1: theme(colors.slate.100);
+		--fallback-b2: theme(colors.slate.200);
+		--fallback-b3: theme(colors.slate.300);
+		--fallback-bc: theme(colors.slate.700);
+		--fallback-in: theme(colors.info.500);
+		--fallback-inc: theme(colors.infoContent.light);
+		--fallback-su: theme(colors.success.500);
+		--fallback-suc: theme(colors.successContent.light);
+		--fallback-wa: theme(colors.warning.500);
+		--fallback-wac: theme(colors.warningContent.light);
+		--fallback-er: theme(colors.error.500);
+		--fallback-erc: theme(colors.errorContent.light);
+		--pattern-bg: svg-load(subtle-bg-light.svg);
 	}
 }
 
@@ -64,7 +96,7 @@ html .prose {
 	--tw-prose-body: theme(colors.slate.700);
 	--tw-prose-headings: theme(colors.slate.900);
 	--tw-prose-lead: theme(colors.slate.800);
-	--tw-prose-links: theme(colors.primary.500);
+	--tw-prose-links: theme(colors.primary.600);
 	--tw-prose-bold: theme(colors.primary.500);
 	--tw-prose-counters: theme(colors.primary.600);
 	--tw-prose-bullets: theme(colors.secondary.500);
@@ -84,11 +116,11 @@ html .prose {
 	--logo-color-1: theme(colors.primary.600);
 	--logo-color-2: theme(colors.slate.300);
 	--fallback-p: theme(colors.primary.600);
-	--fallback-pc: #031c19;
+	--fallback-pc: theme(colors.primaryContent.dark);
 	--fallback-s: theme(colors.secondary.600);
-	--fallback-sc: #200f03;
+	--fallback-sc: theme(colors.secondaryContent.dark);
 	--fallback-a: theme(colors.accent.600);
-	--fallback-ac: #bacef2;
+	--fallback-ac: theme(colors.accentContent.dark);
 	--fallback-n: theme(colors.slate.300);
 	--fallback-nc: theme(colors.slate.900);
 	--fallback-b1: theme(colors.slate.700);
@@ -96,13 +128,13 @@ html .prose {
 	--fallback-b3: theme(colors.slate.900);
 	--fallback-bc: theme(colors.slate.300);
 	--fallback-in: theme(colors.info.600);
-	--fallback-inc: #bacef2;
+	--fallback-inc: theme(colors.infoContent.dark);
 	--fallback-su: theme(colors.success.600);
-	--fallback-suc: #022c17;
+	--fallback-suc: theme(colors.successContent.dark);
 	--fallback-wa: theme(colors.warning.600);
-	--fallback-wac: #3c2906;
+	--fallback-wac: theme(colors.warningContent.dark);
 	--fallback-er: theme(colors.error.600);
-	--fallback-erc: #fbe5e5;
+	--fallback-erc: theme(colors.errorContent.dark);
 	--pattern-bg: svg-load(subtle-bg-dark.svg);
 	.bg-base-200 {
 		--shadow-color: 218deg 49% 7%;
@@ -130,21 +162,28 @@ html .prose {
 	}
 }
 
-.bg-primary {
-	background-color: var(--fallback-p);
-	color: var(--fallback-pc);
+@each $util, $prop in (text, fill, stroke, border, divide),
+	(color, fill, stroke, border-color, border-color)
+{
+	@each $color,
+		$var in (primary, secondary, accent, info, warning, success, error),
+		(p, s, a, in, wa, su, er)
+	{
+		.$(util)-$(color) {
+			$(prop): var(--fallback-$(var));
+		}
+	}
 }
-.bg-secondary {
-	color: var(--fallback-sc);
-}
-.bg-accent {
-	color: var(--fallback-ac);
-}
-.bg-warning {
-	color: var(--fallback-wac);
-}
-.bg-success {
-	color: var(--fallback-suc);
+
+@each $color,
+	$var in (primary, secondary, accent, info, warning, success, error),
+	(p, s, a, in, wa, su, er)
+{
+	.bg-$(color) {
+		background-color: var(--fallback-$(var));
+		/* prettier-ignore */
+		color: var(--fallback-$(var)c);
+	}
 }
 
 .modal-box {
@@ -254,8 +293,8 @@ html .prose {
 
 	.menu {
 		.active {
-			background-color: theme(colors.primary.500);
-			color: theme(colors.slate.950);
+			background-color: var(--menu-active-bg);
+			color: var(--menu-active-color);
 		}
 	}
 	:where(
@@ -269,29 +308,8 @@ html .prose {
 				> details
 				> summary:not(.menu-title)
 		):not(.active):hover {
-		background-color: theme(colors.primary.500);
-		color: theme(colors.slate.950);
-	}
-	[data-theme='dark'] {
-		.menu {
-			.active {
-				background-color: theme(colors.primary.600);
-			}
-		}
-		:where(
-				.menu
-					li:not(.menu-title):not(.disabled)
-					> *:not(ul):not(details):not(.menu-title)
-			):not(.active):hover,
-		:where(
-				.menu
-					li:not(.menu-title):not(.disabled)
-					> details
-					> summary:not(.menu-title)
-			):not(.active):hover {
-			background-color: theme(colors.primary.600);
-			color: theme(colors.slate.950);
-		}
+		background-color: var(--menu-active-bg);
+		color: var(--menu-active-color);
 	}
 
 	@media (max-width: 767.98px) {
@@ -315,6 +333,43 @@ html .prose {
 		opacity: 0;
 		visibility: hidden;
 	}
+}
+
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> *:not(ul):not(details):not(.menu-title)
+	):not(summary):not(.active).focus,
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> *:not(ul):not(details):not(.menu-title)
+	):not(summary):not(.active):focus,
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> *:not(ul):not(details):not(.menu-title)
+	):is(summary):not(.active):focus-visible,
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> details
+			> summary:not(.menu-title)
+	):not(summary):not(.active).focus,
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> details
+			> summary:not(.menu-title)
+	):not(summary):not(.active):focus,
+:where(
+		.menu
+			li:not(.menu-title):not(.disabled)
+			> details
+			> summary:not(.menu-title)
+	):is(summary):not(.active):focus-visible {
+	background-color: var(--menu-active-bg);
+	color: var(--menu-active-color);
 }
 .feather {
 	width: 1em;

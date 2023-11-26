@@ -1,8 +1,9 @@
 'use client';
-import React from 'react';
+
 import Section from '@/components/section/section';
 import SkillsList from '@/components/skills/skills';
 import { TypeSkillsSectionFields } from '@/lib/types';
+
 export default function Skills(props?: TypeSkillsSectionFields): JSX.Element {
 	let skills = props?.skillsCollection?.items;
 
@@ -22,8 +23,8 @@ export default function Skills(props?: TypeSkillsSectionFields): JSX.Element {
 				langClass="shadow lg:col-span-4 bg-primary"
 				cmsClass="shadow lg:col-span-4 bg-accent"
 				frameClass="shadow lg:col-span-4 bg-secondary"
-				toolClass="shadow lg:col-span-6 bg-warning"
-				softClass="shadow md:col-span-2 lg:col-span-6 bg-success"
+				toolClass="shadow lg:col-span-6 bg-success"
+				softClass="shadow md:col-span-2 lg:col-span-6 bg-warning"
 				groupProps={{
 					compact: true,
 					showGroupTitle: true,

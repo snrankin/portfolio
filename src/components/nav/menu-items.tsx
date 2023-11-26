@@ -1,23 +1,16 @@
 'use client';
-import React, {
-	useContext,
-	useState,
-	useEffect,
-	useRef,
-	useLayoutEffect,
-	HTMLProps,
-} from 'react';
-import Dropdown from './dropdown';
-import { NavLink } from '@/lib/types';
 import classNames from 'classnames';
 import Link from 'next/link';
-import Icon from '../icons/icon-item';
-import { SectionContext } from '@/lib/context/section';
-import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
-import { useCollapse } from 'react-collapsed';
+import { usePathname } from 'next/navigation';
+import React, { useContext, useRef, useState } from 'react';
 import resolveConfig from 'tailwindcss/resolveConfig';
+
+import { SectionContext } from '@/lib/context/section';
+import { NavLink } from '@/lib/types';
+
 import tailwindConfig from '../../../tailwind.config';
-import { get } from 'lodash';
+import Icon from '../icons/icon-item';
+import Dropdown from './dropdown';
 
 const fullConfig = resolveConfig(tailwindConfig);
 const verge = require('verge');
@@ -37,11 +30,11 @@ export default function MenuItems(props: MenuItem) {
 
 	let itemClasses = classNames(
 		`level-${depth}`,
-		'dropdown',
 
 		{
 			active: sectionCtx.section == url || pathname.includes(url),
-			'dropdown-open': isExpanded,
+			dropdown: !!props.submenu,
+			'dropdown-open': isExpanded && !!props.submenu,
 		}
 	);
 	let linkClasses = classNames('whitespace-nowrap', 'md:leading-[32px]', {

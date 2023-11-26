@@ -2,12 +2,10 @@ import { default as colors } from 'tailwindcss/colors';
 
 import type { Config } from 'tailwindcss';
 const { getContrastingHex } = require('color-contrast-picker');
-const { contrastColor } = require('contrast-color');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const shadesOf = require('tailwind-shades');
 
 export const BLUE = {
-	DEFAULT: '#255cc0',
 	'50': '#DAE3F4',
 	'100': '#B6C8EA',
 	'200': '#92ADDF',
@@ -20,48 +18,10 @@ export const BLUE = {
 	'900': '#0C1E3F',
 	'950': '#060F1F',
 };
-export const YELLOW = {
-	DEFAULT: '#FFAF1C',
-	'50': '#FFF1D9',
-	'100': '#FFE4B3',
-	'200': '#FFD78D',
-	'300': '#FFC967',
-	'400': '#FFBC41',
-	'500': '#FFAF1C',
-	'600': '#D49117',
-	'700': '#A97412',
-	'800': '#7F570E',
-	'900': '#543A09',
-	'950': '#2A1D04',
-};
-export const ORANGE = {
-	DEFAULT: '#FF7C1C',
-	'50': '#FFE9D9',
-	'100': '#FFD3B3',
-	'200': '#FFBD8D',
-	'300': '#FFA767',
-	'400': '#FF9141',
-	'500': '#FF7C1C',
-	'600': '#D46717',
-	'700': '#A95212',
-	'800': '#7F3E0E',
-	'900': '#542909',
-	'950': '#2A1404',
-};
-export const GREEN = {
-	DEFAULT: '#0CCE6B',
-	'50': '#D6F6E6',
-	'100': '#AEEECD',
-	'200': '#85E6B5',
-	'300': '#5DDE9C',
-	'400': '#34D683',
-	'500': '#0CCE6B',
-	'600': '#09AB59',
-	'700': '#078947',
-	'800': '#066735',
-	'900': '#034423',
-	'950': '#012211',
-};
+export const YELLOW = shadesOf('#FFC800');
+export const ORANGE = shadesOf('#FF8427');
+export const GREEN = shadesOf('#98CE00');
+export const RED = shadesOf('#FF3562');
 export const TEAL = {
 	'50': '#D7F3F0',
 	'100': '#B0E7E1',
@@ -92,18 +52,18 @@ export const LIGHT_THEME = {
 	info: BLUE[500],
 	'info-content': getContrastingHex(BLUE[500], 5),
 	success: GREEN[500],
-	'success-content': getContrastingHex(GREEN[500], 7),
+	'success-content': getContrastingHex(GREEN[500], 8),
 	warning: YELLOW[500],
-	'warning-content': getContrastingHex(YELLOW[500], 7),
-	error: colors.red[500],
-	'error-content': getContrastingHex(colors.red[500], 5),
+	'warning-content': getContrastingHex(YELLOW[500], 8),
+	error: RED[500],
+	'error-content': getContrastingHex(RED[500], 5),
 };
 
 export const DARK_THEME = {
 	primary: TEAL[600],
 	'primary-content': getContrastingHex(TEAL[600], 5),
-	secondary: ORANGE[600],
-	'secondary-content': getContrastingHex(ORANGE[600], 5),
+	secondary: ORANGE[500],
+	'secondary-content': getContrastingHex(ORANGE[500], 7),
 	accent: BLUE[600],
 	'accent-content': getContrastingHex(BLUE[600], 5),
 	neutral: colors.slate[300],
@@ -118,14 +78,14 @@ export const DARK_THEME = {
 	'success-content': getContrastingHex(GREEN[600], 5),
 	warning: YELLOW[600],
 	'warning-content': getContrastingHex(YELLOW[600], 5),
-	error: colors.red[600],
-	'error-content': getContrastingHex(colors.red[600], 4),
+	error: RED[600],
+	'error-content': getContrastingHex(RED[600], 4),
 };
 
 const config: Config = {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx,svg}',
-		'./node_modules/tw-elements-react/dist/js/**/*.js',
+		// './node_modules/tw-elements-react/dist/js/**/*.js',
 	],
 
 	theme: {
@@ -171,13 +131,40 @@ const config: Config = {
 				black: colors.black,
 				white: colors.white,
 				primary: TEAL,
+				primaryContent: {
+					light: LIGHT_THEME['primary-content'],
+					dark: DARK_THEME['primary-content'],
+				},
 				secondary: ORANGE,
+				secondaryContent: {
+					light: LIGHT_THEME['secondary-content'],
+					dark: DARK_THEME['secondary-content'],
+				},
 				accent: BLUE,
-				tertiary: YELLOW,
+				accentContent: {
+					light: LIGHT_THEME['accent-content'],
+					dark: DARK_THEME['accent-content'],
+				},
 				info: BLUE,
+				infoContent: {
+					light: LIGHT_THEME['info-content'],
+					dark: DARK_THEME['info-content'],
+				},
 				success: GREEN,
+				successContent: {
+					light: LIGHT_THEME['success-content'],
+					dark: DARK_THEME['success-content'],
+				},
 				warning: YELLOW,
+				warningContent: {
+					light: LIGHT_THEME['warning-content'],
+					dark: DARK_THEME['warning-content'],
+				},
 				error: colors.red,
+				errorContent: {
+					light: LIGHT_THEME['error-content'],
+					dark: DARK_THEME['error-content'],
+				},
 			},
 			fontFamily: {
 				sans: ['var(--font-dm-sans)', ...defaultTheme.fontFamily.sans],
@@ -351,20 +338,20 @@ const config: Config = {
 		styled: true,
 		base: true,
 		utils: true,
-		logs: false,
+		logs: true,
 		rtl: false,
 		prefix: '',
 		darkTheme: 'dark',
 		themes: [
 			{
 				light: {
-					...require('daisyui/src/theming/themes')['light'],
+					// ...require('daisyui/src/theming/themes')['light'],
 					...LIGHT_THEME,
 				},
 			},
 			{
 				dark: {
-					...require('daisyui/src/theming/themes')['dark'],
+					// ...require('daisyui/src/theming/themes')['dark'],
 					...DARK_THEME,
 				},
 			},

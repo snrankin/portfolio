@@ -1,9 +1,9 @@
 'use client';
 import React, { useContext } from 'react';
 
-import Icon from '../icons/icon-item';
-
 import { ThemeContext } from '@/lib/context/theme';
+
+import Icon from '../icons/icon-item';
 
 export default function ThemeButton() {
 	const themeCtx: {

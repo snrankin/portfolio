@@ -61,6 +61,7 @@
         "postcss": "^8.4.31",
         "postcss-combine-duplicated-selectors": "^10.0.3",
         "postcss-current-selector": "^0.0.3",
+        "postcss-each": "^1.1.0",
         "postcss-easing-gradients": "^3.0.1",
         "postcss-easings": "^4.0.0",
         "postcss-fixes": "^3.0.0",

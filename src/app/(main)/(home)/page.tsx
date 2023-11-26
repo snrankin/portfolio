@@ -1,23 +1,26 @@
-import { draftMode } from 'next/headers';
-import Test from './test';
-import Hero from './hero';
-import About from './about';
-import Skills from './skills';
-import Projects from './projects';
-import WorkHistory from './work-history';
-import { getItem } from '@/lib/api';
-import type { Metadata } from 'next';
 import { set } from 'lodash';
+import { draftMode } from 'next/headers';
+
+import { getItem } from '@/lib/api';
 import {
-	TypeAuthorFields,
-	TypeHomePageFields,
 	TypeAboutSectionFields,
+	TypeAuthorFields,
+	TypeCtaSectionFields,
+	TypeHomePageFields,
 	TypeJobsSectionFields,
 	TypeProjectsSectionFields,
-	TypeSkillsSectionFields,
 	TypeSiteFields,
+	TypeSkillsSectionFields,
 } from '@/lib/types';
 
+import About from './about';
+import Cta from './cta';
+import Hero from './hero';
+import Projects from './projects';
+import Skills from './skills';
+import WorkHistory from './work-history';
+
+import type { Metadata } from 'next';
 export async function generateMetadata({
 	params,
 }: {
@@ -96,14 +99,20 @@ export default async function Page() {
 		'work-history'
 	);
 
+	const cta = await getItem<TypeCtaSectionFields>(
+		isEnabled,
+		'cta',
+		'home-cta'
+	);
+
 	return (
 		<>
 			<Hero me={me} home={page} />
 			{!!about && <About {...about} />}
-
 			{!!skills && <Skills {...skills} />}
 			{!!projects && <Projects {...projects} />}
 			{!!jobs && <WorkHistory {...jobs} />}
+			{!!cta && <Cta {...cta} />}
 		</>
 	);
 }
