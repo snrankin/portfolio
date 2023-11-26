@@ -1,13 +1,15 @@
 'use client';
 import Link from 'next/link';
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import SiteLinks from '@/components/nav/site-links';
-import NavBar from '@/components/nav/navbar';
-import styles from './global.module.css';
-import ThemeButton from '@/components/theme-swap/theme-button';
-import Logo from './logo';
-import { NavLink } from '@/lib/types';
+import React, { useRef, useState } from 'react';
 import { useCollapse } from 'react-collapsed';
+
+import NavBar from '@/components/nav/navbar';
+import ThemeButton from '@/components/theme-swap/theme-button';
+import { NavLink } from '@/lib/types';
+
+import styles from './global.module.css';
+import Logo from './logo';
+
 interface HeaderProps {
 	links?: NavLink[];
 }
@@ -50,7 +52,7 @@ export default function Header(props: HeaderProps) {
 				<ThemeButton />
 				<button
 					{...getToggleProps({ onClick: toggleDropdown })}
-					className="md:hidden flex flex-col justify-center border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+					className="md:hidden flex flex-col justify-center border-0 bg-transparent px-2 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
 				>
 					<span
 						className={`${styles.hamburger} ${styles.hamburgerSpin}`}
