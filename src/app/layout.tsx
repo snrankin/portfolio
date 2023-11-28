@@ -70,7 +70,7 @@ export async function generateMetadata() {
 		},
 
 		title: {
-			default: site?.seoTitle,
+			default: `${site?.seoTitle} | ${site?.title}`,
 			template: `%s | ${site?.title}`,
 		},
 		icons: {

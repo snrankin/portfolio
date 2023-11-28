@@ -1,4 +1,4 @@
-import { set } from 'lodash';
+import { filter, set } from 'lodash';
 import { draftMode } from 'next/headers';
 
 import { getItem } from '@/lib/api';
@@ -65,6 +65,29 @@ export async function generateMetadata({
 export default async function Page() {
 	const { isEnabled } = draftMode();
 
+	let site = await getItem<TypeSiteFields>(isEnabled, 'site', 'sam-rankin');
+
+	let profiles = !!site?.author?.socialCollection?.items
+		? filter(site?.author?.socialCollection?.items, (p) => {
+				return !!p.url.match(/github|linkedin/i);
+		  }).map((p) => p.url)
+		: [];
+
+	let url = site?.url ?? process.env.VERCEL_CUSTOM_DOMAIN;
+
+	const schema = {
+		'@context': 'https://schema.org/',
+		'@type': 'Person',
+		givenName: site?.author?.firstName,
+		familyName: site?.author?.lastName,
+		url: url,
+		image: site?.author?.picture?.url,
+		sameAs: [...profiles, url],
+		jobTitle: site?.author?.label,
+		email: site?.author?.email,
+		telephone: site?.author?.phone,
+	};
+
 	const page = await getItem<TypeHomePageFields>(
 		isEnabled,
 		'homePage',
@@ -107,6 +130,10 @@ export default async function Page() {
 
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+			/>
 			<Hero me={me} home={page} />
 			{!!about && <About {...about} />}
 			{!!skills && <Skills {...skills} />}

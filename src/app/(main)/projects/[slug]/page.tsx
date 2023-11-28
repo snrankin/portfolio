@@ -1,17 +1,19 @@
+import { set } from 'lodash';
 import { draftMode } from 'next/headers';
-import type { Metadata } from 'next';
-import Content from './content';
-import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
 
+import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
 import {
-	TypePostFields,
-	POST_LINKS_GRAPHQL_FIELDS,
 	POST_CARD_GRAPHQL_FIELDS,
+	POST_LINKS_GRAPHQL_FIELDS,
 	POST_SEO_GRAPHQL_FIELDS,
 	TypePostCardFields,
+	TypePostFields,
 	TypeSiteFields,
 } from '@/lib/types';
-import { set } from 'lodash';
+
+import Content from './content';
+
+import type { Metadata } from 'next';
 export async function generateMetadata({
 	params,
 }: {
@@ -36,7 +38,7 @@ export async function generateMetadata({
 		title: `${title} | Projects`,
 		description,
 		openGraph: {
-			title: `${title} | Projects`,
+			title: `${title} | Projects | ${site?.title}`,
 			description,
 			url: url,
 			siteName: site?.seoTitle ?? process.env.VERCEL_SEO_SITE_NAME,
