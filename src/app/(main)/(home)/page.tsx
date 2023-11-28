@@ -42,7 +42,7 @@ export async function generateMetadata({
 		title: `${title}`,
 		description,
 		openGraph: {
-			title: `${title}`,
+			title: `${title} | ${site?.title}`,
 			description,
 			url: url,
 			siteName: site?.seoTitle ?? process.env.VERCEL_SEO_SITE_NAME,
