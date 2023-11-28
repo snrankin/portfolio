@@ -1,6 +1,5 @@
 'use client';
 
-import { omit } from 'lodash';
 import Image, { ImageProps } from 'next/image';
 
 export interface ContentfulImage extends ImageProps {

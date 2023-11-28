@@ -10,7 +10,8 @@
         "sprite:ios": "svg-symbol-sprite -i ./src/img/icons/ios -o ./public/ios-sprite.svg -c false -p ios-",
         "sprite:web": "svg-symbol-sprite -i ./src/img/icons/web -o ./public/web-sprite.svg -c false -p web-",
         "start": "next start",
-        "postbuild": "next-sitemap"
+        "postbuild": "next-sitemap",
+        "clear-cache": "rm -R .next"
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^15.19.0",
@@ -48,6 +49,7 @@
         "contrast-color": "^1.0.1",
         "cssnano": "6.0.1",
         "cssnano-preset-lite": "^3.0.0",
+        "devicon": "^2.15.1",
         "eslint": "^8.42.0",
         "eslint-config-next": "14.0.3",
         "figlet": "^1.7.0",
@@ -59,6 +61,7 @@
         "ololog": "^1.1.175",
         "pdfmake": "^0.2.8",
         "postcss": "^8.4.31",
+        "postcss-assets-rebase": "^0.4.0",
         "postcss-combine-duplicated-selectors": "^10.0.3",
         "postcss-current-selector": "^0.0.3",
         "postcss-each": "^1.1.0",

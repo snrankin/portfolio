@@ -15,6 +15,9 @@ const nextConfig = {
 			},
 		],
 	},
+	experimental: {
+		webVitalsAttribution: ['CLS', 'LCP'],
+	},
 	webpack: (config) => {
 		// Grab the existing rule that handles SVG imports
 		const fileLoaderRule = config.module.rules.find((rule) =>
@@ -56,6 +59,15 @@ const nextConfig = {
 				issuer: /\.css$/,
 				loader: 'svg-inline-loader',
 			}
+			// {
+			// 	test: /\.(eot|ttf|woff2?)$/i,
+			// 	issuer: /\.css$/,
+			// 	type: 'asset/resource',
+			// 	loader: 'file-loader',
+			// 	options: {
+			// 		outputPath: 'public',
+			// 	},
+			// }
 		);
 
 		// Modify the file loader rule to ignore *.svg, since we have it handled now.

@@ -35,10 +35,10 @@ export default function Hero({
 								<ThemeSwap.Img
 									dark={HeroDark}
 									light={HeroLight}
-									alt="Computer desk mocukup"
+									alt="Computer desk mockup"
 									className="w-full"
 									sizes="100vw"
-									loading="lazy"
+									priority
 									style={{
 										width: '100%',
 										height: 'auto',

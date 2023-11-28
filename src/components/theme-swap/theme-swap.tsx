@@ -1,8 +1,10 @@
 'use client';
-import React, { useContext } from 'react';
-import { ThemeContext } from '@/lib/context/theme';
-import Image, { ImageProps } from 'next/image';
+import { omit } from 'lodash';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Image, { ImageProps } from 'next/image';
+import React, { useContext } from 'react';
+
+import { ThemeContext } from '@/lib/context/theme';
 
 function Light({ children }: { children?: React.ReactNode }) {
 	const themeCtx: {
@@ -29,14 +31,16 @@ function Img(props: ThemeSwapImageProps) {
 
 	let content;
 
+	let atts = omit(props, ['dark', 'light']);
+
 	if (themeCtx.theme === 'dark' && !!props.dark) {
 		// eslint-disable-next-line
-		content = <Image src={props.dark} {...props} />;
+		content = <Image src={props.dark} {...atts} />;
 	}
 
 	if (themeCtx.theme === 'light' && !!props.light) {
 		// eslint-disable-next-line
-		content = <Image src={props.light} {...props} />;
+		content = <Image src={props.light} {...atts} />;
 	}
 	return <>{content}</>;
 }

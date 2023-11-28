@@ -1,7 +1,8 @@
-import Grid from '@/components/device/grid';
 import ContentfulImage from '@/components/contentful/contentful-image';
-import { simplifyUrl } from '@/lib/utils';
-import { TypePostFields, deviceImageHeight } from '@/lib/types';
+import Grid from '@/components/device/grid';
+import { TypePostFields } from '@/lib/types';
+import { deviceImageHeight, simplifyUrl } from '@/lib/utils';
+
 export default function ProjectImage(props?: TypePostFields) {
 	let useGrid =
 		!!props?.desktopPreview ||
@@ -34,15 +35,10 @@ export default function ProjectImage(props?: TypePostFields) {
 						>
 							<ContentfulImage
 								className="w-full"
-								sizes="100vw"
-								loading="lazy"
-								style={{
-									width: '100%',
-									height: 'auto',
-								}}
+								priority
+								width={600}
+								height={deviceImageHeight(600, 'desktop')}
 								alt={`${props.desktopPreview.description}`}
-								width={props.desktopPreview?.width}
-								height={props.desktopPreview?.height}
 								src={props.desktopPreview.url}
 							/>
 						</Grid.Desktop>
@@ -51,15 +47,10 @@ export default function ProjectImage(props?: TypePostFields) {
 						<Grid.Laptop url={simplifyUrl(props.website)}>
 							<ContentfulImage
 								className="w-full"
-								sizes="100vw"
-								loading="lazy"
-								style={{
-									width: '100%',
-									height: 'auto',
-								}}
+								priority
+								width={300}
+								height={deviceImageHeight(300, 'laptop')}
 								alt={`${props.laptopPreview.description}`}
-								width={props.laptopPreview?.width}
-								height={props.laptopPreview?.height}
 								src={props.laptopPreview.url}
 							/>
 						</Grid.Laptop>
@@ -68,15 +59,10 @@ export default function ProjectImage(props?: TypePostFields) {
 						<Grid.Tablet url={simplifyUrl(props.website)}>
 							<ContentfulImage
 								className="w-full"
-								sizes="100vw"
-								loading="lazy"
-								style={{
-									width: '100%',
-									height: 'auto',
-								}}
+								priority
+								width={150}
+								height={deviceImageHeight(150, 'tablet')}
 								alt={`${props.tabletPreview.description}`}
-								width={props.tabletPreview?.width}
-								height={props.tabletPreview?.height}
 								src={props.tabletPreview.url}
 							/>
 						</Grid.Tablet>
@@ -85,15 +71,10 @@ export default function ProjectImage(props?: TypePostFields) {
 						<Grid.Mobile url={simplifyUrl(props.website)}>
 							<ContentfulImage
 								className="w-full"
-								sizes="100vw"
-								loading="lazy"
-								style={{
-									width: '100%',
-									height: 'auto',
-								}}
+								priority
+								width={80}
+								height={deviceImageHeight(80, 'mobile')}
 								alt={`${props.mobilePreview.description}`}
-								width={props.mobilePreview?.width}
-								height={props.mobilePreview?.height}
 								src={props.mobilePreview.url}
 							/>
 						</Grid.Mobile>
@@ -106,7 +87,7 @@ export default function ProjectImage(props?: TypePostFields) {
 						alt={`Mobile view of ${props.shortTitle}`}
 						className="w-full"
 						sizes="100vw"
-						loading="lazy"
+						priority
 						style={{
 							width: '100%',
 							height: 'auto',

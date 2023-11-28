@@ -1,10 +1,8 @@
 import type { Entry, EntryFields, EntrySkeletonType } from 'contentful';
 import { Content } from '@/components/contentful/markdown';
-import {
-	RICHTEXT_GRAPHQL_FIELDS,
-	ASSET_GRAPHQL_FIELDS,
-	SKILL_GRAPHQL_FIELDS,
-} from '.';
+
+import { ASSET_GRAPHQL_FIELDS, RICHTEXT_GRAPHQL_FIELDS } from './';
+
 import type {
 	TypeAuthor,
 	TypeSkill,

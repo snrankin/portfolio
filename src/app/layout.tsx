@@ -1,10 +1,13 @@
-import React from 'react';
-import { Inconsolata, Poppins, DM_Sans } from 'next/font/google';
-import localFont from 'next/font/local';
-import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
-import { Analytics } from '@vercel/analytics/react';
-import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
 import '@/css/style.css';
+
+import { DM_Sans, Inconsolata, Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
+import React from 'react';
+
+import { getItem } from '@/lib/api';
+import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
+import { Analytics } from '@vercel/analytics/react';
+
 export const poppins = Poppins({
 	weight: ['400', '600', '700', '900'],
 	style: ['italic', 'normal'],
@@ -28,16 +31,28 @@ export const inconsolata = Inconsolata({
 	variable: '--font-inconsolata',
 });
 
-const customDev = localFont({
-	src: '../font/devicons-custom/devicons-custom.woff',
+const devicons = localFont({
+	src: '../../node_modules/devicon/fonts/devicon.woff',
 	display: 'swap',
 	variable: '--font-devicons',
 	fallback: ['var(--font-devicons-ttf)'],
 });
+const deviconsTTF = localFont({
+	src: '../../node_modules/devicon/fonts/devicon.ttf',
+	display: 'swap',
+	variable: '--font-devicons-ttf',
+});
+
+const customDev = localFont({
+	src: '../font/devicons-custom/devicons-custom.woff',
+	display: 'swap',
+	variable: '--font-custom-devicons',
+	fallback: ['var(--font-custom-devicons-ttf)'],
+});
 const customDevTTF = localFont({
 	src: '../font/devicons-custom/devicons-custom.ttf',
 	display: 'swap',
-	variable: '--font-devicons-ttf',
+	variable: '--font-custom-devicons-ttf',
 });
 
 export async function generateMetadata() {
@@ -101,7 +116,7 @@ export default async function Layout({
 			<Analytics />
 			<html
 				lang="en"
-				className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} font-sans`}
+				className={`${customDevTTF.variable} ${customDev.variable} ${poppins.variable} ${inconsolata.variable} ${dmsans.variable} ${devicons.variable} ${deviconsTTF.variable} font-sans`}
 				suppressHydrationWarning={true}
 			>
 				<body

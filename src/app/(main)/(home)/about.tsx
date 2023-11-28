@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import ContentfulImage from '@/components/contentful/contentful-image';
 import { Markdown } from '@/components/contentful/markdown';
 import Section from '@/components/section/section';
@@ -7,6 +7,7 @@ import Frame from '@/img/frame.svg';
 import { TypeAboutSectionFields } from '@/lib/types';
 
 import styles from './home.module.css';
+
 export default function About(props?: TypeAboutSectionFields): JSX.Element {
 	return (
 		<Section
@@ -29,14 +30,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 								className={`w-full h-auto mask ease-in-out duration-300 grayscale will-change-auto hover:grayscale-0 ${styles.profileMask}`}
 								loading="lazy"
 								fill={true}
-								sizes="100vw"
-								// style={{
-								// 	width: '100%',
-								// 	height: 'auto',
-								// }}
 								alt={`${props.image.description}`}
-								// width={me.picture.width}
-								// height={me.picture.height}
 							/>
 						</div>
 					</div>

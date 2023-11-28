@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import { isString, replace, isEmpty, trimEnd } from 'lodash';
+import { isEmpty, isString, replace, trimEnd } from 'lodash';
+
+import { NDASH } from './symbols';
 
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
-
-import { NDASH } from './symbols';
 
 export function displayDate(
 	start?: Date | string,
@@ -71,6 +71,49 @@ export function simplifyUrl(url?: string) {
 		displayUrl = trimEnd(displayUrl, '/');
 	}
 	return displayUrl;
+}
+export const desktopRatio = 0.565400859375;
+export const laptopRatio = 0.644636625;
+export const tabletRatio = 1.4332066441;
+export const mobileRatio = 2.1734464255;
+
+export function deviceImageHeight(
+	width: number,
+	device: 'desktop' | 'laptop' | 'tablet' | 'mobile'
+) {
+	let height;
+
+	switch (device) {
+		case 'desktop':
+			height = width * desktopRatio;
+			break;
+
+		case 'laptop':
+			height = width * laptopRatio;
+			break;
+		case 'tablet':
+			height = width * tabletRatio;
+			break;
+		case 'mobile':
+			height = width * mobileRatio;
+			break;
+	}
+
+	return Math.ceil(height);
+}
+
+function deviceImage(
+	width: number,
+	device: 'desktop' | 'laptop' | 'tablet' | 'mobile'
+) {
+	let height = deviceImageHeight(width, device);
+
+	return `
+  width: ${width},
+  height: ${Math.ceil(height)},
+  resizeStrategy: FILL,
+  resizeFocus: TOP,
+`;
 }
 export type Dictionary = {
 	[key: string]: any;
