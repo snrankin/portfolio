@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_25" data-name="Layer 25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400.36 230.75">
-  <polygon points="1556.49 105.28 843.87 105.28 127.05 105.28 127.05 230.75 843.87 230.75 1556.49 230.75 2273.31 230.75 2273.31 105.28 1556.49 105.28" fill="#334155" fill-rule="evenodd" stroke-width="0"/>
-  <rect width="2400.36" height="45.68" fill="#ffbe47" stroke-width="0"/>
-  <rect y="32.99" width="2400.18" height="12.68" fill="#fca400" stroke-width="0"/>
-  <rect x="50.18" y="45.78" width="76.87" height="184.97" fill="#94a3b8" stroke-width="0"/>
-  <polygon points="50.18 45.68 127.05 45.68 50.18 102.2 50.18 45.68" fill="#64748b" fill-rule="evenodd" stroke="#221814" stroke-miterlimit="10" stroke-width=".48"/>
-  <path d="m148.28,146.99c3.27,0,5.94-2.66,5.94-5.93s-2.66-5.94-5.94-5.94-5.93,2.66-5.93,5.94,2.66,5.93,5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-  <path d="m148.28,173.94c3.27,0,5.94-2.66,5.94-5.93s-2.66-5.94-5.94-5.94-5.93,2.66-5.93,5.94,2.66,5.93,5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-  <path d="m148.28,200.9c3.27,0,5.94-2.66,5.94-5.94s-2.66-5.93-5.94-5.93-5.93,2.66-5.93,5.93,2.66,5.94,5.93,5.94h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-  <rect x="2273.31" y="45.78" width="76.87" height="184.97" fill="#94a3b8" stroke-width="0"/>
-  <polygon points="2273.31 46.93 2350.18 46.93 2273.31 103.45 2273.31 46.93" fill="#64748b" fill-rule="evenodd" stroke="#221814" stroke-miterlimit="10" stroke-width=".48"/>
-  <path d="m2252.08,146.99c-3.27,0-5.94-2.66-5.94-5.93s2.66-5.94,5.94-5.94,5.93,2.66,5.93,5.94-2.66,5.93-5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-  <path d="m2252.08,173.94c-3.27,0-5.94-2.66-5.94-5.93s2.66-5.94,5.94-5.94,5.93,2.66,5.93,5.94-2.66,5.93-5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-  <path d="m2252.08,200.9c-3.27,0-5.94-2.66-5.94-5.94s2.66-5.93,5.94-5.93,5.93,2.66,5.93,5.93-2.66,5.94-5.93,5.94h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 235">
+  <g isolation="isolate">
+    <g id="desk-light">
+      <rect width="2400" height="45" fill="#ffc800" stroke-width="0"/>
+      <rect y="35" width="2400" height="10" mix-blend-mode="multiply" opacity=".3" stroke-width="0"/>
+      <rect x="52" y="45" width="75" height="190" fill="#94a3b8" stroke-width="0"/>
+      <polygon points="52 45 127 45 52 101 52 45" fill-rule="evenodd" mix-blend-mode="darken" opacity=".25" stroke-width="0"/>
+      <rect x="2273" y="45" width="75" height="190" fill="#94a3b8" stroke-width="0"/>
+      <polygon points="2273 45 2348 45 2273 101 2273 45" fill-rule="evenodd" mix-blend-mode="darken" opacity=".25" stroke-width="0"/>
+      <polygon points="1556.26 110 843.74 110 127 110 127 235 843.74 235 1556.26 235 2273 235 2273 110 1556.26 110" fill="#334155" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m152.99,151.54c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m152.99,178.49c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m152.99,205.46c3.31,0,6.01-2.7,6.01-6.01s-2.7-5.99-6.01-5.99-5.99,2.7-5.99,5.99,2.7,6.01,5.99,6.01h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m2246.99,151.54c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m2246.99,178.49c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+      <path d="m2246.99,205.46c3.31,0,6.01-2.7,6.01-6.01s-2.7-5.99-6.01-5.99-5.99,2.7-5.99,5.99,2.7,6.01,5.99,6.01h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+    </g>
+  </g>
 </svg>

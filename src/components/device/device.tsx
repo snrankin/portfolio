@@ -1,17 +1,23 @@
 'use client';
-import React, { HTMLProps } from 'react';
-import classNames from 'classnames';
-import Icon from '../icons/icon-item';
-import ThemeSwap from '../theme-swap/theme-swap';
 import './devices.css';
-import BrowserToolbar from './toolbar';
-import DesktopFrame from './desktop.svg';
-import LaptopFrame from './laptop.svg';
-import TabletFrame from './tablet.svg';
-import MobileFrame from './mobile.svg';
-import KeyboardLight from '@/img/keyboard-light.svg';
+
+import classNames from 'classnames';
+import { omit, set } from 'lodash';
+import React, { HTMLProps } from 'react';
+
 import KeyboardDark from '@/img/keyboard-dark.svg';
-import { omit, pick, set } from 'lodash';
+import KeyboardLight from '@/img/keyboard-light.svg';
+
+import ThemeSwap from '../theme-swap/theme-swap';
+import DesktopFrameLight from '@/img/devices/desktop-light.svg';
+import DesktopFrameDark from '@/img/devices/desktop-dark.svg';
+import LaptopFrameLight from '@/img/devices/laptop-light.svg';
+import LaptopFrameDark from '@/img/devices/laptop-dark.svg';
+import TabletFrameLight from '@/img/devices/tablet-light.svg';
+import TabletFrameDark from '@/img/devices/tablet-dark.svg';
+import MobileFrameLight from '@/img/devices/mobile-light.svg';
+import MobileFrameDark from '@/img/devices/mobile-dark.svg';
+import BrowserToolbar from './toolbar';
 
 export interface DeviceProps extends HTMLProps<HTMLDivElement> {
 	type: 'desktop' | 'laptop' | 'tablet' | 'mobile';
@@ -112,19 +118,47 @@ export default function Device(props: DeviceProps): JSX.Element {
 			</div>
 
 			{props.type == 'mobile' && (
-				<MobileFrame className={deviceClasses} />
+				<ThemeSwap>
+					<ThemeSwap.Light>
+						<MobileFrameLight className={deviceClasses} />
+					</ThemeSwap.Light>
+					<ThemeSwap.Dark>
+						<MobileFrameDark className={deviceClasses} />
+					</ThemeSwap.Dark>
+				</ThemeSwap>
 			)}
 			{props.type == 'tablet' && (
-				<TabletFrame className={deviceClasses} />
+				<ThemeSwap>
+					<ThemeSwap.Light>
+						<TabletFrameLight className={deviceClasses} />
+					</ThemeSwap.Light>
+					<ThemeSwap.Dark>
+						<TabletFrameDark className={deviceClasses} />
+					</ThemeSwap.Dark>
+				</ThemeSwap>
 			)}
 			{props.type == 'laptop' && (
-				<LaptopFrame className={deviceClasses} />
+				<ThemeSwap>
+					<ThemeSwap.Light>
+						<LaptopFrameLight className={deviceClasses} />
+					</ThemeSwap.Light>
+					<ThemeSwap.Dark>
+						<LaptopFrameDark className={deviceClasses} />
+					</ThemeSwap.Dark>
+				</ThemeSwap>
 			)}
 			{props.type == 'desktop' && (
-				<DesktopFrame className={deviceClasses} />
+				<ThemeSwap>
+					<ThemeSwap.Light>
+						<DesktopFrameLight className={deviceClasses} />
+					</ThemeSwap.Light>
+					<ThemeSwap.Dark>
+						<DesktopFrameDark className={deviceClasses} />
+					</ThemeSwap.Dark>
+				</ThemeSwap>
 			)}
 			{featured && (
-				<div className="relative ">
+				<div className="relative">
 					<ThemeSwap>
 						<ThemeSwap.Light>
 							<KeyboardLight className={keybaordClasses} />

@@ -1,25 +1,23 @@
-import React from 'react';
-
-import { displayDate } from '@/lib/utils';
 import { Markdown } from '@/components/contentful/markdown';
-import { companyLink } from './item';
-import Icon from '../icons/icon-item';
-import { paramCase } from 'change-case-all';
-import { TypeJobFields } from '@/lib/types';
-import Date from '../global/date';
 import { NDASH, NOBREAK } from '@/lib/symbols';
+import { TypeJobFields } from '@/lib/types';
+
+import Date from '../global/date';
+import Icon from '../icons/icon-item';
+import { companyLink } from './item';
+
 export default function TimelineItem(props: TypeJobFields) {
 	const { company, title, startDate, endDate, website, description } = props;
 
 	return (
-		<li>
+		<li className="!m-0">
 			<div className="timeline-middle">
 				<Icon
 					icon="calendar"
-					iconClasses="stroke-2 text-primary-600 leading-none"
+					iconClasses="stroke-2 text-primary leading-none"
 				/>
 			</div>
-			<div className="font-display uppercase leading-none text-[10pt] font-black text-slate-950 row-start-2 col-start-3 w-full pl-[0.25in]">
+			<div className="font-display uppercase leading-none text-[10pt] font-black text-slate-950 row-start-2 col-start-3 w-full pl-[0.25in] dark:text-slate-100 ">
 				<Date start={startDate} />
 				{NOBREAK}
 				<span className="font-light">{NDASH}</span>
@@ -38,7 +36,7 @@ export default function TimelineItem(props: TypeJobFields) {
 					{!!description && <Markdown content={description} />}
 				</div>
 			</div>
-			<hr className="!w-[1px]" />
+			<hr className="!w-[1px] bg-base-300 dark:bg-slate-500" />
 		</li>
 	);
 }

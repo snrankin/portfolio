@@ -46,7 +46,7 @@ export default function TimelineItem(props: TypeJobFields) {
 	return (
 		<>
 			<div className="relative lg:flex lg:justify-end lg:items-start">
-				<span className="w-0 border-[1px] border-base-300 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block lg:left-auto lg:right-[1.15rem]"></span>
+				<span className="w-0 border-[1px] border-base-300 dark:border-slate-600 absolute top-0 left-2/4 -translate-x-2/4 h-full hidden md:block lg:left-auto lg:right-[1.15rem]"></span>
 				<span className="inline-flex lg:flex-row-reverse items-center relative z-10 leading-[2ex] bg-primary rounded-full gap-2 py-2 px-3 md:py-1">
 					<Icon
 						className="leading-[2ex] h-[1em]"

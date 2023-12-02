@@ -1,10 +1,12 @@
-import React from 'react';
-import { draftMode } from 'next/headers';
-import type { Metadata } from 'next';
-import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
-
-import { TypeResumePageFields, TypeSiteFields } from '@/lib/types';
 import { set } from 'lodash';
+import { draftMode } from 'next/headers';
+import React from 'react';
+
+import { getItem, preloadItem } from '@/lib/api';
+import ThemeProvider from '@/lib/context/theme';
+import { TypeResumePageFields, TypeSiteFields } from '@/lib/types';
+
+import type { Metadata } from 'next';
 export async function generateMetadata({
 	params,
 }: {
@@ -49,8 +51,10 @@ export async function generateMetadata({
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<main className="flex min-h-screen flex-col w-full overflow-y-none">
-			{children}
-		</main>
+		<ThemeProvider>
+			<main className="flex min-h-screen flex-col w-full overflow-y-none">
+				{children}
+			</main>
+		</ThemeProvider>
 	);
 }

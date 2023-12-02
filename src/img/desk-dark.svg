@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400.36 230.75">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 235">
   <g isolation="isolate">
-    <g id="Layer_26" data-name="Layer 26">
+    <g id="desk-dark">
       <g>
-        <polygon points="1556.49 105.28 843.87 105.28 127.05 105.28 127.05 230.75 843.87 230.75 1556.49 230.75 2273.31 230.75 2273.31 105.28 1556.49 105.28" fill="#334155" fill-rule="evenodd" stroke-width="0"/>
-        <rect y="0" width="2400.36" height="45.68" fill="#ffbe47" stroke-width="0"/>
-        <rect y="32.99" width="2400.18" height="12.68" fill="#fca400" stroke-width="0"/>
-        <rect x="50.18" y="45.78" width="76.87" height="184.97" fill="#94a3b8" stroke-width="0"/>
-        <path d="m148.28,173.94c3.27,0,5.94-2.66,5.94-5.93s-2.66-5.94-5.94-5.94-5.93,2.66-5.93,5.94,2.66,5.93,5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-        <path d="m148.28,200.9c3.27,0,5.94-2.66,5.94-5.94s-2.66-5.93-5.94-5.93-5.93,2.66-5.93,5.93,2.66,5.94,5.93,5.94h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-        <rect x="2273.31" y="45.78" width="76.87" height="184.97" fill="#94a3b8" stroke-width="0"/>
-        <path d="m2252.08,146.99c-3.27,0-5.94-2.66-5.94-5.93s2.66-5.94,5.94-5.94c3.26,0,5.93,2.66,5.93,5.94s-2.66,5.93-5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-        <path d="m2252.08,173.94c-3.27,0-5.94-2.66-5.94-5.93s2.66-5.94,5.94-5.94,5.93,2.66,5.93,5.94-2.66,5.93-5.93,5.93h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-        <path d="m2252.08,200.9c-3.27,0-5.94-2.66-5.94-5.94s2.66-5.93,5.94-5.93c3.26,0,5.93,2.66,5.93,5.93s-2.66,5.94-5.93,5.94h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
-        <rect x="2273.31" y="45.78" width="76.87" height="18.17" fill="#64748b" stroke-width="0"/>
-        <rect x="50.18" y="45.68" width="76.87" height="18.17" fill="#64748b" stroke-width="0"/>
+        <polyline points="0 0 0 45 2400 45 2400 0" fill="#ffc800" fill-rule="evenodd" stroke-width="0"/>
+        <rect y="35" width="2400" height="10" mix-blend-mode="multiply" opacity=".4" stroke-width="0"/>
+        <g>
+          <rect x="52" y="45" width="75" height="190" fill="#94a3b8" stroke-width="0"/>
+          <rect x="52" y="45" width="75" height="10" mix-blend-mode="hard-light" stroke-width="0"/>
+        </g>
+        <g>
+          <rect x="2273" y="45" width="75" height="190" fill="#94a3b8" stroke-width="0"/>
+          <rect x="2273" y="45" width="75" height="10" mix-blend-mode="hard-light" stroke-width="0"/>
+        </g>
+        <g>
+          <polygon points="1556.26 110 843.74 110 127 110 127 235 843.74 235 1556.26 235 2273 235 2273 110 1556.26 110" fill="#334155" fill-rule="evenodd" stroke-width="0"/>
+          <g>
+            <path d="m152.99,151.54c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+            <path d="m152.99,178.49c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+            <path d="m152.99,205.46c3.31,0,6.01-2.7,6.01-6.01s-2.7-5.99-6.01-5.99-5.99,2.7-5.99,5.99,2.7,6.01,5.99,6.01h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+          </g>
+          <g>
+            <path d="m2246.99,151.54c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+            <path d="m2246.99,178.49c3.31,0,6.01-2.7,6.01-5.99s-2.7-6.01-6.01-6.01-5.99,2.7-5.99,6.01,2.7,5.99,5.99,5.99h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+            <path d="m2246.99,205.46c3.31,0,6.01-2.7,6.01-6.01s-2.7-5.99-6.01-5.99-5.99,2.7-5.99,5.99,2.7,6.01,5.99,6.01h0Z" fill="#eee" fill-rule="evenodd" stroke-width="0"/>
+          </g>
+        </g>
       </g>
-      <path d="m0,0v45.68h50.18v185.07h76.87s2223.13,0,2223.13,0V45.78l50.18-.1V0m-127.05,63.94v41.34H127.05v-59.61l2146.26.1v18.17Z" fill="#111827" mix-blend-mode="multiply" opacity=".49" stroke-width="0"/>
+      <path d="m0,0v45h52v190h2296V45h52V0m-127,110H127V45h2146v65Z" fill="#111827" mix-blend-mode="multiply" opacity=".5" stroke-width="0"/>
     </g>
   </g>
 </svg>

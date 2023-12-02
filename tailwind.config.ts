@@ -5,35 +5,22 @@ const { getContrastingHex } = require('color-contrast-picker');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const shadesOf = require('tailwind-shades');
 
-export const BLUE = {
-	'50': '#DAE3F4',
-	'100': '#B6C8EA',
-	'200': '#92ADDF',
-	'300': '#6D92D5',
-	'400': '#4977CA',
-	'500': '#255cc0',
-	'600': '#1E4C9F',
-	'700': '#183D7F',
-	'800': '#122E60',
-	'900': '#0C1E3F',
-	'950': '#060F1F',
-};
+export const BLUE = shadesOf('#255CC0');
 export const YELLOW = shadesOf('#FFC800');
 export const ORANGE = shadesOf('#FF8427');
 export const GREEN = shadesOf('#98CE00');
 export const RED = shadesOf('#FF3562');
-export const TEAL = {
-	'50': '#D7F3F0',
-	'100': '#B0E7E1',
-	'200': '#89DBD2',
-	'300': '#62CFC3',
-	'400': '#3BC3B4',
-	'500': '#14b8a6',
-	'600': '#10998A',
-	'700': '#0D7A6E',
-	'800': '#0A5C53',
-	'900': '#063D37',
-	'950': '#031E1B',
+export const TEAL = shadesOf('#14B8A6');
+export const GRAY = shadesOf('#858585');
+
+const themeColors = {
+	primary: TEAL,
+	secondary: ORANGE,
+	accent: BLUE,
+	success: GREEN,
+	warning: YELLOW,
+	error: RED,
+	neutral: GRAY,
 };
 
 export const LIGHT_THEME = {
@@ -130,7 +117,7 @@ const config: Config = {
 				current: 'currentColor',
 				black: colors.black,
 				white: colors.white,
-				primary: TEAL,
+				primary: { DEFAULT: TEAL[500], ...TEAL },
 				primaryContent: {
 					light: LIGHT_THEME['primary-content'],
 					dark: DARK_THEME['primary-content'],
@@ -244,31 +231,30 @@ const config: Config = {
 					css: {
 						fontSize: '12pt',
 						lineHeight: 1.5,
-						a: {
-							color: colors.teal[600],
-							'&:hover': {
-								color: colors.pink[600],
-							},
-						},
+						// color: 'var(--tw-prose-body)',
+						// a: {
+						// 	color: 'var(--tw-prose-links)',
+						// },
 						h1: {
 							fontSize: '30pt',
 							marginTop: '0',
 							marginBottom: '0',
 							lineHeight: 1,
+							// color: 'var(--tw-prose-headings)',
 						},
 						h2: {
 							fontSize: '18pt',
 							marginTop: '0',
 							marginBottom: '0.25in',
 							lineHeight: 1,
-							color: colors.slate[950],
+							// color: 'var(--tw-prose-headings)',
 						},
 						h3: {
 							fontSize: '14pt',
 							marginTop: '0',
 							marginBottom: '0',
 							lineHeight: 1,
-							color: colors.slate[700],
+							// color: 'var(--tw-prose-headings)',
 							fontFamily: [
 								'var(--font-poppins)',
 								...defaultTheme.fontFamily.sans,

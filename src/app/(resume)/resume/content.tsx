@@ -1,34 +1,26 @@
 'use client';
-import React, {
-	useState,
-	useRef,
-	useEffect,
-	createContext,
-	useLayoutEffect,
-} from 'react';
+import { filter } from 'lodash';
 import Link from 'next/link';
-import Section from '@/components/section/section';
-import SocialLinks, { getSocialLinks } from '@/components/social/group';
-import ProjectsGroup from '@/components/projects/list';
-import SkillsList from '@/components/skills/skills';
-import Timeline from '@/components/timeline/print-group';
+import React, { useRef } from 'react';
+
 import Icon from '@/components/icons/icon-item';
-import Logo from '@/components/global/logo';
 import IconLink from '@/components/icons/link';
-import { lowerCase, paramCase } from 'change-case-all';
+import ProjectsGroup from '@/components/projects/list';
+import Section from '@/components/section/section';
+import SkillsList from '@/components/skills/skills';
+import SocialLinks, { getSocialLinks } from '@/components/social/group';
+import Timeline from '@/components/timeline/print-group';
 import LogoFull from '@/img/logo-full.svg';
 import { NOBREAK } from '@/lib/symbols';
-import styles from './print.module.css';
 import {
 	TypeAuthorFields,
-	TypeSkillsSectionFields,
-	sortSkills,
-	SkillsGroups,
 	TypeJobsSectionFields,
 	TypePostFields,
+	TypeSkillsSectionFields,
 } from '@/lib/types';
 
-import fitty from 'fitty';
+import styles from './print.module.css';
+
 export default function Content({
 	summary,
 	me,
@@ -52,7 +44,9 @@ export default function Content({
 	// 	fitty('.logo-line-1');
 	// });
 
-	const links = getSocialLinks(me);
+	let links = getSocialLinks(me);
+
+	links = filter(links, (l) => !l.href.includes('calendly'));
 
 	return (
 		<Section id="resume" className={styles.print}>
@@ -73,8 +67,8 @@ export default function Content({
 				</Link>
 			</div>
 			<div className="overflow-hidden">
-				<div className="prose-print max-w-none grid grid-cols-1 md:grid-cols-12 print:grid-cols-12">
-					<div className="border-b md:border-r print:border-r md:col-span-8 print:col-span-8 pr-[0.25in] py-[0.25in] md:pt-0">
+				<div className="prose prose-print max-w-none grid grid-cols-1 md:grid-cols-12 print:grid-cols-12">
+					<div className="border-b md:border-r print:border-r dark:border-slate-500 md:col-span-8 print:col-span-8 pr-[0.25in] py-[0.25in] md:pt-0">
 						<h1 className="pb-4">
 							<span className="sr-only">
 								{!!me?.firstName && !!me?.lastName && (
@@ -96,7 +90,7 @@ export default function Content({
 							<p className="m-0 tracking-[-0.009em]">{summary}</p>
 						)}
 					</div>
-					<div className="border-b md:col-span-4 print:col-span-4 md:pl-[0.23in] print:pl-[0.23in] py-[0.25in] md:pt-0">
+					<div className="border-b dark:border-slate-500 md:col-span-4 print:col-span-4 md:pl-[0.23in] print:pl-[0.23in] py-[0.25in] md:pt-0">
 						<div className="flex flex-col gap-3">
 							{links.map((link, k) => {
 								return (
@@ -116,7 +110,7 @@ export default function Content({
 						</div>
 					</div>
 					{!!skills && (
-						<div className="border-b md:border-r print:border-r md:col-span-8 print:col-span-8 py-[0.25in]">
+						<div className="border-b dark:border-slate-500 md:border-r print:border-r md:col-span-8 print:col-span-8 py-[0.25in]">
 							<h2 className="font-bold">Skillset</h2>
 
 							<SkillsList
@@ -139,7 +133,7 @@ export default function Content({
 						</div>
 					)}
 					{!!projects && (
-						<div className="border-b md:col-span-4 print:col-span-4 py-[0.25in] md:pl-[0.25in] print:pl-[0.25in]">
+						<div className="border-b dark:border-slate-500 md:col-span-4 print:col-span-4 py-[0.25in] md:pl-[0.25in] print:pl-[0.25in]">
 							<h2 className="font-bold">Projects</h2>
 							<ProjectsGroup
 								className="grid grid-cols-2 md:grid-cols-1 print:grid-cols-1 gap-4 justify-between"

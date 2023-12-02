@@ -8,7 +8,7 @@ import { TypeAuthorFields } from '@/lib/types';
 export default function Footer({ author }: { author?: TypeAuthorFields }) {
 	return (
 		<>
-			<footer className="print:hidden footer footer-center pb-envb bg-base-300 dark:bg-slate-900 text-base-content print:bg-white lg:pb-0 ">
+			<footer className="print:hidden footer footer-center pb-envb bg-base-300 dark:bg-slate-950 text-base-content print:bg-white lg:pb-0 ">
 				<aside className="p-4">
 					<div className="pb-10 lg:pb-0">
 						<p>

@@ -1,17 +1,16 @@
 'use client';
-import React, { useState, useContext, Children } from 'react';
-import Device, { DeviceProps } from './device';
-import ThemeSwap from '../theme-swap/theme-swap';
-import DeskLight from '@/img/desk-light.svg';
-import DeskDark from '@/img/desk-dark.svg';
-import CupLight from '@/img/cup-light.svg';
+import React from 'react';
+
 import CupDark from '@/img/cup-dark.svg';
-import LaptopLight from '@/img/laptop-light.svg';
+import CupLight from '@/img/cup-light.svg';
+import DeskDark from '@/img/desk-dark.svg';
+import DeskLight from '@/img/desk-light.svg';
 import LaptopDark from '@/img/laptop-dark.svg';
-import OrganizerLight from '@/img/organizer-light.svg';
-import OrganizerDark from '@/img/organizer-dark.svg';
-import KeyboardLight from '@/img/keyboard-light.svg';
-import KeyboardDark from '@/img/keyboard-dark.svg';
+import LaptopLight from '@/img/laptop-light.svg';
+
+import ThemeSwap from '../theme-swap/theme-swap';
+import Device, { DeviceProps } from './device';
+
 function Desktop(props: Omit<DeviceProps, 'type'>) {
 	return (
 		<Device type="desktop" className="w-8/12 mx-auto" {...props}>

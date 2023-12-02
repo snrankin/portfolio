@@ -57,6 +57,56 @@
 }
 
 @media (prefers-color-scheme: dark) {
+	:root {
+		--shadow-color: 216deg 34% 13%;
+		--logo-color-1: theme(colors.primary.600);
+		--logo-color-2: theme(colors.slate.400);
+		--fallback-p: theme(colors.primary.600);
+		--fallback-pc: theme(colors.primaryContent.dark);
+		--fallback-s: theme(colors.secondary.600);
+		--fallback-sc: theme(colors.secondaryContent.dark);
+		--fallback-a: theme(colors.accent.600);
+		--fallback-ac: theme(colors.accentContent.dark);
+		--fallback-n: theme(colors.slate.300);
+		--fallback-nc: theme(colors.slate.900);
+		--fallback-b1: theme(colors.slate.700);
+		--fallback-b2: theme(colors.slate.800);
+		--fallback-b3: theme(colors.slate.900);
+		--fallback-bc: theme(colors.slate.300);
+		--fallback-in: theme(colors.info.600);
+		--fallback-inc: theme(colors.infoContent.dark);
+		--fallback-su: theme(colors.success.600);
+		--fallback-suc: theme(colors.successContent.dark);
+		--fallback-wa: theme(colors.warning.600);
+		--fallback-wac: theme(colors.warningContent.dark);
+		--fallback-er: theme(colors.error.600);
+		--fallback-erc: theme(colors.errorContent.dark);
+		--pattern-bg: svg-load(subtle-bg-dark.svg);
+		.bg-base-200 {
+			--shadow-color: 218deg 49% 7%;
+		}
+		.pattern-bg {
+			--shadow-color: 222deg 54% 6%;
+		}
+		.prose {
+			--tw-prose-body: theme(colors.slate.200);
+			--tw-prose-headings: theme(colors.slate.100);
+			--tw-prose-lead: theme(colors.slate.300);
+			--tw-prose-links: theme(colors.primary.400);
+			--tw-prose-bold: theme(colors.white);
+			--tw-prose-counters: theme(colors.primary.400);
+			--tw-prose-bullets: theme(colors.secondary.600);
+			--tw-prose-hr: theme(colors.slate.700);
+			--tw-prose-quotes: theme(colors.primary.100);
+			--tw-prose-quote-borders: theme(colors.primary.600);
+			--tw-prose-captions: theme(colors.slate.400);
+			--tw-prose-code: theme(colors.white);
+			--tw-prose-pre-code: theme(colors.slate.300);
+			--tw-prose-pre-bg: theme(colors.slate.950);
+			--tw-prose-th-borders: theme(colors.slate.600);
+			--tw-prose-td-borders: theme(colors.slate.700);
+		}
+	}
 	[data-theme='light'] {
 		--shadow-color: 220deg 5% 52%;
 		--shadow-color: 210deg 12% 60%;
@@ -83,6 +133,25 @@
 		--fallback-er: theme(colors.error.500);
 		--fallback-erc: theme(colors.errorContent.light);
 		--pattern-bg: svg-load(subtle-bg-light.svg);
+
+		.prose {
+			--tw-prose-body: theme(colors.slate.700);
+			--tw-prose-headings: theme(colors.slate.900);
+			--tw-prose-lead: theme(colors.slate.800);
+			--tw-prose-links: theme(colors.primary.600);
+			--tw-prose-bold: theme(colors.primary.500);
+			--tw-prose-counters: theme(colors.primary.600);
+			--tw-prose-bullets: theme(colors.secondary.500);
+			--tw-prose-hr: theme(colors.slate.300);
+			--tw-prose-quotes: theme(colors.primary.700);
+			--tw-prose-quote-borders: theme(colors.secondary.500);
+			--tw-prose-captions: theme(colors.slate.700);
+			--tw-prose-code: theme(colors.primary.400);
+			--tw-prose-pre-code: theme(colors.slate.100);
+			--tw-prose-pre-bg: theme(colors.slate.800);
+			--tw-prose-th-borders: theme(colors.slate.300);
+			--tw-prose-td-borders: theme(colors.slate.200);
+		}
 	}
 }
 
@@ -114,7 +183,7 @@ html .prose {
 [data-theme='dark'] {
 	--shadow-color: 216deg 34% 13%;
 	--logo-color-1: theme(colors.primary.600);
-	--logo-color-2: theme(colors.slate.300);
+	--logo-color-2: theme(colors.slate.400);
 	--fallback-p: theme(colors.primary.600);
 	--fallback-pc: theme(colors.primaryContent.dark);
 	--fallback-s: theme(colors.secondary.600);
@@ -184,6 +253,22 @@ html .prose {
 		/* prettier-ignore */
 		color: var(--fallback-$(var)c);
 	}
+}
+
+.headings-color {
+	color: var(--tw-prose-headings);
+}
+
+.content-color {
+	color: var(--tw-prose-body);
+}
+
+.headings-fill {
+	fill: var(--tw-prose-headings);
+}
+
+.content-fill {
+	fill: var(--tw-prose-body);
 }
 
 .modal-box {

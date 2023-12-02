@@ -43,13 +43,51 @@
 }
 
 .ctaBg {
-	background-image: svg-load(cta-bg.svg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center top;
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		mix-blend-mode: overlay;
+		background: radial-gradient(
+			circle,
+			rgba(255, 255, 255, 0.75) 0%,
+			rgba(255, 255, 255, 0) 40%
+		);
+	}
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-image: svg-load(cta-light.svg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center top;
+	}
+	> .container {
+		position: relative;
+		z-index: 3;
+	}
 }
+
 @media (min-width: 576px) {
 	.ctaBg {
-		background-position: 80% top;
+		&::after {
+			background-position: 80% top;
+		}
+	}
+}
+
+[data-theme='dark'] {
+	.ctaBg {
+		&::after {
+			background-image: svg-load(cta-dark.svg);
+		}
 	}
 }
