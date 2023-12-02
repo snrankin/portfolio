@@ -15,10 +15,10 @@ export default function Cta(props?: TypeCtaSectionFields): JSX.Element {
 		<Section
 			id={`${props?.slug}`}
 			className={`${styles.ctaBg} bg-base-200 dark:bg-slate-900`}
-			containerClasses="pt-[25vw] sm:pb-[10vw] md:pt-[20vw] xl:pt-[15vw] xl:pb-[5vw] 2xl:pt-64 2xl:pb-20"
+			containerClasses="pt-[25vw] sm:pb-[10vw] md:pt-[20vw] xl:pt-[15vw] xl:pb-[5vw] 2xl:pt-64 2xl:pb-20 relative z-10"
 		>
 			{!!props?.content && (
-				<div className="prose prose-2xl max-w-[96%] md:max-w-[70%] lg:prose-lg prose-h2:text-5xl sm:prose-h2:text-6xl md:prose-h2:text-4xl xl:prose-h2:text-4xl text-center mx-auto">
+				<div className="prose prose-2xl max-w-[96%] md:max-w-[70%] lg:prose-lg prose-h2:text-5xl sm:prose-h2:text-6xl md:prose-h2:text-4xl lg:prose-h2:text-4xl xl:prose-h2:text-4xl text-center mx-auto">
 					<Markdown content={props.content} />
 				</div>
 			)}

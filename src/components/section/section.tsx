@@ -64,18 +64,16 @@ export default function Section(props: SectionProps) {
 	return (
 		<Waypoint topOffset="-90%" onEnter={enterHandler}>
 			<section {...sectionProps}>
-				<div className="section-inner">
-					<div className={containerClasses}>
-						{(!isEmpty(props.title) || !isEmpty(props.command)) && (
-							<Heading {...headingArgs} />
-						)}
-						{!!props.intro && (
-							<div className="prose xl:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
-								<Markdown content={props.intro} />
-							</div>
-						)}
-						{children}
-					</div>
+				<div className={containerClasses}>
+					{(!isEmpty(props.title) || !isEmpty(props.command)) && (
+						<Heading {...headingArgs} />
+					)}
+					{!!props.intro && (
+						<div className="prose xl:prose-xl dark:prose-invert mx-auto text-center my-0 md:max-w-[60%]">
+							<Markdown content={props.intro} />
+						</div>
+					)}
+					{children}
 				</div>
 			</section>
 		</Waypoint>

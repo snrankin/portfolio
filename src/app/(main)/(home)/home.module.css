@@ -76,13 +76,13 @@
 	}
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
 	.ctaBg {
 		&::after {
 			background-position: 80% top;
 		}
 	}
-}
+} */
 
 [data-theme='dark'] {
 	.ctaBg {

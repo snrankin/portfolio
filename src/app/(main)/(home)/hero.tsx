@@ -30,7 +30,7 @@ export default function Hero({
 			<div className="hero-content p-0 w-full grid grid-cols-1 pt-section sm:grid-rows-[max-content_1fr]">
 				<div className="w-full sm:row-start-1 sm:row-span-2 col-start-1 col-end-2 ">
 					<div className="w-screen sm:w-full-pg drop-shadow-lg -mx-pg sm:ml-0 sm:-mr-pg">
-						<div className="-mx-[30vw] sm:ml-0 sm:-mr-[100vw] md:-mr-[70vw] xl:-mr-[30%] 2xl:mr-0">
+						<div className="-mx-[30vw] sm:ml-0 sm:-mr-[100vw] md:-mr-[70vw] xl:-mr-[30%] 2xl:-mr-[15%] flex justify-end">
 							<ThemeSwap>
 								<ThemeSwap.Img
 									dark={HeroDark}
