@@ -1,11 +1,13 @@
 import { set } from 'lodash';
 import { draftMode } from 'next/headers';
 
+import Cta from '@/app/(main)/(home)/cta';
 import { getItem, getItems, getItemsExcept, preloadItem } from '@/lib/api';
 import {
 	POST_CARD_GRAPHQL_FIELDS,
 	POST_LINKS_GRAPHQL_FIELDS,
 	POST_SEO_GRAPHQL_FIELDS,
+	TypeCtaSectionFields,
 	TypePostCardFields,
 	TypePostFields,
 	TypeSiteFields,
@@ -89,6 +91,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
 		3,
 		POST_CARD_GRAPHQL_FIELDS
 	);
+	const cta = await getItem<TypeCtaSectionFields>(
+		isEnabled,
+		'cta',
+		'home-cta'
+	);
 
-	return <Content project={project} moreProjects={moreProjects} />;
+	return (
+		<>
+			<Content project={project} moreProjects={moreProjects} />
+			{!!cta && <Cta {...cta} />}
+		</>
+	);
 }

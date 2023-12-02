@@ -1,11 +1,14 @@
 'use client';
 
-import Section from '@/components/section/section';
 import classNames from 'classnames';
+
 import { Markdown } from '@/components/contentful/markdown';
 import ProjectsGroup from '@/components/projects/grid';
-import { TypePostFields, TypePostCardFields } from '@/lib/types';
+import Section from '@/components/section/section';
+import { TypePostCardFields, TypePostFields } from '@/lib/types';
+
 import Hero from './hero';
+
 export default function Content({
 	project,
 	moreProjects,
