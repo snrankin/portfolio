@@ -1,0 +1,53 @@
+.errorBg {
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		mix-blend-mode: overlay;
+		background: radial-gradient(
+			circle,
+			rgba(255, 255, 255, 0.75) 0%,
+			rgba(255, 255, 255, 0) 40%
+		);
+	}
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-image: svg-load(error-light.svg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 30% top;
+	}
+	.container {
+		position: relative;
+		z-index: 3;
+	}
+}
+
+@media (min-width: 576px) {
+	.errorBg {
+		&::after {
+			background-position: center top;
+		}
+	}
+}
+
+[data-theme='dark'] {
+	.errorBg {
+		&::after {
+			background-image: svg-load(error-dark.svg);
+		}
+	}
+}
+
+.title {
+	font-size: clamp(6.25rem, 3.9352rem + 12.3457vw, 18.75rem);
+}
