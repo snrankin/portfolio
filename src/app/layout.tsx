@@ -7,6 +7,7 @@ import React from 'react';
 import { getItem } from '@/lib/api';
 import { SITE_GRAPHQL_FIELDS, TypeSiteFields } from '@/lib/types';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const poppins = Poppins({
 	weight: ['400', '600', '700', '900'],
@@ -124,6 +125,7 @@ export default async function Layout({
 					suppressHydrationWarning={true}
 				>
 					{children}
+					<SpeedInsights />
 				</body>
 			</html>
 		</>

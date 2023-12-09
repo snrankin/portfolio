@@ -30,6 +30,7 @@ export default function About(props?: TypeAboutSectionFields): JSX.Element {
 								className={`w-full h-auto mask ease-in-out duration-300 grayscale will-change-auto hover:grayscale-0 ${styles.profileMask}`}
 								loading="lazy"
 								fill={true}
+								sizes="400px"
 								alt={`${props.image.description}`}
 							/>
 						</div>
