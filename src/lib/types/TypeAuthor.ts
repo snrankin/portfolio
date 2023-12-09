@@ -1,5 +1,9 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import type { TypeSocialProfileFields, TypeAssetFields } from '.';
+import type {
+	TypeSocialProfileFields,
+	TypeAssetFields,
+	TypeLocationFields,
+} from '.';
 import { ASSET_GRAPHQL_FIELDS } from './';
 
 export const AUTHOR_GRAPHQL_FIELDS = `
@@ -13,9 +17,15 @@ export const AUTHOR_GRAPHQL_FIELDS = `
   picture {
     ${ASSET_GRAPHQL_FIELDS}
   }
-  location {
-    lat
-    lon
+  loc {
+    street
+    city
+    state
+    postal
+    location {
+      lat
+      lon
+    }
   }
   socialCollection {
     items {
@@ -33,7 +43,7 @@ export interface TypeAuthorFields {
 	label?: EntryFields.Text;
 	email?: EntryFields.Text;
 	phone?: EntryFields.Text;
-	location?: EntryFields.Location;
+	loc?: TypeLocationFields;
 	socialCollection?: {
 		items: TypeSocialProfileFields[];
 	};

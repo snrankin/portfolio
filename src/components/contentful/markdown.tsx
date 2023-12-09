@@ -1,26 +1,26 @@
-import React, { cloneElement, isValidElement, ReactNode } from 'react';
-import ContentfulImage from './contentful-image';
 import { Entry, ResourceLink } from 'contentful';
+import { get, isEmpty } from 'lodash';
+import React, { cloneElement, isValidElement, ReactNode } from 'react';
+
+import { getIconString, hasIcon } from '@/components/icons/icons';
+import { TypeAssetFields } from '@/lib/types';
 import {
 	documentToReactComponents,
 	Options,
 } from '@contentful/rich-text-react-renderer';
 import {
+	Block,
 	BLOCKS,
-	MARKS,
-	INLINES,
 	Document,
 	helpers,
-	Node,
-	Block,
-	Text,
 	Inline,
+	INLINES,
 	Mark,
+	MARKS,
+	Text,
 } from '@contentful/rich-text-types';
-import { isEmpty, get, isString } from 'lodash';
-import { hasIcon, getIconString } from '@/components/icons/icons';
-import { TypeAssetFields } from '@/lib/types';
-import Icon from '@/components/icons/icon-item';
+
+import ContentfulImage from './contentful-image';
 
 type TextLinks = {
 	entries: TextEntries;
@@ -194,7 +194,7 @@ function RemoveEmptyParagraph(node: any) {
 }
 
 function SkillHighlightItem(node: { content: string }) {
-	let iconVal = `<span class="inline-flex items-baseline gap-1" style="line-height: 2ex">${getIconString(
+	let iconVal = `<span class="inline-flex items-baseline gap-1 skill" style="line-height: 2ex">${getIconString(
 		node.content,
 		'dev',
 		true

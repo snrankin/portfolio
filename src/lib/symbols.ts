@@ -4,3 +4,5 @@ export const NOBREAK = String.fromCharCode(160);
 export const AND = String.fromCharCode(38);
 export const APOS = String.fromCharCode(39);
 export const COPY = String.fromCharCode(169);
+export const MIDDOT = String.fromCharCode(183);
+export const BULLET = String.fromCharCode(8226);

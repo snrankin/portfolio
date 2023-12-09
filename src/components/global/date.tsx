@@ -1,16 +1,21 @@
 import dayjs from 'dayjs';
-import { isString, replace, isEmpty, trimEnd } from 'lodash';
+
 import { NDASH, NOBREAK } from '@/lib/symbols';
+
 var customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs.extend(customParseFormat);
 export default function Date({
 	start,
 	end,
 	format,
+	dashClasses,
+	isCurrent,
 }: {
 	start?: Date | string;
 	end?: Date | string;
 	format?: string;
+	dashClasses?: string;
+	isCurrent?: boolean;
 }) {
 	let startDate = null,
 		endDate = null,
@@ -18,16 +23,23 @@ export default function Date({
 
 	format = format ?? 'MMM YYYY';
 
-	if (start != undefined && dayjs(start).isValid()) {
+	let current = isCurrent != undefined && isCurrent ? 'Present' : '';
+
+	let startIsValid = start != undefined && dayjs(start).isValid(),
+		endIsValid = end != undefined && dayjs(end).isValid();
+
+	end = endIsValid ? end : current;
+
+	if (startIsValid) {
 		let startYear = dayjs(start).year();
 
-		if (end != undefined && dayjs(end).isValid()) {
-			let endYear = dayjs(end).year();
-			const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
-			if (startYear == endYear) {
-				startFormat = startFormat.replace(regex, '');
-			}
-		}
+		// if (endIsValid) {
+		// 	let endYear = dayjs(end).year();
+		// 	const regex = new RegExp('(\\s|\\/)*[Yy]+', 'gm');
+		// 	if (startYear == endYear) {
+		// 		startFormat = startFormat.replace(regex, '');
+		// 	}
+		// }
 		startDate = (
 			<time className="start-date" dateTime={dayjs(start).toISOString()}>
 				{dayjs(start).format(startFormat)}
@@ -35,27 +47,27 @@ export default function Date({
 		);
 	}
 
-	if (end != undefined && dayjs(end).isValid()) {
+	if (endIsValid) {
 		endDate = (
 			<time className="end-date" dateTime={dayjs(end).toISOString()}>
 				{dayjs(end).format(format)}
 			</time>
 		);
-	} else if (typeof end === 'string') {
+	} else if (typeof end === 'string' && end != '') {
 		endDate = <span className="end-date">{end}</span>;
 	}
 
 	return (
 		<>
 			{startDate}
-			{end != undefined && dayjs(end).isValid() ? (
+			{endDate != null && (
 				<>
 					{NOBREAK}
-					{NDASH}
+					<span className={dashClasses}>{NDASH}</span>
 					{NOBREAK}
 					{endDate}
 				</>
-			) : null}
+			)}
 		</>
 	);
 }

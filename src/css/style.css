@@ -178,6 +178,10 @@ html .prose {
 	--tw-prose-pre-bg: theme(colors.slate.800);
 	--tw-prose-th-borders: theme(colors.slate.300);
 	--tw-prose-td-borders: theme(colors.slate.200);
+
+	&.prose-print {
+		--tw-prose-headings: theme(colors.primary.700);
+	}
 }
 
 [data-theme='dark'] {
@@ -626,6 +630,9 @@ html .prose {
 		/* this affects the margin in the printer settings */
 		margin: 12.7mm 12.7mm 12.7mm 12.7mm;
 	}
+	@page :first {
+		margin: 0mm 12.7mm 12.7mm 12.7mm;
+	}
 	:root {
 		--container-width: 7.5in !important;
 		--section-spacing: 0.25in;
@@ -637,5 +644,38 @@ html .prose {
 	body {
 		margin: 0;
 		background-color: #fff !important;
+		color: #000;
+	}
+	body [data-theme='dark'] {
+		background-color: #fff;
+		color: #000;
+		.prose {
+			--tw-prose-body: #000;
+			--tw-prose-headings: #000;
+			[class~='lead'] {
+				color: #000;
+			}
+			a {
+				color: #000;
+			}
+		}
+	}
+	h2,
+	h2,
+	h3,
+	.italic {
+		page-break-after: avoid;
+	}
+}
+
+#resume-basic #experience {
+	b {
+		font-weight: normal !important;
+	}
+	.skill {
+		display: inline !important;
+	}
+	.icon {
+		display: none;
 	}
 }

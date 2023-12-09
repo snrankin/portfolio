@@ -69,6 +69,13 @@ export const DARK_THEME = {
 	'error-content': getContrastingHex(RED[600], 4),
 };
 
+const basicFontFamily = [
+	'Helvetica Neue',
+	'Helvetica',
+	'Arial',
+	...defaultTheme.fontFamily.sans,
+];
+
 const config: Config = {
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx,mdx,svg}',
@@ -80,6 +87,7 @@ const config: Config = {
 			sans: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
 			system: [...defaultTheme.fontFamily.sans],
 			mono: ['var(--font-inconsolata)', ...defaultTheme.fontFamily.mono],
+			basic: basicFontFamily,
 		},
 		fontSize: {
 			sm: ['clamp(0.89rem, 0vw + 0.89rem, 0.89rem)', '1.5'],
@@ -160,6 +168,7 @@ const config: Config = {
 					...defaultTheme.fontFamily.sans,
 				],
 				system: [...defaultTheme.fontFamily.sans],
+				basic: basicFontFamily,
 				mono: [
 					'var(--font-inconsolata)',
 					...defaultTheme.fontFamily.mono,
@@ -235,33 +244,77 @@ const config: Config = {
 						// a: {
 						// 	color: 'var(--tw-prose-links)',
 						// },
+						'[class~="lead"]': {
+							fontSize: '14pt',
+							lineHeight: '1',
+							marginTop: '0',
+							marginBottom: '0',
+						},
 						h1: {
 							fontSize: '30pt',
 							marginTop: '0',
 							marginBottom: '0',
 							lineHeight: 1,
+							fontWeight: 700,
 							// color: 'var(--tw-prose-headings)',
 						},
 						h2: {
-							fontSize: '18pt',
+							fontSize: '15pt',
 							marginTop: '0',
 							marginBottom: '0.25in',
 							lineHeight: 1,
-							// color: 'var(--tw-prose-headings)',
+							textTransform: 'uppercase',
 						},
 						h3: {
 							fontSize: '14pt',
 							marginTop: '0',
 							marginBottom: '0',
 							lineHeight: 1,
-							// color: 'var(--tw-prose-headings)',
-							fontFamily: [
-								'var(--font-poppins)',
-								...defaultTheme.fontFamily.sans,
-							].join(' '),
 						},
 						ul: {
-							paddingLeft: '0.9em',
+							paddingLeft: '1em',
+						},
+					},
+				},
+				basic: {
+					css: {
+						fontSize: '12pt',
+						lineHeight: 1.5,
+						fontFamily: basicFontFamily.join(', '),
+
+						'[class~="lead"]': {
+							fontSize: '14pt',
+							lineHeight: '1',
+							marginTop: '0',
+							marginBottom: '0',
+						},
+						h1: {
+							fontSize: '30pt',
+							marginTop: '0',
+							marginBottom: '0',
+							lineHeight: 1,
+							fontWeight: 700,
+							fontFamily: basicFontFamily.join(', '),
+							// color: 'var(--tw-prose-headings)',
+						},
+						h2: {
+							fontSize: '15pt',
+							marginTop: '0',
+							marginBottom: '0.25in',
+							lineHeight: 1,
+							textTransform: 'uppercase',
+							textAlign: 'center',
+							fontFamily: basicFontFamily.join(', '),
+						},
+						h3: {
+							fontSize: '14pt',
+							marginTop: '0',
+							marginBottom: '0',
+							lineHeight: 1,
+							fontFamily: basicFontFamily.join(', '),
+						},
+						ul: {
+							paddingLeft: '1.1em',
 						},
 					},
 				},

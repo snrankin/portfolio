@@ -12,5 +12,8 @@ export * from './TypeSkill';
 export * from './TypeSkillsSection';
 export * from './TypeSocialProfile';
 export * from './TypeCtaSection';
+export * from './TypeEducation';
+export * from './TypeVolunteer';
+export * from './TypeLocation';
 
 export * from './ContentTypes';

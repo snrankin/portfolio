@@ -1,5 +1,6 @@
 import type { Asset, Entry, EntryFields, EntrySkeletonType } from 'contentful';
-import { RICHTEXT_GRAPHQL_FIELDS, ASSET_GRAPHQL_FIELDS } from '.';
+import { ASSET_GRAPHQL_FIELDS } from './';
+
 import type { TypeAuthorFields, TypePostFields, TypeAssetFields } from '.';
 
 export const RESUME_GRAPHQL_FIELDS = `
@@ -10,6 +11,7 @@ export const RESUME_GRAPHQL_FIELDS = `
   __typename
   title
   slug
+  label
   summary
   author {
     name
@@ -19,6 +21,12 @@ export const RESUME_GRAPHQL_FIELDS = `
     label
     phone
     email
+    loc {
+      street
+      city
+      state
+      postal
+    }
     socialCollection {
       items {
         url
@@ -43,6 +51,7 @@ export const RESUME_GRAPHQL_FIELDS = `
 
 export interface TypeResumePageFields {
 	title?: EntryFields.Symbol;
+	label?: EntryFields.Symbol;
 	author?: TypeAuthorFields;
 	projectsCollection?: {
 		items: TypePostFields[];
