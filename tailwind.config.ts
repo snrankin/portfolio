@@ -234,6 +234,11 @@ const config: Config = {
 						ul: {
 							paddingLeft: '0.9em',
 						},
+						'[class~="lead"]': {
+							fontSize:
+								'clamp(1.13rem, 0.69vw + 0.99rem, 1.58rem)',
+							lineHeight: '1.4',
+						},
 					},
 				},
 				print: {
