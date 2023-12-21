@@ -55,7 +55,7 @@
   <line x1="4.93" y1="19.07" x2="6.22" y2="17.78" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
   <line x1="17.78" y1="6.22" x2="19.07" y2="4.93" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
 </symbol><symbol id="web-web" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="10" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
-  <line x1="2" y1="12" x2="22" y2="12" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
-  <path d="m12,2c2.5,2.74,3.92,6.29,4,10-.08,3.71-1.5,7.26-4,10-2.5-2.74-3.92-6.29-4-10,.08-3.71,1.5-7.26,4-10Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+	<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+	<line x1="2" y1="12" x2="22" y2="12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+	<path d="m12,2c2.5,2.74,3.92,6.29,4,10-.08,3.71-1.5,7.26-4,10-2.5-2.74-3.92-6.29-4-10,.08-3.71,1.5-7.26,4-10Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </symbol></svg>

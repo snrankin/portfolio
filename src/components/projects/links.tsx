@@ -1,5 +1,6 @@
-import IconLink from '../icons/link';
 import { TypePostFields } from '@/lib/types';
+
+import IconLink from '../icons/link';
 
 export default function ProjectLinks(props?: TypePostFields) {
 	return (
@@ -18,8 +19,7 @@ export default function ProjectLinks(props?: TypePostFields) {
 			{!!props?.website && (
 				<IconLink
 					href={props?.website}
-					group="web"
-					icon="web"
+					icon="compass"
 					title="View Website"
 					titleDisplay="inline"
 					target="_blank"
